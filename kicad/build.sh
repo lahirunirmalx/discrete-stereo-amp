@@ -8,7 +8,7 @@ STEM=$B; [ "$SINGLE" = "--single" ] && STEM=${B}_1layer
 /usr/bin/python3 gen_pcb_$B.py $SINGLE
 rm -f $B/$STEM.ses
 /usr/bin/python3 netrename.py dsn $B/$STEM.dsn
-PASSES=60; [ "$SINGLE" = "--single" ] && PASSES=120
+PASSES=120; [ "$SINGLE" = "--single" ] && PASSES=120
 ~/.local/bin/freerouting -de $B/$STEM.dsn -do $B/$STEM.ses -mp $PASSES -oit 0.3 2>&1 | grep -vE "New version|Gtk|^\s*$" | tail -4
 cp $B/$STEM.netmap.json $B/$STEM.netmap.json.bak 2>/dev/null; /usr/bin/python3 netrename.py ses $B/$STEM.ses
 /usr/bin/python3 - $B/$STEM.kicad_pcb $B/$STEM.ses <<'PY'

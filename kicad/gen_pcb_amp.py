@@ -54,14 +54,15 @@ for b, xo, sfx in ((100, 0.0, "L"), (200, 50.0, "R")):
 # shared row along the bottom edge: terminals face outward (rot 180 = wire entry towards the bottom edge)
 BH = round(yend + 14.0)
 yt = BH - 6.5
-place["J1"] = (13.5, yt, 180); texts.append((8.0, yt - 6.7, "12V IN", 0.8))
-place["J3"] = (27.0, yt, 180); texts.append((21.5, yt - 6.7, "SPK L", 0.8))
-place["J4"] = (92.0, yt, 180); texts.append((86.5, yt - 6.7, "SPK R", 0.8))
-place["J2"] = (56.0, BH - 2.5, 90); texts.append((60.0, BH - 6.5, "IN L G R", 0.8))
-place["C1"] = (34.0, yt - 1.5, 0)
-place["C2"] = (43.5, yt + 1.5, 90)
-place["TP1"] = (47.5, yt - 3.5, 0); texts.append((47.5, yt - 5.7, "+12V", 0.8))
-place["TP2"] = (52.0, yt - 3.5, 0); texts.append((52.0, yt - 5.7, "GND", 0.8))
+# screw terminals: rot 0 puts the wire entry towards the bottom edge (verified on the 3D render; rot 180 was backwards)
+place["J1"] = (11.0, yt, 0); texts.append((11.0, yt - 7.0, "12V IN", 0.8))
+place["J3"] = (23.5, yt, 0); texts.append((23.5, yt - 7.0, "SPK L", 0.8))
+place["J4"] = (87.0, yt, 0); texts.append((87.0, yt - 7.0, "SPK R", 0.8))
+place["J2"] = (45.0, BH - 2.5, 90); texts.append((49.0, BH - 6.5, "IN L G R", 0.8))
+place["C1"] = (66.0, yt - 1.5, 0)
+place["C2"] = (74.0, yt + 1.5, 90)
+place["TP1"] = (78.0, yt - 3.5, 0); texts.append((78.0, yt - 5.7, "+12V", 0.8))
+place["TP2"] = (78.0, yt + 1.5, 0); texts.append((81.5, yt + 1.8, "GND", 0.8))
 print("board height", BH)
 stem = "amp_1layer" if single else "amp"
 bad = build(HERE / "amp/amp.net", place, BW, BH, HERE / "amp" / (stem + ".kicad_pcb"),
