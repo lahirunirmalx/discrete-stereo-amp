@@ -1,0 +1,12 @@
+RESULT ac vs=16.97 rl=120 vraw_trough=14.677 vout=11.6221 ripple_mV=2.1 iload=0.0968506 iac_rms=0.266148 pq2=0.331942
+RESULT ac vs=16.97 rl=30 vraw_trough=13.3752 vout=11.4141 ripple_mV=8.11 iload=0.380471 iac_rms=0.781557 pq2=0.837607
+RESULT ac vs=16.97 rl=15 vraw_trough=12.1678 vout=10.9639 ripple_mV=21.62 iload=0.730929 iac_rms=1.334 pq2=1.11878
+RESULT ac vs=16.97 rl=10 vraw_trough=11.3346 vout=10.1321 ripple_mV=21.21 iload=1.01321 iac_rms=1.74596 pq2=1.62104
+RESULT ac vs=21.21 rl=120 vraw_trough=18.8149 vout=11.6701 ripple_mV=1.35 iload=0.0972512 iac_rms=0.28889 pq2=0.771308
+RESULT ac vs=21.21 rl=30 vraw_trough=17.4354 vout=11.4829 ripple_mV=4.82 iload=0.382762 iac_rms=0.825541 pq2=2.41315
+RESULT ac vs=21.21 rl=15 vraw_trough=16.0863 vout=11.2939 ripple_mV=9.89 iload=0.752927 iac_rms=1.42908 pq2=3.90962
+RESULT ac vs=21.21 rl=10 vraw_trough=14.9725 vout=11.1226 ripple_mV=15.64 iload=1.11226 iac_rms=1.96827 pq2=4.81565
+RESULT clamp vraw=13.7053 rl=0.5 vout=1.06973 iload=2.13947 pq2=25.4132
+RESULT dconly rl=120 vout=11.7079 vraw=11.2465 q2_veb_rev=0.652012 q1_veb_rev=-0.19242
+RESULT dconly rl=15 vout=11.6046 vraw=11.1436 q2_veb_rev=0.651582 q1_veb_rev=-0.192416
+RESULT both rl=15 vout=11.623 i_from_dcin=-0.619457

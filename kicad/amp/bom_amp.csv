@@ -1,0 +1,36 @@
+board,qty,refs,value,through_hole,smd_alternative,tolerance_rating,substitutes,matching_note
+amp,1,C1,1000u,CP_Radial_D8.0mm_P3.50mm,,"1000 uF, 16 V",1000u to 2200u,Rail reservoir.
+amp,2,C10006 C20006,1000u,CP_Radial_D8.0mm_P3.50mm,,"1000 uF, 16 V, low ESR preferred",1000u to 2200u 16 V,"Output coupling: -3 dB at 34 Hz into 4 ohm, 20 Hz into 8 ohm; 2200u halves those."
+amp,1,C2,100n,ceramic disc 5 mm,1206,100 nF X7R,100n,Rail decoupling.
+amp,2,C10007 C20007,100n,ceramic disc 5 mm,1206,"100 nF X7R, 50 V",100n X7R or film,Zobel.
+amp,2,C10004 C20004,100p,ceramic disc 5 mm,1206,"100 pF C0G/NP0, 10 percent, 50 V",100p C0G; 1206 C0G,Miller compensation. Do not use a larger value than 150 pF (bandwidth) or smaller than 68 pF (ringing); never Y5V.
+amp,2,C10005 C20005,100u,CP_Radial_D6.3mm_P2.50mm,,"100 uF, 16 V",47u to 220u,Bootstrap.
+amp,2,C10001 C20001,2.2u,electrolytic 5 mm radial,1206 MLCC,"2.2 uF, 25 V, 20 percent",2.2u electrolytic (+ to the base side) or 2.2u film / 1206 X7R,"Input coupling; -3 dB with the 43k input is 1.7 Hz, value is not critical."
+amp,2,C10003 C20003,220u,CP_Radial_D6.3mm_P2.50mm,,"220 uF, 16 V",100u to 470u,Feedback return: sets the low-frequency gain roll-off (0.7 Hz at 220u).
+amp,2,C10002 C20002,47u,electrolytic 5 mm radial,1206 MLCC,"47 uF, 16 V",22u to 100u electrolytic,Bias decoupling.
+amp,1,J1,DC 12V IN,"TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal",,5.08 mm screw terminal or 2.54 mm header,Phoenix MKDS 1.5/2; any 5.08 mm 2-pin block,
+amp,1,J2,IN L-G-R,PinHeader_1x03_P2.54mm_Vertical,,5.08 mm screw terminal or 2.54 mm header,Phoenix MKDS 1.5/2; any 5.08 mm 2-pin block,
+amp,1,J3,SPK L,"TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal",,5.08 mm screw terminal or 2.54 mm header,Phoenix MKDS 1.5/2; any 5.08 mm 2-pin block,
+amp,1,J4,SPK R,"TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal",,5.08 mm screw terminal or 2.54 mm header,Phoenix MKDS 1.5/2; any 5.08 mm 2-pin block,
+amp,4,Q1001 Q1002 Q2001 Q2002,BC547,TO-92,SOT-23 (2-layer board only),hFE 200-450 (B or C grade),BC547B/C (fitted); BC548B/C; BC549C or BC550C (lower noise); BC337-25 (800 mA); 2N3904 or PN2222A only turned 180 deg (E-B-C pinout),"Differential pair: fit the SAME part number AND grade for Q1 and Q2 of a channel, ideally from one strip. 10 mV Vbe mismatch only shifts the midpoint 0.23 V, so a DMM hFE match within 10 percent is plenty."
+amp,2,Q1006 Q2006,BC547,TO-92,SOT-23 (2-layer board only),hFE 200-450,BC547B/C (fitted); BC548B/C; BC549C or BC550C (lower noise); BC337-25 (800 mA); 2N3904 or PN2222A only turned 180 deg (E-B-C pinout),Vbe multiplier: any of the BC547 family. Mount it touching or next to the output transistors so it tracks their temperature.
+amp,2,Q1003 Q2003,BC557,TO-92,SOT-23 (2-layer board only),hFE 200-450,BC557B/C (fitted); BC558B/C; BC559C or BC560C; BC327-25; 2N3906 or PN2907A only turned 180 deg (E-B-C pinout),VAS. No matching needed.
+amp,2,Q1004 Q2004,BD139,TO-220-3_Vertical,,"hFE 100-250 (-16 grade), 1.5 A, 80 V","BD139-16 (fitted, E-C-B, bridges on the diagonal); BD135 or BD137 (E-C-B, same bridges); TIP41C or TIP31C (B-C-E: move the pad-1 and pad-3 bridges); BD243C (B-C-E, same move); BC337-40 for low power only (C-B-E: bridges 1->C 2->B 3->E)","Complementary pair: use the same hFE grade for Q4 and Q5 (both -16, or both -10). Feedback corrects up to about 30 percent hFE difference; the trimmer corrects the Vbe difference. At hFE 40 the 4 ohm channel clips at 0.2 W, at 120 it makes 1.3 W."
+amp,2,Q1005 Q2005,BD140,TO-220-3_Vertical,,"hFE 100-250 (-16 grade), 1.5 A, 80 V","BD140-16 (fitted, E-C-B); BD136 or BD138 (E-C-B); TIP42C or TIP32C (B-C-E: move pad-1/pad-3 bridges); BD244C (B-C-E); BC327-40 low power only (C-B-E)",See Q4. Fit both channels with the same four part numbers so L and R sound the same.
+amp,4,R10013 R10014 R20013 R20014,0.47,R_Axial_DIN0414_L11.9mm_D4.5mm_P15.24mm_Horizontal,,"5 percent, 2 W, 0.47 ohm",0.47R 2 W metal oxide or wirewound; 0.5R or 0.39R also fine (both channels the same),Emitter resistors: match within 5 percent between Q4 and Q5 of one channel.
+amp,2,R10015 R20015,10,axial 1/4 W,1206,"5 percent, 1/4 W","same value, any type",
+amp,2,R10005 R20005,10k,axial 1/4 W,1206,"5 percent, 1/4 W","same value, any type",
+amp,2,R10007 R20007,1k,axial 1/4 W,1206,"1 percent, 1/4 W",1k metal film; 1206 1 percent,Gain-setting partner of R6: 1 percent.
+amp,2,R10010 R20010,1k,axial 1/4 W,1206,"1 percent, 1/4 W",470 / 1k metal film,Vbe multiplier ratio; the trimmer covers the rest.
+amp,2,RV100 RV200,1k,Potentiometer_Bourns_3296W_Vertical,,"1k, multi-turn preferred (3296W / 3386P)",1k 10-turn 3296W; 1k single-turn 3386P; 2k2 if you want more range (start at minimum),Set each channel to 7-10 mV across its 0.47 ohm emitter resistor (TP3 to TP2).
+amp,2,R10006 R20006,22k,axial 1/4 W,1206,"1 percent, 1/4 W",22k metal film; 1206 1 percent,Sets the gain with R7 (1 + 22k/1k = 23). Use 1 percent so left and right match within 2 percent.
+amp,4,R10011 R10012 R20011 R20012,270,axial 1/4 W,1206,"5 percent, 1/4 W","same value, any type",
+amp,2,R10004 R20004,4.7k,axial 1/4 W,1206,"5 percent, 1/4 W","same value, any type",
+amp,2,R10008 R20008,47,axial 1/4 W,1206,"5 percent, 1/4 W","same value, any type",
+amp,2,R10009 R20009,470,axial 1/4 W,1206,"1 percent, 1/4 W",470 / 1k metal film,Vbe multiplier ratio; the trimmer covers the rest.
+amp,6,R10001 R10002 R10003 R20001 R20002 R20003,47k,axial 1/4 W,1206,"5 percent, 1/4 W",47k,Bias divider and base feed: 5 percent moves the midpoint less than 0.3 V.
+amp,1,TP1,+12V,TestPoint_Loop_D2.50mm_Drill1.0mm,,"5 percent / 20 percent, standard",,
+amp,2,TP1001 TP2001,B1 5.9V,TestPoint_Loop_D2.50mm_Drill1.0mm,,"5 percent / 20 percent, standard",,
+amp,2,TP1003 TP2003,E4 bias,TestPoint_Loop_D2.50mm_Drill1.0mm,,"5 percent / 20 percent, standard",,
+amp,1,TP2,GND,TestPoint_Loop_D2.50mm_Drill1.0mm,,"5 percent / 20 percent, standard",,
+amp,2,TP1002 TP2002,OUT 5.9V,TestPoint_Loop_D2.50mm_Drill1.0mm,,"5 percent / 20 percent, standard",,

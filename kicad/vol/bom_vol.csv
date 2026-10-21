@@ -1,0 +1,6 @@
+board,qty,refs,value,through_hole,smd_alternative,tolerance_rating,substitutes,matching_note
+vol,1,D1,POWER LED,LED_D3.0mm,,"3 mm LED, any colour",any 3 mm or 5 mm LED,"Front-panel power LED, fed from PSU J5 by two wires (pin 1 = +)."
+vol,1,J1,IN L-G-R,PinHeader_1x03_P2.54mm_Vertical,,"5 percent / 20 percent, standard",,
+vol,1,J3,LED IN,PinHeader_1x02_P2.54mm_Vertical,,"5 percent / 20 percent, standard",,
+vol,1,J2,OUT L-G-R,PinHeader_1x03_P2.54mm_Vertical,,"5 percent / 20 percent, standard",,
+vol,1,RV1,10k log dual,Potentiometer_Alps_RK097_Dual_Horizontal,,"10k log (A103) dual, 6 pins, 9 mm",Alps RK097 dual 10k A (fitted); any RK09-style 6-pin dual 10k log; 20k log (slight gain loss at mid travel); 10k linear works but the law feels wrong,"Pin 3 = clockwise end = input, pin 1 = ground, pin 2 = wiper. Clockwise should be louder; if not, swap the outer two wires."

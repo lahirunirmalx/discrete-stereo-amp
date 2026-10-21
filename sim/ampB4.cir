@@ -1,0 +1,83 @@
+* Stereo amp channel, final candidate: BC547 diff pair, BC557 VAS (12 mA, bootstrapped), 2x 1N4148 bias, BD139/BD140 follower, 12 V single rail
+.include models.inc
+Vcc vcc 0 DC 12
+Vin in 0 DC 0 AC 1 SIN(0 0.1 1k)
+Rs in src 2.5k
+Cin src b1 2.2u
+Rb1 vcc bias 47k
+Rb2 bias 0 47k
+Cbias bias 0 47u
+R3 bias b1 47k
+Q1 c1 b1 tail BC547B
+Q2 vcc b2 tail BC547B
+Rt tail 0 10k
+Rc1 vcc c1 4.7k
+Rf out b2 22k
+Rg b2 g 1k
+Cg g 0 220u
+Q3 vas c1 e3 BC557B
+Re3 vcc e3 47
+Cm vas c1 100p
+Q6 vas bm b5 BC547B
+Rm1 vas bm 820
+Rm2 bm b5 1k
+R5a b5 boot 270
+R5b boot 0 270
+Cboot out boot 100u
+Q4 vcc vas e4 BD139
+Q5 0 b5 e5 BD140
+Re4 e4 out 0.47
+Re5 e5 out 0.47
+Rzob out zz 10
+Czob zz 0 100n
+Cout out spk 1000u
+RL spk 0 8
+CL spk 0 1p
+.control
+foreach rm 560 680 820 1000 1200
+  alter Rm1 = $rm
+  foreach t 25 70
+    option temp = $t
+    op
+    let iout = v(e4,out)/0.47
+    let vo = v(out)
+    let vb = v(vas,b5)
+    echo RESULT bias rm=$rm t=$t iqout=$&iout vbias=$&vb vout=$&vo
+  end
+  option temp = 25
+  foreach rl 4 8
+    alter RL = $rl
+    alter @Vin[sin] = [ 0 0.03 1k ]
+    tran 5u 25m 15m
+    meas tran vrms RMS v(spk) from=15m to=25m
+    let p = vrms*vrms/$rl
+    echo RESULT tran rm=$rm rl=$rl pout=$&p
+    fourier 1k v(spk)
+  end
+end
+alter Rm1 = 820
+foreach bfo 40 120 250
+  altermod @BD139[BF] = $bfo
+  altermod @BD140[BF] = $bfo
+  op
+  let iout = v(e4,out)/0.47
+  let iq = -i(Vcc)
+  echo RESULT opbf bfo=$bfo iqout=$&iout isupply=$&iq
+  foreach rl 4 8 10
+    alter RL = $rl
+    foreach amp 0.1 0.2 0.3
+      alter @Vin[sin] = [ 0 $amp 1k ]
+      tran 5u 25m 15m
+      meas tran vrms RMS v(spk) from=15m to=25m
+      meas tran isup AVG i(Vcc) from=15m to=25m
+      let pq4v = (v(vcc)-v(e4))*v(e4,out)/0.47
+      meas tran pq4 AVG pq4v from=15m to=25m
+      let p = vrms*vrms/$rl
+      echo RESULT power bfo=$bfo rl=$rl amp=$amp pout=$&p isupply=$&isup pq4=$&pq4
+      fourier 1k v(spk)
+    end
+  end
+end
+quit
+.endc
+.end

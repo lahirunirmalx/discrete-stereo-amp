@@ -1,0 +1,1247 @@
+{
+  "analyzer_type": "emc",
+  "schema_version": "1.3.0",
+  "summary": {
+    "total_findings": 17,
+    "categories_checked": 4,
+    "active": 17,
+    "suppressed": 0,
+    "by_severity": {
+      "error": 13,
+      "warning": 2,
+      "info": 2
+    },
+    "emc_risk_score": 62.5
+  },
+  "target_standard": "fcc-class-b",
+  "findings": [
+    {
+      "category": "ground_plane",
+      "severity": "error",
+      "rule_id": "GP-001",
+      "confidence": "heuristic",
+      "title": "Signal has major reference plane gap",
+      "description": "Net Net-(J1-Pin_1) has 27% reference plane coverage over 17.2mm of routing. Return current must detour around the gap, creating a loop antenna.",
+      "components": [],
+      "nets": [
+        "Net-(J1-Pin_1)"
+      ],
+      "recommendation": "Route this signal to avoid ground plane gaps, or fill the void. On a 2-layer board the gaps are usually where back-side tracks cut the pour into islands \u2014 stitch the two pours together (draw-pcb stitch_zones) so return current has a way across. If a split is intentional, add a bridge capacitor across the gap.",
+      "detector": "emc_ground_plane",
+      "summary": "Signal has major reference plane gap",
+      "pins": [],
+      "evidence_source": "heuristic_rule",
+      "report_context": {
+        "section": "Ground Plane",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ]
+    },
+    {
+      "category": "ground_plane",
+      "severity": "error",
+      "rule_id": "GP-001",
+      "confidence": "heuristic",
+      "title": "Signal has major reference plane gap",
+      "description": "Net Net-(D8-A) has 29% reference plane coverage over 26.2mm of routing. Return current must detour around the gap, creating a loop antenna.",
+      "components": [],
+      "nets": [
+        "Net-(D8-A)"
+      ],
+      "recommendation": "Route this signal to avoid ground plane gaps, or fill the void. On a 2-layer board the gaps are usually where back-side tracks cut the pour into islands \u2014 stitch the two pours together (draw-pcb stitch_zones) so return current has a way across. If a split is intentional, add a bridge capacitor across the gap.",
+      "detector": "emc_ground_plane",
+      "summary": "Signal has major reference plane gap",
+      "pins": [],
+      "evidence_source": "heuristic_rule",
+      "report_context": {
+        "section": "Ground Plane",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ]
+    },
+    {
+      "category": "ground_plane",
+      "severity": "error",
+      "rule_id": "GP-001",
+      "confidence": "heuristic",
+      "title": "Signal has major reference plane gap",
+      "description": "Net /AC2 has 46% reference plane coverage over 57.8mm of routing. Return current must detour around the gap, creating a loop antenna.",
+      "components": [],
+      "nets": [
+        "/AC2"
+      ],
+      "recommendation": "Route this signal to avoid ground plane gaps, or fill the void. On a 2-layer board the gaps are usually where back-side tracks cut the pour into islands \u2014 stitch the two pours together (draw-pcb stitch_zones) so return current has a way across. If a split is intentional, add a bridge capacitor across the gap.",
+      "detector": "emc_ground_plane",
+      "summary": "Signal has major reference plane gap",
+      "pins": [],
+      "evidence_source": "heuristic_rule",
+      "report_context": {
+        "section": "Ground Plane",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ]
+    },
+    {
+      "category": "ground_plane",
+      "severity": "error",
+      "rule_id": "GP-001",
+      "confidence": "heuristic",
+      "title": "Signal has significant reference plane gap",
+      "description": "Net /AC1 has 64% reference plane coverage over 36.8mm of routing. Return current must detour around the gap, creating a loop antenna.",
+      "components": [],
+      "nets": [
+        "/AC1"
+      ],
+      "recommendation": "Route this signal to avoid ground plane gaps, or fill the void. On a 2-layer board the gaps are usually where back-side tracks cut the pour into islands \u2014 stitch the two pours together (draw-pcb stitch_zones) so return current has a way across. If a split is intentional, add a bridge capacitor across the gap.",
+      "detector": "emc_ground_plane",
+      "summary": "Signal has significant reference plane gap",
+      "pins": [],
+      "evidence_source": "heuristic_rule",
+      "report_context": {
+        "section": "Ground Plane",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ]
+    },
+    {
+      "category": "ground_plane",
+      "severity": "error",
+      "rule_id": "GP-001",
+      "confidence": "heuristic",
+      "title": "Signal has significant reference plane gap",
+      "description": "Net Net-(D1-K) has 67% reference plane coverage over 130.4mm of routing. Return current must detour around the gap, creating a loop antenna.",
+      "components": [],
+      "nets": [
+        "Net-(D1-K)"
+      ],
+      "recommendation": "Route this signal to avoid ground plane gaps, or fill the void. On a 2-layer board the gaps are usually where back-side tracks cut the pour into islands \u2014 stitch the two pours together (draw-pcb stitch_zones) so return current has a way across. If a split is intentional, add a bridge capacitor across the gap.",
+      "detector": "emc_ground_plane",
+      "summary": "Signal has significant reference plane gap",
+      "pins": [],
+      "evidence_source": "heuristic_rule",
+      "report_context": {
+        "section": "Ground Plane",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ]
+    },
+    {
+      "category": "ground_plane",
+      "severity": "error",
+      "rule_id": "GP-001",
+      "confidence": "heuristic",
+      "title": "Signal has significant reference plane gap",
+      "description": "Net Net-(D6-A) has 72% reference plane coverage over 101.0mm of routing. Return current must detour around the gap, creating a loop antenna.",
+      "components": [],
+      "nets": [
+        "Net-(D6-A)"
+      ],
+      "recommendation": "Route this signal to avoid ground plane gaps, or fill the void. On a 2-layer board the gaps are usually where back-side tracks cut the pour into islands \u2014 stitch the two pours together (draw-pcb stitch_zones) so return current has a way across. If a split is intentional, add a bridge capacitor across the gap.",
+      "detector": "emc_ground_plane",
+      "summary": "Signal has significant reference plane gap",
+      "pins": [],
+      "evidence_source": "heuristic_rule",
+      "report_context": {
+        "section": "Ground Plane",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ]
+    },
+    {
+      "category": "ground_plane",
+      "severity": "error",
+      "rule_id": "GP-001",
+      "confidence": "heuristic",
+      "title": "Signal has significant reference plane gap",
+      "description": "Net Net-(D7-A) has 76% reference plane coverage over 21.9mm of routing. Return current must detour around the gap, creating a loop antenna.",
+      "components": [],
+      "nets": [
+        "Net-(D7-A)"
+      ],
+      "recommendation": "Route this signal to avoid ground plane gaps, or fill the void. On a 2-layer board the gaps are usually where back-side tracks cut the pour into islands \u2014 stitch the two pours together (draw-pcb stitch_zones) so return current has a way across. If a split is intentional, add a bridge capacitor across the gap.",
+      "detector": "emc_ground_plane",
+      "summary": "Signal has significant reference plane gap",
+      "pins": [],
+      "evidence_source": "heuristic_rule",
+      "report_context": {
+        "section": "Ground Plane",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ]
+    },
+    {
+      "category": "ground_plane",
+      "severity": "error",
+      "rule_id": "GP-001",
+      "confidence": "heuristic",
+      "title": "Signal has significant reference plane gap",
+      "description": "Net Net-(Q1-E) has 76% reference plane coverage over 52.9mm of routing. Return current must detour around the gap, creating a loop antenna.",
+      "components": [],
+      "nets": [
+        "Net-(Q1-E)"
+      ],
+      "recommendation": "Route this signal to avoid ground plane gaps, or fill the void. On a 2-layer board the gaps are usually where back-side tracks cut the pour into islands \u2014 stitch the two pours together (draw-pcb stitch_zones) so return current has a way across. If a split is intentional, add a bridge capacitor across the gap.",
+      "detector": "emc_ground_plane",
+      "summary": "Signal has significant reference plane gap",
+      "pins": [],
+      "evidence_source": "heuristic_rule",
+      "report_context": {
+        "section": "Ground Plane",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ]
+    },
+    {
+      "category": "ground_plane",
+      "severity": "error",
+      "rule_id": "GP-001",
+      "confidence": "heuristic",
+      "title": "Signal has significant reference plane gap",
+      "description": "Net /VZ has 80% reference plane coverage over 59.6mm of routing. Return current must detour around the gap, creating a loop antenna.",
+      "components": [],
+      "nets": [
+        "/VZ"
+      ],
+      "recommendation": "Route this signal to avoid ground plane gaps, or fill the void. On a 2-layer board the gaps are usually where back-side tracks cut the pour into islands \u2014 stitch the two pours together (draw-pcb stitch_zones) so return current has a way across. If a split is intentional, add a bridge capacitor across the gap.",
+      "detector": "emc_ground_plane",
+      "summary": "Signal has significant reference plane gap",
+      "pins": [],
+      "evidence_source": "heuristic_rule",
+      "report_context": {
+        "section": "Ground Plane",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ]
+    },
+    {
+      "category": "ground_plane",
+      "severity": "warning",
+      "rule_id": "GP-001",
+      "confidence": "heuristic",
+      "title": "Signal has partial reference plane gap",
+      "description": "Net Net-(Q2-E) has 94% reference plane coverage over 69.5mm of routing. Return current must detour around the gap, creating a loop antenna.",
+      "components": [],
+      "nets": [
+        "Net-(Q2-E)"
+      ],
+      "recommendation": "Route this signal to avoid ground plane gaps, or fill the void. On a 2-layer board the gaps are usually where back-side tracks cut the pour into islands \u2014 stitch the two pours together (draw-pcb stitch_zones) so return current has a way across. If a split is intentional, add a bridge capacitor across the gap.",
+      "detector": "emc_ground_plane",
+      "summary": "Signal has partial reference plane gap",
+      "pins": [],
+      "evidence_source": "heuristic_rule",
+      "report_context": {
+        "section": "Ground Plane",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ]
+    },
+    {
+      "category": "io_filtering",
+      "severity": "error",
+      "rule_id": "IO-001",
+      "confidence": "heuristic",
+      "title": "No EMC filtering near J4",
+      "description": "Connector J4 (DC OUT 2) has no ferrite bead, CM choke, or ESD protection within 25mm. Unfiltered I/O cables are the dominant source of radiated emissions \u2014 common-mode current as low as 5 \u00b5A can exceed FCC Class B.",
+      "components": [
+        "J4"
+      ],
+      "nets": [],
+      "recommendation": "Add a ferrite bead (e.g., BLM18AG601SN1D, 600\u03a9@100MHz) on signal lines near J4. Add ESD/TVS protection for external interfaces.",
+      "detector": "emc_io_filtering",
+      "summary": "No EMC filtering near J4",
+      "pins": [],
+      "evidence_source": "heuristic_rule",
+      "report_context": {
+        "section": "Io Filtering",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "fix_params": {
+        "type": "add_component",
+        "components": [
+          {
+            "type": "ferrite_bead"
+          }
+        ],
+        "basis": "EMI filter on external I/O"
+      },
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "pre_fab"
+      ]
+    },
+    {
+      "category": "io_filtering",
+      "severity": "error",
+      "rule_id": "IO-001",
+      "confidence": "heuristic",
+      "title": "No EMC filtering near J1",
+      "description": "Connector J1 (AC IN 12-15V) has no ferrite bead, CM choke, or ESD protection within 25mm. Unfiltered I/O cables are the dominant source of radiated emissions \u2014 common-mode current as low as 5 \u00b5A can exceed FCC Class B.",
+      "components": [
+        "J1"
+      ],
+      "nets": [],
+      "recommendation": "Add a ferrite bead (e.g., BLM18AG601SN1D, 600\u03a9@100MHz) on signal lines near J1. Add ESD/TVS protection for external interfaces.",
+      "detector": "emc_io_filtering",
+      "summary": "No EMC filtering near J1",
+      "pins": [],
+      "evidence_source": "heuristic_rule",
+      "report_context": {
+        "section": "Io Filtering",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "fix_params": {
+        "type": "add_component",
+        "components": [
+          {
+            "type": "ferrite_bead"
+          }
+        ],
+        "basis": "EMI filter on external I/O"
+      },
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "pre_fab"
+      ]
+    },
+    {
+      "category": "io_filtering",
+      "severity": "info",
+      "rule_id": "IO-001",
+      "confidence": "heuristic",
+      "title": "No EMC filtering near J5",
+      "description": "Connector J5 (LED REMOTE) has no ferrite bead, CM choke, or ESD protection within 25mm. Unfiltered I/O cables are the dominant source of radiated emissions \u2014 common-mode current as low as 5 \u00b5A can exceed FCC Class B.",
+      "components": [
+        "J5"
+      ],
+      "nets": [],
+      "recommendation": "Add a ferrite bead (e.g., BLM18AG601SN1D, 600\u03a9@100MHz) on signal lines near J5. Add ESD/TVS protection for external interfaces.",
+      "detector": "emc_io_filtering",
+      "summary": "No EMC filtering near J5",
+      "pins": [],
+      "evidence_source": "heuristic_rule",
+      "report_context": {
+        "section": "Io Filtering",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "fix_params": {
+        "type": "add_component",
+        "components": [
+          {
+            "type": "ferrite_bead"
+          }
+        ],
+        "basis": "EMI filter on external I/O"
+      },
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "pre_fab"
+      ]
+    },
+    {
+      "category": "io_filtering",
+      "severity": "error",
+      "rule_id": "IO-001",
+      "confidence": "heuristic",
+      "title": "No EMC filtering near J3",
+      "description": "Connector J3 (DC OUT 1) has no ferrite bead, CM choke, or ESD protection within 25mm. Unfiltered I/O cables are the dominant source of radiated emissions \u2014 common-mode current as low as 5 \u00b5A can exceed FCC Class B.",
+      "components": [
+        "J3"
+      ],
+      "nets": [],
+      "recommendation": "Add a ferrite bead (e.g., BLM18AG601SN1D, 600\u03a9@100MHz) on signal lines near J3. Add ESD/TVS protection for external interfaces.",
+      "detector": "emc_io_filtering",
+      "summary": "No EMC filtering near J3",
+      "pins": [],
+      "evidence_source": "heuristic_rule",
+      "report_context": {
+        "section": "Io Filtering",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "fix_params": {
+        "type": "add_component",
+        "components": [
+          {
+            "type": "ferrite_bead"
+          }
+        ],
+        "basis": "EMI filter on external I/O"
+      },
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "pre_fab"
+      ]
+    },
+    {
+      "category": "io_filtering",
+      "severity": "error",
+      "rule_id": "IO-001",
+      "confidence": "heuristic",
+      "title": "No EMC filtering near J2",
+      "description": "Connector J2 (DC IN 12V) has no ferrite bead, CM choke, or ESD protection within 25mm. Unfiltered I/O cables are the dominant source of radiated emissions \u2014 common-mode current as low as 5 \u00b5A can exceed FCC Class B.",
+      "components": [
+        "J2"
+      ],
+      "nets": [],
+      "recommendation": "Add a ferrite bead (e.g., BLM18AG601SN1D, 600\u03a9@100MHz) on signal lines near J2. Add ESD/TVS protection for external interfaces.",
+      "detector": "emc_io_filtering",
+      "summary": "No EMC filtering near J2",
+      "pins": [],
+      "evidence_source": "heuristic_rule",
+      "report_context": {
+        "section": "Io Filtering",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "fix_params": {
+        "type": "add_component",
+        "components": [
+          {
+            "type": "ferrite_bead"
+          }
+        ],
+        "basis": "EMI filter on external I/O"
+      },
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "pre_fab"
+      ]
+    },
+    {
+      "category": "via_stitching",
+      "severity": "warning",
+      "rule_id": "VS-001",
+      "confidence": "heuristic",
+      "title": "Via stitching may be insufficient",
+      "description": "Board has 1 vias across 4500 mm\u00b2 (no vias detected). For the highest frequency on this board (150 MHz), \u03bb/20 stitching requires \u226448mm spacing.",
+      "components": [],
+      "nets": [],
+      "recommendation": "Add ground stitching vias at \u226448mm intervals, especially at board edges and near connectors.",
+      "detector": "emc_via_stitching",
+      "summary": "Via stitching may be insufficient",
+      "pins": [],
+      "evidence_source": "heuristic_rule",
+      "report_context": {
+        "section": "Via Stitching",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ]
+    },
+    {
+      "category": "emission_estimate",
+      "severity": "info",
+      "rule_id": "EE-001",
+      "confidence": "heuristic",
+      "title": "Board cavity resonance frequencies",
+      "description": "Board (90\u00d750mm, \u03b5r=4.4) cavity resonances: (1,0) at 794 MHz; (0,1) at 1429 MHz; (2,0) at 1588 MHz; (1,1) at 1635 MHz; (2,1) at 2136 MHz. PDN impedance spikes at these frequencies. Ensure adequate decoupling at and around these frequencies.",
+      "components": [],
+      "nets": [],
+      "recommendation": "Add decoupling capacitors with SRF near these frequencies.",
+      "detector": "emc_emission_estimate",
+      "summary": "Board cavity resonance frequencies",
+      "pins": [],
+      "evidence_source": "heuristic_rule",
+      "report_context": {
+        "section": "Emission Estimate",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "schematic"
+      ]
+    }
+  ],
+  "per_net_scores": [
+    {
+      "net": "Net-(J1-Pin_1)",
+      "score": 94.0,
+      "finding_count": 1,
+      "rules": [
+        "GP-001"
+      ]
+    },
+    {
+      "net": "Net-(D8-A)",
+      "score": 94.0,
+      "finding_count": 1,
+      "rules": [
+        "GP-001"
+      ]
+    },
+    {
+      "net": "/AC2",
+      "score": 94.0,
+      "finding_count": 1,
+      "rules": [
+        "GP-001"
+      ]
+    },
+    {
+      "net": "/AC1",
+      "score": 94.0,
+      "finding_count": 1,
+      "rules": [
+        "GP-001"
+      ]
+    },
+    {
+      "net": "Net-(D1-K)",
+      "score": 94.0,
+      "finding_count": 1,
+      "rules": [
+        "GP-001"
+      ]
+    },
+    {
+      "net": "Net-(D6-A)",
+      "score": 94.0,
+      "finding_count": 1,
+      "rules": [
+        "GP-001"
+      ]
+    },
+    {
+      "net": "Net-(D7-A)",
+      "score": 94.0,
+      "finding_count": 1,
+      "rules": [
+        "GP-001"
+      ]
+    },
+    {
+      "net": "Net-(Q1-E)",
+      "score": 94.0,
+      "finding_count": 1,
+      "rules": [
+        "GP-001"
+      ]
+    },
+    {
+      "net": "/VZ",
+      "score": 94.0,
+      "finding_count": 1,
+      "rules": [
+        "GP-001"
+      ]
+    },
+    {
+      "net": "Net-(Q2-E)",
+      "score": 98.5,
+      "finding_count": 1,
+      "rules": [
+        "GP-001"
+      ]
+    }
+  ],
+  "test_plan": {
+    "frequency_bands": [
+      {
+        "band": "30-88 MHz",
+        "freq_min_hz": 30000000.0,
+        "freq_max_hz": 88000000.0,
+        "risk_level": "none",
+        "source_count": 0,
+        "sources": []
+      },
+      {
+        "band": "88-216 MHz",
+        "freq_min_hz": 88000000.0,
+        "freq_max_hz": 216000000.0,
+        "risk_level": "none",
+        "source_count": 0,
+        "sources": []
+      },
+      {
+        "band": "216-960 MHz",
+        "freq_min_hz": 216000000.0,
+        "freq_max_hz": 960000000.0,
+        "risk_level": "none",
+        "source_count": 0,
+        "sources": []
+      },
+      {
+        "band": "960-40000 MHz",
+        "freq_min_hz": 960000000.0,
+        "freq_max_hz": 40000000000.0,
+        "risk_level": "none",
+        "source_count": 0,
+        "sources": []
+      }
+    ],
+    "interface_risks": [
+      {
+        "connector": "J4",
+        "value": "DC OUT 2",
+        "protocol": "unknown",
+        "risk_score": 5,
+        "reasons": [
+          "No EMC filtering detected"
+        ]
+      },
+      {
+        "connector": "J1",
+        "value": "AC IN 12-15V",
+        "protocol": "unknown",
+        "risk_score": 5,
+        "reasons": [
+          "No EMC filtering detected"
+        ]
+      },
+      {
+        "connector": "J5",
+        "value": "LED REMOTE",
+        "protocol": "unknown",
+        "risk_score": 5,
+        "reasons": [
+          "No EMC filtering detected"
+        ]
+      },
+      {
+        "connector": "J3",
+        "value": "DC OUT 1",
+        "protocol": "unknown",
+        "risk_score": 5,
+        "reasons": [
+          "No EMC filtering detected"
+        ]
+      },
+      {
+        "connector": "J2",
+        "value": "DC IN 12V",
+        "protocol": "unknown",
+        "risk_score": 5,
+        "reasons": [
+          "No EMC filtering detected"
+        ]
+      }
+    ],
+    "probe_points": [
+      {
+        "x": 133.5,
+        "y": 86.0,
+        "type": "unfiltered_connector",
+        "ref": "J4",
+        "reason": "Unfiltered I/O \u2014 cable radiation risk"
+      },
+      {
+        "x": 56.5,
+        "y": 64.0,
+        "type": "unfiltered_connector",
+        "ref": "J1",
+        "reason": "Unfiltered I/O \u2014 cable radiation risk"
+      },
+      {
+        "x": 110.3,
+        "y": 94.7,
+        "type": "unfiltered_connector",
+        "ref": "J5",
+        "reason": "Unfiltered I/O \u2014 cable radiation risk"
+      },
+      {
+        "x": 133.5,
+        "y": 72.0,
+        "type": "unfiltered_connector",
+        "ref": "J3",
+        "reason": "Unfiltered I/O \u2014 cable radiation risk"
+      },
+      {
+        "x": 133.5,
+        "y": 58.0,
+        "type": "unfiltered_connector",
+        "ref": "J2",
+        "reason": "Unfiltered I/O \u2014 cable radiation risk"
+      }
+    ]
+  },
+  "regulatory_coverage": {
+    "market": "us",
+    "applicable_standards": [
+      "FCC Part 15 Class B",
+      "FCC Part 15 Class B"
+    ],
+    "coverage_matrix": [
+      {
+        "standard": "FCC Part 15 Class B",
+        "test_type": "radiated",
+        "coverage": "minimal",
+        "checked_rules": [
+          "GP-001",
+          "VS-001",
+          "IO-001",
+          "EE-001"
+        ],
+        "total_applicable_rules": 23,
+        "note": "Design rule checks identify common radiation sources. Cannot predict absolute emission levels."
+      },
+      {
+        "standard": "FCC Part 15 Class B",
+        "test_type": "conducted",
+        "coverage": "indirect",
+        "checked_rules": [],
+        "total_applicable_rules": 4,
+        "note": "Switching harmonic analysis and decoupling checks. EMI filter verification not yet implemented."
+      }
+    ]
+  },
+  "category_summary": {
+    "ground_plane": {
+      "count": 10,
+      "max_severity": "error",
+      "severities": {
+        "error": 9,
+        "warning": 1,
+        "info": 0
+      },
+      "suppressed_count": 0
+    },
+    "io_filtering": {
+      "count": 5,
+      "max_severity": "error",
+      "severities": {
+        "error": 4,
+        "warning": 0,
+        "info": 1
+      },
+      "suppressed_count": 0
+    },
+    "via_stitching": {
+      "count": 1,
+      "max_severity": "warning",
+      "severities": {
+        "error": 0,
+        "warning": 1,
+        "info": 0
+      },
+      "suppressed_count": 0
+    },
+    "emission_estimate": {
+      "count": 1,
+      "max_severity": "info",
+      "severities": {
+        "error": 0,
+        "warning": 0,
+        "info": 1
+      },
+      "suppressed_count": 0
+    }
+  },
+  "board_info": {
+    "board_width_mm": 90.0,
+    "board_height_mm": 50.0,
+    "layer_count": 2,
+    "footprint_count": 34,
+    "via_count": 1,
+    "has_stackup": false,
+    "total_components": 30,
+    "total_nets": 11
+  },
+  "elapsed_s": 0.002,
+  "audience_summary": {
+    "designer": {
+      "total_findings": 17,
+      "by_severity": {
+        "error": 13,
+        "warning": 2,
+        "info": 2
+      },
+      "by_category": {
+        "ground_plane": 10,
+        "io_filtering": 5,
+        "via_stitching": 1,
+        "emission_estimate": 1
+      },
+      "top_issues": [
+        {
+          "category": "ground_plane",
+          "severity": "error",
+          "rule_id": "GP-001",
+          "confidence": "heuristic",
+          "title": "Signal has major reference plane gap",
+          "description": "Net Net-(J1-Pin_1) has 27% reference plane coverage over 17.2mm of routing. Return current must detour around the gap, creating a loop antenna.",
+          "components": [],
+          "nets": [
+            "Net-(J1-Pin_1)"
+          ],
+          "recommendation": "Route this signal to avoid ground plane gaps, or fill the void. On a 2-layer board the gaps are usually where back-side tracks cut the pour into islands \u2014 stitch the two pours together (draw-pcb stitch_zones) so return current has a way across. If a split is intentional, add a bridge capacitor across the gap.",
+          "detector": "emc_ground_plane",
+          "summary": "Signal has major reference plane gap",
+          "pins": [],
+          "evidence_source": "heuristic_rule",
+          "report_context": {
+            "section": "Ground Plane",
+            "impact": "",
+            "standard_ref": ""
+          },
+          "suppressed": false,
+          "suppression_reason": "",
+          "stages": [
+            "layout"
+          ]
+        },
+        {
+          "category": "ground_plane",
+          "severity": "error",
+          "rule_id": "GP-001",
+          "confidence": "heuristic",
+          "title": "Signal has major reference plane gap",
+          "description": "Net Net-(D8-A) has 29% reference plane coverage over 26.2mm of routing. Return current must detour around the gap, creating a loop antenna.",
+          "components": [],
+          "nets": [
+            "Net-(D8-A)"
+          ],
+          "recommendation": "Route this signal to avoid ground plane gaps, or fill the void. On a 2-layer board the gaps are usually where back-side tracks cut the pour into islands \u2014 stitch the two pours together (draw-pcb stitch_zones) so return current has a way across. If a split is intentional, add a bridge capacitor across the gap.",
+          "detector": "emc_ground_plane",
+          "summary": "Signal has major reference plane gap",
+          "pins": [],
+          "evidence_source": "heuristic_rule",
+          "report_context": {
+            "section": "Ground Plane",
+            "impact": "",
+            "standard_ref": ""
+          },
+          "suppressed": false,
+          "suppression_reason": "",
+          "stages": [
+            "layout"
+          ]
+        },
+        {
+          "category": "ground_plane",
+          "severity": "error",
+          "rule_id": "GP-001",
+          "confidence": "heuristic",
+          "title": "Signal has major reference plane gap",
+          "description": "Net /AC2 has 46% reference plane coverage over 57.8mm of routing. Return current must detour around the gap, creating a loop antenna.",
+          "components": [],
+          "nets": [
+            "/AC2"
+          ],
+          "recommendation": "Route this signal to avoid ground plane gaps, or fill the void. On a 2-layer board the gaps are usually where back-side tracks cut the pour into islands \u2014 stitch the two pours together (draw-pcb stitch_zones) so return current has a way across. If a split is intentional, add a bridge capacitor across the gap.",
+          "detector": "emc_ground_plane",
+          "summary": "Signal has major reference plane gap",
+          "pins": [],
+          "evidence_source": "heuristic_rule",
+          "report_context": {
+            "section": "Ground Plane",
+            "impact": "",
+            "standard_ref": ""
+          },
+          "suppressed": false,
+          "suppression_reason": "",
+          "stages": [
+            "layout"
+          ]
+        },
+        {
+          "category": "ground_plane",
+          "severity": "error",
+          "rule_id": "GP-001",
+          "confidence": "heuristic",
+          "title": "Signal has significant reference plane gap",
+          "description": "Net /AC1 has 64% reference plane coverage over 36.8mm of routing. Return current must detour around the gap, creating a loop antenna.",
+          "components": [],
+          "nets": [
+            "/AC1"
+          ],
+          "recommendation": "Route this signal to avoid ground plane gaps, or fill the void. On a 2-layer board the gaps are usually where back-side tracks cut the pour into islands \u2014 stitch the two pours together (draw-pcb stitch_zones) so return current has a way across. If a split is intentional, add a bridge capacitor across the gap.",
+          "detector": "emc_ground_plane",
+          "summary": "Signal has significant reference plane gap",
+          "pins": [],
+          "evidence_source": "heuristic_rule",
+          "report_context": {
+            "section": "Ground Plane",
+            "impact": "",
+            "standard_ref": ""
+          },
+          "suppressed": false,
+          "suppression_reason": "",
+          "stages": [
+            "layout"
+          ]
+        },
+        {
+          "category": "ground_plane",
+          "severity": "error",
+          "rule_id": "GP-001",
+          "confidence": "heuristic",
+          "title": "Signal has significant reference plane gap",
+          "description": "Net Net-(D1-K) has 67% reference plane coverage over 130.4mm of routing. Return current must detour around the gap, creating a loop antenna.",
+          "components": [],
+          "nets": [
+            "Net-(D1-K)"
+          ],
+          "recommendation": "Route this signal to avoid ground plane gaps, or fill the void. On a 2-layer board the gaps are usually where back-side tracks cut the pour into islands \u2014 stitch the two pours together (draw-pcb stitch_zones) so return current has a way across. If a split is intentional, add a bridge capacitor across the gap.",
+          "detector": "emc_ground_plane",
+          "summary": "Signal has significant reference plane gap",
+          "pins": [],
+          "evidence_source": "heuristic_rule",
+          "report_context": {
+            "section": "Ground Plane",
+            "impact": "",
+            "standard_ref": ""
+          },
+          "suppressed": false,
+          "suppression_reason": "",
+          "stages": [
+            "layout"
+          ]
+        },
+        {
+          "category": "ground_plane",
+          "severity": "error",
+          "rule_id": "GP-001",
+          "confidence": "heuristic",
+          "title": "Signal has significant reference plane gap",
+          "description": "Net Net-(D6-A) has 72% reference plane coverage over 101.0mm of routing. Return current must detour around the gap, creating a loop antenna.",
+          "components": [],
+          "nets": [
+            "Net-(D6-A)"
+          ],
+          "recommendation": "Route this signal to avoid ground plane gaps, or fill the void. On a 2-layer board the gaps are usually where back-side tracks cut the pour into islands \u2014 stitch the two pours together (draw-pcb stitch_zones) so return current has a way across. If a split is intentional, add a bridge capacitor across the gap.",
+          "detector": "emc_ground_plane",
+          "summary": "Signal has significant reference plane gap",
+          "pins": [],
+          "evidence_source": "heuristic_rule",
+          "report_context": {
+            "section": "Ground Plane",
+            "impact": "",
+            "standard_ref": ""
+          },
+          "suppressed": false,
+          "suppression_reason": "",
+          "stages": [
+            "layout"
+          ]
+        },
+        {
+          "category": "ground_plane",
+          "severity": "error",
+          "rule_id": "GP-001",
+          "confidence": "heuristic",
+          "title": "Signal has significant reference plane gap",
+          "description": "Net Net-(D7-A) has 76% reference plane coverage over 21.9mm of routing. Return current must detour around the gap, creating a loop antenna.",
+          "components": [],
+          "nets": [
+            "Net-(D7-A)"
+          ],
+          "recommendation": "Route this signal to avoid ground plane gaps, or fill the void. On a 2-layer board the gaps are usually where back-side tracks cut the pour into islands \u2014 stitch the two pours together (draw-pcb stitch_zones) so return current has a way across. If a split is intentional, add a bridge capacitor across the gap.",
+          "detector": "emc_ground_plane",
+          "summary": "Signal has significant reference plane gap",
+          "pins": [],
+          "evidence_source": "heuristic_rule",
+          "report_context": {
+            "section": "Ground Plane",
+            "impact": "",
+            "standard_ref": ""
+          },
+          "suppressed": false,
+          "suppression_reason": "",
+          "stages": [
+            "layout"
+          ]
+        },
+        {
+          "category": "ground_plane",
+          "severity": "error",
+          "rule_id": "GP-001",
+          "confidence": "heuristic",
+          "title": "Signal has significant reference plane gap",
+          "description": "Net Net-(Q1-E) has 76% reference plane coverage over 52.9mm of routing. Return current must detour around the gap, creating a loop antenna.",
+          "components": [],
+          "nets": [
+            "Net-(Q1-E)"
+          ],
+          "recommendation": "Route this signal to avoid ground plane gaps, or fill the void. On a 2-layer board the gaps are usually where back-side tracks cut the pour into islands \u2014 stitch the two pours together (draw-pcb stitch_zones) so return current has a way across. If a split is intentional, add a bridge capacitor across the gap.",
+          "detector": "emc_ground_plane",
+          "summary": "Signal has significant reference plane gap",
+          "pins": [],
+          "evidence_source": "heuristic_rule",
+          "report_context": {
+            "section": "Ground Plane",
+            "impact": "",
+            "standard_ref": ""
+          },
+          "suppressed": false,
+          "suppression_reason": "",
+          "stages": [
+            "layout"
+          ]
+        },
+        {
+          "category": "ground_plane",
+          "severity": "error",
+          "rule_id": "GP-001",
+          "confidence": "heuristic",
+          "title": "Signal has significant reference plane gap",
+          "description": "Net /VZ has 80% reference plane coverage over 59.6mm of routing. Return current must detour around the gap, creating a loop antenna.",
+          "components": [],
+          "nets": [
+            "/VZ"
+          ],
+          "recommendation": "Route this signal to avoid ground plane gaps, or fill the void. On a 2-layer board the gaps are usually where back-side tracks cut the pour into islands \u2014 stitch the two pours together (draw-pcb stitch_zones) so return current has a way across. If a split is intentional, add a bridge capacitor across the gap.",
+          "detector": "emc_ground_plane",
+          "summary": "Signal has significant reference plane gap",
+          "pins": [],
+          "evidence_source": "heuristic_rule",
+          "report_context": {
+            "section": "Ground Plane",
+            "impact": "",
+            "standard_ref": ""
+          },
+          "suppressed": false,
+          "suppression_reason": "",
+          "stages": [
+            "layout"
+          ]
+        },
+        {
+          "category": "io_filtering",
+          "severity": "error",
+          "rule_id": "IO-001",
+          "confidence": "heuristic",
+          "title": "No EMC filtering near J4",
+          "description": "Connector J4 (DC OUT 2) has no ferrite bead, CM choke, or ESD protection within 25mm. Unfiltered I/O cables are the dominant source of radiated emissions \u2014 common-mode current as low as 5 \u00b5A can exceed FCC Class B.",
+          "components": [
+            "J4"
+          ],
+          "nets": [],
+          "recommendation": "Add a ferrite bead (e.g., BLM18AG601SN1D, 600\u03a9@100MHz) on signal lines near J4. Add ESD/TVS protection for external interfaces.",
+          "detector": "emc_io_filtering",
+          "summary": "No EMC filtering near J4",
+          "pins": [],
+          "evidence_source": "heuristic_rule",
+          "report_context": {
+            "section": "Io Filtering",
+            "impact": "",
+            "standard_ref": ""
+          },
+          "fix_params": {
+            "type": "add_component",
+            "components": [
+              {
+                "type": "ferrite_bead"
+              }
+            ],
+            "basis": "EMI filter on external I/O"
+          },
+          "suppressed": false,
+          "suppression_reason": "",
+          "stages": [
+            "pre_fab"
+          ]
+        }
+      ]
+    },
+    "reviewer": {
+      "total_findings": 15,
+      "by_category": {
+        "ground_plane": 10,
+        "io_filtering": 4,
+        "via_stitching": 1
+      },
+      "top_issues": [
+        {
+          "rule_id": "GP-001",
+          "severity": "error",
+          "summary": "Signal has major reference plane gap",
+          "recommendation": "Route this signal to avoid ground plane gaps, or fill the void. On a 2-layer board the gaps are usually where back-side tracks cut the pour into islands \u2014 stitch the two pours together (draw-pcb stitch_zones) so return current has a way across. If a split is intentional, add a bridge capacitor across the gap.",
+          "category": "ground_plane"
+        },
+        {
+          "rule_id": "GP-001",
+          "severity": "error",
+          "summary": "Signal has major reference plane gap",
+          "recommendation": "Route this signal to avoid ground plane gaps, or fill the void. On a 2-layer board the gaps are usually where back-side tracks cut the pour into islands \u2014 stitch the two pours together (draw-pcb stitch_zones) so return current has a way across. If a split is intentional, add a bridge capacitor across the gap.",
+          "category": "ground_plane"
+        },
+        {
+          "rule_id": "GP-001",
+          "severity": "error",
+          "summary": "Signal has major reference plane gap",
+          "recommendation": "Route this signal to avoid ground plane gaps, or fill the void. On a 2-layer board the gaps are usually where back-side tracks cut the pour into islands \u2014 stitch the two pours together (draw-pcb stitch_zones) so return current has a way across. If a split is intentional, add a bridge capacitor across the gap.",
+          "category": "ground_plane"
+        },
+        {
+          "rule_id": "GP-001",
+          "severity": "error",
+          "summary": "Signal has significant reference plane gap",
+          "recommendation": "Route this signal to avoid ground plane gaps, or fill the void. On a 2-layer board the gaps are usually where back-side tracks cut the pour into islands \u2014 stitch the two pours together (draw-pcb stitch_zones) so return current has a way across. If a split is intentional, add a bridge capacitor across the gap.",
+          "category": "ground_plane"
+        },
+        {
+          "rule_id": "GP-001",
+          "severity": "error",
+          "summary": "Signal has significant reference plane gap",
+          "recommendation": "Route this signal to avoid ground plane gaps, or fill the void. On a 2-layer board the gaps are usually where back-side tracks cut the pour into islands \u2014 stitch the two pours together (draw-pcb stitch_zones) so return current has a way across. If a split is intentional, add a bridge capacitor across the gap.",
+          "category": "ground_plane"
+        },
+        {
+          "rule_id": "GP-001",
+          "severity": "error",
+          "summary": "Signal has significant reference plane gap",
+          "recommendation": "Route this signal to avoid ground plane gaps, or fill the void. On a 2-layer board the gaps are usually where back-side tracks cut the pour into islands \u2014 stitch the two pours together (draw-pcb stitch_zones) so return current has a way across. If a split is intentional, add a bridge capacitor across the gap.",
+          "category": "ground_plane"
+        },
+        {
+          "rule_id": "GP-001",
+          "severity": "error",
+          "summary": "Signal has significant reference plane gap",
+          "recommendation": "Route this signal to avoid ground plane gaps, or fill the void. On a 2-layer board the gaps are usually where back-side tracks cut the pour into islands \u2014 stitch the two pours together (draw-pcb stitch_zones) so return current has a way across. If a split is intentional, add a bridge capacitor across the gap.",
+          "category": "ground_plane"
+        },
+        {
+          "rule_id": "GP-001",
+          "severity": "error",
+          "summary": "Signal has significant reference plane gap",
+          "recommendation": "Route this signal to avoid ground plane gaps, or fill the void. On a 2-layer board the gaps are usually where back-side tracks cut the pour into islands \u2014 stitch the two pours together (draw-pcb stitch_zones) so return current has a way across. If a split is intentional, add a bridge capacitor across the gap.",
+          "category": "ground_plane"
+        },
+        {
+          "rule_id": "GP-001",
+          "severity": "error",
+          "summary": "Signal has significant reference plane gap",
+          "recommendation": "Route this signal to avoid ground plane gaps, or fill the void. On a 2-layer board the gaps are usually where back-side tracks cut the pour into islands \u2014 stitch the two pours together (draw-pcb stitch_zones) so return current has a way across. If a split is intentional, add a bridge capacitor across the gap.",
+          "category": "ground_plane"
+        },
+        {
+          "rule_id": "IO-001",
+          "severity": "error",
+          "summary": "No EMC filtering near J4",
+          "recommendation": "Add a ferrite bead (e.g., BLM18AG601SN1D, 600\u03a9@100MHz) on signal lines near J4. Add ESD/TVS protection for external interfaces.",
+          "category": "io_filtering"
+        },
+        {
+          "rule_id": "IO-001",
+          "severity": "error",
+          "summary": "No EMC filtering near J1",
+          "recommendation": "Add a ferrite bead (e.g., BLM18AG601SN1D, 600\u03a9@100MHz) on signal lines near J1. Add ESD/TVS protection for external interfaces.",
+          "category": "io_filtering"
+        },
+        {
+          "rule_id": "IO-001",
+          "severity": "error",
+          "summary": "No EMC filtering near J3",
+          "recommendation": "Add a ferrite bead (e.g., BLM18AG601SN1D, 600\u03a9@100MHz) on signal lines near J3. Add ESD/TVS protection for external interfaces.",
+          "category": "io_filtering"
+        },
+        {
+          "rule_id": "IO-001",
+          "severity": "error",
+          "summary": "No EMC filtering near J2",
+          "recommendation": "Add a ferrite bead (e.g., BLM18AG601SN1D, 600\u03a9@100MHz) on signal lines near J2. Add ESD/TVS protection for external interfaces.",
+          "category": "io_filtering"
+        },
+        {
+          "rule_id": "GP-001",
+          "severity": "warning",
+          "summary": "Signal has partial reference plane gap",
+          "recommendation": "Route this signal to avoid ground plane gaps, or fill the void. On a 2-layer board the gaps are usually where back-side tracks cut the pour into islands \u2014 stitch the two pours together (draw-pcb stitch_zones) so return current has a way across. If a split is intentional, add a bridge capacitor across the gap.",
+          "category": "ground_plane"
+        },
+        {
+          "rule_id": "VS-001",
+          "severity": "warning",
+          "summary": "Via stitching may be insufficient",
+          "recommendation": "Add ground stitching vias at \u226448mm intervals, especially at board edges and near connectors.",
+          "category": "via_stitching"
+        }
+      ]
+    },
+    "manager": {
+      "risk_level": "high",
+      "blocker_count": 13,
+      "warning_count": 2,
+      "stage_readiness": {
+        "schematic": "pass",
+        "layout": "needs_work",
+        "pre_fab": "needs_work",
+        "bring_up": "pass"
+      },
+      "one_liner": "13 errors, 2 warnings across 3 categories. Layout, pre-fab stages have blockers."
+    }
+  },
+  "trust_summary": {
+    "total_findings": 17,
+    "trust_level": "low",
+    "by_confidence": {
+      "deterministic": 0,
+      "heuristic": 17,
+      "datasheet-backed": 0
+    },
+    "by_evidence_source": {
+      "datasheet": 0,
+      "topology": 0,
+      "heuristic_rule": 17,
+      "symbol_footprint": 0,
+      "bom": 0,
+      "geometry": 0,
+      "api_lookup": 0
+    },
+    "provenance_coverage_pct": 0.0
+  }
+}

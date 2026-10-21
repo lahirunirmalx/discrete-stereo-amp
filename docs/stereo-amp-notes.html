@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stereo amp, PSU and volume boards</title>
+<style>
+/* Bench notes house style. Extracted from soft-power-standby-9v.html.
+ * Schematic ink classes (.wire .fat .thin .dot .fillink .boxf .accf .open
+ * .grid) and text classes (.ref .val .volt .rail .tiny) are what schem.py
+ * emits, so a generated schematic themes itself with no inline styling.
+ * Trace classes .tr1-.tr4 are for waveform panels. */
+
+*, *::before, *::after { box-sizing: border-box; }
+  body, h1, h2, h3, p, figure, table, ul, ol { margin: 0; padding: 0; }
+  ul, ol { list-style-position: outside; }
+  svg, img { display: block; max-width: 100%; }
+  button { font: inherit; color: inherit; }
+
+  :root {
+    --bg:        #F5F7F6;
+    --surface:   #FFFFFF;
+    --ink:       #141A19;
+    --ink-2:     #4A5654;
+    --ink-3:     #6E7B78;
+    --rule:      #D6DEDB;
+    --rule-soft: #E6ECEA;
+    --accent:    #0F6F63;
+    --accent-2:  #E1EFEC;
+    --warn:      #A6412A;
+    --warn-2:    #F6E7E2;
+    --red:       #C0392B;
+    --green:     #1F7A3A;
+
+    --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    --mono: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0D1413; --surface: #141D1B; --ink: #E7EEEC; --ink-2: #9BA9A6;
+      --ink-3: #788683; --rule: #26332F; --rule-soft: #1B2523; --accent: #57D3C0;
+      --accent-2: #16302C; --warn: #E98B71; --warn-2: #2E1A15;
+      --red: #F0705E; --green: #57C97C;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0D1413; --surface: #141D1B; --ink: #E7EEEC; --ink-2: #9BA9A6;
+    --ink-3: #788683; --rule: #26332F; --rule-soft: #1B2523; --accent: #57D3C0;
+    --accent-2: #16302C; --warn: #E98B71; --warn-2: #2E1A15;
+    --red: #F0705E; --green: #57C97C;
+  }
+  :root[data-theme="light"] {
+    --bg: #F5F7F6; --surface: #FFFFFF; --ink: #141A19; --ink-2: #4A5654;
+    --ink-3: #6E7B78; --rule: #D6DEDB; --rule-soft: #E6ECEA; --accent: #0F6F63;
+    --accent-2: #E1EFEC; --warn: #A6412A; --warn-2: #F6E7E2;
+    --red: #C0392B; --green: #1F7A3A;
+  }
+
+  body {
+    background: var(--bg); color: var(--ink); font-family: var(--sans);
+    font-size: 17px; line-height: 1.65; -webkit-font-smoothing: antialiased;
+  }
+  .shell {
+    max-width: 1020px; margin: 0 auto; padding: 3rem 1.5rem 6rem;
+    display: flex; flex-direction: column; gap: 3.25rem;
+  }
+  .prose { max-width: 68ch; display: flex; flex-direction: column; gap: 1.15rem; }
+
+  h1, h2, h3 { font-family: var(--serif); font-weight: 600; text-wrap: balance; line-height: 1.15; }
+  h1 { font-size: clamp(2.1rem, 5vw, 3rem); letter-spacing: -0.015em; }
+  h2 { font-size: clamp(1.5rem, 3vw, 1.9rem); }
+  h3 { font-size: 1.16rem; }
+  strong { font-weight: 650; }
+
+  .eyebrow {
+    font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--accent);
+  }
+  .lede { font-size: 1.16rem; color: var(--ink-2); max-width: 60ch; }
+
+  .topbar { display: flex; justify-content: flex-end; margin-bottom: -1.5rem; }
+  #themeBtn {
+    font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink-2); background: var(--surface);
+    border: 1px solid var(--rule); border-radius: 2px; padding: 0.4rem 0.75rem; cursor: pointer;
+  }
+  #themeBtn:hover { border-color: var(--accent); color: var(--accent); }
+  #themeBtn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  header.masthead {
+    border-bottom: 1px solid var(--rule); padding-bottom: 2.25rem;
+    display: flex; flex-direction: column; gap: 0.85rem;
+  }
+  section { display: flex; flex-direction: column; gap: 1.5rem; }
+  .sec-head { display: flex; flex-direction: column; gap: 0.6rem; max-width: 68ch; }
+
+  figure {
+    background: var(--surface); border: 1px solid var(--rule);
+    border-radius: 3px; overflow: hidden;
+  }
+  .fig-body { padding: 1.5rem 1rem; overflow-x: auto; }
+  .fig-body svg { margin: 0 auto; height: auto; }
+  figcaption {
+    border-top: 1px solid var(--rule-soft); padding: 0.85rem 1.25rem;
+    font-size: 0.88rem; color: var(--ink-2); background: var(--bg);
+  }
+  figcaption b { color: var(--ink); font-weight: 620; }
+
+  .wire   { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .fat    { stroke: var(--ink); stroke-width: 3.2; fill: none; stroke-linecap: round; }
+  .thin   { stroke: var(--ink-3); stroke-width: 1.25; fill: none; }
+  .grid   { stroke: var(--rule); stroke-width: 1; fill: none; }
+  .dot    { fill: var(--ink); }
+  .fillink{ fill: var(--ink); stroke: none; }
+  .boxf   { fill: var(--surface); stroke: var(--ink); stroke-width: 2; }
+  .accf   { fill: var(--accent-2); stroke: var(--accent); stroke-width: 2; }
+  .open   { fill: var(--surface); stroke: var(--ink); stroke-width: 2; }
+  .tr1 { stroke: var(--accent); stroke-width: 2.2; fill: none; stroke-linejoin: round; }
+  .tr2 { stroke: var(--warn); stroke-width: 2.2; fill: none; stroke-linejoin: round; }
+  .tr3 { stroke: var(--ink-2); stroke-width: 1.6; fill: none; stroke-dasharray: 5 3; }
+  .tr4 { stroke: var(--ink); stroke-width: 1.6; fill: none; stroke-dasharray: 2 3; }
+
+  svg text { font-family: var(--mono); font-size: 13px; fill: var(--ink); }
+  .ref  { font-weight: 700; }
+  .val  { fill: var(--ink-2); font-size: 12px; }
+  .volt { fill: var(--accent); font-weight: 700; font-size: 12px; }
+  .rail { fill: var(--ink-2); font-size: 12px; letter-spacing: 0.06em; }
+  .tiny { fill: var(--ink-3); font-size: 11px; }
+  .lred { fill: var(--red); font-weight: 700; font-size: 12px; }
+  .lgrn { fill: var(--green); font-weight: 700; font-size: 12px; }
+
+  .tw { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; font-size: 0.93rem; font-variant-numeric: tabular-nums; }
+  th, td { text-align: left; padding: 0.6rem 0.85rem; border-bottom: 1px solid var(--rule-soft); vertical-align: top; }
+  thead th {
+    font-family: var(--mono); font-size: 0.72rem; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--ink-3); font-weight: 600;
+    border-bottom: 1px solid var(--rule);
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  td.num, th.num { text-align: right; font-family: var(--mono); }
+  td.ref { font-family: var(--mono); font-weight: 650; white-space: nowrap; }
+  code { font-family: var(--mono); font-size: 0.88em; background: var(--rule-soft); padding: 0.1em 0.36em; border-radius: 2px; }
+
+  .eq {
+    font-family: var(--mono); background: var(--surface); border: 1px solid var(--rule);
+    border-left: 3px solid var(--accent); border-radius: 2px; padding: 1rem 1.15rem;
+    font-size: 0.9rem; line-height: 1.75; overflow-x: auto; white-space: pre;
+  }
+  .note {
+    border-left: 3px solid var(--warn); background: var(--warn-2);
+    padding: 0.9rem 1.15rem; border-radius: 2px; font-size: 0.95rem; max-width: 68ch;
+  }
+  .key {
+    border: 1px solid var(--accent); background: var(--accent-2);
+    border-radius: 2px; padding: 1.1rem 1.3rem; max-width: 68ch;
+  }
+  .key .eyebrow { margin-bottom: 0.35rem; display: block; }
+  ul.bullets, ol.bullets { padding-left: 1.3rem; display: flex; flex-direction: column; gap: 0.5rem; }
+  ul.bullets li::marker, ol.bullets li::marker { color: var(--accent); }
+
+  .urlbox {
+    font-family: var(--mono); font-size: 0.74rem; line-height: 1.5;
+    background: var(--surface); border: 1px solid var(--rule); border-radius: 2px;
+    padding: 0.9rem 1rem; word-break: break-all; max-height: 9rem; overflow-y: auto;
+  }
+  .btnrow { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
+  a.cta {
+    font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.06em;
+    text-transform: uppercase; text-decoration: none;
+    color: var(--bg); background: var(--accent);
+    padding: 0.6rem 1rem; border-radius: 2px;
+  }
+  a.cta:hover { filter: brightness(1.1); }
+  #copyBtn {
+    font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.06em;
+    text-transform: uppercase; background: var(--surface); color: var(--ink-2);
+    border: 1px solid var(--rule); border-radius: 2px; padding: 0.6rem 1rem; cursor: pointer;
+  }
+  #copyBtn:hover { border-color: var(--accent); color: var(--accent); }
+
+  .legend { display: flex; flex-wrap: wrap; gap: 1.25rem; font-size: 0.84rem; color: var(--ink-2); font-family: var(--mono); }
+  .legend span { display: inline-flex; align-items: center; gap: 0.4rem; }
+  .sw { width: 26px; height: 3px; border-radius: 2px; display: inline-block; }
+
+  footer {
+    border-top: 1px solid var(--rule); padding-top: 1.5rem;
+    color: var(--ink-3); font-size: 0.88rem; max-width: 68ch;
+  }
+  @media print {
+    body { background: #fff; color: #000; }
+    .topbar, .btnrow { display: none; }
+    figure { break-inside: avoid; }
+  }
+
+</style>
+</head>
+<body>
+<div class="shell">
+  <div class="topbar"><button id="themeBtn" type="button" aria-label="Toggle colour theme">Theme</button></div>
+  <header class="masthead">
+    <span class="eyebrow">Bench notes / audio</span>
+    <h1>A 12 V stereo class-AB amp with its own discrete supply, on one fab panel</h1>
+    <p class="lede">
+      What the one-transistor amp became: per channel a BC547 differential pair, a BC557 voltage amplifier with a
+      bootstrapped load, a trimmable Vbe multiplier and BD139/BD140 followers on a 12 V rail. The midpoint sits at
+      5.93 V for any transistor gain, Zin is 43k so a 10k log pot works, quiescent current is 21 mA, and it delivers
+      0.95 W into 8 ohm at 0.5% THD, 1.3 W into 4 ohm at the onset of clipping, 0.8 W into 10 ohm at 0.3%
+      (<code>amp_final.cir</code>, <code>ampB4.cir</code>). The supply is a fuse, 1N5401 bridge, 2 x 2200 uF, a 13 V zener
+      and a BC547 + TIP41C pass pair with a 2 A clamp: 11.6 V at light load, holds regulation to 0.38 A from a 12 VAC
+      transformer and to 1.1 A from 15 VAC, plus a 12 V DC input that bypasses it (<code>psu.cir</code>). Three generated
+      KiCad boards, DRC clean as a 2-layer panel and as single-sided etch versions.
+    </p>
+  </header>
+
+  <section>
+    <div class="sec-head"><span class="eyebrow">The problem</span><h2>What the one-transistor stage could not do</h2></div>
+    <div class="prose">
+      <p>The original stage biased by hFE, ran its bias current through the voice coil, clipped above 50 mVpk and had an
+      input impedance of 11 ohm. The brief for the rebuild: stereo, a volume knob, 4 to 10 ohm speakers, BD139 as the
+      baseline output device but any pinout fittable, a separate discrete supply fed from a low-voltage transformer or 12 V
+      DC, test points for beginners, hybrid through-hole / SMD footprints, and one panel for JLCPCB or PCBWay plus a
+      single-sided variant.</p>
+      <div class="key"><span class="eyebrow">The mechanism</span>
+      <p>A single common-emitter front end with shunt feedback failed two of the three tests that decide whether a small
+      discrete amp is usable: its midpoint moved from 7.8 V to 6.7 V across BC547 hFE 110 to 450, and its gain changed by
+      22% across the travel of a 10k pot (<code>ampA.cir</code>). A differential pair with divider bias and series
+      feedback passed both (midpoint 5.90 to 5.97 V, gain 20.1 to 18.0 from a 0 to 5k source), so that is the channel.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="eyebrow">Figure 1</span><h2>One amplifier channel</h2>
+    <p>The volume pot appears as the 2.5k source resistance (its mid-travel value). The 1k trimmer sits in series with
+    the 470 ohm of the multiplier; the deck simulates the pair as 820 ohm. Two solder-jumper 3x3 blocks on the board (not
+    drawn) let Q4 and Q5 take any TO-220 / TO-126 / TO-92 pinout.</p></div>
+    <figure>
+      <div class="fig-body">
+<svg viewBox="0 0 1400 760" width="100%" style="min-width:1100px" role="img" aria-label="Stereo amp channel: BC547 differential pair, BC557 voltage amplifier with a bootstrapped load, BC547 Vbe multiplier with trimmer, BD139/BD140 output followers into a 1000 uF coupled speaker, 12 V single rail">
+  <path class="wire" d="M60 380 L60 514"/>
+  <circle class="boxf" cx="60" cy="540" r="26"/>
+  <path class="wire" d="M51 531 H69 M60 522 V540"/>
+  <path class="wire" d="M51 549 H69"/>
+  <path class="wire" d="M60 566 L60 700"/>
+  <text class="ref" x="96" y="538">Vin</text>
+  <text class="val" x="96" y="554">1 kHz</text>
+  <path class="wire" d="M60 380 L79 380"/>
+  <path class="wire" d="M79 380 l8 -9 l14 18 l14 -18 l14 18 l14 -18 l8 9"/>
+  <path class="wire" d="M151 380 L170 380"/>
+  <text class="ref" text-anchor="middle" x="115" y="354">Rs</text>
+  <text class="val" text-anchor="middle" x="115" y="370">2.5k pot</text>
+  <path class="wire" d="M170 380 L223 380"/>
+  <path class="wire" d="M237 380 L290 380"/>
+  <path class="wire" d="M223 354 V406"/>
+  <path class="wire" d="M237 354 V406"/>
+  <path class="wire" d="M247 342 h10 M252 337 v10"/>
+  <text class="ref" text-anchor="middle" x="230" y="424">Cin</text>
+  <text class="val" text-anchor="middle" x="230" y="440">2.2u</text>
+  <path class="wire" d="M290 380 L330 380"/>
+  <circle class="dot" cx="300" cy="380" r="4"/>
+  <path class="wire" d="M300 180 L300 244"/>
+  <path class="wire" d="M300 244 l-9 8 l18 14 l-18 14 l18 14 l-18 14 l9 8"/>
+  <path class="wire" d="M300 316 L300 380"/>
+  <text class="ref" text-anchor="start" x="318" y="276">R3</text>
+  <text class="val" text-anchor="start" x="318" y="292">47k</text>
+  <path class="wire" d="M250 60 L250 84"/>
+  <path class="wire" d="M250 84 l-9 8 l18 14 l-18 14 l18 14 l-18 14 l9 8"/>
+  <path class="wire" d="M250 156 L250 180"/>
+  <text class="ref" text-anchor="end" x="232" y="116">Rb1</text>
+  <text class="val" text-anchor="end" x="232" y="132">47k</text>
+  <path class="wire" d="M250 180 L250 204"/>
+  <path class="wire" d="M250 204 l-9 8 l18 14 l-18 14 l18 14 l-18 14 l9 8"/>
+  <path class="wire" d="M250 276 L250 300"/>
+  <text class="ref" text-anchor="end" x="232" y="236">Rb2</text>
+  <text class="val" text-anchor="end" x="232" y="252">47k</text>
+  <path class="wire" d="M200 180 L200 233"/>
+  <path class="wire" d="M174 233 H226"/>
+  <path class="wire" d="M174 247 H226"/>
+  <path class="wire" d="M200 247 L200 300"/>
+  <text class="ref" x="234" y="238">Cbias</text>
+  <text class="val" x="234" y="254">47u</text>
+  <path class="wire" d="M200 180 L300 180"/>
+  <circle class="dot" cx="200" cy="180" r="4"/>
+  <circle class="dot" cx="250" cy="180" r="4"/>
+  <path class="wire" d="M200 300 L250 300"/>
+  <path class="wire" d="M225 300 L225 326"/>
+  <circle class="accf" cx="225" cy="326" r="7"/>
+  <text class="volt" text-anchor="middle" x="225" y="348">GND</text>
+  <circle class="dot" cx="250" cy="300" r="4"/>
+  <path class="wire" d="M1150 700 L1150 726"/>
+  <circle class="accf" cx="1150" cy="726" r="7"/>
+  <text class="volt" text-anchor="middle" x="1150" y="748">GND</text>
+  <text class="volt" x="262" y="170">6.0 V</text>
+  <circle class="thin" cx="350" cy="380" r="46"/>
+  <path class="wire" d="M330 352 V408"/>
+  <path class="wire" d="M330 366 L374 322"/>
+  <path class="wire" d="M330 394 L374 438"/>
+  <polygon class="fillink" points="367.9,431.9 353.4,425.2 361.2,417.4"/>
+  <text class="ref" text-anchor="start" x="404" y="378">Q1</text>
+  <text class="val" text-anchor="start" x="404" y="394">BC547</text>
+  <circle class="thin" cx="600" cy="380" r="46"/>
+  <path class="wire" d="M620 352 V408"/>
+  <path class="wire" d="M620 366 L576 322"/>
+  <path class="wire" d="M620 394 L576 438"/>
+  <polygon class="fillink" points="582.1,431.9 588.8,417.4 596.6,425.2"/>
+  <text class="ref" text-anchor="end" x="546" y="378">Q2</text>
+  <text class="val" text-anchor="end" x="546" y="394">BC547</text>
+  <path class="wire" d="M374 438 L374 480 L576 480 L576 438"/>
+  <circle class="dot" cx="475" cy="480" r="4"/>
+  <path class="wire" d="M475 480 L475 554"/>
+  <path class="wire" d="M475 554 l-9 8 l18 14 l-18 14 l18 14 l-18 14 l9 8"/>
+  <path class="wire" d="M475 626 L475 700"/>
+  <text class="ref" text-anchor="start" x="493" y="586">Rt</text>
+  <text class="val" text-anchor="start" x="493" y="602">10k</text>
+  <path class="wire" d="M576 322 L576 60"/>
+  <path class="wire" d="M374 60 L374 155"/>
+  <path class="wire" d="M374 155 l-9 8 l18 14 l-18 14 l18 14 l-18 14 l9 8"/>
+  <path class="wire" d="M374 227 L374 322"/>
+  <text class="ref" text-anchor="start" x="392" y="187">Rc1</text>
+  <text class="val" text-anchor="start" x="392" y="203">4.7k</text>
+  <path class="wire" d="M620 380 L700 380"/>
+  <circle class="dot" cx="680" cy="380" r="4"/>
+  <path class="wire" d="M700 380 L709 380"/>
+  <path class="wire" d="M709 380 l8 -9 l14 18 l14 -18 l14 18 l14 -18 l8 9"/>
+  <path class="wire" d="M781 380 L790 380"/>
+  <text class="ref" text-anchor="middle" x="745" y="354">Rf</text>
+  <text class="val" text-anchor="middle" x="745" y="370">22k</text>
+  <path class="wire" d="M790 380 L790 354"/>
+  <circle class="accf" cx="790" cy="354" r="7"/>
+  <text class="volt" text-anchor="middle" x="790" y="340">OUT</text>
+  <path class="wire" d="M680 380 L680 424"/>
+  <path class="wire" d="M680 424 l-9 8 l18 14 l-18 14 l18 14 l-18 14 l9 8"/>
+  <path class="wire" d="M680 496 L680 540"/>
+  <text class="ref" text-anchor="start" x="698" y="456">Rg</text>
+  <text class="val" text-anchor="start" x="698" y="472">1k</text>
+  <path class="wire" d="M680 540 L680 613"/>
+  <path class="wire" d="M654 613 H706"/>
+  <path class="wire" d="M654 627 H706"/>
+  <path class="wire" d="M680 627 L680 700"/>
+  <text class="ref" x="714" y="618">Cg</text>
+  <text class="val" x="714" y="634">220u</text>
+  <path class="wire" d="M374 230 L440 230"/>
+  <circle class="dot" cx="374" cy="230" r="4"/>
+  <circle class="thin" cx="460" cy="230" r="46"/>
+  <path class="wire" d="M440 202 V258"/>
+  <path class="wire" d="M440 244 L484 288"/>
+  <path class="wire" d="M440 216 L484 172"/>
+  <polygon class="fillink" points="456.7,199.3 463.4,184.8 471.2,192.6"/>
+  <text class="ref" text-anchor="start" x="514" y="228">Q3</text>
+  <text class="val" text-anchor="start" x="514" y="244">BC557</text>
+  <path class="wire" d="M484 60 L484 80"/>
+  <path class="wire" d="M484 80 l-9 8 l18 14 l-18 14 l18 14 l-18 14 l9 8"/>
+  <path class="wire" d="M484 152 L484 172"/>
+  <text class="ref" text-anchor="start" x="502" y="112">Re3</text>
+  <text class="val" text-anchor="start" x="502" y="128">47</text>
+  <path class="wire" d="M484 288 L484 300"/>
+  <path class="wire" d="M400 300 L830 300"/>
+  <circle class="dot" cx="484" cy="300" r="4"/>
+  <path class="wire" d="M400 230 L400 204"/>
+  <circle class="accf" cx="400" cy="204" r="7"/>
+  <text class="volt" text-anchor="middle" x="400" y="190">C1</text>
+  <path class="wire" d="M460 300 L460 343"/>
+  <path class="wire" d="M434 343 H486"/>
+  <path class="wire" d="M434 357 H486"/>
+  <path class="wire" d="M460 357 L460 400"/>
+  <text class="ref" x="494" y="348">Cm</text>
+  <text class="val" x="494" y="364">100p</text>
+  <path class="wire" d="M460 400 L460 426"/>
+  <circle class="accf" cx="460" cy="426" r="7"/>
+  <text class="volt" text-anchor="middle" x="460" y="448">C1</text>
+  <circle class="dot" cx="460" cy="300" r="4"/>
+  <path class="wire" d="M830 300 L830 200 L980 200"/>
+  <circle class="dot" cx="880" cy="200" r="4"/>
+  <text class="volt" x="700" y="290">VAS</text>
+  <circle class="thin" cx="820" cy="440" r="46"/>
+  <path class="wire" d="M840 412 V468"/>
+  <path class="wire" d="M840 426 L796 382"/>
+  <path class="wire" d="M840 454 L796 498"/>
+  <polygon class="fillink" points="802.1,491.9 808.8,477.4 816.6,485.2"/>
+  <text class="ref" text-anchor="end" x="766" y="438">Q6</text>
+  <text class="val" text-anchor="end" x="766" y="454">BC547</text>
+  <path class="wire" d="M796 382 L796 300"/>
+  <circle class="dot" cx="796" cy="300" r="4"/>
+  <path class="wire" d="M880 200 L880 209"/>
+  <path class="wire" d="M880 209 l-9 8 l18 14 l-18 14 l18 14 l-18 14 l9 8"/>
+  <path class="wire" d="M880 281 L880 290"/>
+  <text class="ref" text-anchor="start" x="898" y="241">Rm1</text>
+  <text class="val" text-anchor="start" x="898" y="257">470</text>
+  <path class="wire" d="M880 290 L880 299"/>
+  <path class="wire" d="M880 299 l-9 8 l18 14 l-18 14 l18 14 l-18 14 l9 8"/>
+  <path class="wire" d="M880 371 L880 380"/>
+  <path class="wire" d="M836 335 L864 335"/>
+  <polygon class="fillink" points="864,335 851,330 851,340"/>
+  <text class="ref" x="902" y="331">RV</text>
+  <text class="val" x="902" y="347">1k trim</text>
+  <path class="wire" d="M836 335 L836 380 L880 380"/>
+  <circle class="dot" cx="880" cy="380" r="4"/>
+  <circle class="dot" cx="856" cy="380" r="4"/>
+  <path class="wire" d="M840 440 L856 440 L856 380"/>
+  <path class="wire" d="M880 380 L880 389"/>
+  <path class="wire" d="M880 389 l-9 8 l18 14 l-18 14 l18 14 l-18 14 l9 8"/>
+  <path class="wire" d="M880 461 L880 470"/>
+  <text class="ref" text-anchor="start" x="898" y="421">Rm2</text>
+  <text class="val" text-anchor="start" x="898" y="437">1k</text>
+  <path class="wire" d="M880 470 L880 560"/>
+  <circle class="dot" cx="880" cy="560" r="4"/>
+  <path class="wire" d="M796 498 L796 560 L980 560"/>
+  <text class="volt" text-anchor="end" x="790" y="560">B5</text>
+  <path class="wire" d="M930 560 L930 554"/>
+  <path class="wire" d="M930 554 l-9 8 l18 14 l-18 14 l18 14 l-18 14 l9 8"/>
+  <path class="wire" d="M930 626 L930 620"/>
+  <text class="ref" text-anchor="end" x="912" y="586">R5a</text>
+  <text class="val" text-anchor="end" x="912" y="602">270</text>
+  <circle class="dot" cx="930" cy="560" r="4"/>
+  <path class="wire" d="M930 620 L930 624"/>
+  <path class="wire" d="M930 624 l-9 8 l18 14 l-18 14 l18 14 l-18 14 l9 8"/>
+  <path class="wire" d="M930 696 L930 700"/>
+  <text class="ref" text-anchor="end" x="912" y="656">R5b</text>
+  <text class="val" text-anchor="end" x="912" y="672">270</text>
+  <circle class="dot" cx="930" cy="620" r="4"/>
+  <path class="wire" d="M930 620 L953 620"/>
+  <path class="wire" d="M967 620 L990 620"/>
+  <path class="wire" d="M953 594 V646"/>
+  <path class="wire" d="M967 594 V646"/>
+  <path class="wire" d="M977 582 h10 M982 577 v10"/>
+  <text class="ref" text-anchor="middle" x="960" y="664">Cboot</text>
+  <text class="val" text-anchor="middle" x="960" y="680">100u</text>
+  <path class="wire" d="M990 620 L990 646"/>
+  <circle class="accf" cx="990" cy="646" r="7"/>
+  <text class="volt" text-anchor="middle" x="990" y="668">OUT</text>
+  <circle class="thin" cx="1000" cy="200" r="46"/>
+  <path class="wire" d="M980 172 V228"/>
+  <path class="wire" d="M980 186 L1024 142"/>
+  <path class="wire" d="M980 214 L1024 258"/>
+  <polygon class="fillink" points="1017.9,251.9 1003.4,245.2 1011.2,237.4"/>
+  <text class="ref" text-anchor="start" x="1054" y="198">Q4</text>
+  <text class="val" text-anchor="start" x="1054" y="214">BD139</text>
+  <circle class="thin" cx="1000" cy="560" r="46"/>
+  <path class="wire" d="M980 532 V588"/>
+  <path class="wire" d="M980 574 L1024 618"/>
+  <path class="wire" d="M980 546 L1024 502"/>
+  <polygon class="fillink" points="996.7,529.3 1003.4,514.8 1011.2,522.6"/>
+  <text class="ref" text-anchor="start" x="1054" y="558">Q5</text>
+  <text class="val" text-anchor="start" x="1054" y="574">BD140</text>
+  <path class="wire" d="M1024 142 L1024 60"/>
+  <path class="wire" d="M1024 618 L1024 700"/>
+  <path class="wire" d="M1024 258 L1024 293"/>
+  <path class="wire" d="M1024 293 l-9 8 l18 14 l-18 14 l18 14 l-18 14 l9 8"/>
+  <path class="wire" d="M1024 365 L1024 400"/>
+  <text class="ref" text-anchor="start" x="1042" y="325">Re4</text>
+  <text class="val" text-anchor="start" x="1042" y="341">0.47</text>
+  <path class="wire" d="M1024 400 L1024 415"/>
+  <path class="wire" d="M1024 415 l-9 8 l18 14 l-18 14 l18 14 l-18 14 l9 8"/>
+  <path class="wire" d="M1024 487 L1024 502"/>
+  <text class="ref" text-anchor="start" x="1042" y="447">Re5</text>
+  <text class="val" text-anchor="start" x="1042" y="463">0.47</text>
+  <path class="wire" d="M1024 400 L1100 400"/>
+  <circle class="dot" cx="1024" cy="400" r="4"/>
+  <circle class="dot" cx="1070" cy="400" r="4"/>
+  <path class="wire" d="M1050 400 L1050 374"/>
+  <circle class="accf" cx="1050" cy="374" r="7"/>
+  <text class="volt" text-anchor="middle" x="1050" y="360">OUT</text>
+  <path class="wire" d="M1070 400 L1070 439"/>
+  <path class="wire" d="M1070 439 l-9 8 l18 14 l-18 14 l18 14 l-18 14 l9 8"/>
+  <path class="wire" d="M1070 511 L1070 550"/>
+  <text class="ref" text-anchor="start" x="1088" y="471">Rzob</text>
+  <text class="val" text-anchor="start" x="1088" y="487">10</text>
+  <path class="wire" d="M1070 550 L1070 618"/>
+  <path class="wire" d="M1044 618 H1096"/>
+  <path class="wire" d="M1044 632 H1096"/>
+  <path class="wire" d="M1070 632 L1070 700"/>
+  <text class="ref" x="1104" y="623">Czob</text>
+  <text class="val" x="1104" y="639">100n</text>
+  <path class="wire" d="M1100 400 L1153 400"/>
+  <path class="wire" d="M1167 400 L1220 400"/>
+  <path class="wire" d="M1153 374 V426"/>
+  <path class="wire" d="M1167 374 V426"/>
+  <path class="wire" d="M1133 362 h10 M1138 357 v10"/>
+  <text class="ref" text-anchor="middle" x="1160" y="444">Cout</text>
+  <text class="val" text-anchor="middle" x="1160" y="460">1000u</text>
+  <path class="wire" d="M1220 400 L1220 514"/>
+  <path class="wire" d="M1220 514 l-9 8 l18 14 l-18 14 l18 14 l-18 14 l9 8"/>
+  <path class="wire" d="M1220 586 L1220 700"/>
+  <text class="ref" text-anchor="start" x="1238" y="546">RL</text>
+  <text class="val" text-anchor="start" x="1238" y="562">4-10R spk</text>
+  <text class="volt" text-anchor="end" x="1040" y="390">5.9 V</text>
+  <path class="wire" d="M1300 60 L1300 354"/>
+  <circle class="boxf" cx="1300" cy="380" r="26"/>
+  <path class="wire" d="M1291 371 H1309 M1300 362 V380"/>
+  <path class="wire" d="M1291 389 H1309"/>
+  <path class="wire" d="M1300 406 L1300 700"/>
+  <text class="ref" x="1336" y="378">Vcc</text>
+  <text class="val" x="1336" y="394">12 V</text>
+  <text class="rail" text-anchor="middle" x="1300" y="46">+12V</text>
+  <path class="wire" d="M250 60 L374 60"/>
+  <path class="wire" d="M374 60 L484 60"/>
+  <path class="wire" d="M484 60 L576 60"/>
+  <path class="wire" d="M576 60 L1024 60"/>
+  <path class="wire" d="M1024 60 L1300 60"/>
+  <circle class="dot" cx="374" cy="60" r="4"/>
+  <circle class="dot" cx="484" cy="60" r="4"/>
+  <circle class="dot" cx="576" cy="60" r="4"/>
+  <circle class="dot" cx="1024" cy="60" r="4"/>
+  <path class="wire" d="M60 700 L475 700"/>
+  <path class="wire" d="M475 700 L680 700"/>
+  <path class="wire" d="M680 700 L930 700"/>
+  <path class="wire" d="M930 700 L1024 700"/>
+  <path class="wire" d="M1024 700 L1070 700"/>
+  <path class="wire" d="M1070 700 L1150 700"/>
+  <path class="wire" d="M1150 700 L1220 700"/>
+  <path class="wire" d="M1220 700 L1300 700"/>
+  <circle class="dot" cx="475" cy="700" r="4"/>
+  <circle class="dot" cx="680" cy="700" r="4"/>
+  <circle class="dot" cx="930" cy="700" r="4"/>
+  <circle class="dot" cx="1024" cy="700" r="4"/>
+  <circle class="dot" cx="1070" cy="700" r="4"/>
+  <circle class="dot" cx="1150" cy="700" r="4"/>
+  <circle class="dot" cx="1220" cy="700" r="4"/>
+  <path class="wire" d="M475 700 L475 718"/>
+  <path class="wire" d="M453 718 H497 M461 726 H489 M469 734 H481"/>
+</svg>
+      </div>
+      <figcaption><b>Midpoint 5.93 V, Iq 21 mA, gain 20 from the pot.</b> The 1000 uF output capacitor puts the -3 dB point at
+      34 Hz into 4 ohm and 20 Hz into 8 ohm; the 100 pF Miller capacitor and the 10 ohm + 100 nF Zobel keep a 1 kHz
+      square wave at 5.5% overshoot into 8 ohm and 6.9% with 470 nF across the speaker (<code>ampB_sq.cir</code>).
+      Solid dot = joined; wires crossing with no dot are not connected; same-named labels are one node.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="eyebrow">Figure 2</span><h2>The supply</h2>
+    <p>Everything discrete. The zener reference is RC-filtered, the pass device is a BC547 driving a TIP41C, and the
+    clamp transistor pulls the driver's base down when 0.65 V appears across the 0.33 ohm sense resistor. D6 lets 12 V DC
+    on the output (from the DC-in terminal through an SB540) back-charge the raw rail instead of breaking the pass
+    transistor's base-emitter junction.</p></div>
+    <figure>
+      <div class="fig-body">
+<svg viewBox="0 0 1400 620" width="100%" style="min-width:1100px" role="img" aria-label="Discrete 12 V supply: fuse, 1N5401 bridge, two 2200 uF reservoirs, 1 k / 13 V zener reference filtered by 100 uF, BC547 + TIP41C Darlington pass with a 0.33 ohm current clamp, 1N4007 across the pass device, and a 12 V DC input through an SB540 Schottky straight into the output">
+  <path class="wire" d="M60 200 L60 274"/>
+  <circle class="boxf" cx="60" cy="300" r="26"/>
+  <path class="wire" d="M51 291 H69 M60 282 V300"/>
+  <path class="wire" d="M51 309 H69"/>
+  <path class="wire" d="M60 326 L60 400"/>
+  <text class="ref" x="96" y="298">Vac</text>
+  <text class="val" x="96" y="314">12-15 VAC</text>
+  <path class="wire" d="M60 200 L94 200"/>
+  <path class="wire" d="M94 200 l8 -9 l14 18 l14 -18 l14 18 l14 -18 l8 9"/>
+  <path class="wire" d="M166 200 L200 200"/>
+  <text class="ref" text-anchor="middle" x="130" y="174">Rfuse</text>
+  <text class="val" text-anchor="middle" x="130" y="190">fuse 1A T</text>
+  <path class="wire" d="M60 400 L94 400"/>
+  <path class="wire" d="M94 400 l8 -9 l14 18 l14 -18 l14 18 l14 -18 l8 9"/>
+  <path class="wire" d="M166 400 L200 400"/>
+  <text class="ref" text-anchor="middle" x="130" y="374">Rw</text>
+  <text class="val" text-anchor="middle" x="130" y="390">0.8R winding</text>
+  <path class="wire" d="M200 200 L252 200"/>
+  <circle class="accf" cx="252" cy="200" r="7"/>
+  <text class="volt" text-anchor="start" x="264" y="205">AC1</text>
+  <path class="wire" d="M200 400 L252 400"/>
+  <circle class="accf" cx="252" cy="400" r="7"/>
+  <text class="volt" text-anchor="start" x="264" y="405">AC2</text>
+  <path class="wire" d="M320 60 L320 166"/>
+  <polygon class="fillink" points="307,189 333,189 320,167"/>
+  <path class="wire" d="M306 166 H334"/>
+  <path class="wire" d="M320 189 L320 300"/>
+  <text class="ref" x="346" y="178">D1</text>
+  <text class="val" x="346" y="194">1N5401</text>
+  <path class="wire" d="M320 300 L320 416"/>
+  <polygon class="fillink" points="307,439 333,439 320,417"/>
+  <path class="wire" d="M306 416 H334"/>
+  <path class="wire" d="M320 439 L320 560"/>
+  <text class="ref" x="346" y="428">D3</text>
+  <text class="val" x="346" y="444">1N5401</text>
+  <path class="wire" d="M320 300 L268 300"/>
+  <circle class="accf" cx="268" cy="300" r="7"/>
+  <text class="volt" text-anchor="end" x="256" y="305">AC1</text>
+  <circle class="dot" cx="320" cy="300" r="4"/>
+  <path class="wire" d="M420 60 L420 166"/>
+  <polygon class="fillink" points="407,189 433,189 420,167"/>
+  <path class="wire" d="M406 166 H434"/>
+  <path class="wire" d="M420 189 L420 300"/>
+  <text class="ref" x="446" y="178">D2</text>
+  <text class="val" x="446" y="194">1N5401</text>
+  <path class="wire" d="M420 300 L420 416"/>
+  <polygon class="fillink" points="407,439 433,439 420,417"/>
+  <path class="wire" d="M406 416 H434"/>
+  <path class="wire" d="M420 439 L420 560"/>
+  <text class="ref" x="446" y="428">D4</text>
+  <text class="val" x="446" y="444">1N5401</text>
+  <path class="wire" d="M420 300 L472 300"/>
+  <circle class="accf" cx="472" cy="300" r="7"/>
+  <text class="volt" text-anchor="start" x="484" y="305">AC2</text>
+  <circle class="dot" cx="420" cy="300" r="4"/>
+  <path class="wire" d="M520 60 L520 303"/>
+  <path class="wire" d="M494 303 H546"/>
+  <path class="wire" d="M494 317 H546"/>
+  <path class="wire" d="M520 317 L520 560"/>
+  <text class="ref" x="554" y="308">C1</text>
+  <text class="val" x="554" y="324">2200u</text>
+  <path class="wire" d="M600 60 L600 303"/>
+  <path class="wire" d="M574 303 H626"/>
+  <path class="wire" d="M574 317 H626"/>
+  <path class="wire" d="M600 317 L600 560"/>
+  <text class="ref" x="634" y="308">C2</text>
+  <text class="val" x="634" y="324">2200u</text>
+  <path class="wire" d="M680 60 L680 274"/>
+  <path class="wire" d="M680 274 l-9 8 l18 14 l-18 14 l18 14 l-18 14 l9 8"/>
+  <path class="wire" d="M680 346 L680 560"/>
+  <text class="ref" text-anchor="start" x="698" y="306">Rbleed</text>
+  <text class="val" text-anchor="start" x="698" y="322">4.7k</text>
+  <text class="volt" x="700" y="150">VRAW 14-19 V</text>
+  <path class="wire" d="M780 60 L780 114"/>
+  <path class="wire" d="M780 114 l-9 8 l18 14 l-18 14 l18 14 l-18 14 l9 8"/>
+  <path class="wire" d="M780 186 L780 240"/>
+  <text class="ref" text-anchor="start" x="798" y="146">Rz</text>
+  <text class="val" text-anchor="start" x="798" y="162">1k</text>
+  <path class="wire" d="M780 240 L780 386"/>
+  <polygon class="fillink" points="767,409 793,409 780,387"/>
+  <path class="wire" d="M766 386 H794"/>
+  <path class="wire" d="M766 386 l-7 -8 M794 386 l7 8"/>
+  <path class="wire" d="M780 409 L780 560"/>
+  <text class="ref" x="806" y="398">Dz</text>
+  <text class="val" x="806" y="414">13V zener</text>
+  <path class="wire" d="M860 240 L860 393"/>
+  <path class="wire" d="M834 393 H886"/>
+  <path class="wire" d="M834 407 H886"/>
+  <path class="wire" d="M860 407 L860 560"/>
+  <text class="ref" x="894" y="398">Cz</text>
+  <text class="val" x="894" y="414">100u</text>
+  <path class="wire" d="M780 240 L900 240"/>
+  <circle class="dot" cx="780" cy="240" r="4"/>
+  <circle class="dot" cx="860" cy="240" r="4"/>
+  <text class="volt" x="880" y="228">13 V</text>
+  <circle class="thin" cx="920" cy="240" r="46"/>
+  <path class="wire" d="M900 212 V268"/>
+  <path class="wire" d="M900 226 L944 182"/>
+  <path class="wire" d="M900 254 L944 298"/>
+  <polygon class="fillink" points="937.9,291.9 923.4,285.2 931.2,277.4"/>
+  <text class="ref" text-anchor="start" x="974" y="238">Q1</text>
+  <text class="val" text-anchor="start" x="974" y="254">BC547</text>
+  <path class="wire" d="M944 182 L944 60"/>
+  <path class="wire" d="M944 298 L944 340 L980 340"/>
+  <circle class="thin" cx="1000" cy="340" r="46"/>
+  <path class="wire" d="M980 312 V368"/>
+  <path class="wire" d="M980 326 L1024 282"/>
+  <path class="wire" d="M980 354 L1024 398"/>
+  <polygon class="fillink" points="1017.9,391.9 1003.4,385.2 1011.2,377.4"/>
+  <text class="ref" text-anchor="start" x="1054" y="338">Q2</text>
+  <text class="val" text-anchor="start" x="1054" y="354">TIP41C</text>
+  <path class="wire" d="M1024 282 L1024 60"/>
+  <path class="wire" d="M1024 398 L1024 403"/>
+  <path class="wire" d="M1024 403 l-9 8 l18 14 l-18 14 l18 14 l-18 14 l9 8"/>
+  <path class="wire" d="M1024 475 L1024 480"/>
+  <text class="ref" text-anchor="end" x="1006" y="435">Rsense</text>
+  <text class="val" text-anchor="end" x="1006" y="451">0.33 2W</text>
+  <circle class="thin" cx="1120" cy="440" r="46"/>
+  <path class="wire" d="M1140 412 V468"/>
+  <path class="wire" d="M1140 426 L1096 382"/>
+  <path class="wire" d="M1140 454 L1096 498"/>
+  <polygon class="fillink" points="1102.1,491.9 1108.8,477.4 1116.6,485.2"/>
+  <text class="ref" text-anchor="end" x="1066" y="438">Qlim</text>
+  <text class="val" text-anchor="end" x="1066" y="454">BC547</text>
+  <path class="wire" d="M1140 440 L1160 440 L1160 400 L1024 400"/>
+  <circle class="dot" cx="1024" cy="400" r="4"/>
+  <path class="wire" d="M1096 498 L1096 520 L1024 520"/>
+  <circle class="dot" cx="1024" cy="520" r="4"/>
+  <path class="wire" d="M1096 382 L1096 350"/>
+  <path class="wire" d="M1096 350 L1096 324"/>
+  <circle class="accf" cx="1096" cy="324" r="7"/>
+  <text class="volt" text-anchor="middle" x="1096" y="310">VZ</text>
+  <path class="wire" d="M900 240 L900 214"/>
+  <circle class="accf" cx="900" cy="214" r="7"/>
+  <text class="volt" text-anchor="middle" x="900" y="200">VZ</text>
+  <circle class="dot" cx="900" cy="240" r="4"/>
+  <path class="wire" d="M1200 60 L1200 276"/>
+  <polygon class="fillink" points="1187,299 1213,299 1200,277"/>
+  <path class="wire" d="M1186 276 H1214"/>
+  <path class="wire" d="M1200 299 L1200 520"/>
+  <text class="ref" x="1226" y="288">Dprot</text>
+  <text class="val" x="1226" y="304">1N4007</text>
+  <path class="wire" d="M1024 480 L1024 520 L1360 520"/>
+  <circle class="dot" cx="1200" cy="520" r="4"/>
+  <path class="wire" d="M1240 520 L1240 533"/>
+  <path class="wire" d="M1214 533 H1266"/>
+  <path class="wire" d="M1214 547 H1266"/>
+  <path class="wire" d="M1240 547 L1240 560"/>
+  <text class="ref" x="1274" y="538">Cout</text>
+  <text class="val" x="1274" y="554">220u</text>
+  <circle class="dot" cx="1240" cy="520" r="4"/>
+  <text class="volt" x="1050" y="508">VOUT 11.5 V</text>
+  <circle class="wire" cx="1360" cy="520" r="5" fill="var(--bg)"/>
+  <text class="rail" x="1374" y="525">DC OUT</text>
+  <text class="tiny" x="1240" y="600">Not drawn: R4 1k + LED, and J2 DC IN -> SB540 -> VOUT (bypasses regulator and clamp)</text>
+  <path class="wire" d="M320 60 L420 60"/>
+  <path class="wire" d="M420 60 L520 60"/>
+  <path class="wire" d="M520 60 L600 60"/>
+  <path class="wire" d="M600 60 L680 60"/>
+  <path class="wire" d="M680 60 L780 60"/>
+  <path class="wire" d="M780 60 L944 60"/>
+  <path class="wire" d="M944 60 L1024 60"/>
+  <path class="wire" d="M1024 60 L1200 60"/>
+  <circle class="dot" cx="420" cy="60" r="4"/>
+  <circle class="dot" cx="520" cy="60" r="4"/>
+  <circle class="dot" cx="600" cy="60" r="4"/>
+  <circle class="dot" cx="680" cy="60" r="4"/>
+  <circle class="dot" cx="780" cy="60" r="4"/>
+  <circle class="dot" cx="944" cy="60" r="4"/>
+  <circle class="dot" cx="1024" cy="60" r="4"/>
+  <path class="wire" d="M320 560 L420 560"/>
+  <path class="wire" d="M420 560 L520 560"/>
+  <path class="wire" d="M520 560 L600 560"/>
+  <path class="wire" d="M600 560 L680 560"/>
+  <path class="wire" d="M680 560 L780 560"/>
+  <path class="wire" d="M780 560 L860 560"/>
+  <path class="wire" d="M860 560 L1240 560"/>
+  <circle class="dot" cx="420" cy="560" r="4"/>
+  <circle class="dot" cx="520" cy="560" r="4"/>
+  <circle class="dot" cx="600" cy="560" r="4"/>
+  <circle class="dot" cx="680" cy="560" r="4"/>
+  <circle class="dot" cx="780" cy="560" r="4"/>
+  <circle class="dot" cx="860" cy="560" r="4"/>
+  <path class="wire" d="M600 560 L600 578"/>
+  <path class="wire" d="M578 578 H622 M586 586 H614 M594 594 H606"/>
+</svg>
+      </div>
+      <figcaption><b>11.62 V at 0.1 A from 12 VAC, 11.68 V from 15 VAC; the clamp holds a dead short at 2.1 A.</b>
+      With 12 V DC in and no AC, the pass transistor sees 0.65 V reverse on its base-emitter (limit 5 V) and the raw rail
+      sits at 11.25 V through D6. With both present the DC input supplies 0.62 of a 0.76 A load because it is the higher source.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="eyebrow">Simulated, hand checked</span><h2>Amp channel at 12 V</h2>
+    <p><code>ampB2.cir</code> for the hFE and source sweeps, <code>ampB4.cir</code> for the bias and power runs. Hand
+    calculation of the midpoint: Vout = Vbias x (1 + Rf/Rg) x 0 + Vbias, i.e. the divider's 6.0 V minus the base-current
+    offset of 2 uA across the 47k and 22k difference, about 50 mV: 5.95 V expected, 5.93 V simulated.</p></div>
+    <div class="tw"><table>
+      <thead><tr><th>Source resistance</th><th class="num">Gain at 1 kHz</th><th class="num">Zin</th></tr></thead>
+      <tbody><tr><td>1 ohm</td><td class='num'>21.2</td><td class='num'>43.4k</td></tr><tr><td>2500 ohm</td><td class='num'>20.1</td><td class='num'>43.4k</td></tr><tr><td>5000 ohm</td><td class='num'>19.0</td><td class='num'>43.4k</td></tr></tbody>
+    </table></div>
+    <div class="sec-head" style="margin-top:1.5rem"><span class="eyebrow">Bias network</span><h2>Vbe multiplier setting vs quiescent current and crossover distortion</h2>
+    <p>Rm1 is the 470 ohm + trimmer total; THD at 50 mW, 1 kHz. 820 ohm is the shipped setting.</p></div>
+    <div class="tw"><table>
+      <thead><tr><th class="num">Rm1 (ohm)</th><th class="num">Temp (C)</th><th class="num">Iq (mA)</th><th class="num">V across multiplier</th><th class="num">Vout</th></tr></thead>
+      <tbody><tr><td class='num'>560 + 1k</td><td class='num'>25</td><td class='num'>0.9</td><td class='num'>1.12</td><td class='num'>5.93</td></tr><tr><td class='num'>560 + 1k</td><td class='num'>70</td><td class='num'>3.0</td><td class='num'>1.00</td><td class='num'>5.94</td></tr><tr><td class='num'>680 + 1k</td><td class='num'>25</td><td class='num'>4.3</td><td class='num'>1.21</td><td class='num'>5.93</td></tr><tr><td class='num'>680 + 1k</td><td class='num'>70</td><td class='num'>10.0</td><td class='num'>1.08</td><td class='num'>5.94</td></tr><tr><td class='num'>820 + 1k</td><td class='num'>25</td><td class='num'>21.2</td><td class='num'>1.31</td><td class='num'>5.93</td></tr><tr><td class='num'>820 + 1k</td><td class='num'>70</td><td class='num'>30.6</td><td class='num'>1.17</td><td class='num'>5.94</td></tr><tr><td class='num'>1000 + 1k</td><td class='num'>25</td><td class='num'>74.4</td><td class='num'>1.43</td><td class='num'>5.93</td></tr><tr><td class='num'>1000 + 1k</td><td class='num'>70</td><td class='num'>79.3</td><td class='num'>1.28</td><td class='num'>5.94</td></tr><tr><td class='num'>1200 + 1k</td><td class='num'>25</td><td class='num'>157.0</td><td class='num'>1.57</td><td class='num'>5.93</td></tr><tr><td class='num'>1200 + 1k</td><td class='num'>70</td><td class='num'>150.2</td><td class='num'>1.40</td><td class='num'>5.94</td></tr></tbody>
+    </table></div>
+    <div class="tw"><table>
+      <thead><tr><th class="num">Rm1 (ohm)</th><th class="num">Load (ohm)</th><th class="num">P out (mW)</th><th class="num">THD %</th></tr></thead>
+      <tbody><tr><td class='num'>560</td><td class='num'>4</td><td class='num'>33</td><td class='num'>1.70</td></tr><tr><td class='num'>560</td><td class='num'>8</td><td class='num'>20</td><td class='num'>1.43</td></tr><tr><td class='num'>680</td><td class='num'>4</td><td class='num'>34</td><td class='num'>0.85</td></tr><tr><td class='num'>680</td><td class='num'>8</td><td class='num'>21</td><td class='num'>0.59</td></tr><tr><td class='num'>820</td><td class='num'>4</td><td class='num'>36</td><td class='num'>0.49</td></tr><tr><td class='num'>820</td><td class='num'>8</td><td class='num'>22</td><td class='num'>0.21</td></tr><tr><td class='num'>1000</td><td class='num'>4</td><td class='num'>37</td><td class='num'>0.18</td></tr><tr><td class='num'>1000</td><td class='num'>8</td><td class='num'>22</td><td class='num'>0.04</td></tr><tr><td class='num'>1200</td><td class='num'>4</td><td class='num'>37</td><td class='num'>0.04</td></tr><tr><td class='num'>1200</td><td class='num'>8</td><td class='num'>22</td><td class='num'>0.01</td></tr></tbody>
+    </table></div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="eyebrow">Sweeps</span><h2>Output power vs load and output-device hFE</h2>
+    <p><code>ampB4.cir</code>: 1 kHz, 2.5k source, Rm1 820. Supply current is the average per channel; P Q4 is the
+    average dissipation of the NPN output device.</p></div>
+    <div class="tw"><table>
+      <thead><tr><th class="num">hFE out</th><th class="num">Load</th><th class="num">Vin pk (mV)</th><th class="num">P out (W)</th><th class="num">I supply (mA)</th><th class="num">P Q4 (W)</th><th class="num">THD %</th><th></th></tr></thead>
+      <tbody><tr><td class='num'>40</td><td class='num'>4</td><td class='num'>100</td><td class='num'>0.22</td><td class='num'>117</td><td class='num'>0.54</td><td class='num'>3.73</td><td>audible</td></tr><tr><td class='num'>40</td><td class='num'>4</td><td class='num'>200</td><td class='num'>0.42</td><td class='num'>164</td><td class='num'>0.62</td><td class='num'>23.37</td><td>clipping</td></tr><tr><td class='num'>40</td><td class='num'>4</td><td class='num'>300</td><td class='num'>0.52</td><td class='num'>187</td><td class='num'>0.62</td><td class='num'>30.38</td><td>clipping</td></tr><tr><td class='num'>40</td><td class='num'>8</td><td class='num'>100</td><td class='num'>0.18</td><td class='num'>80</td><td class='num'>0.34</td><td class='num'>0.69</td><td>clean</td></tr><tr><td class='num'>40</td><td class='num'>8</td><td class='num'>200</td><td class='num'>0.56</td><td class='num'>134</td><td class='num'>0.43</td><td class='num'>10.73</td><td>clipping</td></tr><tr><td class='num'>40</td><td class='num'>8</td><td class='num'>300</td><td class='num'>0.79</td><td class='num'>162</td><td class='num'>0.39</td><td class='num'>21.36</td><td>clipping</td></tr><tr><td class='num'>40</td><td class='num'>10</td><td class='num'>100</td><td class='num'>0.16</td><td class='num'>70</td><td class='num'>0.29</td><td class='num'>0.44</td><td>clean</td></tr><tr><td class='num'>40</td><td class='num'>10</td><td class='num'>200</td><td class='num'>0.57</td><td class='num'>121</td><td class='num'>0.37</td><td class='num'>5.29</td><td>clipping</td></tr><tr><td class='num'>40</td><td class='num'>10</td><td class='num'>300</td><td class='num'>0.81</td><td class='num'>147</td><td class='num'>0.34</td><td class='num'>17.53</td><td>clipping</td></tr><tr><td class='num'>120</td><td class='num'>4</td><td class='num'>100</td><td class='num'>0.39</td><td class='num'>153</td><td class='num'>0.65</td><td class='num'>0.69</td><td>clean</td></tr><tr><td class='num'>120</td><td class='num'>4</td><td class='num'>200</td><td class='num'>1.28</td><td class='num'>269</td><td class='num'>0.82</td><td class='num'>8.23</td><td>clipping</td></tr><tr><td class='num'>120</td><td class='num'>4</td><td class='num'>300</td><td class='num'>1.71</td><td class='num'>317</td><td class='num'>0.75</td><td class='num'>20.04</td><td>clipping</td></tr><tr><td class='num'>120</td><td class='num'>8</td><td class='num'>100</td><td class='num'>0.24</td><td class='num'>92</td><td class='num'>0.37</td><td class='num'>0.16</td><td>clean</td></tr><tr><td class='num'>120</td><td class='num'>8</td><td class='num'>200</td><td class='num'>0.95</td><td class='num'>169</td><td class='num'>0.46</td><td class='num'>0.52</td><td>clean</td></tr><tr><td class='num'>120</td><td class='num'>8</td><td class='num'>300</td><td class='num'>1.70</td><td class='num'>223</td><td class='num'>0.48</td><td class='num'>10.61</td><td>clipping</td></tr><tr><td class='num'>120</td><td class='num'>10</td><td class='num'>100</td><td class='num'>0.20</td><td class='num'>78</td><td class='num'>0.31</td><td class='num'>0.10</td><td>clean</td></tr><tr><td class='num'>120</td><td class='num'>10</td><td class='num'>200</td><td class='num'>0.80</td><td class='num'>142</td><td class='num'>0.37</td><td class='num'>0.32</td><td>clean</td></tr><tr><td class='num'>120</td><td class='num'>10</td><td class='num'>300</td><td class='num'>1.45</td><td class='num'>187</td><td class='num'>0.38</td><td class='num'>10.48</td><td>clipping</td></tr><tr><td class='num'>250</td><td class='num'>4</td><td class='num'>100</td><td class='num'>0.46</td><td class='num'>166</td><td class='num'>0.69</td><td class='num'>0.26</td><td>clean</td></tr><tr><td class='num'>250</td><td class='num'>4</td><td class='num'>200</td><td class='num'>1.77</td><td class='num'>314</td><td class='num'>0.85</td><td class='num'>0.99</td><td>clean</td></tr><tr><td class='num'>250</td><td class='num'>4</td><td class='num'>300</td><td class='num'>2.74</td><td class='num'>396</td><td class='num'>0.88</td><td class='num'>13.42</td><td>clipping</td></tr><tr><td class='num'>250</td><td class='num'>8</td><td class='num'>100</td><td class='num'>0.26</td><td class='num'>96</td><td class='num'>0.38</td><td class='num'>0.05</td><td>clean</td></tr><tr><td class='num'>250</td><td class='num'>8</td><td class='num'>200</td><td class='num'>1.05</td><td class='num'>178</td><td class='num'>0.45</td><td class='num'>0.19</td><td>clean</td></tr><tr><td class='num'>250</td><td class='num'>8</td><td class='num'>300</td><td class='num'>1.83</td><td class='num'>232</td><td class='num'>0.46</td><td class='num'>11.20</td><td>clipping</td></tr><tr><td class='num'>250</td><td class='num'>10</td><td class='num'>100</td><td class='num'>0.22</td><td class='num'>81</td><td class='num'>0.31</td><td class='num'>0.03</td><td>clean</td></tr><tr><td class='num'>250</td><td class='num'>10</td><td class='num'>200</td><td class='num'>0.87</td><td class='num'>147</td><td class='num'>0.37</td><td class='num'>0.11</td><td>clean</td></tr><tr><td class='num'>250</td><td class='num'>10</td><td class='num'>300</td><td class='num'>1.52</td><td class='num'>192</td><td class='num'>0.37</td><td class='num'>10.93</td><td>clipping</td></tr></tbody>
+    </table></div>
+    <div class="sec-head" style="margin-top:1.5rem"><span class="eyebrow">Supply</span><h2>PSU vs transformer voltage and load</h2>
+    <p><code>psu.cir</code>: 50 Hz, 0.8 ohm winding, 4400 uF. Load current is per the whole stereo amp. 12 VAC rows at
+    0.73 A and above are out of regulation (the raw trough falls under the 1.5 V dropout).</p></div>
+    <div class="tw"><table>
+      <thead><tr><th class="num">VAC</th><th class="num">I load (A)</th><th class="num">Raw trough (V)</th><th class="num">V out (V)</th><th class="num">Ripple (mV)</th><th class="num">I secondary (A rms)</th><th class="num">P pass (W)</th><th></th></tr></thead>
+      <tbody><tr><td class='num'>12</td><td class='num'>0.10</td><td class='num'>14.7</td><td class='num'>11.62</td><td class='num'>2</td><td class='num'>0.27</td><td class='num'>0.3</td><td>regulated</td></tr><tr><td class='num'>12</td><td class='num'>0.38</td><td class='num'>13.4</td><td class='num'>11.41</td><td class='num'>8</td><td class='num'>0.78</td><td class='num'>0.8</td><td>regulated</td></tr><tr><td class='num'>12</td><td class='num'>0.73</td><td class='num'>12.2</td><td class='num'>10.96</td><td class='num'>22</td><td class='num'>1.33</td><td class='num'>1.1</td><td>dropout</td></tr><tr><td class='num'>12</td><td class='num'>1.01</td><td class='num'>11.3</td><td class='num'>10.13</td><td class='num'>21</td><td class='num'>1.75</td><td class='num'>1.6</td><td>dropout</td></tr><tr><td class='num'>15</td><td class='num'>0.10</td><td class='num'>18.8</td><td class='num'>11.67</td><td class='num'>1</td><td class='num'>0.29</td><td class='num'>0.8</td><td>regulated</td></tr><tr><td class='num'>15</td><td class='num'>0.38</td><td class='num'>17.4</td><td class='num'>11.48</td><td class='num'>5</td><td class='num'>0.83</td><td class='num'>2.4</td><td>regulated</td></tr><tr><td class='num'>15</td><td class='num'>0.75</td><td class='num'>16.1</td><td class='num'>11.29</td><td class='num'>10</td><td class='num'>1.43</td><td class='num'>3.9</td><td>dropout</td></tr><tr><td class='num'>15</td><td class='num'>1.11</td><td class='num'>15.0</td><td class='num'>11.12</td><td class='num'>16</td><td class='num'>1.97</td><td class='num'>4.8</td><td>dropout</td></tr></tbody>
+    </table></div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="eyebrow">Where the simulation corrected me</span><h2>Findings</h2></div>
+    <div class="prose">
+      <p><strong>CORRECTED.</strong> Two 1N4148s for output bias looked textbook and gave 50 mA quiescent (two diodes at the
+      10 mA VAS current drop 1.44 V against the 1.22 V two BD139 junctions need); one diode plus a resistor gave 2 uA to 2 mA
+      and 1 to 5% crossover THD. Only a Vbe multiplier lands in between, hence the trimmer (bias table above).</p>
+      <p><strong>CORRECTED.</strong> The first diff-pair version starved at 4 ohm: 0.3 W at 4.5% THD, because the bootstrapped
+      VAS load (2 x 680 ohm, 4 mA) could not sink the PNP's base current. 2 x 270 ohm (about 10 mA) gives 1.3 W (<code>ampB.cir</code> vs <code>ampB2.cir</code>).</p>
+      <p><strong>LIMIT.</strong> Output power follows the output devices' hFE: at hFE 40 the 4 ohm channel clips at 0.2 W, at
+      hFE 250 it makes 1.8 W at 1%. Buy BD139-16 / BD140-16 (hFE 100 to 250), not the ungraded part.</p>
+      <p><strong>CONFIRMED.</strong> Zin 43k and midpoint 5.93 V against hand values of 26k-plus and 5.95 V; -3 dB at 34 Hz into
+      4 ohm against 1/(2 pi x 1000u x 4.7) = 34 Hz.</p>
+      <p><strong>DEFECT (fixed).</strong> The PSU's first clamp sat on the pass transistor's base and was overpowered by the
+      driver: a short drew 3 A. Moving the clamp to the driver's base (the zener node) limits at 2.1 A;
+      the 0.47 ohm sense also cost 0.5 V at 1 A, so it became 0.33 ohm.</p>
+      <p><strong>LIMIT.</strong> A 12 VAC secondary regulates only to 0.38 A; above that the output follows the raw trough
+      (10.2 V at 1 A). For full stereo power use 15 VAC at 1.5 A or more (30 VA), and a heatsink on the TIP41C (4.9 W at 1.1 A).</p>
+      <div class="note"><strong>Model caveats.</strong> BC547/BC557/BD139/BD140 are generic models with datasheet-typical
+      hFE, swept down to datasheet minimums; the TIP41C is a generic BF 60 model. No thermal coupling is modelled: the
+      multiplier transistor must sit next to the output devices (it does on the board) and the 70 C rows above assume
+      everything at one temperature.</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="eyebrow">Boards</span><h2>Three generated KiCad boards, two fab packages</h2></div>
+    <div class="prose">
+      <ul class="bullets">
+        <li><strong>Amp, 100 x 83 mm, 2 layers:</strong> both channels, four output transistors on the top edge with their 3x3
+        pinout jumper blocks below (row = device pin, column = E / C / B, bridged on the diagonal for BD139/BD140), trimmers,
+        test points TP1/TP2 (+12V, GND) and per channel TPx1 base, TPx2 output, TPx3 bias. 829 track segments, 18 vias, DRC clean.</li>
+        <li><strong>PSU, 90 x 50 mm:</strong> AC terminal and fuse on the left, bridge and reservoirs in the middle, TIP41C on the top
+        edge for a heatsink, DC in and two DC out terminals on the right, LED header J5 for a front-panel LED. DRC clean.</li>
+        <li><strong>Volume, 42 x 26 mm:</strong> dual 10k log pot (Alps RK097 footprint) with the shaft over the bottom edge, L-G-R
+        headers in and out, and a power LED fed by two wires from the PSU. DRC clean.</li>
+        <li><strong>Panel:</strong> 134.2 x 137.2 mm, mouse-bite tabs, DRC clean, gerbers in the release zip. Both fabs treat it as
+        a multi-design panel (small surcharge).</li>
+        <li><strong>Single-sided versions</strong> for home etching: amp 120 x 100, PSU 117 x 65, volume 42 x 26 mm; where one copper
+        layer was not enough the build added wire-link footprints JLn (PSU 1, volume 1, amp 14). The volume board is DRC clean; the single-sided PSU has one connection left open (bleeder R1 pin 1 to VRAW: add a wire to TP1); the single-sided amp is routed but keeps 44 DRC errors (open connections and wire links crowding neighbouring copper around the jumper blocks) and needs hand finishing in KiCad before etching.</li>
+        <li><strong>Hybrid footprints:</strong> every resistor, ceramic capacitor, small electrolytic and diode has a 1206 / SOD-123 /
+        SMA twin on the same pads; BC547/BC557 positions take SOT-23 on the 2-layer board.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="eyebrow">Build notes</span><h2>Bringing it up</h2></div>
+    <div class="prose">
+      <ul class="bullets">
+        <li><strong>Verified (simulated):</strong> set each channel's trimmer for 7 to 10 mV between TP3 (E4) and TP2 (OUT):
+        15 to 20 mA quiescent, 0.2 to 0.5% THD at 50 mW. Start fully anticlockwise.</li>
+        <li><strong>Verified:</strong> the DC-in path is safe with no transformer, with the transformer, and with both.</li>
+        <li><strong>Proposed, unsimulated:</strong> clip-on heatsinks on the four output devices if you drive 4 ohm speakers hard;
+        a 1 A slow fuse on the AC input; the pot's clockwise end on pin 3 is the datasheet convention, swap the two outer wires if
+        the knob works backwards.</li>
+        <li><strong>Tried and failed:</strong> diode bias (see findings), a 0.47 ohm clamp on the pass transistor's base, and a 9 V
+        rail: at 9 V the channel makes 0.33 W into 4 ohm at 1.7% and clips at 0.8 W.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="eyebrow">Interactive</span><h2>Open them in CircuitJS</h2>
+    <p>Amp channel: same values as the deck, Rm1 + trimmer as 820 ohm, 8 ohm load. PSU: the zener is drawn with CircuitJS's
+    default 5.6 V model, so double-click it and set 13 V; close the switch to test the DC-in path.</p></div>
+    <div class="btnrow">
+      <a class="cta" href="https://www.falstad.com/circuit/circuitjs.html?cct=$%201%200.000005%2010.20027730826997%2050%205%2050%0Av%2064%20480%2064%2064%200%200%2040%2012%200%200%200.5%0Ag%2064%20480%2064%20512%200%0Aw%2064%2064%20208%2064%200%0Aw%20208%2064%20288%2064%200%0Aw%20288%2064%20352%2064%200%0Aw%20352%2064%20528%2064%200%0Aw%20528%2064%20816%2064%200%0Av%20128%20480%20128%20368%200%201%201000%200.1%200%200%200.5%0Ag%20128%20480%20128%20512%200%0Ar%20128%20368%20192%20368%200%202500%0Ac%20192%20368%20256%20368%200%202.2e-06%200%200%0Ar%20208%2064%20208%20176%200%2047000%0Ar%20208%20176%20208%20480%200%2047000%0Ag%20208%20480%20208%20512%200%0Ac%20240%20176%20240%20480%200%204.7e-05%200%200%0Ag%20240%20480%20240%20512%200%0Aw%20208%20176%20240%20176%200%0Aw%20240%20176%20272%20176%200%0Ar%20272%20176%20272%20368%200%2047000%0Aw%20256%20368%20272%20368%200%0Aw%20272%20368%20304%20368%200%0At%20304%20368%20352%20368%200%201%200%200%20290%0At%20496%20368%20448%20368%200%201%200%200%20290%0Aw%20352%20384%20352%20416%200%0Aw%20352%20416%20400%20416%200%0Aw%20400%20416%20448%20416%200%0Aw%20448%20384%20448%20416%200%0Ar%20400%20416%20400%20480%200%2010000%0Ag%20400%20480%20400%20512%200%0Aw%20448%20352%20448%20320%200%0Aw%20448%20320%20528%20320%200%0Aw%20528%20320%20528%2064%200%0Ar%20288%2064%20288%20160%200%204700%0Aw%20288%20160%20288%20192%200%0Aw%20288%20192%20288%20240%200%0Aw%20288%20240%20352%20240%200%0Aw%20352%20240%20352%20352%200%0Aw%20496%20368%20528%20368%200%0Aw%20528%20368%20544%20368%200%0Ar%20544%20368%20608%20368%200%2022000%0A207%20608%20368%20640%20368%204%20out%0Ar%20528%20368%20528%20416%200%201000%0Ac%20528%20416%20528%20480%200%200.00022%200%200%0Ag%20528%20480%20528%20512%200%0At%20320%20192%20368%20192%200%20-1%200%200%20250%0Aw%20288%20192%20320%20192%200%0Ar%20352%2064%20352%20128%200%2047%0Aw%20352%20128%20368%20128%200%0Aw%20368%20128%20368%20176%200%0Aw%20368%20208%20368%20256%200%0Aw%20368%20256%20400%20256%200%0Aw%20400%20256%20608%20256%200%0Aw%20608%20256%20624%20256%200%0Aw%20624%20256%20736%20256%200%0Ac%20400%20192%20400%20256%200%201e-10%200%200%0A207%20400%20192%20432%20192%204%20c1%0A207%20288%20160%20256%20160%204%20c1%0Ar%20624%20256%20624%20304%200%20820%0At%20560%20304%20608%20304%200%201%200%200%20290%0Aw%20608%20288%20608%20256%200%0Aw%20560%20304%20560%20336%200%0Aw%20560%20336%20624%20336%200%0Aw%20624%20304%20624%20336%200%0Ar%20624%20336%20624%20400%200%201000%0Aw%20608%20320%20608%20400%200%0Aw%20608%20400%20624%20400%200%0Aw%20624%20400%20688%20400%200%0Aw%20688%20400%20736%20400%200%0Ar%20688%20400%20688%20448%200%20270%0Ar%20688%20448%20688%20480%200%20270%0Ag%20688%20480%20688%20512%200%0Ac%20688%20448%20752%20448%200%200.0001%200%200%0A207%20752%20448%20784%20448%204%20out%0At%20736%20256%20784%20256%200%201%200%200%20120%0Aw%20784%20240%20816%20240%200%0Aw%20816%20240%20816%2064%200%0At%20736%20400%20784%20400%200%20-1%200%200%20100%0Ag%20784%20416%20784%20448%200%0Ar%20784%20272%20784%20320%200%200.47%0Ar%20784%20384%20784%20320%200%200.47%0Aw%20784%20320%20848%20320%200%0Aw%20848%20320%20880%20320%200%0Aw%20880%20320%20912%20320%200%0A207%20848%20320%20848%20288%204%20out%0Ar%20880%20320%20880%20400%200%2010%0Ac%20880%20400%20880%20480%200%201e-07%200%200%0Ag%20880%20480%20880%20512%200%0Ac%20912%20320%20976%20320%200%200.001%200%200%0Ar%20976%20320%20976%20480%200%208%0Ag%20976%20480%20976%20512%200%0Ax%2064%20544%2064%20544%204%2016%20Stereo%20amp%20channel%20%28ngspice%20amp_final.cir%29:%20diff%20pair,%20VAS,%20Vbe%20multiplier,%20BD139/BD140.%2012%20V,%20Iq%2021%20mA,%201%20W%20into%208R%20at%200.5%25%20THD%0A">Amp channel</a>
+      <a class="cta" href="https://www.falstad.com/circuit/circuitjs.html?cct=$%201%200.00002%2010.20027730826997%2050%205%2050%0Av%2064%20352%2064%20160%200%201%2050%2021.2%200%200%200.5%0Ar%2064%20160%20144%20160%200%200.02%0Ar%2064%20352%20144%20352%200%200.8%0Aw%20144%20160%20160%20160%200%0Aw%20144%20352%20240%20352%200%0Ad%20160%20160%20160%2096%200%20default%0Ad%20160%20256%20160%20160%200%20default%0Ag%20160%20256%20160%20288%200%0Ad%20240%20352%20240%2096%200%20default%0Ad%20240%20416%20240%20352%200%20default%0Ag%20240%20416%20240%20448%200%0Aw%20160%2096%20240%2096%200%0Aw%20240%2096%20320%2096%200%0Aw%20320%2096%20368%2096%200%0Aw%20368%2096%20416%2096%200%0Aw%20416%2096%20480%2096%200%0Aw%20480%2096%20624%2096%200%0Aw%20624%2096%20720%2096%200%0Aw%20720%2096%20768%2096%200%0Ac%20320%2096%20320%20416%200%200.0022%200%200%0Ag%20320%20416%20320%20448%200%0Ac%20368%2096%20368%20416%200%200.0022%200%200%0Ag%20368%20416%20368%20448%200%0Ar%20416%2096%20416%20416%200%204700%0Ag%20416%20416%20416%20448%200%0Ar%20480%2096%20480%20192%200%201000%0Az%20480%20320%20480%20192%202%20default-zener%0Ag%20480%20320%20480%20352%200%0Ac%20528%20192%20528%20416%200%200.0001%200%200%0Ag%20528%20416%20528%20448%200%0Aw%20480%20192%20528%20192%200%0Aw%20528%20192%20576%20192%200%0A207%20480%20192%20448%20224%204%20vz%0At%20576%20192%20624%20192%200%201%200%200%20290%0Aw%20624%20176%20624%2096%200%0Aw%20624%20208%20624%20256%200%0Aw%20624%20256%20672%20256%200%0At%20672%20256%20720%20256%200%201%200%200%2060%0Aw%20720%20240%20720%2096%200%0Ar%20720%20272%20720%20352%200%200.33%0Aw%20720%20272%20768%20272%200%0At%20768%20272%20816%20272%200%201%200%200%20290%0A207%20816%20256%20848%20240%204%20vz%0Aw%20816%20288%20816%20352%200%0Aw%20816%20352%20768%20352%200%0Aw%20768%20352%20720%20352%200%0Ad%20768%20352%20768%2096%200%20default%0Aw%20816%20352%20864%20352%200%0Aw%20864%20352%20912%20352%200%0Aw%20912%20352%20960%20352%200%0Aw%20960%20352%201056%20352%200%0Ac%20864%20352%20864%20416%200%200.00022%200%200%0Ag%20864%20416%20864%20448%200%0Ar%20912%20352%20912%20384%200%201000%0A162%20912%20384%20912%20416%202%20default-led%201%200%200%200.01%0Ag%20912%20416%20912%20448%200%0Ad%201040%20352%20960%20352%200%20default%0As%201072%20352%201040%20352%200%201%20false%0Av%201072%20416%201072%20352%200%200%2040%2012%200%200%200.5%0Ag%201072%20416%201072%20448%200%0Ar%201056%20352%201056%20416%200%2015%0Ag%201056%20416%201056%20448%200%0Ax%2064%20480%2064%20480%204%2016%20Discrete%2012%20V%20PSU%20%28ngspice%20psu.cir%29.%20Zener%20drawn%20with%20the%20default%205.6%20V%20model:%20double-click%20it%20and%20set%2013%20V.%20Close%20the%20switch%20to%20test%20the%20DC-in%20path.%0A">Power supply</a>
+    </div>
+    <div class="urlbox" id="urlText">https://www.falstad.com/circuit/circuitjs.html?cct=$%201%200.000005%2010.20027730826997%2050%205%2050%0Av%2064%20480%2064%2064%200%200%2040%2012%200%200%200.5%0Ag%2064%20480%2064%20512%200%0Aw%2064%2064%20208%2064%200%0Aw%20208%2064%20288%2064%200%0Aw%20288%2064%20352%2064%200%0Aw%20352%2064%20528%2064%200%0Aw%20528%2064%20816%2064%200%0Av%20128%20480%20128%20368%200%201%201000%200.1%200%200%200.5%0Ag%20128%20480%20128%20512%200%0Ar%20128%20368%20192%20368%200%202500%0Ac%20192%20368%20256%20368%200%202.2e-06%200%200%0Ar%20208%2064%20208%20176%200%2047000%0Ar%20208%20176%20208%20480%200%2047000%0Ag%20208%20480%20208%20512%200%0Ac%20240%20176%20240%20480%200%204.7e-05%200%200%0Ag%20240%20480%20240%20512%200%0Aw%20208%20176%20240%20176%200%0Aw%20240%20176%20272%20176%200%0Ar%20272%20176%20272%20368%200%2047000%0Aw%20256%20368%20272%20368%200%0Aw%20272%20368%20304%20368%200%0At%20304%20368%20352%20368%200%201%200%200%20290%0At%20496%20368%20448%20368%200%201%200%200%20290%0Aw%20352%20384%20352%20416%200%0Aw%20352%20416%20400%20416%200%0Aw%20400%20416%20448%20416%200%0Aw%20448%20384%20448%20416%200%0Ar%20400%20416%20400%20480%200%2010000%0Ag%20400%20480%20400%20512%200%0Aw%20448%20352%20448%20320%200%0Aw%20448%20320%20528%20320%200%0Aw%20528%20320%20528%2064%200%0Ar%20288%2064%20288%20160%200%204700%0Aw%20288%20160%20288%20192%200%0Aw%20288%20192%20288%20240%200%0Aw%20288%20240%20352%20240%200%0Aw%20352%20240%20352%20352%200%0Aw%20496%20368%20528%20368%200%0Aw%20528%20368%20544%20368%200%0Ar%20544%20368%20608%20368%200%2022000%0A207%20608%20368%20640%20368%204%20out%0Ar%20528%20368%20528%20416%200%201000%0Ac%20528%20416%20528%20480%200%200.00022%200%200%0Ag%20528%20480%20528%20512%200%0At%20320%20192%20368%20192%200%20-1%200%200%20250%0Aw%20288%20192%20320%20192%200%0Ar%20352%2064%20352%20128%200%2047%0Aw%20352%20128%20368%20128%200%0Aw%20368%20128%20368%20176%200%0Aw%20368%20208%20368%20256%200%0Aw%20368%20256%20400%20256%200%0Aw%20400%20256%20608%20256%200%0Aw%20608%20256%20624%20256%200%0Aw%20624%20256%20736%20256%200%0Ac%20400%20192%20400%20256%200%201e-10%200%200%0A207%20400%20192%20432%20192%204%20c1%0A207%20288%20160%20256%20160%204%20c1%0Ar%20624%20256%20624%20304%200%20820%0At%20560%20304%20608%20304%200%201%200%200%20290%0Aw%20608%20288%20608%20256%200%0Aw%20560%20304%20560%20336%200%0Aw%20560%20336%20624%20336%200%0Aw%20624%20304%20624%20336%200%0Ar%20624%20336%20624%20400%200%201000%0Aw%20608%20320%20608%20400%200%0Aw%20608%20400%20624%20400%200%0Aw%20624%20400%20688%20400%200%0Aw%20688%20400%20736%20400%200%0Ar%20688%20400%20688%20448%200%20270%0Ar%20688%20448%20688%20480%200%20270%0Ag%20688%20480%20688%20512%200%0Ac%20688%20448%20752%20448%200%200.0001%200%200%0A207%20752%20448%20784%20448%204%20out%0At%20736%20256%20784%20256%200%201%200%200%20120%0Aw%20784%20240%20816%20240%200%0Aw%20816%20240%20816%2064%200%0At%20736%20400%20784%20400%200%20-1%200%200%20100%0Ag%20784%20416%20784%20448%200%0Ar%20784%20272%20784%20320%200%200.47%0Ar%20784%20384%20784%20320%200%200.47%0Aw%20784%20320%20848%20320%200%0Aw%20848%20320%20880%20320%200%0Aw%20880%20320%20912%20320%200%0A207%20848%20320%20848%20288%204%20out%0Ar%20880%20320%20880%20400%200%2010%0Ac%20880%20400%20880%20480%200%201e-07%200%200%0Ag%20880%20480%20880%20512%200%0Ac%20912%20320%20976%20320%200%200.001%200%200%0Ar%20976%20320%20976%20480%200%208%0Ag%20976%20480%20976%20512%200%0Ax%2064%20544%2064%20544%204%2016%20Stereo%20amp%20channel%20%28ngspice%20amp_final.cir%29:%20diff%20pair,%20VAS,%20Vbe%20multiplier,%20BD139/BD140.%2012%20V,%20Iq%2021%20mA,%201%20W%20into%208R%20at%200.5%25%20THD%0A</div>
+    <div class="urlbox">https://www.falstad.com/circuit/circuitjs.html?cct=$%201%200.00002%2010.20027730826997%2050%205%2050%0Av%2064%20352%2064%20160%200%201%2050%2021.2%200%200%200.5%0Ar%2064%20160%20144%20160%200%200.02%0Ar%2064%20352%20144%20352%200%200.8%0Aw%20144%20160%20160%20160%200%0Aw%20144%20352%20240%20352%200%0Ad%20160%20160%20160%2096%200%20default%0Ad%20160%20256%20160%20160%200%20default%0Ag%20160%20256%20160%20288%200%0Ad%20240%20352%20240%2096%200%20default%0Ad%20240%20416%20240%20352%200%20default%0Ag%20240%20416%20240%20448%200%0Aw%20160%2096%20240%2096%200%0Aw%20240%2096%20320%2096%200%0Aw%20320%2096%20368%2096%200%0Aw%20368%2096%20416%2096%200%0Aw%20416%2096%20480%2096%200%0Aw%20480%2096%20624%2096%200%0Aw%20624%2096%20720%2096%200%0Aw%20720%2096%20768%2096%200%0Ac%20320%2096%20320%20416%200%200.0022%200%200%0Ag%20320%20416%20320%20448%200%0Ac%20368%2096%20368%20416%200%200.0022%200%200%0Ag%20368%20416%20368%20448%200%0Ar%20416%2096%20416%20416%200%204700%0Ag%20416%20416%20416%20448%200%0Ar%20480%2096%20480%20192%200%201000%0Az%20480%20320%20480%20192%202%20default-zener%0Ag%20480%20320%20480%20352%200%0Ac%20528%20192%20528%20416%200%200.0001%200%200%0Ag%20528%20416%20528%20448%200%0Aw%20480%20192%20528%20192%200%0Aw%20528%20192%20576%20192%200%0A207%20480%20192%20448%20224%204%20vz%0At%20576%20192%20624%20192%200%201%200%200%20290%0Aw%20624%20176%20624%2096%200%0Aw%20624%20208%20624%20256%200%0Aw%20624%20256%20672%20256%200%0At%20672%20256%20720%20256%200%201%200%200%2060%0Aw%20720%20240%20720%2096%200%0Ar%20720%20272%20720%20352%200%200.33%0Aw%20720%20272%20768%20272%200%0At%20768%20272%20816%20272%200%201%200%200%20290%0A207%20816%20256%20848%20240%204%20vz%0Aw%20816%20288%20816%20352%200%0Aw%20816%20352%20768%20352%200%0Aw%20768%20352%20720%20352%200%0Ad%20768%20352%20768%2096%200%20default%0Aw%20816%20352%20864%20352%200%0Aw%20864%20352%20912%20352%200%0Aw%20912%20352%20960%20352%200%0Aw%20960%20352%201056%20352%200%0Ac%20864%20352%20864%20416%200%200.00022%200%200%0Ag%20864%20416%20864%20448%200%0Ar%20912%20352%20912%20384%200%201000%0A162%20912%20384%20912%20416%202%20default-led%201%200%200%200.01%0Ag%20912%20416%20912%20448%200%0Ad%201040%20352%20960%20352%200%20default%0As%201072%20352%201040%20352%200%201%20false%0Av%201072%20416%201072%20352%200%200%2040%2012%200%200%200.5%0Ag%201072%20416%201072%20448%200%0Ar%201056%20352%201056%20416%200%2015%0Ag%201056%20416%201056%20448%200%0Ax%2064%20480%2064%20480%204%2016%20Discrete%2012%20V%20PSU%20%28ngspice%20psu.cir%29.%20Zener%20drawn%20with%20the%20default%205.6%20V%20model:%20double-click%20it%20and%20set%2013%20V.%20Close%20the%20switch%20to%20test%20the%20DC-in%20path.%0A</div>
+    <div class="note">Never opened in a browser. Both netlists were checked against their simulated decks with
+      <code>connectivity.py --deck</code> (0 findings). Fallback: File &gt; Import From Text with
+      <code>circuitjs/stereo-amp-channel.txt</code> / <code>stereo-amp-psu.txt</code>.</div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="eyebrow">Files</span><h2>Everything behind this page</h2></div>
+    <div class="tw"><table>
+      <thead><tr><th>Path</th><th>What it is</th></tr></thead>
+      <tbody>
+        <tr><td class="ref">~/electronics/stereo_amp/sim/amp_final.cir</td><td>The channel as built (netlist-checked against the KiCad schematic). ampA/ampB/ampB2/ampB3/ampB4/ampB_sq.cir: candidates, sweeps, bias and stability runs with .out results.</td></tr>
+        <tr><td class="ref">~/electronics/stereo_amp/sim/psu.cir</td><td>Supply: AC input and load sweep, clamp, DC-only and both-sources runs (psu.out).</td></tr>
+        <tr><td class="ref">~/electronics/stereo_amp/kicad/</td><td>Generators, KiCad projects (amp/, psu/, vol/), panel/, build.sh, release.sh, README and ORDER_GUIDE one level up.</td></tr>
+        <tr><td class="ref">~/electronics/stereo_amp/release/</td><td>Fab zip: panel gerbers, single-layer gerbers and mirrored etch PDFs, schematic PDFs, BOMs, pictures.</td></tr>
+        <tr><td class="ref">stereo-amp/build_schem_amp.py, build_schem_psu.py</td><td>Figures 1 and 2, checked against the decks.</td></tr>
+        <tr><td class="ref">circuitjs/stereo-amp-channel.*, stereo-amp-psu.*</td><td>CircuitJS netlists, links and deck maps.</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <footer>
+    <p>ngspice 42, KiCad 9.0.8, freerouting 1.9.0, KiKit 1.8.1. Transistor models are generic (hFE from datasheets, swept);
+    the speaker is a resistor; no thermal coupling or self-heating; the 0.8 ohm winding resistance and 2.5k pot source are
+    assumptions. The 2-layer boards and the panel are DRC clean but unbuilt (the single-sided amp is not clean, see Boards), no PCB has been etched or ordered, and neither CircuitJS link has been
+    opened in a browser. Figures were machine-checked against the decks (check() OK, one marked crossing in Figure 1) but not
+    visually proofread in this session.</p>
+  </footer>
+</div>
+<script>
+(function () {
+  var btn = document.getElementById('themeBtn');
+  var root = document.documentElement;
+  btn.addEventListener('click', function () {
+    var cur = root.getAttribute('data-theme');
+    if (!cur) cur = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    root.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+  });
+  var copy = document.getElementById('copyBtn');
+  if (copy) copy.addEventListener('click', function () {
+    var t = document.getElementById('urlText').textContent.trim();
+    navigator.clipboard.writeText(t).then(function () {
+      copy.textContent = 'Copied';
+      setTimeout(function () { copy.textContent = 'Copy the URL'; }, 1600);
+    }, function () { copy.textContent = 'Select it manually'; });
+  });
+})();
+</script>
+</body>
+</html>

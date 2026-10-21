@@ -1,0 +1,60 @@
+* Candidate A: one CE gain stage (BC547) with shunt feedback, diode bias, bootstrapped load, BD139/BD140 follower
+.include models.inc
+Vcc vcc 0 DC 12
+Vin in 0 DC 0 AC 1 SIN(0 0.1 1k)
+Rs in src 2.5k
+Cin src inb 2.2u
+Rin inb b1 10k
+Rf out b1 220k
+Rb b1 0 240k
+Q1 c1 b1 e1 BC547B
+Re1 e1 0 1k
+Rg e1 eg 47
+Cg eg 0 100u
+R2a vcc boot 1k
+R2b boot bq2 1.2k
+Cboot out boot 47u
+D1 bq2 d12 D1N4148
+D2 d12 c1 D1N4148
+Q2 vcc bq2 e2 BD139
+Q3 0 c1 e3 BD140
+Re2 e2 out 0.47
+Re3 e3 out 0.47
+Rzob out zz 10
+Czob zz 0 100n
+Cout out spk 1000u
+RL spk 0 8
+.control
+foreach bf1 110 290 450
+  altermod @BC547B[BF] = $bf1
+  foreach bfo 40 120 250
+    altermod @BD139[BF] = $bfo
+    altermod @BD140[BF] = $bfo
+    op
+    let vo = v(out)
+    let iq = i(Vcc)
+    echo RESULT op bf1=$bf1 bfo=$bfo vout=$&vo isupply=$&iq
+  end
+end
+altermod @BC547B[BF] = 290
+altermod @BD139[BF] = 120
+altermod @BD140[BF] = 120
+foreach rs 1 2500 5000
+  alter Rs = $rs
+  ac lin 1 1000 1000
+  let g = mag(v(spk))
+  let zin = mag(v(src)/i(Vin))
+  echo RESULT ac rs=$rs gain=$&g zin=$&zin
+end
+alter Rs = 2500
+foreach amp 0.05 0.2
+  alter @Vin[sin] = [ 0 $amp 1k ]
+  tran 5u 25m 15m
+  meas tran vrms RMS v(spk) from=15m to=25m
+  let p = vrms*vrms/8
+  echo RESULT tran amp=$amp pout=$&p
+  fourier 1k v(spk)
+end
+quit
+.endc
+.end

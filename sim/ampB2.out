@@ -1,0 +1,81 @@
+RESULT op bf1=110 bfo=40 vout=5.84879 isupply=0.0563678 iqout=0.0472996 ivas=0.00959919
+RESULT op bf1=110 bfo=250 vout=5.84876 isupply=0.0624365 iqout=0.0524543 ivas=0.00959206
+RESULT op bf1=450 bfo=40 vout=5.94811 isupply=0.0573939 iqout=0.048148 ivas=0.00978432
+RESULT op bf1=450 bfo=250 vout=5.94817 isupply=0.0635416 iqout=0.0533654 ivas=0.00977565
+RESULT temp t=25 iqout=0.0518493 vout=5.93012
+RESULT temp t=70 iqout=0.05568 vout=5.93918
+RESULT ac rs=1 gain=21.2216 zin=43399.5
+RESULT ac rs=2500 gain=20.0662 zin=43399.5
+RESULT ac rs=5000 gain=19.0297 zin=43399.5
+RESULT f3 rl=4 f3=34.3029 fh=255616
+RESULT f3 rl=8 f3=19.5415 fh=282685
+RESULT tran bfo=40 rl=4 amp=0.03 pout=0.0241063 isupply=-0.0644053 pq4=0.321003
+  No. Harmonics: 10, THD: 0.323387 %, Gridsize: 200, Interpolation Degree: 1
+RESULT tran bfo=40 rl=4 amp=0.1 pout=0.225783 isupply=-0.122053 pq4=0.56708
+  No. Harmonics: 10, THD: 3.81024 %, Gridsize: 200, Interpolation Degree: 1
+RESULT tran bfo=40 rl=4 amp=0.2 pout=0.430966 isupply=-0.167366 pq4=0.636022
+  No. Harmonics: 10, THD: 23.4637 %, Gridsize: 200, Interpolation Degree: 1
+RESULT tran bfo=40 rl=4 amp=0.3 pout=0.531208 isupply=-0.189914 pq4=0.629678
+  No. Harmonics: 10, THD: 30.4605 %, Gridsize: 200, Interpolation Degree: 1
+RESULT tran bfo=40 rl=4 amp=0.4 pout=0.586253 isupply=-0.203228 pq4=0.618482
+  No. Harmonics: 10, THD: 33.8905 %, Gridsize: 200, Interpolation Degree: 1
+RESULT tran bfo=40 rl=8 amp=0.03 pout=0.0173847 isupply=-0.0594768 pq4=0.294253
+  No. Harmonics: 10, THD: 0.0867904 %, Gridsize: 200, Interpolation Degree: 1
+RESULT tran bfo=40 rl=8 amp=0.1 pout=0.185558 isupply=-0.0880804 pq4=0.381892
+  No. Harmonics: 10, THD: 0.720604 %, Gridsize: 200, Interpolation Degree: 1
+RESULT tran bfo=40 rl=8 amp=0.2 pout=0.570661 isupply=-0.13813 pq4=0.449878
+  No. Harmonics: 10, THD: 10.7028 %, Gridsize: 200, Interpolation Degree: 1
+RESULT tran bfo=40 rl=8 amp=0.3 pout=0.793662 isupply=-0.164836 pq4=0.407862
+  No. Harmonics: 10, THD: 21.3806 %, Gridsize: 200, Interpolation Degree: 1
+RESULT tran bfo=40 rl=8 amp=0.4 pout=0.872038 isupply=-0.175198 pq4=0.398387
+  No. Harmonics: 10, THD: 27.2849 %, Gridsize: 200, Interpolation Degree: 1
+RESULT tran bfo=40 rl=10 amp=0.03 pout=0.0150698 isupply=-0.0586926 pq4=0.290707
+  No. Harmonics: 10, THD: 0.0556351 %, Gridsize: 200, Interpolation Degree: 1
+RESULT tran bfo=40 rl=10 amp=0.1 pout=0.163355 isupply=-0.079416 pq4=0.339084
+  No. Harmonics: 10, THD: 0.451969 %, Gridsize: 200, Interpolation Degree: 1
+RESULT tran bfo=40 rl=10 amp=0.2 pout=0.574915 isupply=-0.125453 pq4=0.393223
+  No. Harmonics: 10, THD: 5.23458 %, Gridsize: 200, Interpolation Degree: 1
+RESULT tran bfo=40 rl=10 amp=0.3 pout=0.820134 isupply=-0.150695 pq4=0.358391
+  No. Harmonics: 10, THD: 17.5049 %, Gridsize: 200, Interpolation Degree: 1
+RESULT tran bfo=40 rl=10 amp=0.4 pout=0.910129 isupply=-0.160467 pq4=0.351431
+  No. Harmonics: 10, THD: 24.6045 %, Gridsize: 200, Interpolation Degree: 1
+RESULT tran bfo=120 rl=4 amp=0.03 pout=0.0379617 isupply=-0.0732389 pq4=0.362214
+  No. Harmonics: 10, THD: 0.177673 %, Gridsize: 200, Interpolation Degree: 1
+RESULT tran bfo=120 rl=4 amp=0.1 pout=0.398126 isupply=-0.158151 pq4=0.681203
+  No. Harmonics: 10, THD: 0.859473 %, Gridsize: 200, Interpolation Degree: 1
+RESULT tran bfo=120 rl=4 amp=0.2 pout=1.28888 isupply=-0.272698 pq4=0.83217
+  No. Harmonics: 10, THD: 8.20858 %, Gridsize: 200, Interpolation Degree: 1
+RESULT tran bfo=120 rl=4 amp=0.3 pout=1.72126 isupply=-0.320401 pq4=0.763037
+  No. Harmonics: 10, THD: 20.0364 %, Gridsize: 200, Interpolation Degree: 1
+RESULT tran bfo=120 rl=4 amp=0.4 pout=1.87444 isupply=-0.338978 pq4=0.751651
+  No. Harmonics: 10, THD: 26.6106 %, Gridsize: 200, Interpolation Degree: 1
+RESULT tran bfo=120 rl=8 amp=0.03 pout=0.0225899 isupply=-0.0649568 pq4=0.320401
+  No. Harmonics: 10, THD: 0.0290969 %, Gridsize: 200, Interpolation Degree: 1
+RESULT tran bfo=120 rl=8 amp=0.1 pout=0.246902 isupply=-0.100247 pq4=0.415503
+  No. Harmonics: 10, THD: 0.263258 %, Gridsize: 200, Interpolation Degree: 1
+RESULT tran bfo=120 rl=8 amp=0.2 pout=0.959536 isupply=-0.173343 pq4=0.478901
+  No. Harmonics: 10, THD: 0.60333 %, Gridsize: 200, Interpolation Degree: 1
+RESULT tran bfo=120 rl=8 amp=0.3 pout=1.71069 isupply=-0.226177 pq4=0.489681
+  No. Harmonics: 10, THD: 10.6473 %, Gridsize: 200, Interpolation Degree: 1
+RESULT tran bfo=120 rl=8 amp=0.4 pout=2.01909 isupply=-0.247991 pq4=0.498469
+  No. Harmonics: 10, THD: 18.99 %, Gridsize: 200, Interpolation Degree: 1
+RESULT tran bfo=120 rl=10 amp=0.03 pout=0.0187255 isupply=-0.0638457 pq4=0.315758
+  No. Harmonics: 10, THD: 0.0154345 %, Gridsize: 200, Interpolation Degree: 1
+RESULT tran bfo=120 rl=10 amp=0.1 pout=0.206025 isupply=-0.088354 pq4=0.364577
+  No. Harmonics: 10, THD: 0.172226 %, Gridsize: 200, Interpolation Degree: 1
+RESULT tran bfo=120 rl=10 amp=0.2 pout=0.807983 isupply=-0.146776 pq4=0.399438
+  No. Harmonics: 10, THD: 0.395887 %, Gridsize: 200, Interpolation Degree: 1
+RESULT tran bfo=120 rl=10 amp=0.3 pout=1.45404 isupply=-0.189668 pq4=0.397222
+  No. Harmonics: 10, THD: 10.5152 %, Gridsize: 200, Interpolation Degree: 1
+RESULT tran bfo=120 rl=10 amp=0.4 pout=1.71488 isupply=-0.206965 pq4=0.399284
+  No. Harmonics: 10, THD: 18.8972 %, Gridsize: 200, Interpolation Degree: 1
+RESULT tran9 rl=4 amp=0.1 pout=0.329335 isupply=-0.140378 pq4=0.433187
+  No. Harmonics: 10, THD: 1.74584 %, Gridsize: 200, Interpolation Degree: 1
+RESULT tran9 rl=4 amp=0.2 pout=0.840543 isupply=-0.221872 pq4=0.470219
+  No. Harmonics: 10, THD: 14.0276 %, Gridsize: 200, Interpolation Degree: 1
+PPerror: syntax error in line segment
+Error: cannot evaluate new parameter value.
+RESULT tran9 rl=4 amp=0.3 pout=1.00049 isupply=-0.246814 pq4=0.456579
+  No. Harmonics: 10, THD: 24.4709 %, Gridsize: 200, Interpolation Degree: 1
+RESULT square cl=1p vmax=-3.53552E-06 vset=-6.64574E-05 overshoot_pct=-94.68
+RESULT square cl=100n vmax=-3.55735E-06 vset=-6.64834E-05 overshoot_pct=-94.6493

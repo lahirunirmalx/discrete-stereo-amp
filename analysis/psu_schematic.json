@@ -1,0 +1,4920 @@
+{
+  "analyzer_type": "schematic",
+  "schema_version": "1.3.0",
+  "summary": {
+    "total_findings": 11,
+    "by_severity": {
+      "error": 2,
+      "warning": 0,
+      "info": 9
+    }
+  },
+  "trust_summary": {
+    "total_findings": 11,
+    "trust_level": "high",
+    "by_confidence": {
+      "deterministic": 11,
+      "heuristic": 0,
+      "datasheet-backed": 0
+    },
+    "by_evidence_source": {
+      "datasheet": 0,
+      "topology": 9,
+      "heuristic_rule": 0,
+      "symbol_footprint": 0,
+      "bom": 2,
+      "geometry": 0,
+      "api_lookup": 0
+    },
+    "provenance_coverage_pct": 81.8,
+    "bom_coverage": {
+      "total_components": 24,
+      "with_mpn": 0,
+      "with_datasheet": 0,
+      "mpn_pct": 0.0,
+      "datasheet_pct": 0.0
+    }
+  },
+  "file": "/home/lahiru/electronics/stereo_amp/kicad/psu/psu.kicad_sch",
+  "kicad_version": "9.0",
+  "file_version": "20250114",
+  "title_block": {
+    "title": "Discrete 12 V power supply - bridge, zener reference, TIP41C pass, DC-in bypass"
+  },
+  "statistics": {
+    "total_components": 30,
+    "unique_parts": 24,
+    "dnp_parts": 0,
+    "total_nets": 11,
+    "total_wires": 99,
+    "total_no_connects": 0,
+    "component_types": {
+      "connector": 5,
+      "fuse": 1,
+      "diode": 7,
+      "capacitor": 5,
+      "resistor": 4,
+      "test_point": 4,
+      "transistor": 3,
+      "led": 1
+    },
+    "power_rails": [
+      {
+        "name": "GND",
+        "voltage": null
+      },
+      {
+        "name": "PWR_FLAG",
+        "voltage": null
+      }
+    ],
+    "missing_mpn": [
+      "J1",
+      "F1",
+      "D1",
+      "D3",
+      "D2",
+      "D4",
+      "C1",
+      "C2",
+      "R1",
+      "R2",
+      "D5",
+      "C3",
+      "Q1",
+      "Q2",
+      "R3",
+      "Q3",
+      "D6",
+      "C4",
+      "C5",
+      "R4",
+      "D7",
+      "J5",
+      "J3",
+      "J4",
+      "D8",
+      "J2"
+    ],
+    "missing_footprint": []
+  },
+  "findings": [
+    {
+      "detector": "audit_datasheet_coverage",
+      "rule_id": "DS-001",
+      "severity": "error",
+      "confidence": "deterministic",
+      "evidence_source": "bom",
+      "category": "verification",
+      "summary": "No datasheets directory found and no BOM parts have MPNs. Review is a consistency check only \u2014 manufacturer specs cannot be verified.",
+      "components": [],
+      "nets": [],
+      "pins": [],
+      "datasheets_dir": null,
+      "datasheet_file_count": 0,
+      "bom_size": 26,
+      "mpn_coverage_percent": 0.0,
+      "recommendation": "Before reporting 'verified' findings, (1) populate the MPN field on BOM parts, (2) run the datasheet sync skill (digikey, mouser, lcsc, or element14) to download PDFs into ./datasheets/, then re-run analysis. If datasheets are unreachable, state every pin-level and electrical claim as 'per symbol/library' (consistency), not 'verified against datasheet' (correctness).",
+      "report_context": {
+        "section": "Datasheet Coverage",
+        "impact": "Report wording must avoid 'verified' / 'datasheet-confirmed' language for every BOM part \u2014 none have manufacturer evidence attached.",
+        "standard_ref": ""
+      },
+      "stages": [
+        "schematic"
+      ]
+    },
+    {
+      "connector_ref": "J1",
+      "connector_value": "AC IN 12-15V",
+      "interface_type": "generic",
+      "risk_level": "medium_risk",
+      "signal_nets": [
+        "AC2",
+        "__unnamed_0"
+      ],
+      "protected_nets": [],
+      "unprotected_nets": [
+        "AC2",
+        "__unnamed_0"
+      ],
+      "coverage": "none",
+      "esd_devices": [],
+      "esd_device_details": [],
+      "detector": "audit_esd_protection",
+      "rule_id": "EP-AUD",
+      "category": "protection",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "summary": "ESD audit J1 (generic): none coverage",
+      "description": "ESD protection audit for generic connector J1: none coverage.",
+      "components": [
+        "J1"
+      ],
+      "nets": [
+        "AC2",
+        "__unnamed_0"
+      ],
+      "pins": [],
+      "recommendation": "",
+      "report_context": {
+        "section": "ESD Protection",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "provenance": {
+        "evidence": "esd_coverage_audit",
+        "confidence": "deterministic",
+        "claimed_components": [
+          "J1"
+        ],
+        "excluded_by": [],
+        "suppressed_candidates": []
+      },
+      "detection_id": "",
+      "stages": [
+        "schematic"
+      ]
+    },
+    {
+      "connector_ref": "J2",
+      "connector_value": "DC IN 12V",
+      "interface_type": "generic",
+      "risk_level": "medium_risk",
+      "signal_nets": [
+        "__unnamed_6"
+      ],
+      "protected_nets": [],
+      "unprotected_nets": [
+        "__unnamed_6"
+      ],
+      "coverage": "none",
+      "esd_devices": [],
+      "esd_device_details": [],
+      "detector": "audit_esd_protection",
+      "rule_id": "EP-AUD",
+      "category": "protection",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "summary": "ESD audit J2 (generic): none coverage",
+      "description": "ESD protection audit for generic connector J2: none coverage.",
+      "components": [
+        "J2"
+      ],
+      "nets": [
+        "__unnamed_6"
+      ],
+      "pins": [],
+      "recommendation": "",
+      "report_context": {
+        "section": "ESD Protection",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "provenance": {
+        "evidence": "esd_coverage_audit",
+        "confidence": "deterministic",
+        "claimed_components": [
+          "J2"
+        ],
+        "excluded_by": [],
+        "suppressed_candidates": []
+      },
+      "detection_id": "",
+      "stages": [
+        "schematic"
+      ]
+    },
+    {
+      "connector_ref": "J3",
+      "connector_value": "DC OUT 1",
+      "interface_type": "generic",
+      "risk_level": "medium_risk",
+      "signal_nets": [
+        "__unnamed_4"
+      ],
+      "protected_nets": [],
+      "unprotected_nets": [
+        "__unnamed_4"
+      ],
+      "coverage": "none",
+      "esd_devices": [],
+      "esd_device_details": [],
+      "detector": "audit_esd_protection",
+      "rule_id": "EP-AUD",
+      "category": "protection",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "summary": "ESD audit J3 (generic): none coverage",
+      "description": "ESD protection audit for generic connector J3: none coverage.",
+      "components": [
+        "J3"
+      ],
+      "nets": [
+        "__unnamed_4"
+      ],
+      "pins": [],
+      "recommendation": "",
+      "report_context": {
+        "section": "ESD Protection",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "provenance": {
+        "evidence": "esd_coverage_audit",
+        "confidence": "deterministic",
+        "claimed_components": [
+          "J3"
+        ],
+        "excluded_by": [],
+        "suppressed_candidates": []
+      },
+      "detection_id": "",
+      "stages": [
+        "schematic"
+      ]
+    },
+    {
+      "connector_ref": "J4",
+      "connector_value": "DC OUT 2",
+      "interface_type": "generic",
+      "risk_level": "medium_risk",
+      "signal_nets": [
+        "__unnamed_4"
+      ],
+      "protected_nets": [],
+      "unprotected_nets": [
+        "__unnamed_4"
+      ],
+      "coverage": "none",
+      "esd_devices": [],
+      "esd_device_details": [],
+      "detector": "audit_esd_protection",
+      "rule_id": "EP-AUD",
+      "category": "protection",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "summary": "ESD audit J4 (generic): none coverage",
+      "description": "ESD protection audit for generic connector J4: none coverage.",
+      "components": [
+        "J4"
+      ],
+      "nets": [
+        "__unnamed_4"
+      ],
+      "pins": [],
+      "recommendation": "",
+      "report_context": {
+        "section": "ESD Protection",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "provenance": {
+        "evidence": "esd_coverage_audit",
+        "confidence": "deterministic",
+        "claimed_components": [
+          "J4"
+        ],
+        "excluded_by": [],
+        "suppressed_candidates": []
+      },
+      "detection_id": "",
+      "stages": [
+        "schematic"
+      ]
+    },
+    {
+      "connector_ref": "J5",
+      "connector_value": "LED REMOTE",
+      "interface_type": "header",
+      "risk_level": "medium_risk",
+      "signal_nets": [
+        "__unnamed_5"
+      ],
+      "protected_nets": [],
+      "unprotected_nets": [
+        "__unnamed_5"
+      ],
+      "coverage": "none",
+      "esd_devices": [],
+      "esd_device_details": [],
+      "detector": "audit_esd_protection",
+      "rule_id": "EP-AUD",
+      "category": "protection",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "summary": "ESD audit J5 (header): none coverage",
+      "description": "ESD protection audit for header connector J5: none coverage.",
+      "components": [
+        "J5"
+      ],
+      "nets": [
+        "__unnamed_5"
+      ],
+      "pins": [],
+      "recommendation": "",
+      "report_context": {
+        "section": "ESD Protection",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "provenance": {
+        "evidence": "esd_coverage_audit",
+        "confidence": "deterministic",
+        "claimed_components": [
+          "J5"
+        ],
+        "excluded_by": [],
+        "suppressed_candidates": []
+      },
+      "detection_id": "",
+      "stages": [
+        "schematic"
+      ]
+    },
+    {
+      "reference": "Q1",
+      "value": "BC547",
+      "lib_id": "Transistor_BJT:BC547",
+      "type": "bjt",
+      "base_net": "VZ",
+      "collector_net": "__unnamed_1",
+      "emitter_net": "__unnamed_2",
+      "collector_is_power": true,
+      "emitter_is_ground": false,
+      "load_type": "transistor",
+      "base_resistors": [
+        {
+          "reference": "R2",
+          "value": "1k"
+        }
+      ],
+      "base_driver_ics": [],
+      "base_pulldown": null,
+      "emitter_resistor": null,
+      "detector": "detect_led_drivers",
+      "rule_id": "LD-DET",
+      "category": "led_control",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "summary": "LED driver Q1",
+      "description": "Transistor Q1 driving LED D7",
+      "components": [
+        "D7",
+        "Q1",
+        "R1"
+      ],
+      "nets": [],
+      "pins": [],
+      "recommendation": "",
+      "report_context": {
+        "section": "LED Control",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "provenance": {
+        "evidence": "led_driver_transistor",
+        "confidence": "deterministic",
+        "claimed_components": [
+          "Q1",
+          "D7",
+          "R1"
+        ],
+        "excluded_by": [],
+        "suppressed_candidates": []
+      },
+      "led_driver": {
+        "led_ref": "D7",
+        "led_value": "LED",
+        "current_resistor": "R1",
+        "current_resistor_value": "4.7k",
+        "power_rail": null
+      },
+      "detection_id": "transistor_circuits:f75484b66a86",
+      "stages": [
+        "schematic"
+      ]
+    },
+    {
+      "reference": "Q2",
+      "value": "TIP41C",
+      "lib_id": "Transistor_BJT:TIP41C",
+      "type": "bjt",
+      "base_net": "__unnamed_2",
+      "collector_net": "__unnamed_1",
+      "emitter_net": "__unnamed_3",
+      "collector_is_power": true,
+      "emitter_is_ground": false,
+      "load_type": "transistor",
+      "base_resistors": [],
+      "base_driver_ics": [],
+      "base_pulldown": null,
+      "emitter_resistor": null,
+      "detector": "detect_led_drivers",
+      "rule_id": "LD-DET",
+      "category": "led_control",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "summary": "LED driver Q2",
+      "description": "Transistor Q2 driving LED D7",
+      "components": [
+        "D7",
+        "Q2",
+        "R1"
+      ],
+      "nets": [],
+      "pins": [],
+      "recommendation": "",
+      "report_context": {
+        "section": "LED Control",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "provenance": {
+        "evidence": "led_driver_transistor",
+        "confidence": "deterministic",
+        "claimed_components": [
+          "Q2",
+          "D7",
+          "R1"
+        ],
+        "excluded_by": [],
+        "suppressed_candidates": []
+      },
+      "led_driver": {
+        "led_ref": "D7",
+        "led_value": "LED",
+        "current_resistor": "R1",
+        "current_resistor_value": "4.7k",
+        "power_rail": null
+      },
+      "detection_id": "transistor_circuits:bd5f1581a6e4",
+      "stages": [
+        "schematic"
+      ]
+    },
+    {
+      "type": "low-pass",
+      "resistor": {
+        "ref": "R2",
+        "value": "1k",
+        "ohms": 1000.0
+      },
+      "capacitor": {
+        "ref": "C3",
+        "value": "100u",
+        "farads": 9.999999999999999e-05,
+        "dielectric": "X7R"
+      },
+      "cutoff_hz": 1.59,
+      "time_constant_s": 0.09999999999999999,
+      "input_net": "__unnamed_1",
+      "output_net": "VZ",
+      "ground_net": "GND",
+      "cutoff_formatted": "1.59 Hz",
+      "detector": "detect_rc_filters",
+      "rule_id": "RC-DET",
+      "category": "passive_filters",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "summary": "RC filter R2/C3 at 1.59Hz",
+      "description": "low-pass RC filter",
+      "components": [
+        "C3",
+        "R2"
+      ],
+      "nets": [],
+      "pins": [],
+      "recommendation": "",
+      "report_context": {
+        "section": "Passive Filters",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "provenance": {
+        "evidence": "rc_topology",
+        "confidence": "deterministic",
+        "claimed_components": [
+          "R2",
+          "C3"
+        ],
+        "excluded_by": [],
+        "suppressed_candidates": []
+      },
+      "detection_id": "rc_filters:1895490a68ec",
+      "stages": [
+        "schematic"
+      ]
+    },
+    {
+      "detector": "audit_sourcing_gate",
+      "rule_id": "SS-001",
+      "severity": "error",
+      "confidence": "deterministic",
+      "evidence_source": "bom",
+      "category": "sourcing",
+      "summary": "Sourcing blocker: BOM has <50% MPN coverage (0/20 unique parts). Board is not pre-fab ready.",
+      "description": "Sourcing audit: 0 of 20 unique BOM lines (grouped by value + footprint) carry a manufacturer part number (0.0%). Pre-fab readiness requires 100% coverage; production assembly requires all parts sourceable via one of the supported distributors.",
+      "components": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "D1",
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6",
+        "D7",
+        "D8",
+        "F1",
+        "J1",
+        "J2",
+        "J3",
+        "J4",
+        "J5",
+        "Q1",
+        "Q2",
+        "Q3",
+        "R1",
+        "R2",
+        "R3",
+        "R4"
+      ],
+      "nets": [],
+      "pins": [],
+      "mpn_coverage_percent": 0.0,
+      "missing_mpn_lines": 20,
+      "missing_mpn_refs": 26,
+      "total_bom_lines": 20,
+      "recommendation": "Populate the MPN field on the listed refs (use the digikey / mouser / lcsc / element14 skill to search by value/footprint when the MPN isn't already known).",
+      "report_context": {
+        "section": "Sourcing",
+        "impact": "Pre-fab gate: board cannot be ordered until MPN coverage reaches 100%.",
+        "standard_ref": ""
+      },
+      "stages": [
+        "pre_fab"
+      ]
+    },
+    {
+      "reference": "Q3",
+      "value": "BC547",
+      "lib_id": "Transistor_BJT:BC547",
+      "type": "bjt",
+      "base_net": "__unnamed_3",
+      "collector_net": "VZ",
+      "emitter_net": "__unnamed_4",
+      "collector_is_power": false,
+      "emitter_is_ground": false,
+      "load_type": "transistor",
+      "base_resistors": [
+        {
+          "reference": "R3",
+          "value": "0.33 2W"
+        }
+      ],
+      "base_driver_ics": [],
+      "base_pulldown": {
+        "reference": "R3",
+        "value": "0.33 2W"
+      },
+      "emitter_resistor": null,
+      "detector": "detect_transistor_circuits",
+      "rule_id": "TR-DET",
+      "category": "discrete_semiconductors",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "summary": "Transistor Q3 bjt",
+      "description": "BJT transistor circuit detected",
+      "components": [
+        "Q3"
+      ],
+      "nets": [],
+      "pins": [],
+      "recommendation": "",
+      "report_context": {
+        "section": "Discrete Semiconductors",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "provenance": {
+        "evidence": "transistor_bjt",
+        "confidence": "deterministic",
+        "claimed_components": [
+          "Q3"
+        ],
+        "excluded_by": [],
+        "suppressed_candidates": []
+      },
+      "detection_id": "transistor_circuits:af836b9bfb2d",
+      "stages": [
+        "schematic"
+      ]
+    }
+  ],
+  "bom": [
+    {
+      "value": "2200u",
+      "footprint": "Capacitor_THT:CP_Radial_D13.0mm_P5.00mm",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "references": [
+        "C1",
+        "C2"
+      ],
+      "quantity": 2,
+      "dnp": false,
+      "type": "capacitor"
+    },
+    {
+      "value": "100u",
+      "footprint": "Capacitor_THT:CP_Radial_D6.3mm_P2.50mm",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "references": [
+        "C3"
+      ],
+      "quantity": 1,
+      "dnp": false,
+      "type": "capacitor"
+    },
+    {
+      "value": "220u",
+      "footprint": "Capacitor_THT:CP_Radial_D6.3mm_P2.50mm",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "references": [
+        "C4"
+      ],
+      "quantity": 1,
+      "dnp": false,
+      "type": "capacitor"
+    },
+    {
+      "value": "100n",
+      "footprint": "Custom:C_P5_1206",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "references": [
+        "C5"
+      ],
+      "quantity": 1,
+      "dnp": false,
+      "type": "capacitor"
+    },
+    {
+      "value": "1N5401",
+      "footprint": "Custom:D_DO201_SMA",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "references": [
+        "D1",
+        "D3",
+        "D2",
+        "D4"
+      ],
+      "quantity": 4,
+      "dnp": false,
+      "type": "diode"
+    },
+    {
+      "value": "13V 1W",
+      "footprint": "Custom:D_DO41_SMA",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "references": [
+        "D5"
+      ],
+      "quantity": 1,
+      "dnp": false,
+      "type": "diode"
+    },
+    {
+      "value": "1N4007",
+      "footprint": "Custom:D_DO41_SMA",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "references": [
+        "D6"
+      ],
+      "quantity": 1,
+      "dnp": false,
+      "type": "diode"
+    },
+    {
+      "value": "LED",
+      "footprint": "LED_THT:LED_D3.0mm",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "references": [
+        "D7"
+      ],
+      "quantity": 1,
+      "dnp": false,
+      "type": "led"
+    },
+    {
+      "value": "SB540",
+      "footprint": "Custom:D_DO201_SMA",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "references": [
+        "D8"
+      ],
+      "quantity": 1,
+      "dnp": false,
+      "type": "diode"
+    },
+    {
+      "value": "1A T 5x20",
+      "footprint": "Fuse:Fuseholder_Clip-5x20mm_Littelfuse_100_Inline_P20.50x4.60mm_D1.30mm_Horizontal",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "references": [
+        "F1"
+      ],
+      "quantity": 1,
+      "dnp": false,
+      "type": "fuse"
+    },
+    {
+      "value": "AC IN 12-15V",
+      "footprint": "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "references": [
+        "J1"
+      ],
+      "quantity": 1,
+      "dnp": false,
+      "type": "connector"
+    },
+    {
+      "value": "DC IN 12V",
+      "footprint": "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "references": [
+        "J2"
+      ],
+      "quantity": 1,
+      "dnp": false,
+      "type": "connector"
+    },
+    {
+      "value": "DC OUT 1",
+      "footprint": "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "references": [
+        "J3"
+      ],
+      "quantity": 1,
+      "dnp": false,
+      "type": "connector"
+    },
+    {
+      "value": "DC OUT 2",
+      "footprint": "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "references": [
+        "J4"
+      ],
+      "quantity": 1,
+      "dnp": false,
+      "type": "connector"
+    },
+    {
+      "value": "LED REMOTE",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "references": [
+        "J5"
+      ],
+      "quantity": 1,
+      "dnp": false,
+      "type": "connector"
+    },
+    {
+      "value": "BC547",
+      "footprint": "Custom:TO92_SOT23",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "references": [
+        "Q1",
+        "Q3"
+      ],
+      "quantity": 2,
+      "dnp": false,
+      "type": "transistor"
+    },
+    {
+      "value": "TIP41C",
+      "footprint": "Package_TO_SOT_THT:TO-220-3_Vertical",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "references": [
+        "Q2"
+      ],
+      "quantity": 1,
+      "dnp": false,
+      "type": "transistor"
+    },
+    {
+      "value": "4.7k",
+      "footprint": "Custom:R_Axial_1206",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "references": [
+        "R1"
+      ],
+      "quantity": 1,
+      "dnp": false,
+      "type": "resistor"
+    },
+    {
+      "value": "1k",
+      "footprint": "Custom:R_Axial_1206",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "references": [
+        "R2",
+        "R4"
+      ],
+      "quantity": 2,
+      "dnp": false,
+      "type": "resistor"
+    },
+    {
+      "value": "0.33 2W",
+      "footprint": "Resistor_THT:R_Axial_DIN0414_L11.9mm_D4.5mm_P15.24mm_Horizontal",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "references": [
+        "R3"
+      ],
+      "quantity": 1,
+      "dnp": false,
+      "type": "resistor"
+    },
+    {
+      "value": "VRAW 14-19V",
+      "footprint": "TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "references": [
+        "TP1"
+      ],
+      "quantity": 1,
+      "dnp": false,
+      "type": "test_point"
+    },
+    {
+      "value": "VZ 13V",
+      "footprint": "TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "references": [
+        "TP2"
+      ],
+      "quantity": 1,
+      "dnp": false,
+      "type": "test_point"
+    },
+    {
+      "value": "VOUT 11.5V",
+      "footprint": "TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "references": [
+        "TP3"
+      ],
+      "quantity": 1,
+      "dnp": false,
+      "type": "test_point"
+    },
+    {
+      "value": "GND",
+      "footprint": "TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "datasheet": "",
+      "description": "",
+      "references": [
+        "TP4"
+      ],
+      "quantity": 1,
+      "dnp": false,
+      "type": "test_point"
+    }
+  ],
+  "components": [
+    {
+      "reference": "J1",
+      "value": "AC IN 12-15V",
+      "lib_id": "Connector:Screw_Terminal_01x02",
+      "lib_name": "",
+      "footprint": "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal",
+      "datasheet": "",
+      "description": "",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "x": 10.16,
+      "y": 25.4,
+      "angle": 0.0,
+      "mirror_x": false,
+      "mirror_y": true,
+      "unit": 1,
+      "uuid": "446e5b82-43db-5e69-9024-81616077359e",
+      "in_bom": true,
+      "dnp": false,
+      "on_board": true,
+      "pin_uuids": {
+        "1": "99665a9c-2f24-4063-9743-f1958516e38f",
+        "2": "a542d5e9-23a8-4c0c-8c85-24e83baed87d"
+      },
+      "type": "connector",
+      "keywords": "screw terminal",
+      "is_external_connector": true,
+      "connector_layout": "screw_terminal",
+      "_sheet": 0,
+      "category": "connector",
+      "pin_nets": {
+        "1": "__unnamed_0",
+        "2": "AC2"
+      }
+    },
+    {
+      "reference": "F1",
+      "value": "1A T 5x20",
+      "lib_id": "Device:Fuse",
+      "lib_name": "",
+      "footprint": "Fuse:Fuseholder_Clip-5x20mm_Littelfuse_100_Inline_P20.50x4.60mm_D1.30mm_Horizontal",
+      "datasheet": "",
+      "description": "",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "x": 25.4,
+      "y": 25.4,
+      "angle": 90.0,
+      "mirror_x": false,
+      "mirror_y": false,
+      "unit": 1,
+      "uuid": "1a8f3692-7843-5d75-baf0-a2a03466a32a",
+      "in_bom": true,
+      "dnp": false,
+      "on_board": true,
+      "pin_uuids": {
+        "1": "ad36c417-7f64-4a7a-a33c-2248b6212d66",
+        "2": "1492eef8-2d48-4f88-b841-248e49b9f62c"
+      },
+      "type": "fuse",
+      "keywords": "fuse",
+      "_sheet": 0,
+      "category": "fuse",
+      "pin_nets": {
+        "1": "__unnamed_0",
+        "2": "AC1"
+      }
+    },
+    {
+      "reference": "D1",
+      "value": "1N5401",
+      "lib_id": "Device:D",
+      "lib_name": "",
+      "footprint": "Custom:D_DO201_SMA",
+      "datasheet": "",
+      "description": "",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "x": 40.64,
+      "y": 17.78,
+      "angle": 270.0,
+      "mirror_x": false,
+      "mirror_y": false,
+      "unit": 1,
+      "uuid": "d9f0a2a7-adec-5c1c-b5d9-11bc7ca4e9bf",
+      "in_bom": true,
+      "dnp": false,
+      "on_board": true,
+      "pin_uuids": {
+        "1": "40c2c808-647d-4c39-99c4-e0721a5efd7b",
+        "2": "9ec17cbf-9852-4155-bc1f-942da5e3ae59"
+      },
+      "type": "diode",
+      "keywords": "diode",
+      "_sheet": 0,
+      "category": "diode",
+      "pin_nets": {
+        "2": "AC1",
+        "1": "__unnamed_1"
+      }
+    },
+    {
+      "reference": "D3",
+      "value": "1N5401",
+      "lib_id": "Device:D",
+      "lib_name": "",
+      "footprint": "Custom:D_DO201_SMA",
+      "datasheet": "",
+      "description": "",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "x": 40.64,
+      "y": 33.02,
+      "angle": 270.0,
+      "mirror_x": false,
+      "mirror_y": false,
+      "unit": 1,
+      "uuid": "cd9be83e-6129-5352-9e2c-b8df0471ff10",
+      "in_bom": true,
+      "dnp": false,
+      "on_board": true,
+      "pin_uuids": {
+        "1": "3b38739a-9fd3-4526-8868-e1128d1dcb35",
+        "2": "17ccac1f-2ca6-4a04-aae4-15b37bc25c5c"
+      },
+      "type": "diode",
+      "keywords": "diode",
+      "_sheet": 0,
+      "category": "diode",
+      "pin_nets": {
+        "1": "AC1",
+        "2": "GND"
+      }
+    },
+    {
+      "reference": "D2",
+      "value": "1N5401",
+      "lib_id": "Device:D",
+      "lib_name": "",
+      "footprint": "Custom:D_DO201_SMA",
+      "datasheet": "",
+      "description": "",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "x": 55.88,
+      "y": 17.78,
+      "angle": 270.0,
+      "mirror_x": false,
+      "mirror_y": false,
+      "unit": 1,
+      "uuid": "301606af-711a-52a8-9fd0-8099335edf69",
+      "in_bom": true,
+      "dnp": false,
+      "on_board": true,
+      "pin_uuids": {
+        "1": "cbf089cc-447e-4702-834d-850cdc243755",
+        "2": "893452e5-750e-4025-8443-38a1bae28c4f"
+      },
+      "type": "diode",
+      "keywords": "diode",
+      "_sheet": 0,
+      "category": "diode",
+      "pin_nets": {
+        "2": "AC2",
+        "1": "__unnamed_1"
+      }
+    },
+    {
+      "reference": "D4",
+      "value": "1N5401",
+      "lib_id": "Device:D",
+      "lib_name": "",
+      "footprint": "Custom:D_DO201_SMA",
+      "datasheet": "",
+      "description": "",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "x": 55.88,
+      "y": 33.02,
+      "angle": 270.0,
+      "mirror_x": false,
+      "mirror_y": false,
+      "unit": 1,
+      "uuid": "0dcc3595-17b5-5e11-815e-054dcfb5f7ff",
+      "in_bom": true,
+      "dnp": false,
+      "on_board": true,
+      "pin_uuids": {
+        "1": "b6bfd546-1084-4064-a069-ec6e1e863379",
+        "2": "1495ef34-9bae-4870-83c7-46f1e9d314dc"
+      },
+      "type": "diode",
+      "keywords": "diode",
+      "_sheet": 0,
+      "category": "diode",
+      "pin_nets": {
+        "1": "AC2",
+        "2": "GND"
+      }
+    },
+    {
+      "reference": "C1",
+      "value": "2200u",
+      "lib_id": "Device:C_Polarized",
+      "lib_name": "",
+      "footprint": "Capacitor_THT:CP_Radial_D13.0mm_P5.00mm",
+      "datasheet": "",
+      "description": "",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "x": 71.12,
+      "y": 20.32,
+      "angle": 0.0,
+      "mirror_x": false,
+      "mirror_y": false,
+      "unit": 1,
+      "uuid": "3f780dca-701d-5965-904b-06925a032161",
+      "in_bom": true,
+      "dnp": false,
+      "on_board": true,
+      "pin_uuids": {
+        "1": "f1796a4d-2956-4c95-abd2-a63ace733d70",
+        "2": "de1daf27-e505-4d55-ba7c-26df7aec66a7"
+      },
+      "type": "capacitor",
+      "keywords": "cap capacitor",
+      "_sheet": 0,
+      "category": "capacitor",
+      "parsed_value": 0.0021999999999999997,
+      "pin_nets": {
+        "1": "__unnamed_1",
+        "2": "GND"
+      }
+    },
+    {
+      "reference": "C2",
+      "value": "2200u",
+      "lib_id": "Device:C_Polarized",
+      "lib_name": "",
+      "footprint": "Capacitor_THT:CP_Radial_D13.0mm_P5.00mm",
+      "datasheet": "",
+      "description": "",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "x": 83.82,
+      "y": 20.32,
+      "angle": 0.0,
+      "mirror_x": false,
+      "mirror_y": false,
+      "unit": 1,
+      "uuid": "100da666-f9da-513a-a528-f01efaa57188",
+      "in_bom": true,
+      "dnp": false,
+      "on_board": true,
+      "pin_uuids": {
+        "1": "df9558d4-e582-45fc-838c-65781d4d7d98",
+        "2": "bb13ca6a-de90-4451-8633-17178e0fbf6c"
+      },
+      "type": "capacitor",
+      "keywords": "cap capacitor",
+      "_sheet": 0,
+      "category": "capacitor",
+      "parsed_value": 0.0021999999999999997,
+      "pin_nets": {
+        "1": "__unnamed_1",
+        "2": "GND"
+      }
+    },
+    {
+      "reference": "R1",
+      "value": "4.7k",
+      "lib_id": "Device:R",
+      "lib_name": "",
+      "footprint": "Custom:R_Axial_1206",
+      "datasheet": "",
+      "description": "",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "x": 93.98,
+      "y": 20.32,
+      "angle": 0.0,
+      "mirror_x": false,
+      "mirror_y": false,
+      "unit": 1,
+      "uuid": "c8530cd4-e3b7-5e9f-b373-2a01851d58aa",
+      "in_bom": true,
+      "dnp": false,
+      "on_board": true,
+      "pin_uuids": {
+        "1": "88504ae5-eeaf-4843-965e-a2245d214e76",
+        "2": "01af9c4f-fd79-4ff5-a970-7e64cff1935d"
+      },
+      "type": "resistor",
+      "keywords": "R res resistor",
+      "_sheet": 0,
+      "category": "resistor",
+      "parsed_value": 4700.0,
+      "pin_nets": {
+        "1": "__unnamed_1",
+        "2": "GND"
+      }
+    },
+    {
+      "reference": "TP1",
+      "value": "VRAW 14-19V",
+      "lib_id": "Connector:TestPoint",
+      "lib_name": "",
+      "footprint": "TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm",
+      "datasheet": "",
+      "description": "",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "x": 101.6,
+      "y": 6.35,
+      "angle": 0.0,
+      "mirror_x": false,
+      "mirror_y": false,
+      "unit": 1,
+      "uuid": "647df6b7-3760-57c0-8adc-78a370194dd8",
+      "in_bom": true,
+      "dnp": false,
+      "on_board": true,
+      "pin_uuids": {
+        "1": "4f219d05-1b58-493a-bf2b-b00018082e4d"
+      },
+      "type": "test_point",
+      "keywords": "test point tp",
+      "_sheet": 0,
+      "category": "test_point",
+      "pin_nets": {
+        "1": "__unnamed_1"
+      }
+    },
+    {
+      "reference": "R2",
+      "value": "1k",
+      "lib_id": "Device:R",
+      "lib_name": "",
+      "footprint": "Custom:R_Axial_1206",
+      "datasheet": "",
+      "description": "",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "x": 106.68,
+      "y": 20.32,
+      "angle": 0.0,
+      "mirror_x": false,
+      "mirror_y": false,
+      "unit": 1,
+      "uuid": "f7092807-e545-508f-b893-400d9b88e124",
+      "in_bom": true,
+      "dnp": false,
+      "on_board": true,
+      "pin_uuids": {
+        "1": "92505eee-e651-46e5-8fa4-8489168f057e",
+        "2": "1faf8c13-2a29-465c-83bf-3f94f79045ae"
+      },
+      "type": "resistor",
+      "keywords": "R res resistor",
+      "_sheet": 0,
+      "category": "resistor",
+      "parsed_value": 1000.0,
+      "pin_nets": {
+        "1": "__unnamed_1",
+        "2": "VZ"
+      }
+    },
+    {
+      "reference": "D5",
+      "value": "13V 1W",
+      "lib_id": "Device:D_Zener",
+      "lib_name": "",
+      "footprint": "Custom:D_DO41_SMA",
+      "datasheet": "",
+      "description": "",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "x": 106.68,
+      "y": 38.1,
+      "angle": 270.0,
+      "mirror_x": false,
+      "mirror_y": false,
+      "unit": 1,
+      "uuid": "44394687-2190-51a6-86d3-b0a289afed7c",
+      "in_bom": true,
+      "dnp": false,
+      "on_board": true,
+      "pin_uuids": {
+        "1": "6ae32ac3-5a7a-43d9-94db-ec51ab261f05",
+        "2": "e12561b0-12a0-4f76-b5b3-8bea43ec9b18"
+      },
+      "type": "diode",
+      "keywords": "diode",
+      "_sheet": 0,
+      "category": "diode",
+      "pin_nets": {
+        "2": "GND",
+        "1": "VZ"
+      }
+    },
+    {
+      "reference": "C3",
+      "value": "100u",
+      "lib_id": "Device:C_Polarized",
+      "lib_name": "",
+      "footprint": "Capacitor_THT:CP_Radial_D6.3mm_P2.50mm",
+      "datasheet": "",
+      "description": "",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "x": 116.84,
+      "y": 38.1,
+      "angle": 0.0,
+      "mirror_x": false,
+      "mirror_y": false,
+      "unit": 1,
+      "uuid": "aeb7b374-b209-5582-b543-69d9cce3d8d1",
+      "in_bom": true,
+      "dnp": false,
+      "on_board": true,
+      "pin_uuids": {
+        "1": "a226832b-fea5-4136-8ef4-3e27ee68bbd1",
+        "2": "08c3452a-716b-4c11-a65e-2eff94ed00e9"
+      },
+      "type": "capacitor",
+      "keywords": "cap capacitor",
+      "_sheet": 0,
+      "category": "capacitor",
+      "parsed_value": 9.999999999999999e-05,
+      "pin_nets": {
+        "2": "GND",
+        "1": "VZ"
+      }
+    },
+    {
+      "reference": "TP2",
+      "value": "VZ 13V",
+      "lib_id": "Connector:TestPoint",
+      "lib_name": "",
+      "footprint": "TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm",
+      "datasheet": "",
+      "description": "",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "x": 111.76,
+      "y": 26.67,
+      "angle": 0.0,
+      "mirror_x": false,
+      "mirror_y": false,
+      "unit": 1,
+      "uuid": "088aa7f1-fe4b-5e79-86c6-ce667d5e2189",
+      "in_bom": true,
+      "dnp": false,
+      "on_board": true,
+      "pin_uuids": {
+        "1": "0849cc8e-c1ee-409b-a2c8-980e9ba5b5cb"
+      },
+      "type": "test_point",
+      "keywords": "test point tp",
+      "_sheet": 0,
+      "category": "test_point",
+      "pin_nets": {
+        "1": "VZ"
+      }
+    },
+    {
+      "reference": "Q1",
+      "value": "BC547",
+      "lib_id": "Transistor_BJT:BC547",
+      "lib_name": "",
+      "footprint": "Custom:TO92_SOT23",
+      "datasheet": "",
+      "description": "",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "x": 132.08,
+      "y": 30.48,
+      "angle": 0.0,
+      "mirror_x": false,
+      "mirror_y": false,
+      "unit": 1,
+      "uuid": "c4b9f9ec-4a22-578c-9660-172751087ecc",
+      "in_bom": true,
+      "dnp": false,
+      "on_board": true,
+      "pin_uuids": {
+        "2": "0a45f6f5-67cb-4f07-87c3-331c38a26d2c",
+        "1": "c991ca9e-1f6b-4d6a-a40e-c5388fb12b8a",
+        "3": "85101cc8-b0f9-4001-ae55-d7064e717768"
+      },
+      "type": "transistor",
+      "keywords": "NPN Transistor",
+      "_sheet": 0,
+      "category": "transistor",
+      "pin_nets": {
+        "1": "__unnamed_1",
+        "2": "VZ",
+        "3": "__unnamed_2"
+      }
+    },
+    {
+      "reference": "Q2",
+      "value": "TIP41C",
+      "lib_id": "Transistor_BJT:TIP41C",
+      "lib_name": "",
+      "footprint": "Package_TO_SOT_THT:TO-220-3_Vertical",
+      "datasheet": "",
+      "description": "",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "x": 147.32,
+      "y": 40.64,
+      "angle": 0.0,
+      "mirror_x": false,
+      "mirror_y": false,
+      "unit": 1,
+      "uuid": "defb7290-b1d8-57b3-8de3-8230c10b1bf7",
+      "in_bom": true,
+      "dnp": false,
+      "on_board": true,
+      "pin_uuids": {
+        "1": "e7ea93fe-ce58-49f9-9362-7cd44757a5e4",
+        "2": "a41a9d8a-9040-411e-a77e-64cdd9dd033c",
+        "3": "3bacc772-eb38-4c37-809c-8cee9382d451"
+      },
+      "type": "transistor",
+      "keywords": "power NPN Transistor",
+      "_sheet": 0,
+      "category": "transistor",
+      "pin_nets": {
+        "2": "__unnamed_1",
+        "1": "__unnamed_2",
+        "3": "__unnamed_3"
+      }
+    },
+    {
+      "reference": "R3",
+      "value": "0.33 2W",
+      "lib_id": "Device:R",
+      "lib_name": "",
+      "footprint": "Resistor_THT:R_Axial_DIN0414_L11.9mm_D4.5mm_P15.24mm_Horizontal",
+      "datasheet": "",
+      "description": "",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "x": 149.86,
+      "y": 53.34,
+      "angle": 0.0,
+      "mirror_x": false,
+      "mirror_y": false,
+      "unit": 1,
+      "uuid": "5c335646-28f9-5dde-be79-88915b3d3676",
+      "in_bom": true,
+      "dnp": false,
+      "on_board": true,
+      "pin_uuids": {
+        "1": "ff1c7da1-92f8-450c-829b-65681699f868",
+        "2": "ea8df000-554c-4b01-bc85-730b10751a3d"
+      },
+      "type": "resistor",
+      "keywords": "R res resistor",
+      "_sheet": 0,
+      "category": "resistor",
+      "parsed_value": 0.33,
+      "pin_nets": {
+        "1": "__unnamed_3",
+        "2": "__unnamed_4"
+      }
+    },
+    {
+      "reference": "Q3",
+      "value": "BC547",
+      "lib_id": "Transistor_BJT:BC547",
+      "lib_name": "",
+      "footprint": "Custom:TO92_SOT23",
+      "datasheet": "",
+      "description": "",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "x": 162.56,
+      "y": 53.34,
+      "angle": 0.0,
+      "mirror_x": false,
+      "mirror_y": false,
+      "unit": 1,
+      "uuid": "d6860bdf-93c1-558c-a8af-467fa325cd46",
+      "in_bom": true,
+      "dnp": false,
+      "on_board": true,
+      "pin_uuids": {
+        "2": "c06c35fb-25cb-4cad-87e9-5942eec640ef",
+        "1": "e9534149-7705-4fd7-8aa1-f7674763557d",
+        "3": "c8d90baa-e5cf-4f0a-b3f1-085829e1144d"
+      },
+      "type": "transistor",
+      "keywords": "NPN Transistor",
+      "_sheet": 0,
+      "category": "transistor",
+      "pin_nets": {
+        "1": "VZ",
+        "2": "__unnamed_3",
+        "3": "__unnamed_4"
+      }
+    },
+    {
+      "reference": "D6",
+      "value": "1N4007",
+      "lib_id": "Device:D",
+      "lib_name": "",
+      "footprint": "Custom:D_DO41_SMA",
+      "datasheet": "",
+      "description": "",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "x": 177.8,
+      "y": 35.56,
+      "angle": 270.0,
+      "mirror_x": false,
+      "mirror_y": false,
+      "unit": 1,
+      "uuid": "afff40d7-288a-5e79-a202-0cb672a224c0",
+      "in_bom": true,
+      "dnp": false,
+      "on_board": true,
+      "pin_uuids": {
+        "1": "a9de6f99-dabb-4bb6-bcf2-1b399583955f",
+        "2": "bb4f5a93-734a-4b41-8697-876cd99211b0"
+      },
+      "type": "diode",
+      "keywords": "diode",
+      "_sheet": 0,
+      "category": "diode",
+      "pin_nets": {
+        "1": "__unnamed_1",
+        "2": "__unnamed_4"
+      }
+    },
+    {
+      "reference": "TP3",
+      "value": "VOUT 11.5V",
+      "lib_id": "Connector:TestPoint",
+      "lib_name": "",
+      "footprint": "TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm",
+      "datasheet": "",
+      "description": "",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "x": 185.42,
+      "y": 57.15,
+      "angle": 0.0,
+      "mirror_x": false,
+      "mirror_y": false,
+      "unit": 1,
+      "uuid": "7778a880-ccde-5ef6-82e2-e7f52b6b550a",
+      "in_bom": true,
+      "dnp": false,
+      "on_board": true,
+      "pin_uuids": {
+        "1": "45efed73-0208-46df-aa08-75c929c0183d"
+      },
+      "type": "test_point",
+      "keywords": "test point tp",
+      "_sheet": 0,
+      "category": "test_point",
+      "pin_nets": {
+        "1": "__unnamed_4"
+      }
+    },
+    {
+      "reference": "C4",
+      "value": "220u",
+      "lib_id": "Device:C_Polarized",
+      "lib_name": "",
+      "footprint": "Capacitor_THT:CP_Radial_D6.3mm_P2.50mm",
+      "datasheet": "",
+      "description": "",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "x": 195.58,
+      "y": 68.58,
+      "angle": 0.0,
+      "mirror_x": false,
+      "mirror_y": false,
+      "unit": 1,
+      "uuid": "d61450ca-5420-579b-830b-e279f3f2b353",
+      "in_bom": true,
+      "dnp": false,
+      "on_board": true,
+      "pin_uuids": {
+        "1": "2e30afae-72ad-4ec2-8d48-6bcc79f447b3",
+        "2": "bbc7920e-e321-4993-9956-1a47bf09f975"
+      },
+      "type": "capacitor",
+      "keywords": "cap capacitor",
+      "_sheet": 0,
+      "category": "capacitor",
+      "parsed_value": 0.00021999999999999998,
+      "pin_nets": {
+        "2": "GND",
+        "1": "__unnamed_4"
+      }
+    },
+    {
+      "reference": "C5",
+      "value": "100n",
+      "lib_id": "Device:C",
+      "lib_name": "",
+      "footprint": "Custom:C_P5_1206",
+      "datasheet": "",
+      "description": "",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "x": 205.74,
+      "y": 68.58,
+      "angle": 0.0,
+      "mirror_x": false,
+      "mirror_y": false,
+      "unit": 1,
+      "uuid": "f627a9d7-291e-5381-bbd7-645ddda23e3b",
+      "in_bom": true,
+      "dnp": false,
+      "on_board": true,
+      "pin_uuids": {
+        "1": "343fa728-483e-4eb1-a9b7-06956a176573",
+        "2": "3f3719d5-3e08-4a90-ac33-01f8e8b6c559"
+      },
+      "type": "capacitor",
+      "keywords": "cap capacitor",
+      "_sheet": 0,
+      "category": "capacitor",
+      "parsed_value": 1.0000000000000001e-07,
+      "pin_nets": {
+        "2": "GND",
+        "1": "__unnamed_4"
+      }
+    },
+    {
+      "reference": "R4",
+      "value": "1k",
+      "lib_id": "Device:R",
+      "lib_name": "",
+      "footprint": "Custom:R_Axial_1206",
+      "datasheet": "",
+      "description": "",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "x": 215.9,
+      "y": 68.58,
+      "angle": 0.0,
+      "mirror_x": false,
+      "mirror_y": false,
+      "unit": 1,
+      "uuid": "3200bb65-ea27-5cc2-b003-37d12c7bf204",
+      "in_bom": true,
+      "dnp": false,
+      "on_board": true,
+      "pin_uuids": {
+        "1": "ca4334f8-587b-485a-b9ee-4e20e48ed480",
+        "2": "6da806d1-290a-44c0-af4f-5b4f9eccbacb"
+      },
+      "type": "resistor",
+      "keywords": "R res resistor",
+      "_sheet": 0,
+      "category": "resistor",
+      "parsed_value": 1000.0,
+      "pin_nets": {
+        "1": "__unnamed_4",
+        "2": "__unnamed_5"
+      }
+    },
+    {
+      "reference": "D7",
+      "value": "LED",
+      "lib_id": "Device:LED",
+      "lib_name": "",
+      "footprint": "LED_THT:LED_D3.0mm",
+      "datasheet": "",
+      "description": "",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "x": 215.9,
+      "y": 78.74,
+      "angle": 90.0,
+      "mirror_x": false,
+      "mirror_y": false,
+      "unit": 1,
+      "uuid": "d1917dd7-b7f6-55f0-adfd-eb0f758ded36",
+      "in_bom": true,
+      "dnp": false,
+      "on_board": true,
+      "pin_uuids": {
+        "1": "4689eb08-9011-45fc-92cd-d8034e41d8b7",
+        "2": "7f7ece22-ca6f-4203-8cad-126bab3879ef"
+      },
+      "type": "led",
+      "keywords": "LED diode",
+      "_sheet": 0,
+      "category": "led",
+      "pin_nets": {
+        "1": "GND",
+        "2": "__unnamed_5"
+      }
+    },
+    {
+      "reference": "J5",
+      "value": "LED REMOTE",
+      "lib_id": "Connector_Generic:Conn_01x02",
+      "lib_name": "",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical",
+      "datasheet": "",
+      "description": "",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "x": 231.14,
+      "y": 74.93,
+      "angle": 0.0,
+      "mirror_x": false,
+      "mirror_y": false,
+      "unit": 1,
+      "uuid": "99bb5ef9-06bb-5674-9bb0-d62f55dff8e7",
+      "in_bom": true,
+      "dnp": false,
+      "on_board": true,
+      "pin_uuids": {
+        "1": "b8781a21-5a94-44a5-8b46-2b5802dd0d9a",
+        "2": "d2f790a9-b497-4502-bc9b-5cc0b0130552"
+      },
+      "type": "connector",
+      "keywords": "connector",
+      "is_external_connector": false,
+      "connector_layout": "dual",
+      "_sheet": 0,
+      "category": "connector",
+      "pin_nets": {
+        "2": "GND",
+        "1": "__unnamed_5"
+      }
+    },
+    {
+      "reference": "TP4",
+      "value": "GND",
+      "lib_id": "Connector:TestPoint",
+      "lib_name": "",
+      "footprint": "TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm",
+      "datasheet": "",
+      "description": "",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "x": 127.0,
+      "y": 82.55,
+      "angle": 0.0,
+      "mirror_x": false,
+      "mirror_y": false,
+      "unit": 1,
+      "uuid": "401d2217-05fa-598f-b96c-36e883081dc5",
+      "in_bom": true,
+      "dnp": false,
+      "on_board": true,
+      "pin_uuids": {
+        "1": "b1a6239e-3ca9-4eae-9654-92cb5dc9c119"
+      },
+      "type": "test_point",
+      "keywords": "test point tp",
+      "_sheet": 0,
+      "category": "test_point",
+      "pin_nets": {
+        "1": "GND"
+      }
+    },
+    {
+      "reference": "J3",
+      "value": "DC OUT 1",
+      "lib_id": "Connector:Screw_Terminal_01x02",
+      "lib_name": "",
+      "footprint": "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal",
+      "datasheet": "",
+      "description": "",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "x": 228.6,
+      "y": 35.56,
+      "angle": 0.0,
+      "mirror_x": false,
+      "mirror_y": true,
+      "unit": 1,
+      "uuid": "ca4fb408-9b89-5814-a070-cc195dbc4b14",
+      "in_bom": true,
+      "dnp": false,
+      "on_board": true,
+      "pin_uuids": {
+        "1": "ab71472e-a3c8-4dc2-a754-2c5cf9f2c48e",
+        "2": "30e594d7-96fd-44ee-a60e-c7a1d10376b4"
+      },
+      "type": "connector",
+      "keywords": "screw terminal",
+      "is_external_connector": true,
+      "connector_layout": "screw_terminal",
+      "_sheet": 0,
+      "category": "connector",
+      "pin_nets": {
+        "2": "GND",
+        "1": "__unnamed_4"
+      }
+    },
+    {
+      "reference": "J4",
+      "value": "DC OUT 2",
+      "lib_id": "Connector:Screw_Terminal_01x02",
+      "lib_name": "",
+      "footprint": "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal",
+      "datasheet": "",
+      "description": "",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "x": 228.6,
+      "y": 48.26,
+      "angle": 0.0,
+      "mirror_x": false,
+      "mirror_y": true,
+      "unit": 1,
+      "uuid": "5ed54c52-3f0c-5943-be84-ca28372a5527",
+      "in_bom": true,
+      "dnp": false,
+      "on_board": true,
+      "pin_uuids": {
+        "1": "01775682-4e2a-4559-ac29-cc9a1c6203b5",
+        "2": "dac04d8a-a4f1-418f-8d82-4fa9054f666a"
+      },
+      "type": "connector",
+      "keywords": "screw terminal",
+      "is_external_connector": true,
+      "connector_layout": "screw_terminal",
+      "_sheet": 0,
+      "category": "connector",
+      "pin_nets": {
+        "2": "GND",
+        "1": "__unnamed_4"
+      }
+    },
+    {
+      "reference": "D8",
+      "value": "SB540",
+      "lib_id": "Device:D_Schottky",
+      "lib_name": "",
+      "footprint": "Custom:D_DO201_SMA",
+      "datasheet": "",
+      "description": "",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "x": 248.92,
+      "y": 60.96,
+      "angle": 0.0,
+      "mirror_x": false,
+      "mirror_y": false,
+      "unit": 1,
+      "uuid": "26a43395-f4cb-523b-b83c-8ef6bc493a20",
+      "in_bom": true,
+      "dnp": false,
+      "on_board": true,
+      "pin_uuids": {
+        "1": "d4c1dcba-c481-4b41-bd9f-7b006e4b0caa",
+        "2": "15d317ab-f671-4f5f-8d89-6c0df804c109"
+      },
+      "type": "diode",
+      "keywords": "diode Schottky",
+      "_sheet": 0,
+      "category": "diode",
+      "pin_nets": {
+        "1": "__unnamed_4",
+        "2": "__unnamed_6"
+      }
+    },
+    {
+      "reference": "J2",
+      "value": "DC IN 12V",
+      "lib_id": "Connector:Screw_Terminal_01x02",
+      "lib_name": "",
+      "footprint": "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal",
+      "datasheet": "",
+      "description": "",
+      "mpn": "",
+      "manufacturer": "",
+      "digikey": "",
+      "mouser": "",
+      "lcsc": "",
+      "element14": "",
+      "x": 261.62,
+      "y": 60.96,
+      "angle": 0.0,
+      "mirror_x": false,
+      "mirror_y": false,
+      "unit": 1,
+      "uuid": "1169c692-8b9d-5afa-98d7-45dc45e6eff3",
+      "in_bom": true,
+      "dnp": false,
+      "on_board": true,
+      "pin_uuids": {
+        "1": "615c7fc3-bf83-40db-b098-1f7bea50b158",
+        "2": "791b6ea8-a6d7-47e1-ba13-1776fc665962"
+      },
+      "type": "connector",
+      "keywords": "screw terminal",
+      "is_external_connector": true,
+      "connector_layout": "screw_terminal",
+      "_sheet": 0,
+      "category": "connector",
+      "pin_nets": {
+        "2": "GND",
+        "1": "__unnamed_6"
+      }
+    }
+  ],
+  "nets": {
+    "__unnamed_0": {
+      "name": "__unnamed_0",
+      "pins": [
+        {
+          "component": "J1",
+          "pin_number": "1",
+          "pin_name": "Pin_1",
+          "pin_type": "passive"
+        },
+        {
+          "component": "F1",
+          "pin_number": "1",
+          "pin_name": "~",
+          "pin_type": "passive"
+        }
+      ],
+      "point_count": 2,
+      "no_connect": false,
+      "labels": []
+    },
+    "AC2": {
+      "name": "AC2",
+      "pins": [
+        {
+          "component": "J1",
+          "pin_number": "2",
+          "pin_name": "Pin_2",
+          "pin_type": "passive"
+        },
+        {
+          "component": "D2",
+          "pin_number": "2",
+          "pin_name": "A",
+          "pin_type": "passive"
+        },
+        {
+          "component": "D4",
+          "pin_number": "1",
+          "pin_name": "K",
+          "pin_type": "passive"
+        }
+      ],
+      "point_count": 8,
+      "no_connect": false,
+      "labels": [
+        {
+          "name": "AC2",
+          "type": "label"
+        }
+      ]
+    },
+    "AC1": {
+      "name": "AC1",
+      "pins": [
+        {
+          "component": "F1",
+          "pin_number": "2",
+          "pin_name": "~",
+          "pin_type": "passive"
+        },
+        {
+          "component": "D1",
+          "pin_number": "2",
+          "pin_name": "A",
+          "pin_type": "passive"
+        },
+        {
+          "component": "D3",
+          "pin_number": "1",
+          "pin_name": "K",
+          "pin_type": "passive"
+        }
+      ],
+      "point_count": 6,
+      "no_connect": false,
+      "labels": [
+        {
+          "name": "AC1",
+          "type": "label"
+        }
+      ]
+    },
+    "__unnamed_1": {
+      "name": "__unnamed_1",
+      "pins": [
+        {
+          "component": "D1",
+          "pin_number": "1",
+          "pin_name": "K",
+          "pin_type": "passive"
+        },
+        {
+          "component": "D2",
+          "pin_number": "1",
+          "pin_name": "K",
+          "pin_type": "passive"
+        },
+        {
+          "component": "C1",
+          "pin_number": "1",
+          "pin_name": "~",
+          "pin_type": "passive"
+        },
+        {
+          "component": "C2",
+          "pin_number": "1",
+          "pin_name": "~",
+          "pin_type": "passive"
+        },
+        {
+          "component": "R1",
+          "pin_number": "1",
+          "pin_name": "~",
+          "pin_type": "passive"
+        },
+        {
+          "component": "TP1",
+          "pin_number": "1",
+          "pin_name": "1",
+          "pin_type": "passive"
+        },
+        {
+          "component": "#FLG01",
+          "pin_number": "1",
+          "pin_name": "~",
+          "pin_type": "power_out"
+        },
+        {
+          "component": "R2",
+          "pin_number": "1",
+          "pin_name": "~",
+          "pin_type": "passive"
+        },
+        {
+          "component": "Q1",
+          "pin_number": "1",
+          "pin_name": "C",
+          "pin_type": "passive"
+        },
+        {
+          "component": "Q2",
+          "pin_number": "2",
+          "pin_name": "C",
+          "pin_type": "passive"
+        },
+        {
+          "component": "D6",
+          "pin_number": "1",
+          "pin_name": "K",
+          "pin_type": "passive"
+        }
+      ],
+      "point_count": 22,
+      "no_connect": false,
+      "labels": []
+    },
+    "GND": {
+      "name": "GND",
+      "pins": [
+        {
+          "component": "D3",
+          "pin_number": "2",
+          "pin_name": "A",
+          "pin_type": "passive"
+        },
+        {
+          "component": "D4",
+          "pin_number": "2",
+          "pin_name": "A",
+          "pin_type": "passive"
+        },
+        {
+          "component": "C1",
+          "pin_number": "2",
+          "pin_name": "~",
+          "pin_type": "passive"
+        },
+        {
+          "component": "C2",
+          "pin_number": "2",
+          "pin_name": "~",
+          "pin_type": "passive"
+        },
+        {
+          "component": "R1",
+          "pin_number": "2",
+          "pin_name": "~",
+          "pin_type": "passive"
+        },
+        {
+          "component": "D5",
+          "pin_number": "2",
+          "pin_name": "A",
+          "pin_type": "passive"
+        },
+        {
+          "component": "C3",
+          "pin_number": "2",
+          "pin_name": "~",
+          "pin_type": "passive"
+        },
+        {
+          "component": "C4",
+          "pin_number": "2",
+          "pin_name": "~",
+          "pin_type": "passive"
+        },
+        {
+          "component": "C5",
+          "pin_number": "2",
+          "pin_name": "~",
+          "pin_type": "passive"
+        },
+        {
+          "component": "D7",
+          "pin_number": "1",
+          "pin_name": "K",
+          "pin_type": "passive"
+        },
+        {
+          "component": "J5",
+          "pin_number": "2",
+          "pin_name": "Pin_2",
+          "pin_type": "passive"
+        },
+        {
+          "component": "TP4",
+          "pin_number": "1",
+          "pin_name": "1",
+          "pin_type": "passive"
+        },
+        {
+          "component": "#PWR02",
+          "pin_number": "1",
+          "pin_name": "~",
+          "pin_type": "power_in"
+        },
+        {
+          "component": "#FLG03",
+          "pin_number": "1",
+          "pin_name": "~",
+          "pin_type": "power_out"
+        },
+        {
+          "component": "J3",
+          "pin_number": "2",
+          "pin_name": "Pin_2",
+          "pin_type": "passive"
+        },
+        {
+          "component": "J4",
+          "pin_number": "2",
+          "pin_name": "Pin_2",
+          "pin_type": "passive"
+        },
+        {
+          "component": "J2",
+          "pin_number": "2",
+          "pin_name": "Pin_2",
+          "pin_type": "passive"
+        }
+      ],
+      "point_count": 34,
+      "no_connect": false,
+      "labels": [
+        {
+          "name": "GND",
+          "type": "label"
+        }
+      ]
+    },
+    "VZ": {
+      "name": "VZ",
+      "pins": [
+        {
+          "component": "R2",
+          "pin_number": "2",
+          "pin_name": "~",
+          "pin_type": "passive"
+        },
+        {
+          "component": "D5",
+          "pin_number": "1",
+          "pin_name": "K",
+          "pin_type": "passive"
+        },
+        {
+          "component": "C3",
+          "pin_number": "1",
+          "pin_name": "~",
+          "pin_type": "passive"
+        },
+        {
+          "component": "TP2",
+          "pin_number": "1",
+          "pin_name": "1",
+          "pin_type": "passive"
+        },
+        {
+          "component": "Q1",
+          "pin_number": "2",
+          "pin_name": "B",
+          "pin_type": "input"
+        },
+        {
+          "component": "Q3",
+          "pin_number": "1",
+          "pin_name": "C",
+          "pin_type": "passive"
+        }
+      ],
+      "point_count": 11,
+      "no_connect": false,
+      "labels": [
+        {
+          "name": "VZ",
+          "type": "label"
+        }
+      ]
+    },
+    "__unnamed_2": {
+      "name": "__unnamed_2",
+      "pins": [
+        {
+          "component": "Q1",
+          "pin_number": "3",
+          "pin_name": "E",
+          "pin_type": "passive"
+        },
+        {
+          "component": "Q2",
+          "pin_number": "1",
+          "pin_name": "B",
+          "pin_type": "input"
+        }
+      ],
+      "point_count": 3,
+      "no_connect": false,
+      "labels": []
+    },
+    "__unnamed_3": {
+      "name": "__unnamed_3",
+      "pins": [
+        {
+          "component": "Q2",
+          "pin_number": "3",
+          "pin_name": "E",
+          "pin_type": "passive"
+        },
+        {
+          "component": "R3",
+          "pin_number": "1",
+          "pin_name": "~",
+          "pin_type": "passive"
+        },
+        {
+          "component": "Q3",
+          "pin_number": "2",
+          "pin_name": "B",
+          "pin_type": "input"
+        }
+      ],
+      "point_count": 5,
+      "no_connect": false,
+      "labels": []
+    },
+    "__unnamed_4": {
+      "name": "__unnamed_4",
+      "pins": [
+        {
+          "component": "R3",
+          "pin_number": "2",
+          "pin_name": "~",
+          "pin_type": "passive"
+        },
+        {
+          "component": "Q3",
+          "pin_number": "3",
+          "pin_name": "E",
+          "pin_type": "passive"
+        },
+        {
+          "component": "D6",
+          "pin_number": "2",
+          "pin_name": "A",
+          "pin_type": "passive"
+        },
+        {
+          "component": "TP3",
+          "pin_number": "1",
+          "pin_name": "1",
+          "pin_type": "passive"
+        },
+        {
+          "component": "C4",
+          "pin_number": "1",
+          "pin_name": "~",
+          "pin_type": "passive"
+        },
+        {
+          "component": "C5",
+          "pin_number": "1",
+          "pin_name": "~",
+          "pin_type": "passive"
+        },
+        {
+          "component": "R4",
+          "pin_number": "1",
+          "pin_name": "~",
+          "pin_type": "passive"
+        },
+        {
+          "component": "J3",
+          "pin_number": "1",
+          "pin_name": "Pin_1",
+          "pin_type": "passive"
+        },
+        {
+          "component": "J4",
+          "pin_number": "1",
+          "pin_name": "Pin_1",
+          "pin_type": "passive"
+        },
+        {
+          "component": "D8",
+          "pin_number": "1",
+          "pin_name": "K",
+          "pin_type": "passive"
+        }
+      ],
+      "point_count": 20,
+      "no_connect": false,
+      "labels": []
+    },
+    "__unnamed_5": {
+      "name": "__unnamed_5",
+      "pins": [
+        {
+          "component": "R4",
+          "pin_number": "2",
+          "pin_name": "~",
+          "pin_type": "passive"
+        },
+        {
+          "component": "D7",
+          "pin_number": "2",
+          "pin_name": "A",
+          "pin_type": "passive"
+        },
+        {
+          "component": "J5",
+          "pin_number": "1",
+          "pin_name": "Pin_1",
+          "pin_type": "passive"
+        }
+      ],
+      "point_count": 3,
+      "no_connect": false,
+      "labels": []
+    },
+    "__unnamed_6": {
+      "name": "__unnamed_6",
+      "pins": [
+        {
+          "component": "D8",
+          "pin_number": "2",
+          "pin_name": "A",
+          "pin_type": "passive"
+        },
+        {
+          "component": "J2",
+          "pin_number": "1",
+          "pin_name": "Pin_1",
+          "pin_type": "passive"
+        }
+      ],
+      "point_count": 2,
+      "no_connect": false,
+      "labels": []
+    }
+  },
+  "subcircuits": [],
+  "ic_pin_analysis": [
+    {
+      "reference": "J1",
+      "value": "AC IN 12-15V",
+      "type": "connector",
+      "lib_id": "Connector:Screw_Terminal_01x02",
+      "mpn": "",
+      "description": "",
+      "datasheet": "",
+      "function": "",
+      "total_pins": 2,
+      "unconnected_pins": 0,
+      "pins": [
+        {
+          "pin_number": "1",
+          "pin_name": "Pin_1",
+          "pin_type": "passive",
+          "net": "__unnamed_0",
+          "connected_to": [
+            {
+              "ref": "F1",
+              "value": "1A T 5x20",
+              "type": "fuse",
+              "pin": "1",
+              "pin_name": "~"
+            }
+          ]
+        },
+        {
+          "pin_number": "2",
+          "pin_name": "Pin_2",
+          "pin_type": "passive",
+          "net": "AC2",
+          "connected_to": [
+            {
+              "ref": "D2",
+              "value": "1N5401",
+              "type": "diode",
+              "pin": "2",
+              "pin_name": "A"
+            },
+            {
+              "ref": "D4",
+              "value": "1N5401",
+              "type": "diode",
+              "pin": "1",
+              "pin_name": "K"
+            }
+          ]
+        }
+      ],
+      "power_pins": [],
+      "signal_pins": [
+        {
+          "pin_number": "1",
+          "pin_name": "Pin_1",
+          "pin_type": "passive",
+          "net": "__unnamed_0",
+          "connected_to": [
+            {
+              "ref": "F1",
+              "value": "1A T 5x20",
+              "type": "fuse",
+              "pin": "1",
+              "pin_name": "~"
+            }
+          ]
+        },
+        {
+          "pin_number": "2",
+          "pin_name": "Pin_2",
+          "pin_type": "passive",
+          "net": "AC2",
+          "connected_to": [
+            {
+              "ref": "D2",
+              "value": "1N5401",
+              "type": "diode",
+              "pin": "2",
+              "pin_name": "A"
+            },
+            {
+              "ref": "D4",
+              "value": "1N5401",
+              "type": "diode",
+              "pin": "1",
+              "pin_name": "K"
+            }
+          ]
+        }
+      ],
+      "decoupling_caps_by_rail": {}
+    },
+    {
+      "reference": "J5",
+      "value": "LED REMOTE",
+      "type": "connector",
+      "lib_id": "Connector_Generic:Conn_01x02",
+      "mpn": "",
+      "description": "",
+      "datasheet": "",
+      "function": "",
+      "total_pins": 2,
+      "unconnected_pins": 0,
+      "pins": [
+        {
+          "pin_number": "1",
+          "pin_name": "Pin_1",
+          "pin_type": "passive",
+          "net": "__unnamed_5",
+          "connected_to": [
+            {
+              "ref": "R4",
+              "value": "1k",
+              "type": "resistor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "D7",
+              "value": "LED",
+              "type": "led",
+              "pin": "2",
+              "pin_name": "A"
+            }
+          ]
+        },
+        {
+          "pin_number": "2",
+          "pin_name": "Pin_2",
+          "pin_type": "passive",
+          "net": "GND",
+          "connected_to": [
+            {
+              "ref": "D3",
+              "value": "1N5401",
+              "type": "diode",
+              "pin": "2",
+              "pin_name": "A"
+            },
+            {
+              "ref": "D4",
+              "value": "1N5401",
+              "type": "diode",
+              "pin": "2",
+              "pin_name": "A"
+            },
+            {
+              "ref": "C1",
+              "value": "2200u",
+              "type": "capacitor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "C2",
+              "value": "2200u",
+              "type": "capacitor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "R1",
+              "value": "4.7k",
+              "type": "resistor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "D5",
+              "value": "13V 1W",
+              "type": "diode",
+              "pin": "2",
+              "pin_name": "A"
+            },
+            {
+              "ref": "C3",
+              "value": "100u",
+              "type": "capacitor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "C4",
+              "value": "220u",
+              "type": "capacitor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "C5",
+              "value": "100n",
+              "type": "capacitor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "D7",
+              "value": "LED",
+              "type": "led",
+              "pin": "1",
+              "pin_name": "K"
+            },
+            {
+              "ref": "TP4",
+              "value": "GND",
+              "type": "test_point",
+              "pin": "1",
+              "pin_name": "1"
+            },
+            {
+              "ref": "J3",
+              "value": "DC OUT 1",
+              "type": "connector",
+              "pin": "2",
+              "pin_name": "Pin_2"
+            },
+            {
+              "ref": "J4",
+              "value": "DC OUT 2",
+              "type": "connector",
+              "pin": "2",
+              "pin_name": "Pin_2"
+            },
+            {
+              "ref": "J2",
+              "value": "DC IN 12V",
+              "type": "connector",
+              "pin": "2",
+              "pin_name": "Pin_2"
+            }
+          ],
+          "has_decoupling_cap": true,
+          "decoupling_caps": [],
+          "note": "Ground net \u2014 decoupling caps listed on VCC/VDD pins"
+        }
+      ],
+      "power_pins": [
+        {
+          "pin_number": "2",
+          "pin_name": "Pin_2",
+          "pin_type": "passive",
+          "net": "GND",
+          "connected_to": [
+            {
+              "ref": "D3",
+              "value": "1N5401",
+              "type": "diode",
+              "pin": "2",
+              "pin_name": "A"
+            },
+            {
+              "ref": "D4",
+              "value": "1N5401",
+              "type": "diode",
+              "pin": "2",
+              "pin_name": "A"
+            },
+            {
+              "ref": "C1",
+              "value": "2200u",
+              "type": "capacitor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "C2",
+              "value": "2200u",
+              "type": "capacitor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "R1",
+              "value": "4.7k",
+              "type": "resistor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "D5",
+              "value": "13V 1W",
+              "type": "diode",
+              "pin": "2",
+              "pin_name": "A"
+            },
+            {
+              "ref": "C3",
+              "value": "100u",
+              "type": "capacitor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "C4",
+              "value": "220u",
+              "type": "capacitor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "C5",
+              "value": "100n",
+              "type": "capacitor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "D7",
+              "value": "LED",
+              "type": "led",
+              "pin": "1",
+              "pin_name": "K"
+            },
+            {
+              "ref": "TP4",
+              "value": "GND",
+              "type": "test_point",
+              "pin": "1",
+              "pin_name": "1"
+            },
+            {
+              "ref": "J3",
+              "value": "DC OUT 1",
+              "type": "connector",
+              "pin": "2",
+              "pin_name": "Pin_2"
+            },
+            {
+              "ref": "J4",
+              "value": "DC OUT 2",
+              "type": "connector",
+              "pin": "2",
+              "pin_name": "Pin_2"
+            },
+            {
+              "ref": "J2",
+              "value": "DC IN 12V",
+              "type": "connector",
+              "pin": "2",
+              "pin_name": "Pin_2"
+            }
+          ],
+          "has_decoupling_cap": true,
+          "decoupling_caps": [],
+          "note": "Ground net \u2014 decoupling caps listed on VCC/VDD pins"
+        }
+      ],
+      "signal_pins": [
+        {
+          "pin_number": "1",
+          "pin_name": "Pin_1",
+          "pin_type": "passive",
+          "net": "__unnamed_5",
+          "connected_to": [
+            {
+              "ref": "R4",
+              "value": "1k",
+              "type": "resistor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "D7",
+              "value": "LED",
+              "type": "led",
+              "pin": "2",
+              "pin_name": "A"
+            }
+          ]
+        }
+      ],
+      "decoupling_caps_by_rail": {}
+    },
+    {
+      "reference": "J3",
+      "value": "DC OUT 1",
+      "type": "connector",
+      "lib_id": "Connector:Screw_Terminal_01x02",
+      "mpn": "",
+      "description": "",
+      "datasheet": "",
+      "function": "",
+      "total_pins": 2,
+      "unconnected_pins": 0,
+      "pins": [
+        {
+          "pin_number": "1",
+          "pin_name": "Pin_1",
+          "pin_type": "passive",
+          "net": "__unnamed_4",
+          "connected_to": [
+            {
+              "ref": "R3",
+              "value": "0.33 2W",
+              "type": "resistor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "Q3",
+              "value": "BC547",
+              "type": "transistor",
+              "pin": "3",
+              "pin_name": "E"
+            },
+            {
+              "ref": "D6",
+              "value": "1N4007",
+              "type": "diode",
+              "pin": "2",
+              "pin_name": "A"
+            },
+            {
+              "ref": "TP3",
+              "value": "VOUT 11.5V",
+              "type": "test_point",
+              "pin": "1",
+              "pin_name": "1"
+            },
+            {
+              "ref": "C4",
+              "value": "220u",
+              "type": "capacitor",
+              "pin": "1",
+              "pin_name": "~"
+            },
+            {
+              "ref": "C5",
+              "value": "100n",
+              "type": "capacitor",
+              "pin": "1",
+              "pin_name": "~"
+            },
+            {
+              "ref": "R4",
+              "value": "1k",
+              "type": "resistor",
+              "pin": "1",
+              "pin_name": "~"
+            },
+            {
+              "ref": "J4",
+              "value": "DC OUT 2",
+              "type": "connector",
+              "pin": "1",
+              "pin_name": "Pin_1"
+            },
+            {
+              "ref": "D8",
+              "value": "SB540",
+              "type": "diode",
+              "pin": "1",
+              "pin_name": "K"
+            }
+          ]
+        },
+        {
+          "pin_number": "2",
+          "pin_name": "Pin_2",
+          "pin_type": "passive",
+          "net": "GND",
+          "connected_to": [
+            {
+              "ref": "D3",
+              "value": "1N5401",
+              "type": "diode",
+              "pin": "2",
+              "pin_name": "A"
+            },
+            {
+              "ref": "D4",
+              "value": "1N5401",
+              "type": "diode",
+              "pin": "2",
+              "pin_name": "A"
+            },
+            {
+              "ref": "C1",
+              "value": "2200u",
+              "type": "capacitor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "C2",
+              "value": "2200u",
+              "type": "capacitor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "R1",
+              "value": "4.7k",
+              "type": "resistor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "D5",
+              "value": "13V 1W",
+              "type": "diode",
+              "pin": "2",
+              "pin_name": "A"
+            },
+            {
+              "ref": "C3",
+              "value": "100u",
+              "type": "capacitor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "C4",
+              "value": "220u",
+              "type": "capacitor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "C5",
+              "value": "100n",
+              "type": "capacitor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "D7",
+              "value": "LED",
+              "type": "led",
+              "pin": "1",
+              "pin_name": "K"
+            },
+            {
+              "ref": "J5",
+              "value": "LED REMOTE",
+              "type": "connector",
+              "pin": "2",
+              "pin_name": "Pin_2"
+            },
+            {
+              "ref": "TP4",
+              "value": "GND",
+              "type": "test_point",
+              "pin": "1",
+              "pin_name": "1"
+            },
+            {
+              "ref": "J4",
+              "value": "DC OUT 2",
+              "type": "connector",
+              "pin": "2",
+              "pin_name": "Pin_2"
+            },
+            {
+              "ref": "J2",
+              "value": "DC IN 12V",
+              "type": "connector",
+              "pin": "2",
+              "pin_name": "Pin_2"
+            }
+          ],
+          "has_decoupling_cap": true,
+          "decoupling_caps": [],
+          "note": "Ground net \u2014 decoupling caps listed on VCC/VDD pins"
+        }
+      ],
+      "power_pins": [
+        {
+          "pin_number": "2",
+          "pin_name": "Pin_2",
+          "pin_type": "passive",
+          "net": "GND",
+          "connected_to": [
+            {
+              "ref": "D3",
+              "value": "1N5401",
+              "type": "diode",
+              "pin": "2",
+              "pin_name": "A"
+            },
+            {
+              "ref": "D4",
+              "value": "1N5401",
+              "type": "diode",
+              "pin": "2",
+              "pin_name": "A"
+            },
+            {
+              "ref": "C1",
+              "value": "2200u",
+              "type": "capacitor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "C2",
+              "value": "2200u",
+              "type": "capacitor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "R1",
+              "value": "4.7k",
+              "type": "resistor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "D5",
+              "value": "13V 1W",
+              "type": "diode",
+              "pin": "2",
+              "pin_name": "A"
+            },
+            {
+              "ref": "C3",
+              "value": "100u",
+              "type": "capacitor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "C4",
+              "value": "220u",
+              "type": "capacitor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "C5",
+              "value": "100n",
+              "type": "capacitor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "D7",
+              "value": "LED",
+              "type": "led",
+              "pin": "1",
+              "pin_name": "K"
+            },
+            {
+              "ref": "J5",
+              "value": "LED REMOTE",
+              "type": "connector",
+              "pin": "2",
+              "pin_name": "Pin_2"
+            },
+            {
+              "ref": "TP4",
+              "value": "GND",
+              "type": "test_point",
+              "pin": "1",
+              "pin_name": "1"
+            },
+            {
+              "ref": "J4",
+              "value": "DC OUT 2",
+              "type": "connector",
+              "pin": "2",
+              "pin_name": "Pin_2"
+            },
+            {
+              "ref": "J2",
+              "value": "DC IN 12V",
+              "type": "connector",
+              "pin": "2",
+              "pin_name": "Pin_2"
+            }
+          ],
+          "has_decoupling_cap": true,
+          "decoupling_caps": [],
+          "note": "Ground net \u2014 decoupling caps listed on VCC/VDD pins"
+        }
+      ],
+      "signal_pins": [
+        {
+          "pin_number": "1",
+          "pin_name": "Pin_1",
+          "pin_type": "passive",
+          "net": "__unnamed_4",
+          "connected_to": [
+            {
+              "ref": "R3",
+              "value": "0.33 2W",
+              "type": "resistor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "Q3",
+              "value": "BC547",
+              "type": "transistor",
+              "pin": "3",
+              "pin_name": "E"
+            },
+            {
+              "ref": "D6",
+              "value": "1N4007",
+              "type": "diode",
+              "pin": "2",
+              "pin_name": "A"
+            },
+            {
+              "ref": "TP3",
+              "value": "VOUT 11.5V",
+              "type": "test_point",
+              "pin": "1",
+              "pin_name": "1"
+            },
+            {
+              "ref": "C4",
+              "value": "220u",
+              "type": "capacitor",
+              "pin": "1",
+              "pin_name": "~"
+            },
+            {
+              "ref": "C5",
+              "value": "100n",
+              "type": "capacitor",
+              "pin": "1",
+              "pin_name": "~"
+            },
+            {
+              "ref": "R4",
+              "value": "1k",
+              "type": "resistor",
+              "pin": "1",
+              "pin_name": "~"
+            },
+            {
+              "ref": "J4",
+              "value": "DC OUT 2",
+              "type": "connector",
+              "pin": "1",
+              "pin_name": "Pin_1"
+            },
+            {
+              "ref": "D8",
+              "value": "SB540",
+              "type": "diode",
+              "pin": "1",
+              "pin_name": "K"
+            }
+          ]
+        }
+      ],
+      "decoupling_caps_by_rail": {}
+    },
+    {
+      "reference": "J4",
+      "value": "DC OUT 2",
+      "type": "connector",
+      "lib_id": "Connector:Screw_Terminal_01x02",
+      "mpn": "",
+      "description": "",
+      "datasheet": "",
+      "function": "",
+      "total_pins": 2,
+      "unconnected_pins": 0,
+      "pins": [
+        {
+          "pin_number": "1",
+          "pin_name": "Pin_1",
+          "pin_type": "passive",
+          "net": "__unnamed_4",
+          "connected_to": [
+            {
+              "ref": "R3",
+              "value": "0.33 2W",
+              "type": "resistor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "Q3",
+              "value": "BC547",
+              "type": "transistor",
+              "pin": "3",
+              "pin_name": "E"
+            },
+            {
+              "ref": "D6",
+              "value": "1N4007",
+              "type": "diode",
+              "pin": "2",
+              "pin_name": "A"
+            },
+            {
+              "ref": "TP3",
+              "value": "VOUT 11.5V",
+              "type": "test_point",
+              "pin": "1",
+              "pin_name": "1"
+            },
+            {
+              "ref": "C4",
+              "value": "220u",
+              "type": "capacitor",
+              "pin": "1",
+              "pin_name": "~"
+            },
+            {
+              "ref": "C5",
+              "value": "100n",
+              "type": "capacitor",
+              "pin": "1",
+              "pin_name": "~"
+            },
+            {
+              "ref": "R4",
+              "value": "1k",
+              "type": "resistor",
+              "pin": "1",
+              "pin_name": "~"
+            },
+            {
+              "ref": "J3",
+              "value": "DC OUT 1",
+              "type": "connector",
+              "pin": "1",
+              "pin_name": "Pin_1"
+            },
+            {
+              "ref": "D8",
+              "value": "SB540",
+              "type": "diode",
+              "pin": "1",
+              "pin_name": "K"
+            }
+          ]
+        },
+        {
+          "pin_number": "2",
+          "pin_name": "Pin_2",
+          "pin_type": "passive",
+          "net": "GND",
+          "connected_to": [
+            {
+              "ref": "D3",
+              "value": "1N5401",
+              "type": "diode",
+              "pin": "2",
+              "pin_name": "A"
+            },
+            {
+              "ref": "D4",
+              "value": "1N5401",
+              "type": "diode",
+              "pin": "2",
+              "pin_name": "A"
+            },
+            {
+              "ref": "C1",
+              "value": "2200u",
+              "type": "capacitor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "C2",
+              "value": "2200u",
+              "type": "capacitor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "R1",
+              "value": "4.7k",
+              "type": "resistor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "D5",
+              "value": "13V 1W",
+              "type": "diode",
+              "pin": "2",
+              "pin_name": "A"
+            },
+            {
+              "ref": "C3",
+              "value": "100u",
+              "type": "capacitor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "C4",
+              "value": "220u",
+              "type": "capacitor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "C5",
+              "value": "100n",
+              "type": "capacitor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "D7",
+              "value": "LED",
+              "type": "led",
+              "pin": "1",
+              "pin_name": "K"
+            },
+            {
+              "ref": "J5",
+              "value": "LED REMOTE",
+              "type": "connector",
+              "pin": "2",
+              "pin_name": "Pin_2"
+            },
+            {
+              "ref": "TP4",
+              "value": "GND",
+              "type": "test_point",
+              "pin": "1",
+              "pin_name": "1"
+            },
+            {
+              "ref": "J3",
+              "value": "DC OUT 1",
+              "type": "connector",
+              "pin": "2",
+              "pin_name": "Pin_2"
+            },
+            {
+              "ref": "J2",
+              "value": "DC IN 12V",
+              "type": "connector",
+              "pin": "2",
+              "pin_name": "Pin_2"
+            }
+          ],
+          "has_decoupling_cap": true,
+          "decoupling_caps": [],
+          "note": "Ground net \u2014 decoupling caps listed on VCC/VDD pins"
+        }
+      ],
+      "power_pins": [
+        {
+          "pin_number": "2",
+          "pin_name": "Pin_2",
+          "pin_type": "passive",
+          "net": "GND",
+          "connected_to": [
+            {
+              "ref": "D3",
+              "value": "1N5401",
+              "type": "diode",
+              "pin": "2",
+              "pin_name": "A"
+            },
+            {
+              "ref": "D4",
+              "value": "1N5401",
+              "type": "diode",
+              "pin": "2",
+              "pin_name": "A"
+            },
+            {
+              "ref": "C1",
+              "value": "2200u",
+              "type": "capacitor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "C2",
+              "value": "2200u",
+              "type": "capacitor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "R1",
+              "value": "4.7k",
+              "type": "resistor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "D5",
+              "value": "13V 1W",
+              "type": "diode",
+              "pin": "2",
+              "pin_name": "A"
+            },
+            {
+              "ref": "C3",
+              "value": "100u",
+              "type": "capacitor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "C4",
+              "value": "220u",
+              "type": "capacitor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "C5",
+              "value": "100n",
+              "type": "capacitor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "D7",
+              "value": "LED",
+              "type": "led",
+              "pin": "1",
+              "pin_name": "K"
+            },
+            {
+              "ref": "J5",
+              "value": "LED REMOTE",
+              "type": "connector",
+              "pin": "2",
+              "pin_name": "Pin_2"
+            },
+            {
+              "ref": "TP4",
+              "value": "GND",
+              "type": "test_point",
+              "pin": "1",
+              "pin_name": "1"
+            },
+            {
+              "ref": "J3",
+              "value": "DC OUT 1",
+              "type": "connector",
+              "pin": "2",
+              "pin_name": "Pin_2"
+            },
+            {
+              "ref": "J2",
+              "value": "DC IN 12V",
+              "type": "connector",
+              "pin": "2",
+              "pin_name": "Pin_2"
+            }
+          ],
+          "has_decoupling_cap": true,
+          "decoupling_caps": [],
+          "note": "Ground net \u2014 decoupling caps listed on VCC/VDD pins"
+        }
+      ],
+      "signal_pins": [
+        {
+          "pin_number": "1",
+          "pin_name": "Pin_1",
+          "pin_type": "passive",
+          "net": "__unnamed_4",
+          "connected_to": [
+            {
+              "ref": "R3",
+              "value": "0.33 2W",
+              "type": "resistor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "Q3",
+              "value": "BC547",
+              "type": "transistor",
+              "pin": "3",
+              "pin_name": "E"
+            },
+            {
+              "ref": "D6",
+              "value": "1N4007",
+              "type": "diode",
+              "pin": "2",
+              "pin_name": "A"
+            },
+            {
+              "ref": "TP3",
+              "value": "VOUT 11.5V",
+              "type": "test_point",
+              "pin": "1",
+              "pin_name": "1"
+            },
+            {
+              "ref": "C4",
+              "value": "220u",
+              "type": "capacitor",
+              "pin": "1",
+              "pin_name": "~"
+            },
+            {
+              "ref": "C5",
+              "value": "100n",
+              "type": "capacitor",
+              "pin": "1",
+              "pin_name": "~"
+            },
+            {
+              "ref": "R4",
+              "value": "1k",
+              "type": "resistor",
+              "pin": "1",
+              "pin_name": "~"
+            },
+            {
+              "ref": "J3",
+              "value": "DC OUT 1",
+              "type": "connector",
+              "pin": "1",
+              "pin_name": "Pin_1"
+            },
+            {
+              "ref": "D8",
+              "value": "SB540",
+              "type": "diode",
+              "pin": "1",
+              "pin_name": "K"
+            }
+          ]
+        }
+      ],
+      "decoupling_caps_by_rail": {}
+    },
+    {
+      "reference": "J2",
+      "value": "DC IN 12V",
+      "type": "connector",
+      "lib_id": "Connector:Screw_Terminal_01x02",
+      "mpn": "",
+      "description": "",
+      "datasheet": "",
+      "function": "",
+      "total_pins": 2,
+      "unconnected_pins": 0,
+      "pins": [
+        {
+          "pin_number": "1",
+          "pin_name": "Pin_1",
+          "pin_type": "passive",
+          "net": "__unnamed_6",
+          "connected_to": [
+            {
+              "ref": "D8",
+              "value": "SB540",
+              "type": "diode",
+              "pin": "2",
+              "pin_name": "A"
+            }
+          ]
+        },
+        {
+          "pin_number": "2",
+          "pin_name": "Pin_2",
+          "pin_type": "passive",
+          "net": "GND",
+          "connected_to": [
+            {
+              "ref": "D3",
+              "value": "1N5401",
+              "type": "diode",
+              "pin": "2",
+              "pin_name": "A"
+            },
+            {
+              "ref": "D4",
+              "value": "1N5401",
+              "type": "diode",
+              "pin": "2",
+              "pin_name": "A"
+            },
+            {
+              "ref": "C1",
+              "value": "2200u",
+              "type": "capacitor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "C2",
+              "value": "2200u",
+              "type": "capacitor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "R1",
+              "value": "4.7k",
+              "type": "resistor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "D5",
+              "value": "13V 1W",
+              "type": "diode",
+              "pin": "2",
+              "pin_name": "A"
+            },
+            {
+              "ref": "C3",
+              "value": "100u",
+              "type": "capacitor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "C4",
+              "value": "220u",
+              "type": "capacitor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "C5",
+              "value": "100n",
+              "type": "capacitor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "D7",
+              "value": "LED",
+              "type": "led",
+              "pin": "1",
+              "pin_name": "K"
+            },
+            {
+              "ref": "J5",
+              "value": "LED REMOTE",
+              "type": "connector",
+              "pin": "2",
+              "pin_name": "Pin_2"
+            },
+            {
+              "ref": "TP4",
+              "value": "GND",
+              "type": "test_point",
+              "pin": "1",
+              "pin_name": "1"
+            },
+            {
+              "ref": "J3",
+              "value": "DC OUT 1",
+              "type": "connector",
+              "pin": "2",
+              "pin_name": "Pin_2"
+            },
+            {
+              "ref": "J4",
+              "value": "DC OUT 2",
+              "type": "connector",
+              "pin": "2",
+              "pin_name": "Pin_2"
+            }
+          ],
+          "has_decoupling_cap": true,
+          "decoupling_caps": [],
+          "note": "Ground net \u2014 decoupling caps listed on VCC/VDD pins"
+        }
+      ],
+      "power_pins": [
+        {
+          "pin_number": "2",
+          "pin_name": "Pin_2",
+          "pin_type": "passive",
+          "net": "GND",
+          "connected_to": [
+            {
+              "ref": "D3",
+              "value": "1N5401",
+              "type": "diode",
+              "pin": "2",
+              "pin_name": "A"
+            },
+            {
+              "ref": "D4",
+              "value": "1N5401",
+              "type": "diode",
+              "pin": "2",
+              "pin_name": "A"
+            },
+            {
+              "ref": "C1",
+              "value": "2200u",
+              "type": "capacitor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "C2",
+              "value": "2200u",
+              "type": "capacitor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "R1",
+              "value": "4.7k",
+              "type": "resistor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "D5",
+              "value": "13V 1W",
+              "type": "diode",
+              "pin": "2",
+              "pin_name": "A"
+            },
+            {
+              "ref": "C3",
+              "value": "100u",
+              "type": "capacitor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "C4",
+              "value": "220u",
+              "type": "capacitor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "C5",
+              "value": "100n",
+              "type": "capacitor",
+              "pin": "2",
+              "pin_name": "~"
+            },
+            {
+              "ref": "D7",
+              "value": "LED",
+              "type": "led",
+              "pin": "1",
+              "pin_name": "K"
+            },
+            {
+              "ref": "J5",
+              "value": "LED REMOTE",
+              "type": "connector",
+              "pin": "2",
+              "pin_name": "Pin_2"
+            },
+            {
+              "ref": "TP4",
+              "value": "GND",
+              "type": "test_point",
+              "pin": "1",
+              "pin_name": "1"
+            },
+            {
+              "ref": "J3",
+              "value": "DC OUT 1",
+              "type": "connector",
+              "pin": "2",
+              "pin_name": "Pin_2"
+            },
+            {
+              "ref": "J4",
+              "value": "DC OUT 2",
+              "type": "connector",
+              "pin": "2",
+              "pin_name": "Pin_2"
+            }
+          ],
+          "has_decoupling_cap": true,
+          "decoupling_caps": [],
+          "note": "Ground net \u2014 decoupling caps listed on VCC/VDD pins"
+        }
+      ],
+      "signal_pins": [
+        {
+          "pin_number": "1",
+          "pin_name": "Pin_1",
+          "pin_type": "passive",
+          "net": "__unnamed_6",
+          "connected_to": [
+            {
+              "ref": "D8",
+              "value": "SB540",
+              "type": "diode",
+              "pin": "2",
+              "pin_name": "A"
+            }
+          ]
+        }
+      ],
+      "decoupling_caps_by_rail": {}
+    }
+  ],
+  "design_analysis": {
+    "net_classification": {
+      "__unnamed_0": "signal",
+      "AC2": "signal",
+      "AC1": "signal",
+      "__unnamed_1": "power_internal",
+      "GND": "ground",
+      "VZ": "signal",
+      "__unnamed_2": "signal",
+      "__unnamed_3": "signal",
+      "__unnamed_4": "signal",
+      "__unnamed_5": "signal",
+      "__unnamed_6": "signal"
+    },
+    "power_domains": {
+      "ic_power_rails": {},
+      "domain_groups": {}
+    },
+    "cross_domain_signals": [],
+    "bus_analysis": {
+      "i2c": [],
+      "spi": [],
+      "uart": [],
+      "can": []
+    },
+    "differential_pairs": [],
+    "erc_warnings": [
+      {
+        "type": "no_driver",
+        "net": "VZ",
+        "message": "Net 'VZ' has input pins but no output driver",
+        "pins": [
+          {
+            "component": "R2",
+            "pin_number": "2",
+            "pin_name": "~",
+            "pin_type": "passive"
+          },
+          {
+            "component": "D5",
+            "pin_number": "1",
+            "pin_name": "K",
+            "pin_type": "passive"
+          },
+          {
+            "component": "C3",
+            "pin_number": "1",
+            "pin_name": "~",
+            "pin_type": "passive"
+          },
+          {
+            "component": "TP2",
+            "pin_number": "1",
+            "pin_name": "1",
+            "pin_type": "passive"
+          },
+          {
+            "component": "Q1",
+            "pin_number": "2",
+            "pin_name": "B",
+            "pin_type": "input"
+          },
+          {
+            "component": "Q3",
+            "pin_number": "1",
+            "pin_name": "C",
+            "pin_type": "passive"
+          }
+        ]
+      }
+    ],
+    "passive_warnings": []
+  },
+  "connectivity_issues": {
+    "unconnected_pins": [],
+    "single_pin_nets": [],
+    "single_pin_net_findings": [],
+    "multi_driver_nets": [],
+    "power_net_summary": {
+      "GND": {
+        "pin_count": 15,
+        "components": [
+          "C1",
+          "C2",
+          "C3",
+          "C4",
+          "C5",
+          "D3",
+          "D4",
+          "D5",
+          "D7",
+          "J2",
+          "J3",
+          "J4",
+          "J5",
+          "R1",
+          "TP4"
+        ]
+      }
+    }
+  },
+  "labels": [
+    {
+      "name": "AC1",
+      "type": "label",
+      "x": 33.02,
+      "y": 25.4,
+      "angle": 0.0,
+      "_sheet": 0
+    },
+    {
+      "name": "AC2",
+      "type": "label",
+      "x": 22.86,
+      "y": 33.02,
+      "angle": 0.0,
+      "_sheet": 0
+    },
+    {
+      "name": "AC1",
+      "type": "label",
+      "x": 35.56,
+      "y": 25.4,
+      "angle": 180.0,
+      "_sheet": 0
+    },
+    {
+      "name": "AC2",
+      "type": "label",
+      "x": 50.8,
+      "y": 25.4,
+      "angle": 180.0,
+      "_sheet": 0
+    },
+    {
+      "name": "VZ",
+      "type": "label",
+      "x": 101.6,
+      "y": 30.48,
+      "angle": 180.0,
+      "_sheet": 0
+    },
+    {
+      "name": "VZ",
+      "type": "label",
+      "x": 165.1,
+      "y": 44.45,
+      "angle": 90.0,
+      "_sheet": 0
+    },
+    {
+      "name": "GND",
+      "type": "label",
+      "x": 233.68,
+      "y": 40.64,
+      "angle": 270.0,
+      "_sheet": 0
+    },
+    {
+      "name": "GND",
+      "type": "label",
+      "x": 233.68,
+      "y": 53.34,
+      "angle": 270.0,
+      "_sheet": 0
+    },
+    {
+      "name": "GND",
+      "type": "label",
+      "x": 256.54,
+      "y": 66.04,
+      "angle": 270.0,
+      "_sheet": 0
+    }
+  ],
+  "no_connects": [],
+  "power_symbols": [
+    {
+      "net_name": "PWR_FLAG",
+      "x": 111.76,
+      "y": 6.35,
+      "lib_id": "power:PWR_FLAG",
+      "_sheet": 0,
+      "_power_scope": "global"
+    },
+    {
+      "net_name": "GND",
+      "x": 261.62,
+      "y": 86.36,
+      "lib_id": "power:GND",
+      "_sheet": 0,
+      "_power_scope": "global"
+    },
+    {
+      "net_name": "PWR_FLAG",
+      "x": 254.0,
+      "y": 91.44,
+      "lib_id": "power:PWR_FLAG",
+      "_sheet": 0,
+      "_power_scope": "global"
+    }
+  ],
+  "annotation_issues": {},
+  "label_shape_warnings": [],
+  "pwr_flag_warnings": [],
+  "footprint_filter_warnings": [],
+  "sourcing_audit": {
+    "total_bom_components": 26,
+    "mpn_coverage": "0/26",
+    "missing_mpn": [
+      "C1",
+      "C2",
+      "C3",
+      "C4",
+      "C5",
+      "D1",
+      "D2",
+      "D3",
+      "D4",
+      "D5",
+      "D6",
+      "D7",
+      "D8",
+      "F1",
+      "J1",
+      "J2",
+      "J3",
+      "J4",
+      "J5",
+      "Q1",
+      "Q2",
+      "Q3",
+      "R1",
+      "R2",
+      "R3",
+      "R4"
+    ],
+    "missing_digikey": [
+      "C1",
+      "C2",
+      "C3",
+      "C4",
+      "C5",
+      "D1",
+      "D2",
+      "D3",
+      "D4",
+      "D5",
+      "D6",
+      "D7",
+      "D8",
+      "F1",
+      "J1",
+      "J2",
+      "J3",
+      "J4",
+      "J5",
+      "Q1",
+      "Q2",
+      "Q3",
+      "R1",
+      "R2",
+      "R3",
+      "R4"
+    ],
+    "missing_lcsc": [
+      "C1",
+      "C2",
+      "C3",
+      "C4",
+      "C5",
+      "D1",
+      "D2",
+      "D3",
+      "D4",
+      "D5",
+      "D6",
+      "D7",
+      "D8",
+      "F1",
+      "J1",
+      "J2",
+      "J3",
+      "J4",
+      "J5",
+      "Q1",
+      "Q2",
+      "Q3",
+      "R1",
+      "R2",
+      "R3",
+      "R4"
+    ],
+    "mpn_percent": 0.0
+  },
+  "ground_domains": {
+    "ground_nets": {
+      "GND": {
+        "domain": "signal",
+        "connections": 15,
+        "components": [
+          "C1",
+          "C2",
+          "C3",
+          "C4",
+          "C5",
+          "D3",
+          "D4",
+          "D5",
+          "D7",
+          "J2",
+          "J3",
+          "J4",
+          "J5",
+          "R1",
+          "TP4"
+        ]
+      }
+    },
+    "multiple_domains": false
+  },
+  "bus_topology": {
+    "bus_wire_count": 0,
+    "bus_entry_count": 0,
+    "detected_bus_signals": [
+      {
+        "prefix": "AC",
+        "width": 4,
+        "range": "AC1..AC2"
+      }
+    ]
+  },
+  "wire_geometry": {
+    "total_wires": 99,
+    "total_length_mm": 1217.9,
+    "avg_length_mm": 12.3
+  },
+  "simulation_readiness": {
+    "total_components": 26,
+    "likely_simulatable": 20,
+    "needs_model": 6,
+    "components_without_model": [
+      "F1",
+      "J1",
+      "J2",
+      "J3",
+      "J4",
+      "J5"
+    ],
+    "simulatable_percent": 76.9
+  },
+  "property_issues": {},
+  "placement_analysis": {
+    "bounding_box": {
+      "x_min": 10.2,
+      "y_min": 6.3,
+      "x_max": 261.6,
+      "y_max": 82.5,
+      "width_mm": 251.5,
+      "height_mm": 76.2
+    },
+    "clusters": [
+      {
+        "region": "row0_col0",
+        "component_count": 7,
+        "types": {
+          "connector": 1,
+          "fuse": 1,
+          "diode": 4,
+          "capacitor": 1
+        },
+        "references": [
+          "C1",
+          "D1",
+          "D2",
+          "D3",
+          "D4",
+          "F1",
+          "J1"
+        ]
+      },
+      {
+        "region": "row0_col1",
+        "component_count": 8,
+        "types": {
+          "capacitor": 2,
+          "resistor": 2,
+          "test_point": 2,
+          "diode": 1,
+          "transistor": 1
+        },
+        "references": [
+          "C2",
+          "C3",
+          "D5",
+          "Q1",
+          "R1",
+          "R2",
+          "TP1",
+          "TP2"
+        ]
+      },
+      {
+        "region": "row0_col2",
+        "component_count": 2,
+        "types": {
+          "transistor": 1,
+          "diode": 1
+        },
+        "references": [
+          "D6",
+          "Q2"
+        ]
+      },
+      {
+        "region": "row0_col3",
+        "component_count": 1,
+        "types": {
+          "connector": 1
+        },
+        "references": [
+          "J3"
+        ]
+      },
+      {
+        "region": "row1_col1",
+        "component_count": 1,
+        "types": {
+          "test_point": 1
+        },
+        "references": [
+          "TP4"
+        ]
+      },
+      {
+        "region": "row1_col2",
+        "component_count": 4,
+        "types": {
+          "resistor": 1,
+          "transistor": 1,
+          "test_point": 1,
+          "capacitor": 1
+        },
+        "references": [
+          "C4",
+          "Q3",
+          "R3",
+          "TP3"
+        ]
+      },
+      {
+        "region": "row1_col3",
+        "component_count": 7,
+        "types": {
+          "capacitor": 1,
+          "resistor": 1,
+          "led": 1,
+          "connector": 3,
+          "diode": 1
+        },
+        "references": [
+          "C5",
+          "D7",
+          "D8",
+          "J2",
+          "J4",
+          "J5",
+          "R4"
+        ]
+      }
+    ],
+    "grid_size": "2x4"
+  },
+  "hierarchical_labels": {
+    "hierarchical_label_count": 0,
+    "global_label_count": 0
+  },
+  "rail_voltages": {
+    "GND": 0
+  },
+  "power_sequencing_validation": {
+    "power_tree": [],
+    "provenance": {
+      "evidence": "pseq_enable_chain",
+      "confidence": "heuristic",
+      "claimed_components": [],
+      "excluded_by": [],
+      "suppressed_candidates": []
+    }
+  },
+  "text_annotations": [
+    {
+      "type": "text",
+      "text": "Transformer secondary 12-15 VAC, 1.5 A or more for full stereo power (12 VAC: regulated to 0.35 A).",
+      "x": 5.08,
+      "y": 15.24,
+      "angle": 0.0
+    },
+    {
+      "type": "text",
+      "text": "J5: LED on the volume board via 2 wires (pin 1 = anode/+). Fit D7 or J5, not both.",
+      "x": 218.44,
+      "y": 92.71,
+      "angle": 0.0
+    },
+    {
+      "type": "text",
+      "text": "J2: 12 V DC straight to VOUT through D8 (0.4 V drop). Bypasses the regulator and the current clamp.",
+      "x": 223.52,
+      "y": 73.66,
+      "angle": 0.0
+    },
+    {
+      "type": "text",
+      "text": "Pass transistor Q2 needs a heatsink: 1.6 W at 12 VAC / 1 A, 4.9 W at 15 VAC / 1.1 A (psu.cir).",
+      "x": 5.08,
+      "y": 96.52,
+      "angle": 0.0
+    }
+  ],
+  "bom_optimization": {
+    "unique_value_counts": {
+      "resistor": 3,
+      "capacitor": 4
+    },
+    "total_unique_footprints": 14,
+    "single_use_passive_values": 5
+  },
+  "test_coverage": {
+    "test_points": [
+      {
+        "ref": "TP1",
+        "net": "__unnamed_1",
+        "value": "VRAW 14-19V"
+      },
+      {
+        "ref": "TP2",
+        "net": "VZ",
+        "value": "VZ 13V"
+      },
+      {
+        "ref": "TP3",
+        "net": "__unnamed_4",
+        "value": "VOUT 11.5V"
+      },
+      {
+        "ref": "TP4",
+        "net": "GND",
+        "value": "GND"
+      }
+    ],
+    "test_point_count": 4,
+    "covered_nets": [
+      "GND",
+      "VZ",
+      "__unnamed_1",
+      "__unnamed_4"
+    ],
+    "observations": [
+      "4 test point(s) covering 4 net(s)",
+      "No debug connectors (SWD/JTAG/UART) identified"
+    ]
+  },
+  "assembly_complexity": {
+    "total_components": 30,
+    "smd_count": 23,
+    "tht_count": 7,
+    "complexity_score": 31,
+    "difficulty_breakdown": {
+      "hard": 0,
+      "medium": 21,
+      "easy": 9
+    },
+    "package_breakdown": {
+      "other_SMD": 21,
+      "THT": 7,
+      "SOT23": 2
+    },
+    "unique_footprints": 3,
+    "observations": [
+      "Low assembly complexity (score 31/100) \u2014 hand assembly feasible"
+    ]
+  },
+  "missing_info": {
+    "missing_mpn": [
+      "J1",
+      "F1",
+      "D1",
+      "D3",
+      "D2",
+      "D4",
+      "C1",
+      "C2",
+      "R1",
+      "R2",
+      "D5",
+      "C3",
+      "Q1",
+      "Q2",
+      "R3",
+      "Q3",
+      "D6",
+      "C4",
+      "C5",
+      "R4",
+      "D7",
+      "J5",
+      "J3",
+      "J4",
+      "D8",
+      "J2"
+    ]
+  },
+  "bom_lock": {
+    "total_bom_components": 26,
+    "components_with_mpn": 0,
+    "missing_mpn": [
+      "J1",
+      "F1",
+      "D1",
+      "D3",
+      "D2",
+      "D4",
+      "C1",
+      "C2",
+      "R1",
+      "R2",
+      "D5",
+      "C3",
+      "Q1",
+      "Q2",
+      "R3",
+      "Q3",
+      "D6",
+      "C4",
+      "C5",
+      "R4"
+    ],
+    "missing_mpn_count": 26,
+    "generic_values": [],
+    "lock_pct": 0,
+    "status": "fail"
+  },
+  "design_intent": {
+    "product_class": "prototype",
+    "ipc_class": 2,
+    "target_market": "hobby",
+    "expected_lifetime_years": 5,
+    "operating_temp_range": [
+      -10,
+      70
+    ],
+    "preferred_passive_size": "0603",
+    "test_coverage_target": 0.85,
+    "approved_manufacturers": [],
+    "confidence": 0.3,
+    "detection_signals": [],
+    "source": {
+      "ipc_class": "auto",
+      "product_class": "auto",
+      "target_market": "auto",
+      "expected_lifetime_years": "auto",
+      "operating_temp_range": "auto",
+      "preferred_passive_size": "auto",
+      "test_coverage_target": "auto",
+      "approved_manufacturers": "auto"
+    }
+  },
+  "audience_summary": {
+    "designer": {
+      "total_findings": 11,
+      "by_severity": {
+        "error": 2,
+        "warning": 0,
+        "info": 9
+      },
+      "by_category": {
+        "verification": 1,
+        "protection": 5,
+        "led_control": 2,
+        "passive_filters": 1,
+        "sourcing": 1,
+        "discrete_semiconductors": 1
+      },
+      "top_issues": [
+        {
+          "detector": "audit_datasheet_coverage",
+          "rule_id": "DS-001",
+          "severity": "error",
+          "confidence": "deterministic",
+          "evidence_source": "bom",
+          "category": "verification",
+          "summary": "No datasheets directory found and no BOM parts have MPNs. Review is a consistency check only \u2014 manufacturer specs cannot be verified.",
+          "components": [],
+          "nets": [],
+          "pins": [],
+          "datasheets_dir": null,
+          "datasheet_file_count": 0,
+          "bom_size": 26,
+          "mpn_coverage_percent": 0.0,
+          "recommendation": "Before reporting 'verified' findings, (1) populate the MPN field on BOM parts, (2) run the datasheet sync skill (digikey, mouser, lcsc, or element14) to download PDFs into ./datasheets/, then re-run analysis. If datasheets are unreachable, state every pin-level and electrical claim as 'per symbol/library' (consistency), not 'verified against datasheet' (correctness).",
+          "report_context": {
+            "section": "Datasheet Coverage",
+            "impact": "Report wording must avoid 'verified' / 'datasheet-confirmed' language for every BOM part \u2014 none have manufacturer evidence attached.",
+            "standard_ref": ""
+          },
+          "stages": [
+            "schematic"
+          ]
+        },
+        {
+          "detector": "audit_sourcing_gate",
+          "rule_id": "SS-001",
+          "severity": "error",
+          "confidence": "deterministic",
+          "evidence_source": "bom",
+          "category": "sourcing",
+          "summary": "Sourcing blocker: BOM has <50% MPN coverage (0/20 unique parts). Board is not pre-fab ready.",
+          "description": "Sourcing audit: 0 of 20 unique BOM lines (grouped by value + footprint) carry a manufacturer part number (0.0%). Pre-fab readiness requires 100% coverage; production assembly requires all parts sourceable via one of the supported distributors.",
+          "components": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5",
+            "D6",
+            "D7",
+            "D8",
+            "F1",
+            "J1",
+            "J2",
+            "J3",
+            "J4",
+            "J5",
+            "Q1",
+            "Q2",
+            "Q3",
+            "R1",
+            "R2",
+            "R3",
+            "R4"
+          ],
+          "nets": [],
+          "pins": [],
+          "mpn_coverage_percent": 0.0,
+          "missing_mpn_lines": 20,
+          "missing_mpn_refs": 26,
+          "total_bom_lines": 20,
+          "recommendation": "Populate the MPN field on the listed refs (use the digikey / mouser / lcsc / element14 skill to search by value/footprint when the MPN isn't already known).",
+          "report_context": {
+            "section": "Sourcing",
+            "impact": "Pre-fab gate: board cannot be ordered until MPN coverage reaches 100%.",
+            "standard_ref": ""
+          },
+          "stages": [
+            "pre_fab"
+          ]
+        }
+      ]
+    },
+    "reviewer": {
+      "total_findings": 2,
+      "by_category": {
+        "verification": 1,
+        "sourcing": 1
+      },
+      "top_issues": [
+        {
+          "rule_id": "DS-001",
+          "severity": "error",
+          "summary": "No datasheets directory found and no BOM parts have MPNs. Review is a consistency check only \u2014 manufacturer specs cannot be verified.",
+          "recommendation": "Before reporting 'verified' findings, (1) populate the MPN field on BOM parts, (2) run the datasheet sync skill (digikey, mouser, lcsc, or element14) to download PDFs into ./datasheets/, then re-run analysis. If datasheets are unreachable, state every pin-level and electrical claim as 'per symbol/library' (consistency), not 'verified against datasheet' (correctness).",
+          "category": "verification"
+        },
+        {
+          "rule_id": "SS-001",
+          "severity": "error",
+          "summary": "Sourcing blocker: BOM has <50% MPN coverage (0/20 unique parts). Board is not pre-fab ready.",
+          "recommendation": "Populate the MPN field on the listed refs (use the digikey / mouser / lcsc / element14 skill to search by value/footprint when the MPN isn't already known).",
+          "category": "sourcing"
+        }
+      ]
+    },
+    "manager": {
+      "risk_level": "moderate",
+      "blocker_count": 2,
+      "warning_count": 0,
+      "stage_readiness": {
+        "schematic": "needs_work",
+        "layout": "pass",
+        "pre_fab": "needs_work",
+        "bring_up": "pass"
+      },
+      "one_liner": "2 errors across 2 categories. Schematic, pre-fab stages have blockers."
+    }
+  }
+}

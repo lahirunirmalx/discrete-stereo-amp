@@ -1,0 +1,24 @@
+RESULT bias rb=10 t=25 iqout=2.42868E-06 vout=5.92556
+RESULT bias rb=10 t=70 iqout=3.05762E-05 vout=5.93514
+RESULT tran rb=10 rl=4 pout=0.0274334
+  No. Harmonics: 10, THD: 5.35918 %, Gridsize: 200, Interpolation Degree: 1
+RESULT tran rb=10 rl=8 pout=0.0168142
+  No. Harmonics: 10, THD: 5.05029 %, Gridsize: 200, Interpolation Degree: 1
+RESULT bias rb=22 t=25 iqout=1.95112E-05 vout=5.92656
+RESULT bias rb=22 t=70 iqout=0.000230301 vout=5.9361
+RESULT tran rb=22 rl=4 pout=0.029528
+  No. Harmonics: 10, THD: 3.83465 %, Gridsize: 200, Interpolation Degree: 1
+RESULT tran rb=22 rl=8 pout=0.0180685
+  No. Harmonics: 10, THD: 3.55362 %, Gridsize: 200, Interpolation Degree: 1
+RESULT bias rb=33 t=25 iqout=0.00015372 vout=5.92739
+RESULT bias rb=33 t=70 iqout=0.00139379 vout=5.93697
+RESULT tran rb=33 rl=4 pout=0.0314059
+  No. Harmonics: 10, THD: 2.58308 %, Gridsize: 200, Interpolation Degree: 1
+RESULT tran rb=33 rl=8 pout=0.0191943
+  No. Harmonics: 10, THD: 2.31148 %, Gridsize: 200, Interpolation Degree: 1
+RESULT bias rb=47 t=25 iqout=0.00195803 vout=5.92842
+RESULT bias rb=47 t=70 iqout=0.0105543 vout=5.93813
+RESULT tran rb=47 rl=4 pout=0.0337491
+  No. Harmonics: 10, THD: 1.25223 %, Gridsize: 200, Interpolation Degree: 1
+RESULT tran rb=47 rl=8 pout=0.0205919
+  No. Harmonics: 10, THD: 0.962497 %, Gridsize: 200, Interpolation Degree: 1

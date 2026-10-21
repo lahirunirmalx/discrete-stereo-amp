@@ -1,0 +1,37 @@
+RESULT op bf1=110 bfo=40 vout=5.89505 isupply=-0.0215466 iqout=0.0174502
+RESULT op bf1=110 bfo=120 vout=5.89511 isupply=-0.0234256 iqout=0.0190745
+RESULT op bf1=110 bfo=250 vout=5.89512 isupply=-0.02399 iqout=0.0195631
+RESULT op bf1=290 bfo=40 vout=5.95539 isupply=-0.0218479 iqout=0.0177023
+RESULT op bf1=290 bfo=120 vout=5.95542 isupply=-0.0237551 iqout=0.0193512
+RESULT op bf1=290 bfo=250 vout=5.95543 isupply=-0.0243278 iqout=0.019847
+RESULT op bf1=450 bfo=40 vout=5.96832 isupply=-0.0219126 iqout=0.0177563
+RESULT op bf1=450 bfo=120 vout=5.96835 isupply=-0.0238257 iqout=0.0194104
+RESULT op bf1=450 bfo=250 vout=5.96836 isupply=-0.0244002 iqout=0.0199078
+RESULT ac rs=1 gain=20.1406 zin=41732.5
+RESULT ac rs=2500 gain=19.0028 zin=41732.5
+RESULT ac rs=5000 gain=17.9862 zin=41732.5
+RESULT f3 rl=4 f3=30.6382
+RESULT tran rl=4 amp=0.03 pout=0.0308984 isupply=-0.0474061
+  No. Harmonics: 10, THD: 0.390605 %, Gridsize: 200, Interpolation Degree: 1
+RESULT tran rl=4 amp=0.1 pout=0.303198 isupply=-0.129825
+  No. Harmonics: 10, THD: 4.4563 %, Gridsize: 200, Interpolation Degree: 1
+RESULT tran rl=4 amp=0.2 pout=0.622643 isupply=-0.189506
+  No. Harmonics: 10, THD: 27.9855 %, Gridsize: 200, Interpolation Degree: 1
+RESULT tran rl=4 amp=0.3 pout=0.76691 isupply=-0.216439
+  No. Harmonics: 10, THD: 34.9965 %, Gridsize: 200, Interpolation Degree: 1
+RESULT tran rl=8 amp=0.03 pout=0.0201854 isupply=-0.0333009
+  No. Harmonics: 10, THD: 0.135195 %, Gridsize: 200, Interpolation Degree: 1
+RESULT tran rl=8 amp=0.1 pout=0.219063 isupply=-0.0808259
+  No. Harmonics: 10, THD: 0.558341 %, Gridsize: 200, Interpolation Degree: 1
+RESULT tran rl=8 amp=0.2 pout=0.724063 isupply=-0.143797
+  No. Harmonics: 10, THD: 10.0723 %, Gridsize: 200, Interpolation Degree: 1
+RESULT tran rl=8 amp=0.3 pout=0.961222 isupply=-0.170984
+  No. Harmonics: 10, THD: 21.4554 %, Gridsize: 200, Interpolation Degree: 1
+RESULT tran rl=10 amp=0.03 pout=0.0170911 isupply=-0.0305182
+  No. Harmonics: 10, THD: 0.0938175 %, Gridsize: 200, Interpolation Degree: 1
+RESULT tran rl=10 amp=0.1 pout=0.187053 isupply=-0.0684023
+  No. Harmonics: 10, THD: 0.363283 %, Gridsize: 200, Interpolation Degree: 1
+RESULT tran rl=10 amp=0.2 pout=0.700871 isupply=-0.125924
+  No. Harmonics: 10, THD: 3.37881 %, Gridsize: 200, Interpolation Degree: 1
+RESULT tran rl=10 amp=0.3 pout=0.983381 isupply=-0.153358
+  No. Harmonics: 10, THD: 16.7625 %, Gridsize: 200, Interpolation Degree: 1

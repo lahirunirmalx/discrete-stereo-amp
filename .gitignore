@@ -1,0 +1,18 @@
+# generated / scratch
+*.dsn
+*.ses
+*.netmap.json
+*.netmap.json.bak
+kicad/*/erc.json
+kicad/*/drc*.json
+kicad/panel/drc_panel.json
+kicad/*/svg/
+kicad/pcbsvg/
+kicad/*/sch.png
+kicad/*/sch-crop.png
+kicad/*-backups/
+kicad/*/fp-info-cache
+**/__pycache__/
+analysis/*.err
+release/pkg/
+release/*.zip

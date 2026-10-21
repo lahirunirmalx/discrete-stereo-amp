@@ -1,0 +1,16 @@
+RESULT op bf1=110 bfo=40 vout=7.76584 isupply=-0.00680501
+RESULT op bf1=110 bfo=120 vout=7.7685 isupply=-0.00725056
+RESULT op bf1=110 bfo=250 vout=7.76929 isupply=-0.0073817
+RESULT op bf1=290 bfo=40 vout=6.90755 isupply=-0.00910293
+RESULT op bf1=290 bfo=120 vout=6.90869 isupply=-0.00977417
+RESULT op bf1=290 bfo=250 vout=6.90904 isupply=-0.00997364
+RESULT op bf1=450 bfo=40 vout=6.66037 isupply=-0.0097887
+RESULT op bf1=450 bfo=120 vout=6.66094 isupply=-0.0105296
+RESULT op bf1=450 bfo=250 vout=6.66112 isupply=-0.0107502
+RESULT ac rs=1 gain=5.9139 zin=17246.7
+RESULT ac rs=2500 gain=5.1655 zin=17246.7
+RESULT ac rs=5000 gain=4.58504 zin=17246.7
+RESULT tran amp=0.05 pout=0.00424028
+  No. Harmonics: 10, THD: 0.654532 %, Gridsize: 200, Interpolation Degree: 1
+RESULT tran amp=0.2 pout=0.0664678
+  No. Harmonics: 10, THD: 1.93104 %, Gridsize: 200, Interpolation Degree: 1

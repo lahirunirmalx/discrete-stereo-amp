@@ -1,0 +1,26 @@
+board,qty,refs,value,through_hole,smd_alternative,tolerance_rating,substitutes,matching_note
+psu,1,C5,100n,ceramic disc 5 mm,1206,100 nF X7R,100n,
+psu,1,C3,100u,CP_Radial_D6.3mm_P2.50mm,,"100 uF, 25 V",47u to 220u,Reference filter.
+psu,2,C1 C2,2200u,CP_Radial_D13.0mm_P5.00mm,,"2200 uF, 25 V (35 V if the transformer is 15 VAC)",2200u to 4700u,"Reservoir: raw rail peaks at 21 V no-load from 15 VAC, 23 V at mains +10 percent."
+psu,1,C4,220u,CP_Radial_D6.3mm_P2.50mm,,"220 uF, 16 V",100u to 470u,
+psu,1,D5,13V 1W,DO-41,SMA,"13 V, 1 W, 5 percent","1N4743A (fitted); BZX85C13; 1N4744A (15 V, output 13.6 V; raise C4 rating to 25 V)",Sets VOUT = Vz - 1.3 V.
+psu,1,D6,1N4007,DO-41,SMA,"1 A, 100 V or more",1N4007 (fitted); 1N4004; UF4007; SMA S1M,Reverse protection of the pass transistor.
+psu,4,D1 D2 D3 D4,1N5401,DO-201AD,"SMA (3 A part, e.g. S3M)","3 A, 100 V or more","1N5401 (fitted); 1N5402 / 1N5404 / 1N5408 (same package, higher voltage); SB540 Schottky (less drop, runs cooler); S3M in SMA",All four the same type.
+psu,1,D7,LED,LED_D3.0mm,,"3 mm LED, any colour",any 3 mm or 5 mm LED,"Fit D7 here OR D1 on the volume board, not both."
+psu,1,D8,SB540,DO-201AD,"SMA (3 A part, e.g. S3M)","5 A Schottky, 40 V",SB540 (fitted); 1N5822 (3 A); SR540; MBR540; SS54 in SMA,"DC-in path, 0.4 V drop."
+psu,1,F1,1A T 5x20,Fuseholder_Clip-5x20mm_Littelfuse_100_Inline_P20.50x4.60mm_D1.30mm_Horizontal,,1 A slow-blow (T) 5x20 mm + 2 clips,1 A T (fitted); 1.6 A T for a 15 VAC 2 A transformer,On the transformer secondary.
+psu,1,J1,AC IN 12-15V,"TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal",,5.08 mm screw terminal,Phoenix MKDS 1.5/2; any 5.08 mm 2-pin block,
+psu,1,J2,DC IN 12V,"TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal",,5.08 mm screw terminal,Phoenix MKDS 1.5/2; any 5.08 mm 2-pin block,
+psu,1,J3,DC OUT 1,"TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal",,5.08 mm screw terminal,Phoenix MKDS 1.5/2; any 5.08 mm 2-pin block,
+psu,1,J4,DC OUT 2,"TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal",,5.08 mm screw terminal,Phoenix MKDS 1.5/2; any 5.08 mm 2-pin block,
+psu,1,J5,LED REMOTE,PinHeader_1x02_P2.54mm_Vertical,,"5 percent / 20 percent, standard",,
+psu,2,Q1 Q3,BC547,TO-92,SOT-23 (2-layer board only),hFE 200-450,BC547B/C (fitted); BC548B/C; BC549C or BC550C (lower noise); BC337-25 (800 mA); 2N3904 or PN2222A only turned 180 deg (E-B-C pinout),Driver (Q1) and clamp (Q3). No matching.
+psu,1,Q2,TIP41C,TO-220-3_Vertical,,"6 A, 100 V, TO-220 on a heatsink","TIP41C (fitted, B-C-E); TIP31C (3 A); BD243C; MJE3055T; TIP41A/B (lower voltage grade is fine at 20 V). All B-C-E: this position has no jumper block",Pass transistor. Dissipates up to 4.9 W: heatsink of 10 C/W or better.
+psu,1,R3,0.33 2W,R_Axial_DIN0414_L11.9mm_D4.5mm_P15.24mm_Horizontal,,"0.33 ohm, 3 W, 5 percent",0.33R 2-3 W; 0.47R gives a 1.4 A clamp; 0.22R gives 3 A,Clamp current = 0.65 V / R3.
+psu,1,R2,1k,axial 1/4 W,1206,"1k, 0.5 W, 5 percent",1k,Zener feed: 5 to 8 mA.
+psu,1,R4,1k,axial 1/4 W,1206,"1k, 1/4 W",470R to 2k2,LED current 10 mA at 1k.
+psu,1,R1,4.7k,axial 1/4 W,1206,"4.7k, 0.5 W",4.7k,Bleeder.
+psu,1,TP4,GND,TestPoint_Loop_D2.50mm_Drill1.0mm,,"5 percent / 20 percent, standard",,
+psu,1,TP3,VOUT 11.5V,TestPoint_Loop_D2.50mm_Drill1.0mm,,"5 percent / 20 percent, standard",,
+psu,1,TP1,VRAW 14-19V,TestPoint_Loop_D2.50mm_Drill1.0mm,,"5 percent / 20 percent, standard",,
+psu,1,TP2,VZ 13V,TestPoint_Loop_D2.50mm_Drill1.0mm,,"5 percent / 20 percent, standard",,
