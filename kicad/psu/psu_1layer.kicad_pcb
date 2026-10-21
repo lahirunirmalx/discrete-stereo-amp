@@ -15263,7 +15263,7 @@
 			)
 		)
 	)
-	(gr_text "discrete-stereo-amp v1.0 2026-10"
+	(gr_text "discrete-stereo-amp v1.1 2026-10"
 		(at 131.95 52.45 0)
 		(layer "F.SilkS")
 		(uuid "d8024783-6aa7-43e2-b789-f1f097e59ed7")

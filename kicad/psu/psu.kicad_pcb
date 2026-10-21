@@ -15253,7 +15253,7 @@
 		(layer "Edge.Cuts")
 		(uuid "7d801bd0-2e1f-42dd-807a-b203e88428e4")
 	)
-	(gr_text "discrete-stereo-amp v1.0 2026-10"
+	(gr_text "discrete-stereo-amp v1.1 2026-10"
 		(at 112.95 51.95 0)
 		(layer "F.SilkS")
 		(uuid "2752e017-e692-4763-95fe-a1b451918e3a")

@@ -3,7 +3,7 @@
 A hobby / learning project: a two-channel 1 W class-AB amplifier built from BC547/BC557/BD139/BD140,
 its own transformer-fed discrete supply, and a volume board, all on one fab panel. It grew out of a review of
 a one-transistor "speaker in the collector" amp, which could not be fixed by changing values. Every number
-here comes from ngspice; **no board has been built or measured yet** (release 1 is a prototype design).
+here comes from ngspice; **no board has been built or measured yet** (release 1.1 is a prototype design).
 
 ![Panel, 3D](docs/images/panel_3d_iso.png)
 
@@ -71,7 +71,7 @@ not the KiCad files.
 
 ## Status
 
-Release 1, 2026-10-21: design complete, simulated, DRC clean (2-layer boards and panel), unbuilt. The
+Release 1.1, 2026-10-21: design complete, simulated, DRC clean (2-layer boards and panel), unbuilt. The
 single-sided amp board needs hand finishing (see known issues).
 
 ## License

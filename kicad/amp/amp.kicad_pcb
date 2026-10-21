@@ -37146,7 +37146,7 @@
 			)
 		)
 	)
-	(gr_text "STEREO AMP 12V  v1.0 2026-10"
+	(gr_text "STEREO AMP 12V  v1.1 2026-10"
 		(at 140 118 0)
 		(layer "F.SilkS")
 		(uuid "11c0c849-b0be-48c4-a35c-41d861dd5b23")

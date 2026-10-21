@@ -1,4 +1,4 @@
-# 3. Design review (release 1, unbuilt prototype)
+# 3. Design review (release 1.1, unbuilt prototype)
 
 Reviewer: the design was generated and checked by machine; this is the record of every check that ran, what
 it found, and what it cannot tell you. Read it before ordering.

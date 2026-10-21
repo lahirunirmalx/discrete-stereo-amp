@@ -53,7 +53,7 @@ def main(out, amp, psu, vol):
     pcbnew.ZONE_FILLER(b).Fill(b.Zones())
     # rail texts: project name on the top rail, repository and revision on the bottom rail
     bb = b.GetBoardEdgesBoundingBox()
-    for text, y in (("STEREO AMP + PSU + VOLUME  v1.0 2026-10  CC BY-NC-SA 4.0", 1.5), ("github.com/lahirunirmalx/discrete-stereo-amp  v1.0 2026-10", bb.GetHeight() / 1e6 - 1.5)):
+    for text, y in (("STEREO AMP + PSU + VOLUME  v1.1 2026-10  CC BY-NC-SA 4.0", 1.5), ("github.com/lahirunirmalx/discrete-stereo-amp  v1.1 2026-10", bb.GetHeight() / 1e6 - 1.5)):
         tx = pcbnew.PCB_TEXT(b); tx.SetText(text); tx.SetLayer(pcbnew.F_SilkS)
         tx.SetTextSize(VECTOR2I(FromMM(1.5), FromMM(1.5))); tx.SetTextThickness(FromMM(0.15))
         tx.SetPosition(VECTOR2I(bb.GetLeft() + bb.GetWidth() // 2, bb.GetTop() + FromMM(y))); b.Add(tx)

@@ -20,6 +20,6 @@ for b in amp psu vol; do
 done
 cp panel/bom_all.csv panel/bom_shopping.csv panel/bom_shopping.md panel/bom_mouser.csv panel/bom_mouser_notes.md panel/panel.png $OUT/; cp panel/panel.png $OUT/pictures/panel_2layer.png; cp panel/stereo-panel.kicad_pcb $OUT/kicad_projects/
 cp ../ORDER_GUIDE.md ../README.md ../LICENSE $OUT/; mkdir -p $OUT/docs; cp -r ../docs/*.md ../docs/images $OUT/docs/; cp ../sim/*.cir ../sim/*.out ../sim/*.inc ../sim/README.md $OUT/sim/ 2>/dev/null || (mkdir -p $OUT/sim && cp ../sim/*.cir ../sim/*.out ../sim/*.inc ../sim/README.md $OUT/sim/)
-STAMP=$(date +%Y-%m-%d)
+STAMP=v1.1-$(date +%Y-%m-%d)
 (cd ../release && rm -f stereo-amp-release-$STAMP.zip && zip -qr stereo-amp-release-$STAMP.zip pkg)
 echo "release/stereo-amp-release-$STAMP.zip"; du -sh ../release/stereo-amp-release-$STAMP.zip

@@ -67,5 +67,5 @@ print("board height", BH)
 texts.append((96.0, BH - 6.4, "github.com/lahirunirmalx/discrete-stereo-amp", 0.9))
 stem = "amp_1layer" if single else "amp"
 bad = build(HERE / "amp/amp.net", place, BW, BH, HERE / "amp" / (stem + ".kicad_pcb"),
-            "STEREO AMP 12V  v1.0 2026-10", single=single, scale=(1.45, 1.45), texts=texts, title_at=(90.0, BH - 3.0))
+            "STEREO AMP 12V  v1.1 2026-10", single=single, scale=(1.45, 1.45), texts=texts, title_at=(90.0, BH - 3.0))
 sys.exit(1 if bad else 0)

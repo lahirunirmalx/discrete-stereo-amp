@@ -1,4 +1,4 @@
-# Known issues and limitations (release 1)
+# Known issues and limitations (release 1.1)
 
 1. **Single-sided amp board is not finished.** one copper layer, 22 auto-placed wire links,
    but 62 DRC errors remain (open connections and links crowding neighbouring copper around the 3x3 jumper
