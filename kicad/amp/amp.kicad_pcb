@@ -37091,6 +37091,17 @@
 			)
 		)
 	)
+	(gr_text "github.com/lahirunirmalx/discrete-stereo-amp"
+		(at 145.95 114.549999 0)
+		(layer "F.SilkS")
+		(uuid "93deb854-a21a-4ad2-bd0a-48c5ca2edb97")
+		(effects
+			(font
+				(size 0.9 0.9)
+				(thickness 0.15)
+			)
+		)
+	)
 	(gr_text "B"
 		(at 149.6 58.3 0)
 		(layer "F.SilkS")
@@ -37135,7 +37146,7 @@
 			)
 		)
 	)
-	(gr_text "STEREO AMP 12V"
+	(gr_text "STEREO AMP 12V  v1.0 2026-10"
 		(at 140 118 0)
 		(layer "F.SilkS")
 		(uuid "11c0c849-b0be-48c4-a35c-41d861dd5b23")

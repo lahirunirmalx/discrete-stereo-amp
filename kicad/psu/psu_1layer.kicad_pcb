@@ -15263,6 +15263,17 @@
 			)
 		)
 	)
+	(gr_text "discrete-stereo-amp v1.0 2026-10"
+		(at 131.95 52.45 0)
+		(layer "F.SilkS")
+		(uuid "d8024783-6aa7-43e2-b789-f1f097e59ed7")
+		(effects
+			(font
+				(size 0.9 0.9)
+				(thickness 0.15)
+			)
+		)
+	)
 	(gr_text "DC IN 12V"
 		(at 154.65 73.4 0)
 		(layer "F.SilkS")

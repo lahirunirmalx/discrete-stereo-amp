@@ -32,6 +32,7 @@ place["J2"] = (83.5, 13.0, 90); texts.append((80.5, 18.0, "DC IN 12V", 0.9))
 place["J3"] = (83.5, 27.0, 90); texts.append((80.5, 31.5, "DC OUT", 0.9))
 place["J4"] = (83.5, 41.0, 90); texts.append((80.5, 45.5, "DC OUT", 0.9))
 texts.append((36.0, 24.4, "TP1 VRAW  TP2 VZ 13V  TP3 VOUT 11.5V  TP4 GND", 0.9))
+texts.append((63.0, 2.0, "discrete-stereo-amp v1.0 2026-10", 0.8))
 stem = "psu_1layer" if single else "psu"
 bad = build(HERE / "psu/psu.net", place, BW, BH, HERE / "psu" / (stem + ".kicad_pcb"),
             "DISCRETE 12V PSU - bridge, zener, TIP41C", single=single, scale=(1.3, 1.3), texts=texts, track=0.8)

@@ -17,4 +17,5 @@
 - Screw terminals rotated 180 degrees on amp and PSU (wire entry now faces the board edge); amp board became 134 x 71 mm (three wider rows, same width as PSU plus volume board).
 - Panel re-arranged into a 144 x 144 mm square with rails (volume board rotated beside the amp); silkscreen
   references moved inside the resistor, diode and ceramic-capacitor outlines, larger text.
+- Repository URL and revision (v1.0 2026-10) printed on every board's silkscreen and on the panel rails.
 - Known issues: see KNOWN_ISSUES.md.

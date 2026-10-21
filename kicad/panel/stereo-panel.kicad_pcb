@@ -71572,6 +71572,39 @@
 		(layer "Edge.Cuts")
 		(uuid "3ebd42e8-9539-436b-b2f1-cc7ae1b37f04")
 	)
+	(gr_text "discrete-stereo-amp v1.0 2026-10"
+		(at 62.950546 69.550271 0)
+		(layer "F.SilkS")
+		(uuid "9bd0c268-b2c5-49a6-bf0d-fd15f6f9e97a")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.12)
+			)
+		)
+	)
+	(gr_text "v1.0 2026-10"
+		(at 118.950546 89.050271 0)
+		(layer "F.SilkS")
+		(uuid "b03fcc99-d6e8-4d69-97d1-e0fb774dc8a8")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.12)
+			)
+		)
+	)
+	(gr_text "github.com/lahirunirmalx/discrete-stereo-amp"
+		(at 95.950546 59.050271 0)
+		(layer "F.SilkS")
+		(uuid "71c0f39d-e7ef-4f73-bdbb-f9c4b23ffcbb")
+		(effects
+			(font
+				(size 0.9 0.9)
+				(thickness 0.12)
+			)
+		)
+	)
 	(gr_text "AC IN"
 		(at 6.5 80.6 0)
 		(layer "F.SilkS")
@@ -72111,6 +72144,28 @@
 			)
 		)
 	)
+	(gr_text "STEREO AMP + PSU + VOLUME  v1.0 2026-10  CC BY-NC-SA 4.0"
+		(at 67.050546 -9.049729 0)
+		(layer "F.SilkS")
+		(uuid "f7201c69-a237-42fa-838a-72274dc90fa2")
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "github.com/lahirunirmalx/discrete-stereo-amp  v1.0 2026-10"
+		(at 67.050546 132.150271 0)
+		(layer "F.SilkS")
+		(uuid "98aeef2b-b623-4bfe-bfb2-daaa55529673")
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.15)
+			)
+		)
+	)
 	(gr_text "DISCRETE 12V PSU - bridge, zener, TIP41C"
 		(at 45 121.5 0)
 		(layer "F.SilkS")
@@ -72122,7 +72177,7 @@
 			)
 		)
 	)
-	(gr_text "STEREO AMP 12V"
+	(gr_text "STEREO AMP 12V  v1.0 2026-10"
 		(at 90 68 0)
 		(layer "F.SilkS")
 		(uuid "159cecca-1ec8-47c2-b71c-38e4f9d0c9fc")

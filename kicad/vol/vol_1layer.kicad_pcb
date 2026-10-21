@@ -1456,6 +1456,17 @@
 		(layer "Edge.Cuts")
 		(uuid "2dae7da9-7e14-4c76-b137-c8224d2d47b4")
 	)
+	(gr_text "v1.0 2026-10"
+		(at 76.95 71.45 0)
+		(layer "F.SilkS")
+		(uuid "6233b453-8ca8-48b0-845f-1e626911c4b7")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.12)
+			)
+		)
+	)
 	(gr_text "IN L G R"
 		(at 58 57 0)
 		(layer "F.SilkS")
