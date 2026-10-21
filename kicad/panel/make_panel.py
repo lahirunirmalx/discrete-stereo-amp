@@ -51,6 +51,12 @@ def main(out, amp, psu, vol):
     ds.m_CopperEdgeClearance = FromMM(0.5); ds.m_MinResolvedSpokes = 1
     ds.m_MinClearance = FromMM(0.19); ds.m_NetSettings.GetDefaultNetclass().SetClearance(FromMM(0.19))
     pcbnew.ZONE_FILLER(b).Fill(b.Zones())
+    # rail texts: project name on the top rail, repository and revision on the bottom rail
+    bb = b.GetBoardEdgesBoundingBox()
+    for text, y in (("STEREO AMP + PSU + VOLUME  v1.0 2026-10  CC BY-NC-SA 4.0", 1.5), ("github.com/lahirunirmalx/discrete-stereo-amp  v1.0 2026-10", bb.GetHeight() / 1e6 - 1.5)):
+        tx = pcbnew.PCB_TEXT(b); tx.SetText(text); tx.SetLayer(pcbnew.F_SilkS)
+        tx.SetTextSize(VECTOR2I(FromMM(1.5), FromMM(1.5))); tx.SetTextThickness(FromMM(0.15))
+        tx.SetPosition(VECTOR2I(bb.GetLeft() + bb.GetWidth() // 2, bb.GetTop() + FromMM(y))); b.Add(tx)
     pcbnew.SaveBoard(out, b)
     b = pcbnew.LoadBoard(out)
     bb = b.GetBoardEdgesBoundingBox()
