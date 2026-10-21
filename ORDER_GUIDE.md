@@ -5,8 +5,8 @@ simulated in `sim/` with ngspice. Two fab packages:
 
 | Package | What | Where it goes |
 |---|---|---|
-| `panel_2layer_gerbers/` + `stereo-panel-gerbers.zip` | ONE 2-layer panel, 134.2 x 137.2 mm, holding the amp (100 x 85), the PSU (90 x 50) and the volume board (42 x 26), joined by 4 mm mouse-bite tabs | JLCPCB / PCBWay |
-| `single_layer/` | the same three boards as single-sided (copper on the bottom only), scaled up: amp 120 x 99.6, PSU 117 x 65, volume 42 x 26 mm, with mirrored 1:1 PDFs for toner transfer | home etching (or a 1-layer fab order) |
+| `panel_2layer_gerbers/` + `stereo-panel-gerbers.zip` | ONE 2-layer square panel, 144.2 x 144.2 mm with 3 mm rails, holding the amp (134 x 71) above the PSU (90 x 50) and the volume board (42 x 26) side by side, joined to each other and to the rails by 4 mm mouse-bite tabs | JLCPCB / PCBWay |
+| `single_layer/` | the same three boards as single-sided (copper on the bottom only), scaled up: amp 194 x 100, PSU 117 x 65, volume 42 x 26 mm, with mirrored 1:1 PDFs for toner transfer | home etching (or a 1-layer fab order) |
 
 ## Ordering the panel at JLCPCB or PCBWay
 
@@ -15,7 +15,7 @@ simulated in `sim/` with ngspice. Two fab packages:
 3. **Panel settings:** this is a multi-design panel delivered as ONE board ("panel by customer").
    JLCPCB: choose "Panel by Customer", set "Different Design" = 3 (both fabs charge a small
    extra for 2+ designs in one panel). Break-off tabs are already in the gerbers.
-4. Board size at checkout: 134.2 x 137.2 mm (above the cheapest 100 x 100 tier; a 5-piece order
+4. Board size at checkout: 144.2 x 144.2 mm (square, 3 mm rails) (above the cheapest 100 x 100 tier; a 5-piece order
    is typically 10 to 25 USD). If you only need one board type, order `kicad_projects/<board>/`
    separately instead.
 5. The solder jumpers on the amp (the 3x3 pinout blocks) are plain SMD pads: no stencil needed.
@@ -27,12 +27,11 @@ simulated in `sim/` with ngspice. Two fab packages:
 - Solder jumpers (the pinout blocks) are on the copper side too.
 - Where one layer was not enough, the build added wire-link footprints **JLn**: solder a bare
   wire between the two holes. Count per board is printed by `kicad/build.sh <board> --single`
-  (PSU: 1, volume: 1, amp: 21).
-- **Status of the single-sided amp: NOT clean.** 145 x 120 mm, 789 track segments on one layer, 21 wire
-  links, but DRC still reports 66 errors: some connections still open and auto-placed wire links crowding
+  (PSU: 0, volume: 1, amp: see KNOWN_ISSUES.md).
+- **Status of the single-sided amp: NOT clean.** 194 x 100 mm, 22 wire
+  links, but DRC still reports 62 errors: some connections still open and auto-placed wire links crowding
   neighbouring copper (the 3x3 jumper blocks' interleaved pads do not suit one-layer routing). Open `kicad_projects/amp/amp_1layer.kicad_pcb` in KiCad,
-  run DRC and fix those spots by hand before etching. The single-sided volume board is DRC clean; the
-  single-sided PSU has one open connection: solder a wire from R1 pin 1 to TP1 (VRAW).
+  run DRC and fix those spots by hand before etching. The single-sided PSU and volume boards are DRC clean.
 
 ## Parts (bom_all.csv, 107 parts + 36 solder jumpers)
 

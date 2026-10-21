@@ -796,17 +796,17 @@
     <div class="sec-head"><span class="eyebrow">Boards</span><h2>Three generated KiCad boards, two fab packages</h2></div>
     <div class="prose">
       <ul class="bullets">
-        <li><strong>Amp, 100 x 85 mm, 2 layers:</strong> both channels, four output transistors on the top edge with their 3x3
+        <li><strong>Amp, 134 x 71 mm, 2 layers:</strong> both channels, four output transistors on the top edge with their 3x3
         pinout jumper blocks below (row = device pin, column = E / C / B, bridged on the diagonal for BD139/BD140), trimmers,
         test points TP1/TP2 (+12V, GND) and per channel TPx1 base, TPx2 output, TPx3 bias. 829 track segments, 18 vias, DRC clean.</li>
         <li><strong>PSU, 90 x 50 mm:</strong> AC terminal and fuse on the left, bridge and reservoirs in the middle, TIP41C on the top
         edge for a heatsink, DC in and two DC out terminals on the right, LED header J5 for a front-panel LED. DRC clean.</li>
         <li><strong>Volume, 42 x 26 mm:</strong> dual 10k log pot (Alps RK097 footprint) with the shaft over the bottom edge, L-G-R
         headers in and out, and a power LED fed by two wires from the PSU. DRC clean.</li>
-        <li><strong>Panel:</strong> 134.2 x 137.2 mm, mouse-bite tabs, DRC clean, gerbers in the release zip. Both fabs treat it as
+        <li><strong>Panel:</strong> 144.2 x 144.2 mm (square, 3 mm rails), mouse-bite tabs, DRC clean, gerbers in the release zip. Both fabs treat it as
         a multi-design panel (small surcharge).</li>
-        <li><strong>Single-sided versions</strong> for home etching: amp 120 x 100, PSU 117 x 65, volume 42 x 26 mm; where one copper
-        layer was not enough the build added wire-link footprints JLn (PSU 1, volume 1, amp 21). The volume board is DRC clean; the single-sided PSU has one connection left open (bleeder R1 pin 1 to VRAW: add a wire to TP1); the single-sided amp is routed but keeps 66 DRC errors (open connections and wire links crowding neighbouring copper around the jumper blocks) and needs hand finishing in KiCad before etching.</li>
+        <li><strong>Single-sided versions</strong> for home etching: amp 194 x 100, PSU 117 x 65, volume 42 x 26 mm; where one copper
+        layer was not enough the build added wire-link footprints JLn (PSU 0, volume 1, amp: see known issues). The volume board is DRC clean; the single-sided PSU is clean too; the single-sided amp is routed but keeps 62 DRC errors (open connections and wire links crowding neighbouring copper around the jumper blocks) and needs hand finishing in KiCad before etching.</li>
         <li><strong>Hybrid footprints:</strong> every resistor, ceramic capacitor, small electrolytic and diode has a 1206 / SOD-123 /
         SMA twin on the same pads; BC547/BC557 positions take SOT-23 on the 2-layer board.</li>
       </ul>

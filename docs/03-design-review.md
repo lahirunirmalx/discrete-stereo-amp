@@ -11,7 +11,7 @@ it found, and what it cannot tell you. Read it before ordering.
 | Netlist vs simulated deck (same net partition) | kicad/netcheck.py | OK, both channels vs amp_final.cir | OK vs psu.cir | by inspection (7 nets) | |
 | Schematic analyzer (check-schematic skill) | analyze_schematic.py | 2 errors, 8 warnings, see 3.2 | 2 errors | 3 errors | |
 | PCB DRC with schematic parity, 2-layer | kicad-cli | 0 errors | 0 errors | 0 errors | 0 errors |
-| PCB DRC, single-sided | kicad-cli | 66 errors (open) | 1 open connection (R1 pin 1 to VRAW, add a wire to TP1) | 0 errors | |
+| PCB DRC, single-sided | kicad-cli | 62 errors (open) | 0 errors | 0 errors | |
 | PCB analyzer (check-pcb skill) | analyze_pcb.py --full | 0 errors, 18 warnings | 0 errors, 8 warnings | 1 error, 1 warning | |
 | Schematic-PCB cross analysis | cross_analysis.py | 0 | 1 warning | 0 | |
 | Thermal | analyze_thermal.py | no components assessed (no power data in the schematic) | same | same | |
@@ -57,7 +57,7 @@ it found, and what it cannot tell you. Read it before ordering.
 **Design findings from layout**
 
 7. The single-sided amp cannot be routed cleanly by freerouting: the 36 interleaved jumper pads block the
-   one copper layer; 21 wire links and 66 DRC errors remain. Build the amp on the 2-layer panel, or finish
+   one copper layer; 22 wire links and 62 DRC errors remain. Build the amp on the 2-layer panel, or finish
    the single-sided board by hand.
 8. freerouting 1.9 once wrote the same track into two nets through a tight corridor between a TO-220 and a
    mounting hole; the layout was changed to remove the corridor. Always read "Items shorting two nets" in a

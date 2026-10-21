@@ -192,6 +192,34 @@ def _pads_to_back(fp):
             item.SetLayer(swap[item.GetLayer()])
 
 
+def _place_reference(fp, cy, ref):
+    """Readable silkscreen: the reference sits INSIDE the part outline, along its long axis, as large as
+    the outline allows (0.7 to 1.0 mm). Parts with no room (TO-92, test points, headers, jumpers) keep
+    the label just outside the courtyard, alternating above / below so neighbours do not collide."""
+    r = fp.Reference()
+    w, h = cy.GetWidth() / 1e6, cy.GetHeight() / 1e6
+    along, across = max(w, h), min(w, h)
+    chars = len(ref)
+    size = min(1.0, max(0.7, (along - 1.0) / (chars * 0.85)))
+    fpid = fp.GetFPIDAsString()
+    round_body = "CP_Radial" in fpid or "CE_P2" in fpid or "LED" in fpid
+    if across >= 2.6 and along >= chars * 0.7 * 0.85 + 1.0 and not round_body and not ref.startswith(("Q", "TP", "J", "RV", "F")):
+        r.SetTextSize(VECTOR2I(FromMM(size), FromMM(size)))
+        r.SetTextThickness(FromMM(0.15 if size >= 0.9 else 0.12))
+        r.SetPosition(VECTOR2I(cy.GetCenter().x, cy.GetCenter().y))
+        r.SetTextAngleDegrees(90 if h > w else 0)
+        return
+    r.SetTextSize(VECTOR2I(FromMM(0.8), FromMM(0.8)))
+    r.SetTextThickness(FromMM(0.12))
+    n = getattr(_place_reference, "_n", 0) + 1
+    _place_reference._n = n
+    if n % 2 == 0:
+        r.SetPosition(VECTOR2I(cy.GetCenter().x, cy.GetBottom() + FromMM(0.6)))
+    else:
+        r.SetPosition(VECTOR2I(cy.GetCenter().x, cy.GetTop() - FromMM(0.6)))
+    r.SetTextAngleDegrees(0)
+
+
 def _flip_dir():
     """KiCad 9 wants a FLIP_DIRECTION enum; older bindings took a bool."""
     for n in dir(pcbnew):
@@ -311,15 +339,7 @@ def build(netfile, place, bw, bh, out_path, title, single=False, scale=(1.0, 1.0
         cy = fp.GetCourtyard(pcbnew.F_CrtYd).BBox()
         if cy.GetWidth() == 0:
             cy = fp.GetCourtyard(pcbnew.B_CrtYd).BBox()
-        # narrow parts packed side by side: alternate the reference above / below so the labels do not overlap
-        narrow = cy.GetWidth() < FromMM(4.2)
-        n_narrow = getattr(build, "_n", 0) + (1 if narrow else 0)
-        build._n = n_narrow
-        if narrow and n_narrow % 2 == 0:
-            fp.Reference().SetPosition(VECTOR2I(cy.GetCenter().x, cy.GetBottom() + FromMM(0.6)))
-        else:
-            fp.Reference().SetPosition(VECTOR2I(cy.GetCenter().x, cy.GetTop() - FromMM(0.6)))
-        fp.Reference().SetTextAngleDegrees(0)
+        _place_reference(fp, cy, ref)
     for (x, y, s, size) in texts:
         t = pcbnew.PCB_TEXT(board)
         t.SetText(s); t.SetPosition(VECTOR2I(FromMM(bx + x * sx), FromMM(by + y * sy)))
@@ -335,7 +355,7 @@ def build(netfile, place, bw, bh, out_path, title, single=False, scale=(1.0, 1.0
             fp.Reference().SetVisible(False); fp.SetPosition(VECTOR2I(FromMM(hx), FromMM(hy))); board.Add(fp)
     tx, ty = title_at or (BW / 2, BH - 1.6)
     t = pcbnew.PCB_TEXT(board); t.SetText(title); t.SetPosition(VECTOR2I(FromMM(bx + tx * sx), FromMM(by + ty * sy)))
-    t.SetLayer(pcbnew.F_SilkS); t.SetTextSize(VECTOR2I(FromMM(1.2), FromMM(1.2))); t.SetTextThickness(FromMM(0.15)); board.Add(t)
+    t.SetLayer(pcbnew.F_SilkS); t.SetTextSize(VECTOR2I(FromMM(1.5), FromMM(1.5))); t.SetTextThickness(FromMM(0.2)); board.Add(t)
     # courtyard overlap / edge check
     boxes = []
     for fp in board.GetFootprints():

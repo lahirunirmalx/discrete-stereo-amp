@@ -23,7 +23,7 @@ PDFs of all three are in the release zip (`schematics/`).
 
 ## Boards (2-layer layouts, top view, both copper layers)
 
-| Amp 100 x 85 mm | PSU 90 x 50 mm | Volume 42 x 26 mm |
+| Amp 134 x 71 mm | PSU 90 x 50 mm | Volume 42 x 26 mm |
 |---|---|---|
 | ![Amp PCB](docs/images/amp_pcb_2layer.png) | ![PSU PCB](docs/images/psu_pcb_2layer.png) | ![Volume PCB](docs/images/vol_pcb_2layer.png) |
 
@@ -38,7 +38,7 @@ PDFs of all three are in the release zip (`schematics/`).
 | Idle current | output stage 21 mA per channel after setting the trimmer (7 to 10 mV across a 0.47 ohm emitter resistor); about 32 mA per channel from the supply |
 | Bandwidth | 20 Hz (8 ohm) / 34 Hz (4 ohm) to 250 kHz |
 | Supply | 12 to 15 VAC transformer (1.5 A for full power) or 12 V DC in; 11.6 V out, 2 A clamp |
-| Boards | amp 100 x 85 mm, PSU 90 x 50 mm, volume 42 x 26 mm; 2-layer panel 134 x 137 mm; single-sided variants |
+| Boards | amp 134 x 71 mm, PSU 90 x 50 mm, volume 42 x 26 mm; 2-layer panel 144 x 144 mm; single-sided variants |
 | Parts | 107 through-hole parts with 1206 / SOD / SMA twins on the same pads; 36 solder jumpers for output pinouts |
 
 ## Documents

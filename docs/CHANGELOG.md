@@ -8,11 +8,13 @@
   12 V supply with DC-in bypass and 2 A clamp, a dual-pot volume board with optional front-panel LED.
 - Simulated in ngspice: candidate comparison, hFE sweeps, bias network, stability, output power, supply regulation.
 - Generated KiCad 9 schematics (ERC clean, netlist checked against the decks) and boards (2-layer, DRC clean),
-  a multi-design panel (134 x 137 mm, DRC clean) and single-sided variants (PSU and volume clean; amp routed
-  but with 66 DRC errors, needs hand finishing).
+  a multi-design panel (144 x 144 mm, DRC clean) and single-sided variants (PSU and volume clean; amp routed
+  but with 62 DRC errors, needs hand finishing).
 - BOMs: per board, combined, shopping list, Mouser upload format.
 - Hybrid footprints now start from the library part, so diode bars, + marks and TO-92 flat sides are on the silkscreen.
 - 3D renders (kicad-cli pcb render) of every board and the panel in docs/images.
 - Licensed CC BY-NC-SA 4.0.
-- Screw terminals rotated 180 degrees on amp and PSU (wire entry now faces the board edge); amp board grew to 100 x 85 mm.
+- Screw terminals rotated 180 degrees on amp and PSU (wire entry now faces the board edge); amp board became 134 x 71 mm (three wider rows, same width as PSU plus volume board).
+- Panel re-arranged into a 144 x 144 mm square with rails (volume board rotated beside the amp); silkscreen
+  references moved inside the resistor, diode and ceramic-capacitor outlines, larger text.
 - Known issues: see KNOWN_ISSUES.md.

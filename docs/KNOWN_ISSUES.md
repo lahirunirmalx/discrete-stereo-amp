@@ -1,14 +1,13 @@
 # Known issues and limitations (release 1)
 
-1. **Single-sided amp board is not finished.** 789 one-layer track segments and 21 auto-placed wire links,
-   but 66 DRC errors remain (open connections and links crowding neighbouring copper around the 3x3 jumper
+1. **Single-sided amp board is not finished.** one copper layer, 22 auto-placed wire links,
+   but 62 DRC errors remain (open connections and links crowding neighbouring copper around the 3x3 jumper
    blocks). Open `kicad/amp/amp_1layer.kicad_pcb` in KiCad and finish by hand before etching, or build the amp
-   on the 2-layer panel. The single-sided volume board is DRC clean; the single-sided PSU has one open
-   connection (bleeder R1 pin 1 to VRAW): solder a wire from R1 pin 1 to TP1.
+   on the 2-layer panel. The single-sided PSU and volume boards are DRC clean.
 2. **Nothing has been built or measured.** All numbers are ngspice results with generic transistor models
    (datasheet-typical hFE, swept to the minimum); no thermal coupling, speaker modelled as a resistor.
-3. **Silkscreen is crowded on the amp** (139 "silkscreen overlap" DRC warnings): reference labels of
-   neighbouring parts touch. Readable, not pretty.
+3. **Silkscreen** references now sit inside the resistor / diode / ceramic outlines; electrolytics, transistors and
+   test points keep theirs beside the part. Some of those still touch a neighbour's outline (DRC warnings).
 4. **Terminal block orientation** was wrong in the first layout (wire entry facing inwards); fixed after the
    3D render showed it. Confirm on the first bare board before soldering the terminals.
 5. **Volume pot pin convention** (pin 3 = clockwise end) follows the datasheet convention; if a substitute pot
