@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1280 640" width="1280" height="640">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#17120f"/>
+      <stop offset="1" stop-color="#0a0807"/>
+    </linearGradient>
+    <pattern id="grid" width="64" height="64" patternUnits="userSpaceOnUse">
+      <path d="M 64 0 L 0 0 0 64" fill="none" stroke="#2a211a" stroke-width="1"/>
+    </pattern>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1280" height="640" fill="url(#bg)"/>
+  <rect width="1280" height="640" fill="url(#grid)"/>
+  <line x1="0" y1="320" x2="1280" y2="320" stroke="#3b2f22" stroke-width="2"/>
+  <!-- long trace across the banner behind the text -->
+  <path d="M 0 320 C 60 320 70 150 130 150 C 190 150 200 490 260 490 C 320 490 330 150 390 150 C 450 150 460 490 520 490 C 580 490 590 150 650 150 C 710 150 720 490 780 490 C 840 490 850 150 910 150 L 940 150 C 960 150 970 490 1000 490 L 1040 490 C 1060 490 1070 150 1100 150 L 1130 150 C 1150 150 1160 490 1190 490 L 1280 490"
+        fill="none" stroke="#f0a83a" stroke-opacity="0.22" stroke-width="7" stroke-linecap="round" filter="url(#glow)"/>
+  <!-- logo -->
+  <g transform="translate(70 90) scale(0.9)">
+    <defs>
+    <radialGradient id="l_face" cx="50%" cy="42%" r="60%">
+      <stop offset="0" stop-color="#2a2420"/>
+      <stop offset="1" stop-color="#120f0d"/>
+    </radialGradient>
+    <linearGradient id="l_ring" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f3c77a"/>
+      <stop offset="0.5" stop-color="#c98a2e"/>
+      <stop offset="1" stop-color="#7a4f14"/>
+    </linearGradient>
+    <filter id="l_glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <!-- knob body -->
+  <circle cx="256" cy="256" r="246" fill="#0b0908"/>
+  <circle cx="256" cy="256" r="236" fill="url(#l_ring)"/>
+  <circle cx="256" cy="256" r="206" fill="url(#l_face)" stroke="#5a3d12" stroke-width="3"/>
+  <!-- scale ticks 0..10 around the knob, 270 degrees -->
+  <g stroke="#f6d9a0" stroke-linecap="round">
+    <g id="l_ticks" transform="translate(256 256)">
+      <line x1="0" y1="-228" x2="0" y2="-214" stroke-width="5" transform="rotate(-135)"/>
+      <line x1="0" y1="-228" x2="0" y2="-218" stroke-width="3" transform="rotate(-108)"/>
+      <line x1="0" y1="-228" x2="0" y2="-218" stroke-width="3" transform="rotate(-81)"/>
+      <line x1="0" y1="-228" x2="0" y2="-218" stroke-width="3" transform="rotate(-54)"/>
+      <line x1="0" y1="-228" x2="0" y2="-218" stroke-width="3" transform="rotate(-27)"/>
+      <line x1="0" y1="-228" x2="0" y2="-214" stroke-width="5" transform="rotate(0)"/>
+      <line x1="0" y1="-228" x2="0" y2="-218" stroke-width="3" transform="rotate(27)"/>
+      <line x1="0" y1="-228" x2="0" y2="-218" stroke-width="3" transform="rotate(54)"/>
+      <line x1="0" y1="-228" x2="0" y2="-218" stroke-width="3" transform="rotate(81)"/>
+      <line x1="0" y1="-228" x2="0" y2="-218" stroke-width="3" transform="rotate(108)"/>
+      <line x1="0" y1="-228" x2="0" y2="-214" stroke-width="5" transform="rotate(135)"/>
+    </g>
+  </g>
+  <!-- pointer notch at about "7" -->
+  <g transform="translate(256 256) rotate(60)">
+    <rect x="-7" y="-236" width="14" height="34" rx="4" fill="#fff1d6"/>
+  </g>
+  <!-- graticule -->
+  <g stroke="#3b2f22" stroke-width="2">
+    <line x1="256" y1="90" x2="256" y2="422"/>
+    <line x1="90" y1="256" x2="422" y2="256"/>
+    <line x1="140" y1="173" x2="372" y2="173" stroke-dasharray="4 8"/>
+    <line x1="140" y1="339" x2="372" y2="339" stroke-dasharray="4 8"/>
+  </g>
+  <!-- the trace: a sine that clips on the right, the amp's story -->
+  <path d="M 86 256 C 120 256 130 150 170 150 C 210 150 220 362 260 362 C 300 362 306 150 344 150 L 352 150 L 352 150 C 364 150 366 362 380 362 L 420 362"
+        fill="none" stroke="#f0a83a" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" filter="url(#l_glow)"/>
+  <!-- NPN symbol, small, bottom right of the face -->
+  <g transform="translate(330 318)" stroke="#f6d9a0" stroke-width="5" fill="none" stroke-linecap="round">
+    <circle cx="0" cy="0" r="30" stroke-width="3"/>
+    <line x1="-12" y1="-16" x2="-12" y2="16" stroke-width="7"/>
+    <line x1="-34" y1="0" x2="-12" y2="0"/>
+    <line x1="-12" y1="-8" x2="12" y2="-24"/>
+    <line x1="-12" y1="8" x2="12" y2="24"/>
+    <polygon points="12,24 0,20 6,10" fill="#f6d9a0" stroke="none"/>
+  </g>
+  <!-- name -->
+  <text x="256" y="455" text-anchor="middle" font-family="DejaVu Sans, Liberation Sans, Arial, sans-serif" font-weight="700" font-size="34" fill="#fff1d6" letter-spacing="2">DISCRETE</text>
+  <text x="256" y="482" text-anchor="middle" font-family="DejaVu Sans Mono, Liberation Mono, monospace" font-size="18" fill="#f0a83a" letter-spacing="6">STEREO AMP</text>
+
+  </g>
+  <!-- title block -->
+  <text x="600" y="235" font-family="DejaVu Sans, Liberation Sans, Arial, sans-serif" font-weight="700" font-size="74" fill="#fff1d6">discrete</text>
+  <text x="600" y="318" font-family="DejaVu Sans, Liberation Sans, Arial, sans-serif" font-weight="700" font-size="74" fill="#f0a83a">stereo amp</text>
+  <text x="602" y="372" font-family="DejaVu Sans Mono, Liberation Mono, monospace" font-size="24" fill="#d9c3a0">1 W class AB . BC547 + BD139/BD140 . 12 V</text>
+  <text x="602" y="410" font-family="DejaVu Sans Mono, Liberation Mono, monospace" font-size="24" fill="#d9c3a0">discrete PSU . volume board . one panel</text>
+  <text x="602" y="466" font-family="DejaVu Sans, Liberation Sans, Arial, sans-serif" font-size="22" fill="#9a8468">Simulated in ngspice. Generated KiCad boards. For learning.</text>
+  <text x="602" y="530" font-family="DejaVu Sans Mono, Liberation Mono, monospace" font-size="22" fill="#f0a83a">github.com/lahirunirmalx/discrete-stereo-amp</text>
+  <text x="602" y="562" font-family="DejaVu Sans Mono, Liberation Mono, monospace" font-size="18" fill="#9a8468">v1.1 2026-10  .  CC BY-NC-SA 4.0</text>
+</svg>

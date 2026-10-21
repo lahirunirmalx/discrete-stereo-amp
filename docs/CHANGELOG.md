@@ -8,6 +8,7 @@
 - Hybrid footprints built from the library parts: diode bars, + marks and TO-92 flat sides on the silkscreen.
 - Silkscreen references inside resistor / diode / ceramic outlines, larger text; board titles carry the revision.
 - Repository URL and revision stamped on every board and on the panel rails.
+- Logo (knob ring, clipped sine trace, NPN symbol) and a 1280 x 640 social banner in docs/images.
 - README shows 3D renders, schematics and layouts; CircuitJS links in the review; license CC BY-NC-SA 4.0.
 - Single-sided PSU now routes without wire links. Single-sided amp still unfinished (see KNOWN_ISSUES.md).
 

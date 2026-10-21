@@ -1,3 +1,5 @@
+![discrete stereo amp](docs/images/banner.png)
+
 # Stereo class-AB amplifier, discrete 12 V supply and volume board
 
 A hobby / learning project: a two-channel 1 W class-AB amplifier built from BC547/BC557/BD139/BD140,
@@ -11,7 +13,7 @@ here comes from ngspice; **no board has been built or measured yet** (release 1.
 |---|---|---|
 | ![Amp 3D](docs/images/amp_3d_iso.png) | ![PSU 3D](docs/images/psu_3d_iso.png) | ![Volume 3D](docs/images/vol_3d_iso.png) |
 
-More views in [docs/images/](docs/images/): top-down 3D renders and the single-sided layouts.
+More views in [docs/images/](docs/images/): top-down 3D renders and the single-sided layouts. Logo and banner: `logo.svg` / `logo.png` / `logo-1024.png` and `banner.svg` / `banner.png` (1280 x 640, the GitHub social-preview size).
 
 ## Schematics
 
