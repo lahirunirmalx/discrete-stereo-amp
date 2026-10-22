@@ -92,5 +92,5 @@ else:
 stem = ("amp_compact" if compact else "amp") + ("_1layer" if single else "")
 bad = build(HERE / "amp/amp.net", place, BW, BH, HERE / "amp" / (stem + ".kicad_pcb"),
             "STEREO AMP 12V" if compact else "STEREO AMP 12V  v1.1 2026-10", single=single, scale=(1.45, 1.45), texts=texts,
-            title_at=(50.0, 19.8) if compact else (90.0, BH - 3.0), back_texts=back_texts)
+            title_at=(57.0, 19.8) if compact else (90.0, BH - 3.0), back_texts=back_texts)
 sys.exit(1 if bad else 0)
