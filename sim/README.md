@@ -10,6 +10,8 @@
 | ampB4.cir | Bias with Vbe multiplier (Rm1 560 to 1200): Iq at 25/70 C, THD at 50 mW, power vs load and output hFE | ampB4.out |
 | ampB_sq.cir | 1 kHz square wave into 8 ohm with 0, 100 n, 470 n in parallel: overshoot | (stdout) |
 | amp_final.cir | The channel exactly as drawn in KiCad (netlist-checked). Operating point and one 1 W run | (stdout) |
+| amp_noise2.cir | The channel as built: gain, sensitivity and 20 Hz-20 kHz noise vs source resistance (pot position) | wrdata spectra |
+| preamp.cir, preamp_noise.cir | Preamp study: bootstrapped follower buffer and a +15 dB gain stage, gain / Zin / THD / noise | (stdout) |
 | psu.cir | Supply: 12 and 15 VAC at 0.1 to 1.1 A, short circuit, DC-in only, DC-in plus AC | psu.out |
 | amp_line.cir, amp_sweep.cir, amp_tran.cir (in ~/electronics-notes/one-transistor-amp/) | The ORIGINAL one-transistor amp review | |
 

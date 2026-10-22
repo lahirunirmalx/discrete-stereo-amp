@@ -1,0 +1,43 @@
+* Candidate preamp stages in front of the volume pot, 12 V rail.
+* A: bootstrapped BC547 emitter-follower buffer (unity gain, high input impedance) for guitar / high-Z sources.
+* B: one-transistor gain stage (BC547, +20 dB, emitter degenerated) for low-level sources (dynamic mic, guitar).
+.include models.inc
+Vcc vcc 0 DC 12
+* ---- A: buffer
+Vina ina 0 DC 0 AC 1 SIN(0 0.1 1k)
+Rsa ina sa 100k
+Ca sa ba 1u
+Rba1 vcc da 220k
+Rba2 da 0 220k
+Rbb da ba 1meg
+Cbs ea da 10u
+Qa vcc ba ea BC547B
+Rea ea 0 4.7k
+Coa ea outa 10u
+RLa outa 0 10k
+* ---- B: gain stage, gain = Rc/(re + Re1) ~ 10
+Vinb inb 0 DC 0 AC 1 SIN(0 0.02 1k)
+Rsb inb sb 2k
+Cb sb bb 1u
+Rbb1 vcc bb 150k
+Rbb2 bb 0 33k
+Qb cb bb eb BC547B
+Rcb vcc cb 4.7k
+Reb1 eb ebb 470
+Ceb ebb 0 100u
+Reb2 ebb 0 470
+Cob cb outb 10u
+RLb outb 0 10k
+.control
+foreach rs 1 2500 100k
+  alter Rsa = $rs
+  noise v(outa) Vina dec 20 20 20k
+  setplot previous
+  wrdata /tmp/claude-1000/-home-lahiru-electronics-one-transister-amp/7d71810f-dd25-40b2-9122-51a7d604d444/scratchpad/pre_a_$rs onoise_spectrum inoise_spectrum
+end
+noise v(outb) Vinb dec 20 20 20k
+setplot previous
+wrdata /tmp/claude-1000/-home-lahiru-electronics-one-transister-amp/7d71810f-dd25-40b2-9122-51a7d604d444/scratchpad/pre_b onoise_spectrum inoise_spectrum
+quit
+.endc
+.end

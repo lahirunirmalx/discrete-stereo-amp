@@ -1,0 +1,62 @@
+* Candidate preamp stages in front of the volume pot, 12 V rail.
+* A: bootstrapped BC547 emitter-follower buffer (unity gain, high input impedance) for guitar / high-Z sources.
+* B: one-transistor gain stage (BC547, +20 dB, emitter degenerated) for low-level sources (dynamic mic, guitar).
+.include models.inc
+Vcc vcc 0 DC 12
+* ---- A: buffer
+Vina ina 0 DC 0 AC 1 SIN(0 0.1 1k)
+Rsa ina sa 100k
+Ca sa ba 1u
+Rba1 vcc da 220k
+Rba2 da 0 220k
+Rbb da ba 1meg
+Cbs ea da 10u
+Qa vcc ba ea BC547B
+Rea ea 0 4.7k
+Coa ea outa 10u
+RLa outa 0 10k
+* ---- B: gain stage, gain = Rc/(re + Re1) ~ 10
+Vinb inb 0 DC 0 AC 1 SIN(0 0.02 1k)
+Rsb inb sb 2k
+Cb sb bb 1u
+Rbb1 vcc bb 150k
+Rbb2 bb 0 33k
+Qb cb bb eb BC547B
+Rcb vcc cb 4.7k
+Reb1 eb ebb 470
+Ceb ebb 0 100u
+Reb2 ebb 0 470
+Cob cb outb 10u
+RLb outb 0 10k
+.control
+op
+echo RESULT op va_e=$&v(ea) vb_c=$&v(cb)
+ac lin 1 1000 1000
+let ga = mag(v(outa))
+let zina = mag(v(sa)/i(Vina))
+let gb = mag(v(outb))
+let zinb = mag(v(sb)/i(Vinb))
+echo RESULT ac gainA=$&ga zinA=$&zina gainB=$&gb zinB=$&zinb
+noise v(outa) Vina dec 10 20 20k
+let na = sqrt(inoise_total)
+echo RESULT noiseA in_nV=$&na
+noise v(outb) Vinb dec 10 20 20k
+let nb = sqrt(inoise_total)
+echo RESULT noiseB in_nV=$&nb
+foreach amp 0.1 0.5 1.0
+  alter @Vina[sin] = [ 0 $amp 1k ]
+  tran 5u 25m 15m
+  meas tran vo RMS v(outa) from=15m to=25m
+  echo RESULT tranA amp=$amp out_rms=$&vo
+  fourier 1k v(outa)
+end
+foreach amp 0.02 0.1 0.2
+  alter @Vinb[sin] = [ 0 $amp 1k ]
+  tran 5u 25m 15m
+  meas tran vo RMS v(outb) from=15m to=25m
+  echo RESULT tranB amp=$amp out_rms=$&vo
+  fourier 1k v(outb)
+end
+quit
+.endc
+.end
