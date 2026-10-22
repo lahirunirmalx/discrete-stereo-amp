@@ -76,8 +76,10 @@ if compact:
     place["C2"] = (74.0, yt + 1.5, 90)
     place["TP1"] = (78.0, yt - 3.5, 0); texts.append((78.0, yt - 5.7, "+12V", 0.9))
     place["TP2"] = (78.0, yt + 1.5, 0); texts.append((81.5, yt + 1.8, "GND", 0.9))
-    texts.append((50.0, 19.0, "github.com/lahirunirmalx/discrete-stereo-amp", 0.9))
+    texts.append((37.5, BH - 3.0, "v1.1 2026-10", 0.8))
+    back_texts = [(50.0, 40.0, "github.com/lahirunirmalx/discrete-stereo-amp  v1.1 2026-10", 1.2), (50.0, 44.0, "STEREO AMP 12V  compact 100 x 85 mm  CC BY-NC-SA 4.0", 1.0)]
 else:
+    back_texts = []
     place["J1"] = (11.0, yt, 0); texts.append((11.0, yt - 7.0, "12V IN", 0.9))
     place["J3"] = (26.0, yt, 0); texts.append((26.0, yt - 7.0, "SPK L", 0.9))
     place["J4"] = (121.0, yt, 0); texts.append((121.0, yt - 7.0, "SPK R", 0.9))
@@ -89,5 +91,6 @@ else:
     texts.append((96.0, BH - 6.4, "github.com/lahirunirmalx/discrete-stereo-amp", 0.9))
 stem = ("amp_compact" if compact else "amp") + ("_1layer" if single else "")
 bad = build(HERE / "amp/amp.net", place, BW, BH, HERE / "amp" / (stem + ".kicad_pcb"),
-            "STEREO AMP 12V  v1.1 2026-10", single=single, scale=(1.45, 1.45), texts=texts, title_at=(36.0 if compact else 90.0, BH - 3.0))
+            "STEREO AMP 12V" if compact else "STEREO AMP 12V  v1.1 2026-10", single=single, scale=(1.45, 1.45), texts=texts,
+            title_at=(50.0, 19.8) if compact else (90.0, BH - 3.0), back_texts=back_texts)
 sys.exit(1 if bad else 0)

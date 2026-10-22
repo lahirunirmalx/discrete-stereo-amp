@@ -24,8 +24,9 @@ for b in amp psu vol; do
   kicad-cli pcb export pdf --layers "B.Cu,Edge.Cuts" --mirror --black-and-white -o $OUT/single_layer/${b}_1layer_etch_mirrored.pdf $b/${b}_1layer.kicad_pcb >/dev/null
   kicad-cli sch export pdf -o $OUT/schematics/${b}_schematic.pdf $b/$b.kicad_sch >/dev/null
   cp $b/bom_$b.csv $OUT/
-  cp $b/pcb_$b.png $OUT/pictures/${b}_2layer.png; if [ $b = amp ]; then cp amp/pcb_amp_compact.png $OUT/pictures/amp_compact_2layer.png; cp amp/amp_compact.kicad_pcb $OUT/kicad_projects/amp/; fi; cp $b/pcb_${b}_1layer.png $OUT/pictures/${b}_1layer.png 2>/dev/null || true
+  cp $b/pcb_$b.png $OUT/pictures/${b}_2layer.png; cp $b/pcb_${b}_1layer.png $OUT/pictures/${b}_1layer.png 2>/dev/null || true
   mkdir -p $OUT/kicad_projects/$b; cp $b/$b.kicad_pro $b/$b.kicad_sch $b/$b.kicad_pcb $b/${b}_1layer.kicad_pcb $OUT/kicad_projects/$b/
+  if [ $b = amp ]; then cp amp/amp_compact.kicad_pcb $OUT/kicad_projects/amp/; cp amp/pcb_amp_compact.png $OUT/pictures/amp_compact_2layer.png; fi
 done
 cp panel/bom_all.csv panel/bom_shopping.csv panel/bom_shopping.md panel/bom_mouser.csv panel/bom_mouser_notes.md panel/panel.png $OUT/; cp panel/panel.png $OUT/pictures/panel_2layer.png; cp panel/stereo-panel.kicad_pcb $OUT/kicad_projects/
 cp ../ORDER_GUIDE.md ../README.md ../LICENSE $OUT/; mkdir -p $OUT/docs; cp -r ../docs/*.md ../docs/images $OUT/docs/; cp ../sim/*.cir ../sim/*.out ../sim/*.inc ../sim/README.md $OUT/sim/ 2>/dev/null || (mkdir -p $OUT/sim && cp ../sim/*.cir ../sim/*.out ../sim/*.inc ../sim/README.md $OUT/sim/)

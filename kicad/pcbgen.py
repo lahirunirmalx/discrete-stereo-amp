@@ -282,7 +282,7 @@ def pack(items, x0, y0, w, h, gap=0.8, back=False, align="left"):
 
 
 def build(netfile, place, bw, bh, out_path, title, single=False, scale=(1.0, 1.0), texts=(), bx=50.0, by=50.0,
-          allow_offboard=(), track=0.4, clearance=0.19, mount_holes=True, title_at=None):
+          allow_offboard=(), track=0.4, clearance=0.19, mount_holes=True, title_at=None, back_texts=()):
     """place: {ref: (x, y, rot)} relative to the board origin (bx, by)."""
     sx, sy = scale if single else (1.0, 1.0)
     BW, BH = round(bw * sx, 1), round(bh * sy, 1)
@@ -344,6 +344,13 @@ def build(netfile, place, bw, bh, out_path, title, single=False, scale=(1.0, 1.0
         t = pcbnew.PCB_TEXT(board)
         t.SetText(s); t.SetPosition(VECTOR2I(FromMM(bx + x * sx), FromMM(by + y * sy)))
         t.SetLayer(pcbnew.F_SilkS); t.SetTextSize(VECTOR2I(FromMM(size), FromMM(size))); t.SetTextThickness(FromMM(0.15))
+        board.Add(t)
+    for (x, y, s, size) in back_texts:
+        # readable from the back: KiCad mirrors text on B.SilkS when asked to
+        t = pcbnew.PCB_TEXT(board)
+        t.SetText(s); t.SetPosition(VECTOR2I(FromMM(bx + x * sx), FromMM(by + y * sy)))
+        t.SetLayer(pcbnew.B_SilkS); t.SetMirrored(True)
+        t.SetTextSize(VECTOR2I(FromMM(size), FromMM(size))); t.SetTextThickness(FromMM(0.15))
         board.Add(t)
     if mount_holes:
         for i, (hx, hy) in enumerate([(bx + 2.5, by + 2.5), (bx + BW - 2.5, by + 2.5), (bx + 2.5, by + BH - 2.5), (bx + BW - 2.5, by + BH - 2.5)], start=1):
