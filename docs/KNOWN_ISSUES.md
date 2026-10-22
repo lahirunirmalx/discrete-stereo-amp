@@ -24,3 +24,8 @@
 10. The 2-layer boards report 4 "extra footprint" schematic-parity warnings each: the mounting holes, which
     exist only on the PCB. Expected. The amp also reports 36 "exclude from BOM" attribute warnings on the solder
     jumpers, also expected.
+11. **LED positions are not hybrid.** D10001 / D20001 (tail references) and the power LEDs (PSU D7, volume D1)
+    use a plain 3 mm LED footprint: no 1206 LED twin, and the two-1N4148 substitute for the tail reference only
+    fits by stacking both diodes into the LED's two holes. Planned for the next PCB revision: a hybrid
+    `Custom:LED_D3_1206` footprint (3 mm pattern + 1206 twin + a third free hole between the pads so two DO-35
+    diodes fit end to end). Circuit unchanged; boards, panel and release rebuild.

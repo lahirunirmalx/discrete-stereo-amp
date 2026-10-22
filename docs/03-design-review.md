@@ -84,6 +84,7 @@ produced for release 1.1 and have not been re-run on the release 2 circuits. The
 
 ## 3.6 Improvements for release 3
 
+- Hybrid LED footprint (3 mm + 1206 twin + middle hole for two DO-35 diodes) for the tail references and the power LEDs (KNOWN_ISSUES 11).
 - 1 nF from the amp input header to ground (RF filter).
 - A second heatsink bar across the four output transistors, with Q6 clamped under it.
 - Hand-route the single-sided amp, or offer a single-sided amp without the jumper blocks.
