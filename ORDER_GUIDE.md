@@ -39,7 +39,7 @@ simulated in `sim/` with ngspice. Two fab packages:
 - Solder jumpers (the pinout blocks) are on the copper side too.
 - Where one layer was not enough, the build added wire-link footprints **JLn**: solder a bare
   wire between the two holes. Count per board is printed by `kicad/build.sh <board> --single`
-  (PSU: 1, volume: 1, headphone: 2, amp: see KNOWN_ISSUES.md).
+  (PSU: 1, volume: 1, headphone: 3, amp: see KNOWN_ISSUES.md).
 - **Status of the single-sided amp: NOT clean.** 194 x 123 mm, 24 wire
   links, but DRC still reports 15 errors: some connections still open and auto-placed wire links crowding
   neighbouring copper (the 3x3 jumper blocks' interleaved pads do not suit one-layer routing). Open `kicad_projects/amp/amp_1layer.kicad_pcb` in KiCad,

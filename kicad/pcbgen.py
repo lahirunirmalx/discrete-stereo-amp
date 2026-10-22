@@ -322,7 +322,8 @@ def build(netfile, place, bw, bh, out_path, title, single=False, scale=(1.0, 1.0
         fp.SetOrientationDegrees(rot)
         for pad in fp.Pads():
             num = pad.GetNumber()
-            key = (ref, num[:-1] if num.endswith("S") else num)
+            # SMD twins are numbered "<n>S"; a pad that is literally "S" (the jack's sleeve) is a real pin
+            key = (ref, num) if (ref, num) in pin_net else (ref, num[:-1] if num.endswith("S") and len(num) > 1 else num)
             if key in pin_net:
                 pad.SetNet(netitems[pin_net[key]])
                 if single and pin_net[key] == "GND":

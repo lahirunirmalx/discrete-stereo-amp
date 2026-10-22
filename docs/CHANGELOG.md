@@ -24,7 +24,7 @@ Boards:
 - Amp wide 134 x 85 mm (was 71), compact 100 x 98 mm (still inside the 100 x 100 tier), PSU 90 x 58 mm (was 50),
   volume 42 x 26 mm, headphone 42 x 30 mm; panel 155 x 155 mm square with the headphone board above the volume
   board on the right (30 + 2 + 26 = 58 = PSU height). All 2-layer boards and the panel are DRC clean.
-- Single-sided: PSU, volume and headphone boards clean (1, 1 and 2 wire links); amp 24 links and 15 DRC errors
+- Single-sided: PSU, volume and headphone boards clean (1, 1 and 3 wire links); amp 24 links and 15 DRC errors
   (was 62), still unfinished.
 - Test points: TPx4 (LED reference, 10.1 V) per amp channel, TP5 (FB, 6.3 V) on the PSU, TP1 to TP3 on the
   headphone board. Every expected voltage is printed on the silkscreen or in the schematic value.
