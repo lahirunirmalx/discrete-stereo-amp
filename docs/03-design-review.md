@@ -12,7 +12,7 @@ the checks that have not been re-run.
 | Netlist vs simulated deck (same net partition) | kicad/netcheck.py | OK, both channels vs amp2_final.cir | OK vs psu2.cir | by inspection (7 nets) | by inspection (11 nets, listed in the build log) | |
 | PCB DRC with schematic parity, 2-layer | kicad-cli | 0 errors / 0 errors | 0 errors | 0 errors | 0 errors | 0 errors |
 | PCB DRC, single-sided | kicad-cli | 15 errors (24 wire links; open) | 0 errors, 1 link | 0 errors, 1 link | 0 errors, 3 links | |
-| Autorouter shorts ("Items shorting two nets") | read in every DRC JSON | none | none | none | none (two during development: a link hole on a jumper pad, fixed in auto_links.py, and the headphone jack sleeve pad "S" left without its GND net by the SMD-twin suffix rule in pcbgen.py, caught by the advisor review of the parity warning and fixed) | none |
+| Autorouter shorts ("Items shorting two nets") | read in every DRC JSON | none | none | none | none (two during development: a link hole on a jumper pad, fixed in auto_links.py, and the headphone jack sleeve pad "S" left without its GND net by the SMD-twin suffix rule in pcbgen.py, caught by following up the parity warning, fixed) | none |
 | Circuit simulation | ngspice 42, 5 new decks | ampC, ampC_sq, ampC_misc, amp2_final | psu2, psu2_dc, psu2_step | | | |
 
 ## 3.2 Findings from simulation (release 2)
