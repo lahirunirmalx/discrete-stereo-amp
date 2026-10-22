@@ -7,6 +7,14 @@ OUT=../release/pkg; rm -rf $OUT; mkdir -p $OUT/panel_2layer_gerbers $OUT/single_
 kicad-cli pcb export gerbers --layers "F.Cu,B.Cu,F.Mask,B.Mask,F.SilkS,B.SilkS,Edge.Cuts" --no-protel-ext -o $OUT/panel_2layer_gerbers/ panel/stereo-panel.kicad_pcb >/dev/null
 kicad-cli pcb export drill --format excellon --excellon-separate-th -o $OUT/panel_2layer_gerbers/ panel/stereo-panel.kicad_pcb >/dev/null
 (cd $OUT/panel_2layer_gerbers && zip -q ../stereo-panel-gerbers.zip *)
+# one gerber zip per 2-layer board, for ordering boards separately (each PSU and volume fit JLCPCB's 100 x 100 tier)
+mkdir -p $OUT/single_boards_2layer
+for b in amp psu vol; do
+  d=$OUT/single_boards_2layer/${b}_gerbers; mkdir -p $d
+  kicad-cli pcb export gerbers --layers "F.Cu,B.Cu,F.Mask,B.Mask,F.SilkS,B.SilkS,Edge.Cuts" --no-protel-ext -o $d/ $b/$b.kicad_pcb >/dev/null
+  kicad-cli pcb export drill --format excellon --excellon-separate-th -o $d/ $b/$b.kicad_pcb >/dev/null
+  (cd $d && zip -q ../${b}-2layer-gerbers.zip *)
+done
 for b in amp psu vol; do
   d=$OUT/single_layer/${b}_1layer; mkdir -p $d
   kicad-cli pcb export gerbers --layers "B.Cu,B.Mask,F.SilkS,Edge.Cuts" --no-protel-ext -o $d/ $b/${b}_1layer.kicad_pcb >/dev/null

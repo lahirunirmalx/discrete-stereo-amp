@@ -6,7 +6,18 @@ simulated in `sim/` with ngspice. Two fab packages:
 | Package | What | Where it goes |
 |---|---|---|
 | `panel_2layer_gerbers/` + `stereo-panel-gerbers.zip` | ONE 2-layer square panel, 144.2 x 144.2 mm with 3 mm rails, holding the amp (134 x 71) above the PSU (90 x 50) and the volume board (42 x 26) side by side, joined to each other and to the rails by 4 mm mouse-bite tabs | JLCPCB / PCBWay |
+| `single_boards_2layer/<board>-2layer-gerbers.zip` | one zip per board (amp 134 x 71, PSU 90 x 50, volume 42 x 26), 2 layers | JLCPCB / PCBWay, boards ordered separately |
 | `single_layer/` | the same three boards as single-sided (copper on the bottom only), scaled up: amp 194 x 100, PSU 117 x 65, volume 42 x 26 mm, with mirrored 1:1 PDFs for toner transfer | home etching (or a 1-layer fab order) |
+
+## Which package to upload
+
+- **Cheapest per board at JLCPCB:** the $2 tier is one design, up to 100 x 100 mm, 5 or 10 pieces, default
+  options. PSU and volume zips in `single_boards_2layer/` qualify. The amp (134 x 71 mm) does not: it is
+  quoted per area. All three boards in one cart share the shipping.
+- **One order, fewest steps:** the panel zip. It is above 100 x 100 mm and holds three designs, so it is
+  priced per area plus JLCPCB's "different design" fee. Fine for a one-off; more per board than three
+  separate $2 orders.
+- **Home etching:** `single_layer/` (see below).
 
 ## Ordering the panel at JLCPCB or PCBWay
 
