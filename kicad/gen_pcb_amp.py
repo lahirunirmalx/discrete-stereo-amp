@@ -8,8 +8,9 @@ from pcbgen import pack, build
 from common import FP
 
 single = "--single" in sys.argv
+compact = "--compact" in sys.argv      # 100 x 85 mm variant that fits the 100 x 100 fab tier
 HERE = Path(__file__).parent
-BW, BH = 134.0, 72.0
+BW, BH = (100.0, 72.0) if compact else (134.0, 72.0)
 place, texts = {}, []
 R, R2W, C, CPS, CPM, CPL, Q, TP = FP["R"], FP["R_2W"], FP["C"], FP["CP_S"], FP["CP_M"], FP["CP_L"], FP["TO92"], FP["TP"]
 probs = []
@@ -22,7 +23,7 @@ def region(items, x0, y0, w, h, gap=0.8):
 
 
 yend = 0
-for b, xo, sfx in ((100, 0.0, "L"), (200, 67.0, "R")):
+for b, xo, sfx in ((100, 0.0, "L"), (200, 50.0 if compact else 67.0, "R")):
     # output devices along the top edge (pad 1 at the anchor), multiplier transistor beside them
     place["Q%d4" % b] = (xo + 8.0, 4.0, 0)
     place["Q%d5" % b] = (xo + 22.0, 4.0, 0)
@@ -41,13 +42,24 @@ for b, xo, sfx in ((100, 0.0, "L"), (200, 67.0, "R")):
     region([("RV%d" % b, FP["TRIM"], 0)], xo + 35.5, 14.0, 11.4, 6.0)
     # then rows: bootstrap / output passives, emitter resistors, input-stage resistors, transistors
     y = 20.5
-    for items in ([("R%d10" % b, R, 90), ("R%d11" % b, R, 90), ("R%d12" % b, R, 90), ("R%d15" % b, R, 90), ("C%d07" % b, C, 90),
-                   ("C%d05" % b, CPM, 0), ("C%d06" % b, CPL, 0), ("TP%d3" % b, TP, 0), ("TP%d2" % b, TP, 0), ("R%d13" % b, R2W, 0)],
-                  [("R%d14" % b, R2W, 0), ("R%d03" % b, R, 90), ("R%d01" % b, R, 90), ("R%d02" % b, R, 90),
-                   ("R%d05" % b, R, 90), ("R%d06" % b, R, 90), ("R%d07" % b, R, 90), ("R%d04" % b, R, 90), ("R%d08" % b, R, 90)],
-                  [("C%d01" % b, CPS, 0), ("TP%d1" % b, TP, 0), ("Q%d1" % b, Q, 0), ("Q%d2" % b, Q, 0), ("C%d02" % b, CPS, 0),
-                   ("C%d03" % b, CPM, 0), ("Q%d3" % b, Q, 0), ("C%d04" % b, C, 0)]):
-        used = region(items, xo + 0.6, y, 65.8, 30.0)
+    if compact:
+        rows = ([("R%d10" % b, R, 90), ("R%d11" % b, R, 90), ("R%d12" % b, R, 90), ("C%d05" % b, CPM, 0),
+                 ("TP%d3" % b, TP, 0), ("TP%d2" % b, TP, 0), ("C%d06" % b, CPL, 0)],
+                [("R%d13" % b, R2W, 0), ("R%d14" % b, R2W, 0), ("R%d15" % b, R, 90), ("C%d07" % b, C, 90)],
+                [("C%d01" % b, CPS, 0), ("R%d03" % b, R, 90), ("R%d01" % b, R, 90), ("R%d02" % b, R, 90), ("C%d02" % b, CPS, 0),
+                 ("R%d05" % b, R, 90), ("R%d06" % b, R, 90), ("R%d07" % b, R, 90), ("R%d04" % b, R, 90), ("R%d08" % b, R, 90)],
+                [("TP%d1" % b, TP, 0), ("Q%d1" % b, Q, 0), ("Q%d2" % b, Q, 0), ("C%d03" % b, CPM, 0), ("Q%d3" % b, Q, 0), ("C%d04" % b, C, 0)])
+        width = 48.8
+    else:
+        rows = ([("R%d10" % b, R, 90), ("R%d11" % b, R, 90), ("R%d12" % b, R, 90), ("R%d15" % b, R, 90), ("C%d07" % b, C, 90),
+                 ("C%d05" % b, CPM, 0), ("C%d06" % b, CPL, 0), ("TP%d3" % b, TP, 0), ("TP%d2" % b, TP, 0), ("R%d13" % b, R2W, 0)],
+                [("R%d14" % b, R2W, 0), ("R%d03" % b, R, 90), ("R%d01" % b, R, 90), ("R%d02" % b, R, 90),
+                 ("R%d05" % b, R, 90), ("R%d06" % b, R, 90), ("R%d07" % b, R, 90), ("R%d04" % b, R, 90), ("R%d08" % b, R, 90)],
+                [("C%d01" % b, CPS, 0), ("TP%d1" % b, TP, 0), ("Q%d1" % b, Q, 0), ("Q%d2" % b, Q, 0), ("C%d02" % b, CPS, 0),
+                 ("C%d03" % b, CPM, 0), ("Q%d3" % b, Q, 0), ("C%d04" % b, C, 0)])
+        width = 65.8
+    for items in rows:
+        used = region(items, xo + 0.6, y, width, 30.0)
         y += used + 1.0
     yend = max(yend, y)
     texts.append((xo + 25, 19.0, "CH %s" % sfx, 1.3))
@@ -55,17 +67,27 @@ for b, xo, sfx in ((100, 0.0, "L"), (200, 67.0, "R")):
 BH = round(yend + 14.0)
 yt = BH - 6.5
 # screw terminals: rot 0 puts the wire entry towards the bottom edge (verified on the 3D render; rot 180 was backwards)
-place["J1"] = (11.0, yt, 0); texts.append((11.0, yt - 7.0, "12V IN", 0.9))
-place["J3"] = (26.0, yt, 0); texts.append((26.0, yt - 7.0, "SPK L", 0.9))
-place["J4"] = (121.0, yt, 0); texts.append((121.0, yt - 7.0, "SPK R", 0.9))
-place["J2"] = (63.0, BH - 2.5, 90); texts.append((67.0, BH - 6.5, "IN L G R", 0.9))
-place["C1"] = (42.0, yt - 1.5, 0)
-place["C2"] = (50.0, yt + 1.5, 90)
-place["TP1"] = (54.5, yt - 3.5, 0); texts.append((54.5, yt - 5.7, "+12V", 0.9))
-place["TP2"] = (54.5, yt + 1.5, 0); texts.append((58.0, yt + 1.8, "GND", 0.9))
-print("board height", BH)
-texts.append((96.0, BH - 6.4, "github.com/lahirunirmalx/discrete-stereo-amp", 0.9))
-stem = "amp_1layer" if single else "amp"
+if compact:
+    place["J1"] = (11.0, yt, 0); texts.append((11.0, yt - 7.0, "12V IN", 0.9))
+    place["J3"] = (23.5, yt, 0); texts.append((23.5, yt - 7.0, "SPK L", 0.9))
+    place["J4"] = (87.0, yt, 0); texts.append((87.0, yt - 7.0, "SPK R", 0.9))
+    place["J2"] = (45.0, BH - 2.5, 90); texts.append((49.0, BH - 6.5, "IN L G R", 0.9))
+    place["C1"] = (66.0, yt - 1.5, 0)
+    place["C2"] = (74.0, yt + 1.5, 90)
+    place["TP1"] = (78.0, yt - 3.5, 0); texts.append((78.0, yt - 5.7, "+12V", 0.9))
+    place["TP2"] = (78.0, yt + 1.5, 0); texts.append((81.5, yt + 1.8, "GND", 0.9))
+    texts.append((50.0, 19.0, "github.com/lahirunirmalx/discrete-stereo-amp", 0.9))
+else:
+    place["J1"] = (11.0, yt, 0); texts.append((11.0, yt - 7.0, "12V IN", 0.9))
+    place["J3"] = (26.0, yt, 0); texts.append((26.0, yt - 7.0, "SPK L", 0.9))
+    place["J4"] = (121.0, yt, 0); texts.append((121.0, yt - 7.0, "SPK R", 0.9))
+    place["J2"] = (63.0, BH - 2.5, 90); texts.append((67.0, BH - 6.5, "IN L G R", 0.9))
+    place["C1"] = (42.0, yt - 1.5, 0)
+    place["C2"] = (50.0, yt + 1.5, 90)
+    place["TP1"] = (54.5, yt - 3.5, 0); texts.append((54.5, yt - 5.7, "+12V", 0.9))
+    place["TP2"] = (54.5, yt + 1.5, 0); texts.append((58.0, yt + 1.8, "GND", 0.9))
+    texts.append((96.0, BH - 6.4, "github.com/lahirunirmalx/discrete-stereo-amp", 0.9))
+stem = ("amp_compact" if compact else "amp") + ("_1layer" if single else "")
 bad = build(HERE / "amp/amp.net", place, BW, BH, HERE / "amp" / (stem + ".kicad_pcb"),
-            "STEREO AMP 12V  v1.1 2026-10", single=single, scale=(1.45, 1.45), texts=texts, title_at=(90.0, BH - 3.0))
+            "STEREO AMP 12V  v1.1 2026-10", single=single, scale=(1.45, 1.45), texts=texts, title_at=(36.0 if compact else 90.0, BH - 3.0))
 sys.exit(1 if bad else 0)

@@ -1,6 +1,10 @@
 # Changelog
 
-## 2026-10-21, release 1.1 (prototype, unbuilt)
+## 2026-10-21, release 1.1 (prototype, unbuilt), updated 2026-10-22
+
+- Compact amp layout (100 x 85 mm, `kicad/amp/amp_compact.kicad_pcb`, `build.sh amp --compact`) next to the wide one; per-board gerber zips in the release.
+- Modular build paths documented (amp alone from 12 V DC works; volume board and PSU optional).
+- Preamp study (docs/05).
 
 - Screw terminals rotated so the wire entry faces the board edge (was backwards in 1.0).
 - Amp board 134 x 71 mm (was 100 x 83): three wider rows, same width as PSU plus volume board.

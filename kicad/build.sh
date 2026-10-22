@@ -1,11 +1,12 @@
 #!/bin/bash
-# Usage: ./build.sh <amp|psu|vol> [--single]
+# Usage: ./build.sh <amp|psu|vol> [--single] [--compact]   (--compact: the 100 x 85 mm amp)
 # place -> freerouting -> import SES -> GND pour -> DRC (schematic parity on the 2-layer board) -> render
 set -e
 cd "$(dirname "$0")"
-B=$1; SINGLE=$2
-STEM=$B; [ "$SINGLE" = "--single" ] && STEM=${B}_1layer
-/usr/bin/python3 gen_pcb_$B.py $SINGLE
+B=$1; shift; SINGLE=""; COMPACT=""
+for a in "$@"; do [ "$a" = "--single" ] && SINGLE=--single; [ "$a" = "--compact" ] && COMPACT=--compact; done
+STEM=$B; [ -n "$COMPACT" ] && STEM=${B}_compact; [ -n "$SINGLE" ] && STEM=${STEM}_1layer
+/usr/bin/python3 gen_pcb_$B.py $SINGLE $COMPACT
 rm -f $B/$STEM.ses
 /usr/bin/python3 netrename.py dsn $B/$STEM.dsn
 PASSES=120; [ "$SINGLE" = "--single" ] && PASSES=120

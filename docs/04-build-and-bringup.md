@@ -1,5 +1,14 @@
 # 4. Build and bring-up
 
+## 4.0 Build only what you need
+
+The boards are independent. The minimum listening setup is the amp alone: 12 V DC from any 1 A adapter
+into "12V IN" (centre + to pin 1, the square pad), a phone or PC into the "IN L G R" header (tip = L, ring = R,
+sleeve = G of a 3.5 mm plug), speakers on the terminals. The source's volume control sets the level; a phone
+at full volume (about 1 Vrms) overdrives the amp (full power at 0.14 Vrms), so start low. Add the volume
+board when you want a knob, and the PSU when you want to run from a transformer or want the clamp and the
+front-panel LED. Section 4.3 (PSU alone) and 4.4 (amp) still apply in whatever order you build.
+
 ## 4.1 Before soldering
 
 1. Read [ORDER_GUIDE.md](../ORDER_GUIDE.md) for substitutes, matching and tolerances.

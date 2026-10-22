@@ -25,9 +25,11 @@ PDFs of all three are in the release zip (`schematics/`).
 
 ## Boards (2-layer layouts, top view, both copper layers)
 
-| Amp 134 x 71 mm | PSU 90 x 50 mm | Volume 42 x 26 mm |
-|---|---|---|
-| ![Amp PCB](docs/images/amp_pcb_2layer.png) | ![PSU PCB](docs/images/psu_pcb_2layer.png) | ![Volume PCB](docs/images/vol_pcb_2layer.png) |
+| Amp, wide 134 x 71 mm | Amp, compact 100 x 85 mm | PSU 90 x 50 mm | Volume 42 x 26 mm |
+|---|---|---|---|
+| ![Amp PCB](docs/images/amp_pcb_2layer.png) | ![Compact amp PCB](docs/images/amp_compact_pcb_2layer.png) | ![PSU PCB](docs/images/psu_pcb_2layer.png) | ![Volume PCB](docs/images/vol_pcb_2layer.png) |
+
+![Compact amp 3D](docs/images/amp_compact_3d_iso.png)
 
 ![Panel layout](docs/images/panel_2layer.png)
 
@@ -40,8 +42,31 @@ PDFs of all three are in the release zip (`schematics/`).
 | Idle current | output stage 21 mA per channel after setting the trimmer (7 to 10 mV across a 0.47 ohm emitter resistor); about 32 mA per channel from the supply |
 | Bandwidth | 20 Hz (8 ohm) / 34 Hz (4 ohm) to 250 kHz |
 | Supply | 12 to 15 VAC transformer (1.5 A for full power) or 12 V DC in; 11.6 V out, 2 A clamp |
-| Boards | amp 134 x 71 mm, PSU 90 x 50 mm, volume 42 x 26 mm; 2-layer panel 144 x 144 mm; single-sided variants |
+| Boards | amp 134 x 71 mm (or the compact 100 x 85 mm variant for the 100 x 100 fab tier), PSU 90 x 50 mm, volume 42 x 26 mm; 2-layer panel 144 x 144 mm; single-sided variants |
 | Parts | 107 through-hole parts with 1206 / SOD / SMA twins on the same pads; 36 solder jumpers for output pinouts |
+
+## Design rules this project keeps
+
+1. **Modular.** Every board works alone; none depends on another. Build the amp only, add the volume board or the PSU later.
+2. **Your parts, your build.** Every passive has through-hole pads plus a 1206 / SOD / SMA twin; every output transistor sits behind a 3x3 solder-jumper pinout block; the BOM lists at least three substitutes per transistor. Fit what you have.
+3. **Debuggable by a beginner.** Every board carries labelled test points with the expected voltage printed next to them, and the bring-up guide walks through them in order.
+
+Any change to this project is checked against these three before it is merged.
+
+## Build it board by board
+
+Every board works on its own; nothing is required by another board.
+
+| You build | You need | What you get |
+|---|---|---|
+| Amp only | any 12 V DC supply of 1 A (wall adapter, bench supply) into "12V IN"; a phone, PC or DAC into the "IN L G R" header; speakers on the terminals | a working stereo amp; the source's own volume control sets the level (a phone at full volume will clip, so turn it down) |
+| Amp + volume board | as above, plus the two 3-pin cables | a volume knob (and the front-panel LED position) |
+| Amp + PSU | a 12 to 15 VAC transformer into the PSU, or 12 V DC into its "DC IN"; PSU "DC OUT" to the amp | a regulated, clamped, fused supply with the power LED |
+| All three | the panel | the complete desk amp |
+
+Two amp layouts carry the same circuit: the wide one (134 x 71 mm, matches the PSU plus volume row on the
+panel) and the compact one (100 x 85 mm, fits JLCPCB's 100 x 100 mm tier when ordered alone). Choose by
+price; there is no electrical difference.
 
 ## Documents
 
