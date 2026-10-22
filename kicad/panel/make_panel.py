@@ -1,9 +1,13 @@
-"""Square panel with rails: amp (134 mm wide) on top, PSU and volume board side by side below it,
-3 mm rails all round stretched so the outline is square; mouse-bite tabs between boards and to the rails.
+"""Square panel with rails: amp (134 mm wide) on top, PSU below it on the left, headphone board and volume board
+stacked on the right (30 + 2 + 26 = 58 mm = PSU height); 3 mm rails all round stretched so the outline is square;
+mouse-bite tabs between boards and to the rails.
 
-Usage: ~/tools/kikit-venv/bin/python make_panel.py out.kicad_pcb amp.kicad_pcb psu.kicad_pcb vol.kicad_pcb
+Usage: ~/tools/kikit-venv/bin/python make_panel.py out.kicad_pcb amp.kicad_pcb psu.kicad_pcb vol.kicad_pcb hp.kicad_pcb
 """
 import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from common import STAMP, REPO
 import pcbnew
 from pcbnew import VECTOR2I, FromMM
 from shapely.geometry import box
@@ -19,13 +23,15 @@ def size(path):
     return bb.GetWidth(), bb.GetHeight()
 
 
-def main(out, amp, psu, vol):
+def main(out, amp, psu, vol, hp):
     panel = panelize.Panel(out)
-    aw, ah = size(amp); pw, ph = size(psu); vw, vh = size(vol)
+    aw, ah = size(amp); pw, ph = size(psu); vw, vh = size(vol); hw, hh = size(hp)
     # amp on top; PSU and volume board side by side below it (their widths add up to the amp's)
     panel.appendBoard(amp, VECTOR2I(0, 0), origin=panelize.Origin.TopLeft, tolerance=FromMM(1))
     panel.appendBoard(psu, VECTOR2I(0, int(ah + GAP)), origin=panelize.Origin.TopLeft, tolerance=FromMM(1))
-    panel.appendBoard(vol, VECTOR2I(int(pw + GAP), int(ah + GAP)), origin=panelize.Origin.TopLeft, tolerance=FromMM(1))
+    # headphone board above the volume board: the pot shaft hangs off the bottom rail, the jack nose stays inside the gap
+    panel.appendBoard(hp, VECTOR2I(int(pw + GAP), int(ah + GAP)), origin=panelize.Origin.TopLeft, tolerance=FromMM(1))
+    panel.appendBoard(vol, VECTOR2I(int(pw + GAP), int(ah + GAP + hh + GAP)), origin=panelize.Origin.TopLeft, tolerance=FromMM(1))
     bb = panel.boardSubstrate.bounds()
     inner_w, inner_h = bb[2] - bb[0], bb[3] - bb[1]
     side = int(max(inner_w, inner_h) + 2 * (GAP + RAIL))
@@ -53,7 +59,7 @@ def main(out, amp, psu, vol):
     pcbnew.ZONE_FILLER(b).Fill(b.Zones())
     # rail texts: project name on the top rail, repository and revision on the bottom rail
     bb = b.GetBoardEdgesBoundingBox()
-    for text, y in (("STEREO AMP + PSU + VOLUME  v1.1 2026-10  CC BY-NC-SA 4.0", 1.5), ("github.com/lahirunirmalx/discrete-stereo-amp  v1.1 2026-10", bb.GetHeight() / 1e6 - 1.5)):
+    for text, y in (("STEREO AMP + PSU + VOLUME + HEADPHONE  " + STAMP + "  CC BY-NC-SA 4.0", 1.5), (REPO + "  " + STAMP, bb.GetHeight() / 1e6 - 1.5)):
         tx = pcbnew.PCB_TEXT(b); tx.SetText(text); tx.SetLayer(pcbnew.F_SilkS)
         tx.SetTextSize(VECTOR2I(FromMM(1.5), FromMM(1.5))); tx.SetTextThickness(FromMM(0.15))
         tx.SetPosition(VECTOR2I(bb.GetLeft() + bb.GetWidth() // 2, bb.GetTop() + FromMM(y))); b.Add(tx)
@@ -65,4 +71,4 @@ def main(out, amp, psu, vol):
 
 
 if __name__ == "__main__":
-    main(*sys.argv[1:5])
+    main(*sys.argv[1:6])

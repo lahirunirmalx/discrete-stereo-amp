@@ -1,0 +1,72 @@
+* Candidate C (release 2 front end): PNP diff pair BC557 with NPN current-mirror load, PNP current-source tail
+* (LED reference), NPN VAS with bootstrapped load from VCC, Vbe multiplier, BD139/BD140 followers. 12 V.
+.include models.inc
+.model LEDR D(IS=1e-20 N=1.8 RS=10 CJO=20p)
+Vcc vcc 0 DC 12
+Vin in 0 DC 0 AC 1 SIN(0 0.1 1k)
+Rs in src 2.5k
+Cin b1 src 2.2u
+Rb1 vcc bias 47k
+Rb2 bias 0 47k
+Cbias bias 0 47u
+R3 bias b1 47k
+* tail current source: LED 1.8 V below VCC, (1.8-0.65)/1.2k = 0.95 mA
+Dled vcc led LEDR
+Rled led 0 4.7k
+Q9 tail led e9 BC557B
+Rt vcc e9 1.2k
+Q1 c1 b1 tail BC557B
+Q2 c2 b2 tail BC557B
+* current mirror load (diode side on Q2, output on Q1 -> VAS base)
+Q8 c2 c2 e8 BC547B
+Re8 e8 0 100
+Q7 c1 c2 e7 BC547B
+Re7 e7 0 100
+Rf b2 out 22k
+Rg b2 g 1k
+Cg g 0 220u
+* VAS
+Q3 b5 c1 e3 BC547B
+Re3 e3 0 47
+Cm b5 c1 100p
+R5a vcc boot 270
+R5b boot vas 270
+Cboot boot out 100u
+* bias and outputs
+Q6 vas bm b5 BC547B
+Rm1 vas m1 470
+RV m1 bm 350
+Rm2 bm b5 1k
+Q4 vcc vas e4 BD139
+Q5 0 b5 e5 BD140
+Re4 e4 out 0.47
+Re5 out e5 0.47
+Rzob out zz 10
+Czob zz 0 100n
+Cout out spk 1000u
+RL spk 0 8
+CL spk 0 1p
+.control
+ac dec 50 1k 10meg
+let gdb = vdb(spk)
+meas ac gpk MAX gdb from=1k to=10meg
+meas ac g1k FIND gdb AT=1000
+echo RESULT acpeak g1k=$&g1k peak=$&gpk
+let tgt = g1k - 3
+meas ac fh WHEN gdb=tgt FALL=1
+echo RESULT fh fh=$&fh
+foreach t 25 70
+  option temp = $t
+  op
+  let iout = v(e4,out)/0.47
+  echo RESULT temp t=$t iqout=$&iout vout=$&v(out)
+end
+option temp = 25
+foreach bf 110 450
+  altermod @BC547B[BF] = $bf
+  op
+  echo RESULT npnhfe bf=$bf vout=$&v(out) ivas=$&v(e3)
+end
+quit
+.endc
+.end

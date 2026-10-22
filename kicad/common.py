@@ -13,6 +13,9 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 from kisch import Sch
 
+STAMP = "v1.2 2026-10"          # printed on every board, the panel rails and the release name
+REPO = "github.com/lahirunirmalx/discrete-stereo-amp"
+
 FP = {
     "R": "Custom:R_Axial_1206",
     "R_2W": "Resistor_THT:R_Axial_DIN0414_L11.9mm_D4.5mm_P15.24mm_Horizontal",
@@ -36,6 +39,8 @@ FP = {
     "JP_OPEN": "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm",
     "JP_BRIDGED": "Jumper:SolderJumper-2_P1.3mm_Bridged_Pad1.0x1.5mm",
     "FUSE": "Fuse:Fuseholder_Clip-5x20mm_Littelfuse_100_Inline_P20.50x4.60mm_D1.30mm_Horizontal",
+    "JACK": "Connector_Audio:Jack_3.5mm_CUI_SJ1-3535NG_Horizontal",     # T, TN, R, RN, S pads
+    "SW_DPDT": "Button_Switch_THT:SW_CK_JS202011CQN_DPDT_Straight",
 }
 
 
@@ -60,6 +65,7 @@ class Gen:
             "TP": s.lib("Connector", "TestPoint"), "SCREW2": s.lib("Connector", "Screw_Terminal_01x02"),
             "H3": s.lib("Connector_Generic", "Conn_01x03"), "H2": s.lib("Connector_Generic", "Conn_01x02"),
             "JPO": s.lib("Jumper", "SolderJumper_2_Open"), "JPB": s.lib("Jumper", "SolderJumper_2_Bridged"),
+            "JACK": s.lib("Connector_Audio", "AudioJack3_SwitchTR"), "SW_DPDT": s.lib("Switch", "SW_Slide_DPDT"),
             "GND": s.lib("power", "GND"), "V12": s.lib("power", "+12V"), "FLAG": s.lib("power", "PWR_FLAG"),
         }
 

@@ -1,0 +1,74 @@
+* Release 2 channel as drawn in KiCad (kicad/gen_amp.py, netlist-checked with kicad/netcheck.py): PNP diff pair with
+* NPN current-mirror load and LED-referenced current-source tail, NPN VAS with bootstrapped load, 220p Miller + 47p lead
+* cap, Vbe multiplier, BD139/BD140 followers, 1k VU meter tap. 12 V single rail.
+.include models.inc
+.model LEDR D(IS=1e-20 N=1.8 RS=10 CJO=20p)
+Vcc vcc 0 DC 12
+Vin in 0 DC 0 AC 1 SIN(0 0.1 1k)
+Rs in src 2.5k
+Cin b1 src 2.2u
+Rb1 vcc bias 47k
+Rb2 bias 0 47k
+Cbias bias 0 47u
+R3 bias b1 47k
+* tail current source: LED 1.8 V below VCC, (1.8-0.65)/1.2k = 0.95 mA
+Dled vcc led LEDR
+Rled led 0 4.7k
+Q9 tail led e9 BC557B
+Rt vcc e9 1.2k
+Q1 c1 b1 tail BC557B
+Q2 c2 b2 tail BC557B
+* current mirror load (diode side on Q2, output on Q1 -> VAS base)
+Q8 c2 c2 e8 BC547B
+Re8 e8 0 100
+Q7 c1 c2 e7 BC547B
+Re7 e7 0 100
+Rf b2 out 22k
+Cf b2 out 47p
+Rg b2 g 1k
+Cg g 0 220u
+* VAS
+Q3 b5 c1 e3 BC547B
+Re3 e3 0 47
+Cm b5 c1 220p
+R5a vcc boot 270
+R5b boot vas 270
+Cboot boot out 100u
+* bias and outputs
+Q6 vas bm b5 BC547B
+Rm1 vas m1 470
+RV m1 bm 350
+Rm2 bm b5 1k
+Q4 vcc vas e4 BD139
+Q5 0 b5 e5 BD140
+Re4 e4 out 0.47
+Re5 out e5 0.47
+Rzob out zz 10
+Czob zz 0 100n
+Cout out spk 1000u
+RL spk 0 8
+* VU meter tap: 1k from the speaker node to the VU header (the 10 Meg stands for the meter not being fitted)
+Rvu spk vu 1k
+Rvumeter vu 0 10meg
+.control
+op
+let iout = v(e4,out)/0.47
+let ivas = v(e3)/47
+let it = v(vcc,e9)/1200
+echo RESULT op vout=$&v(out) vb1=$&v(b1) vled=$&v(led) iqout=$&iout ivas=$&ivas itail=$&it isupply=$&i(Vcc)
+ac lin 1 1000 1000
+let zin = mag(v(src)/i(Vin))
+let g = mag(v(spk))
+let gvu = mag(v(vu))
+echo RESULT ac gain=$&g zin=$&zin vu=$&gvu
+foreach amp 0.1 0.15
+  alter @Vin[sin] = [ 0 $amp 1k ]
+  tran 5u 25m 15m
+  meas tran vrms RMS v(spk) from=15m to=25m
+  let p = vrms*vrms/8
+  echo RESULT tran rl=8 amp=$amp pout=$&p
+  fourier 1k v(spk)
+end
+quit
+.endc
+.end

@@ -1,22 +1,26 @@
-# Known issues and limitations (release 1.1)
+# Known issues and limitations (release 1.2)
 
-1. **Single-sided amp board is not finished.** one copper layer, 22 auto-placed wire links,
-   but 62 DRC errors remain (open connections and links crowding neighbouring copper around the 3x3 jumper
-   blocks). Open `kicad/amp/amp_1layer.kicad_pcb` in KiCad and finish by hand before etching, or build the amp
-   on the 2-layer panel. The single-sided PSU and volume boards are DRC clean.
+1. **Single-sided amp board is not finished.** One copper layer, 24 auto-placed wire links, 15 DRC errors remain
+   (open connections and links crowding neighbouring copper around the 3x3 jumper blocks). Open
+   `kicad/amp/amp_1layer.kicad_pcb` in KiCad and finish by hand before etching, or build the amp on the 2-layer
+   panel. The single-sided PSU, volume and headphone boards are DRC clean.
 2. **Nothing has been built or measured.** All numbers are ngspice results with generic transistor models
-   (datasheet-typical hFE, swept to the minimum); no thermal coupling, speaker modelled as a resistor.
-3. **Silkscreen** references now sit inside the resistor / diode / ceramic outlines; electrolytics, transistors and
-   test points keep theirs beside the part. Some of those still touch a neighbour's outline (DRC warnings).
-4. **Terminal block orientation** was wrong in the first layout (wire entry facing inwards); fixed after the
-   3D render showed it. Confirm on the first bare board before soldering the terminals.
-5. **Volume pot pin convention** (pin 3 = clockwise end) follows the datasheet convention; if a substitute pot
+   (datasheet-typical hFE, swept to the minimum); no thermal coupling, speaker modelled as a resistor, LED
+   modelled as a generic red diode.
+3. **Silkscreen** references sit inside the resistor / diode / ceramic outlines; electrolytics, transistors and
+   test points keep theirs beside the part. Some still touch a neighbour's outline (DRC warnings).
+4. **The headphone jack's switch pins are unused** by design (see docs/01, 1.4): the speaker / headphone choice is
+   the slide switch. Plugging in headphones does not mute the speakers.
+5. **Slide switch pin numbering** follows the C&K JS202011 drawing (1-2-3 in one row, 6-5-4 under them). A switch
+   numbered the other way round still works if its commons land on the centre pads; check with a DMM.
+6. **12 VAC transformers** only hold the 12.0 V set point up to about 0.4 A; set 11.5 V on the trimmer and expect
+   the output to follow the raw rail above that. Full power needs 15 VAC.
+7. **Volume pot pin convention** (pin 3 = clockwise end) follows the datasheet convention; if a substitute pot
    is wired the other way the knob works backwards. Swap the two outer wires.
-6. **Mouser part numbers** in bom_mouser.csv are from memory, not stock-checked; some electrolytic case sizes
+8. **Mouser part numbers** in bom_mouser.csv are from memory, not stock-checked; some electrolytic case sizes
    may not match the footprint pitch exactly (see bom_mouser_notes.md).
-7. **PSU load regulation is open-loop** (zener follower): 11.6 V at 0.1 A to 11.2 V at 1.1 A. Fine for this amp,
-   not a lab supply.
-8. **EMC rules from the check-pcb analyzer assume 150 MHz designs**; their ground-plane findings are not
-   applicable to a 20 kHz audio board and were triaged as such in the design review.
-9. The 2-layer boards report 4 "extra footprint" schematic-parity warnings each: the mounting holes, which
-   exist only on the PCB. Expected.
+9. **The analyzers (check-schematic / check-pcb), the EMC and thermal runs, the CircuitJS links and the notes
+   page** still describe the release 1 circuits; they have not been re-run for release 2.
+10. The 2-layer boards report 4 "extra footprint" schematic-parity warnings each: the mounting holes, which
+    exist only on the PCB. Expected. The amp also reports 36 "exclude from BOM" attribute warnings on the solder
+    jumpers, also expected.

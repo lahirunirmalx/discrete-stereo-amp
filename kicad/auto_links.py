@@ -44,6 +44,9 @@ def add_link(net, a, c):
         for q in pads_by.values():
             if abs(q.GetPosition().x - pt[0]) < 50000 and abs(q.GetPosition().y - pt[1]) < 50000 and q.GetAttribute() == pcbnew.PAD_ATTRIB_PTH:
                 pad.SetSize(q.GetSize()); pad.SetDrillSize(q.GetDrillSize()); pad.SetShape(q.GetShape())
+            # a hole on a solder-jumper pad (SMD, 1.3 mm pitch) gets a small annulus so it clears the other pad
+            if abs(q.GetPosition().x - pt[0]) < 50000 and abs(q.GetPosition().y - pt[1]) < 50000 and q.GetAttribute() == pcbnew.PAD_ATTRIB_SMD:
+                pad.SetSize(VECTOR2I(FromMM(1.0), FromMM(1.0))); pad.SetDrillSize(VECTOR2I(FromMM(0.6), FromMM(0.6)))
         pad.SetNumber(str(n))
         pad.SetPosition(VECTOR2I(*pt))
         pad.SetNet(net)

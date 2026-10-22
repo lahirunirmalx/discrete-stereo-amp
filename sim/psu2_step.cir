@@ -1,0 +1,75 @@
+* PSU release 2: closed-loop series regulator. Bridge + 2x2200u as before; error amplifier Q4 compares a divider
+* of VOUT (R_a + trimmer / R_b) with a 5.6 V zener fed from VOUT; Q4 collector pulls the driver base, which is
+* fed from VRAW through R_drive. BC547 + TIP41C pass pair, 0.33 R clamp on the driver base, 1N4007 across the
+* pass pair, SB540 DC-in bypass. Set point 12.0 V.
+.options RELTOL=0.005 ABSTOL=1e-10 VNTOL=1e-7 CHGTOL=1e-14
+.options TRTOL=7 ITL1=500 ITL4=500 GMIN=1e-11
+Vac ac0 ac2 SIN(0 21.21 50)
+Rfuse ac0 ac1 0.02
+Rw ac2 ac2w 0.8
+D1 ac1 vraw DMOD
+D2 ac2w vraw DMOD
+D3 0 ac1 DMOD
+D4 0 ac2w DMOD
+C1 vraw 0 2200u
+C2 vraw 0 2200u
+Rbleed vraw 0 4.7k
+* drive and pass
+Rdrive vraw bq1 4.7k
+Q1 vraw bq1 bq2 BC547B
+Q2 vraw bq2 sense TIP41C
+Rsense sense vout 0.33
+Qlim bq1 sense vout BC547B
+Dprot vout vraw DMOD
+Cout vout 0 220u
+Cout2 vout 0 100n
+* reference from the regulated output, error amplifier
+Rz vout nz 1k
+Dz 0 nz ZMOD
+Cz nz 0 10u
+Ra vout ra 8.2k
+RV ra fb 900
+Rb fb 0 10k
+Q4 bq1 fb nz BC547B
+Cc bq1 fb 100n
+Cfb vout fb 100n
+Rled vout led 1k
+Dled led 0 LEDR
+* DC-in path and load
+Vdc dcin 0 DC 0
+Rdcin dcin dcin2 0.05
+Ddc dcin2 vout SB540
+Rload vout 0 120
+Sstep vout stp stpc 0 SW
+Rstep stp 0 13.3
+Vstep stpc 0 PULSE(0 5 0.62 1u 1u 40m 1)
+.model SW SW(RON=0.01 ROFF=1e9 VT=2.5)
+.model DMOD D(IS=2e-7 N=1.9 RS=0.015 CJO=80p TT=2n BV=400)
+.model SB540 D(IS=5e-6 N=1.1 RS=0.02 CJO=200p TT=1n BV=40)
+.model ZMOD D(IS=1e-11 N=1.2 RS=2 BV=5.6 IBV=5m CJO=50p TT=2n)
+.model LEDR D(IS=1e-20 N=1.8 RS=10 CJO=20p)
+.model BC547B NPN(IS=1.8e-14 BF=290 VAF=80 IKF=0.3 RB=10 RE=0.2 RC=0.5 CJE=12p CJC=4p TF=0.4n)
+.model TIP41C NPN(IS=1e-12 BF=60 VAF=100 IKF=4 RB=0.5 RE=0.03 RC=0.05 CJE=300p CJC=150p TF=20n)
+.control
+alter @Vac[sin] = [ 0 21.21 50 ]
+alter Rload = 120
+foreach cc 22n 100n 470n
+  alter Cc = $cc
+  foreach co 220u 1000u
+    alter Cout = $co
+    tran 0.05m 700m 600m
+    meas tran vbefore AVG v(vout) from=0.60 to=0.62
+    meas tran vduring AVG v(vout) from=0.64 to=0.66
+    meas tran vdip MIN v(vout) from=0.62 to=0.625
+    meas tran vring MAX v(vout) from=0.6205 to=0.63
+    meas tran vpeak MAX v(vout) from=0.66 to=0.665
+    meas tran vring2 MIN v(vout) from=0.6605 to=0.67
+    meas tran ripl MAX v(vout) from=0.64 to=0.66
+    meas tran ripm MIN v(vout) from=0.64 to=0.66
+    let rip = (ripl-ripm)*1000
+    echo RESULT step cc=$cc cout=$co vbefore=$&vbefore vduring=$&vduring dip=$&vdip ringback=$&vring overshoot=$&vpeak ringback2=$&vring2 ripple1A_mV=$&rip
+  end
+end
+quit
+.endc
+.end

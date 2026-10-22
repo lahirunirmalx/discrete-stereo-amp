@@ -1,0 +1,500 @@
+
+Note: No compatibility mode selected!
+
+
+Circuit: * psu release 2: closed-loop series regulator. bridge + 2x2200u as before; error amplifier q4 compares a divider
+
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Using SPARSE 1.3 as Direct Linear Solver
+
+Initial Transient Solution
+--------------------------
+
+Node                                   Voltage
+----                                   -------
+ac0                               -1.26788e-19
+ac2                               -1.26788e-19
+ac1                               -1.26788e-19
+ac2w                              -1.26788e-19
+vraw                                2.1552e-20
+bq1                                 2.1552e-20
+bq2                                1.32188e-18
+sense                              1.06255e-20
+vout                               1.06255e-20
+nz                                 1.06256e-20
+ra                                 6.06378e-21
+fb                                  5.5631e-21
+led                                1.06255e-20
+dcin                                         0
+dcin2                             -3.41992e-24
+stp                                1.41319e-28
+stpc                                         0
+vstep#branch                                 0
+vdc#branch                        -6.83984e-23
+vac#branch                         4.81482e-35
+
+
+No. of Data Rows : 751
+vrmin               =  1.462474e+01 at=  5.238212e-01
+vomin               =  1.195213e+01 at=  5.240212e-01
+vomax               =  1.196027e+01 at=  5.970212e-01
+vodc                =  1.195680e+01 from=  5.000000e-01 to=  6.000000e-01
+iac                 =  2.84426e-01 from=  5.00000e-01 to=  6.00000e-01
+pq2                 =  3.187434e-01 from=  5.000000e-01 to=  6.000000e-01
+RESULT ac vs=16.97 rl=120 vraw_trough=14.6247 vout=11.9568 ripple_mV=8.14 iload=0.09964 iac_rms=0.284426 pq2=0.318743
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Using SPARSE 1.3 as Direct Linear Solver
+
+Initial Transient Solution
+--------------------------
+
+Node                                   Voltage
+----                                   -------
+ac0                                4.37791e-19
+ac2                                4.37791e-19
+ac1                                4.37791e-19
+ac2w                               4.37791e-19
+vraw                               1.34307e-19
+bq1                                1.34307e-19
+bq2                                1.29106e-19
+sense                              6.56945e-22
+vout                               6.56946e-22
+nz                                 6.56971e-22
+ra                                 3.74914e-22
+fb                                 3.43959e-22
+led                                6.56946e-22
+dcin                                         0
+dcin2                             -6.92784e-25
+stp                                8.73738e-30
+stpc                                         0
+vstep#branch                                 0
+vdc#branch                        -1.38557e-23
+vac#branch                                   0
+
+
+No. of Data Rows : 751
+vrmin               =  1.330231e+01 at=  5.834337e-01
+vomin               =  1.170489e+01 at=  5.836337e-01
+vomax               =  1.186828e+01 at=  5.172337e-01
+vodc                =  1.181641e+01 from=  5.000000e-01 to=  6.000000e-01
+iac                 =  8.15023e-01 from=  5.00000e-01 to=  6.00000e-01
+pq2                 =  6.884594e-01 from=  5.000000e-01 to=  6.000000e-01
+RESULT ac vs=16.97 rl=30 vraw_trough=13.3023 vout=11.8164 ripple_mV=163.39 iload=0.39388 iac_rms=0.815023 pq2=0.688459
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Using SPARSE 1.3 as Direct Linear Solver
+
+Initial Transient Solution
+--------------------------
+
+Node                                   Voltage
+----                                   -------
+ac0                               -3.70196e-18
+ac2                               -3.70196e-18
+ac1                               -3.70196e-18
+ac2w                              -3.70196e-18
+vraw                               6.02714e-20
+bq1                                6.02714e-20
+bq2                                5.61686e-19
+sense                             -2.32049e-23
+vout                              -2.32049e-23
+nz                                -2.31969e-23
+ra                                -1.32433e-23
+fb                                -1.21499e-23
+led                               -2.32049e-23
+dcin                                         0
+dcin2                             -2.40399e-25
+stp                               -3.08625e-31
+stpc                                         0
+vstep#branch                                 0
+vdc#branch                        -4.80797e-24
+vac#branch                         2.31112e-33
+
+
+No. of Data Rows : 751
+vrmin               =  1.218659e+01 at=  5.132232e-01
+vomin               =  1.040901e+01 at=  5.134232e-01
+vomax               =  1.138482e+01 at=  5.966232e-01
+vodc                =  1.089985e+01 from=  5.000000e-01 to=  6.000000e-01
+iac                 =  1.33534e+00 from=  5.00000e-01 to=  6.00000e-01
+pq2                 =  1.161771e+00 from=  5.000000e-01 to=  6.000000e-01
+RESULT ac vs=16.97 rl=15 vraw_trough=12.1866 vout=10.8999 ripple_mV=975.81 iload=0.726657 iac_rms=1.33534 pq2=1.16177
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Using SPARSE 1.3 as Direct Linear Solver
+
+Initial Transient Solution
+--------------------------
+
+Node                                   Voltage
+----                                   -------
+ac0                                -2.0847e-18
+ac2                                -2.0847e-18
+ac1                                -2.0847e-18
+ac2w                               -2.0847e-18
+vraw                                 2.106e-20
+bq1                                2.10601e-20
+bq2                                 8.1927e-19
+sense                              2.15677e-22
+vout                               2.15677e-22
+nz                                 2.15682e-22
+ra                                 1.23091e-22
+fb                                 1.12929e-22
+led                                2.15677e-22
+dcin                                         0
+dcin2                             -7.98253e-26
+stp                                2.86851e-30
+stpc                                         0
+vstep#branch                                 0
+vdc#branch                        -1.59651e-24
+vac#branch                                   0
+
+
+No. of Data Rows : 751
+vrmin               =  1.136698e+01 at=  5.030373e-01
+vomin               =  9.433623e+00 at=  5.032373e-01
+vomax               =  1.068299e+01 at=  5.566373e-01
+vodc                =  1.006091e+01 from=  5.000000e-01 to=  6.000000e-01
+iac                 =  1.74103e+00 from=  5.00000e-01 to=  6.00000e-01
+pq2                 =  1.685949e+00 from=  5.000000e-01 to=  6.000000e-01
+RESULT ac vs=16.97 rl=10 vraw_trough=11.367 vout=10.0609 ripple_mV=1249.37 iload=1.00609 iac_rms=1.74103 pq2=1.68595
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Using SPARSE 1.3 as Direct Linear Solver
+
+Initial Transient Solution
+--------------------------
+
+Node                                   Voltage
+----                                   -------
+ac0                               -1.26788e-19
+ac2                               -1.26788e-19
+ac1                               -1.26788e-19
+ac2w                              -1.26788e-19
+vraw                                2.1552e-20
+bq1                                 2.1552e-20
+bq2                                1.32188e-18
+sense                              1.06255e-20
+vout                               1.06255e-20
+nz                                 1.06256e-20
+ra                                 6.06378e-21
+fb                                  5.5631e-21
+led                                1.06255e-20
+dcin                                         0
+dcin2                             -3.41992e-24
+stp                                1.41319e-28
+stpc                                         0
+vstep#branch                                 0
+vdc#branch                        -6.83984e-23
+vac#branch                         4.81482e-35
+
+
+No. of Data Rows : 751
+vrmin               =  1.876806e+01 at=  5.139371e-01
+vomin               =  1.209736e+01 at=  5.041371e-01
+vomax               =  1.210159e+01 at=  5.873371e-01
+vodc                =  1.209979e+01 from=  5.000000e-01 to=  6.000000e-01
+iac                 =  3.05073e-01 from=  5.00000e-01 to=  6.00000e-01
+pq2                 =  7.955296e-01 from=  5.000000e-01 to=  6.000000e-01
+RESULT ac vs=21.21 rl=120 vraw_trough=18.7681 vout=12.0998 ripple_mV=4.23 iload=0.100832 iac_rms=0.305073 pq2=0.79553
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Using SPARSE 1.3 as Direct Linear Solver
+
+Initial Transient Solution
+--------------------------
+
+Node                                   Voltage
+----                                   -------
+ac0                                4.37791e-19
+ac2                                4.37791e-19
+ac1                                4.37791e-19
+ac2w                               4.37791e-19
+vraw                               1.34307e-19
+bq1                                1.34307e-19
+bq2                                1.29106e-19
+sense                              6.56945e-22
+vout                               6.56946e-22
+nz                                 6.56971e-22
+ra                                 3.74914e-22
+fb                                 3.43959e-22
+led                                6.56946e-22
+dcin                                         0
+dcin2                             -6.92784e-25
+stp                                8.73738e-30
+stpc                                         0
+vstep#branch                                 0
+vdc#branch                        -1.38557e-23
+vac#branch                                   0
+
+
+No. of Data Rows : 751
+vrmin               =  1.733741e+01 at=  5.036378e-01
+vomin               =  1.205080e+01 at=  5.038378e-01
+vomax               =  1.206586e+01 at=  5.872378e-01
+vodc                =  1.205926e+01 from=  5.000000e-01 to=  6.000000e-01
+iac                 =  8.67072e-01 from=  5.00000e-01 to=  6.00000e-01
+pq2                 =  2.299633e+00 from=  5.000000e-01 to=  6.000000e-01
+RESULT ac vs=21.21 rl=30 vraw_trough=17.3374 vout=12.0593 ripple_mV=15.06 iload=0.401975 iac_rms=0.867073 pq2=2.29963
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Using SPARSE 1.3 as Direct Linear Solver
+
+Initial Transient Solution
+--------------------------
+
+Node                                   Voltage
+----                                   -------
+ac0                               -3.70196e-18
+ac2                               -3.70196e-18
+ac1                               -3.70196e-18
+ac2w                              -3.70196e-18
+vraw                               6.02714e-20
+bq1                                6.02714e-20
+bq2                                5.61686e-19
+sense                             -2.32049e-23
+vout                              -2.32049e-23
+nz                                -2.31969e-23
+ra                                -1.32433e-23
+fb                                -1.21499e-23
+led                               -2.32049e-23
+dcin                                         0
+dcin2                             -2.40399e-25
+stp                               -3.08625e-31
+stpc                                         0
+vstep#branch                                 0
+vdc#branch                        -4.80797e-24
+vac#branch                         2.31112e-33
+
+
+No. of Data Rows : 751
+vrmin               =  1.591282e+01 at=  5.633085e-01
+vomin               =  1.199384e+01 at=  5.635085e-01
+vomax               =  1.202736e+01 at=  5.371085e-01
+vodc                =  1.201258e+01 from=  5.000000e-01 to=  6.000000e-01
+iac                 =  1.51141e+00 from=  5.00000e-01 to=  6.00000e-01
+pq2                 =  3.478149e+00 from=  5.000000e-01 to=  6.000000e-01
+RESULT ac vs=21.21 rl=15 vraw_trough=15.9128 vout=12.0126 ripple_mV=33.52 iload=0.800839 iac_rms=1.51141 pq2=3.47815
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Using SPARSE 1.3 as Direct Linear Solver
+
+Initial Transient Solution
+--------------------------
+
+Node                                   Voltage
+----                                   -------
+ac0                                -2.0847e-18
+ac2                                -2.0847e-18
+ac1                                -2.0847e-18
+ac2w                               -2.0847e-18
+vraw                                 2.106e-20
+bq1                                2.10601e-20
+bq2                                 8.1927e-19
+sense                              2.15677e-22
+vout                               2.15677e-22
+nz                                 2.15682e-22
+ra                                 1.23091e-22
+fb                                 1.12929e-22
+led                                2.15677e-22
+dcin                                         0
+dcin2                             -7.98253e-26
+stp                                2.86851e-30
+stpc                                         0
+vstep#branch                                 0
+vdc#branch                        -1.59651e-24
+vac#branch                                   0
+
+
+No. of Data Rows : 751
+vrmin               =  1.471791e+01 at=  5.931260e-01
+vomin               =  1.191876e+01 at=  5.933260e-01
+vomax               =  1.198851e+01 at=  5.171260e-01
+vodc                =  1.195923e+01 from=  5.000000e-01 to=  6.000000e-01
+iac                 =  2.09799e+00 from=  5.00000e-01 to=  6.00000e-01
+pq2                 =  3.909183e+00 from=  5.000000e-01 to=  6.000000e-01
+RESULT ac vs=21.21 rl=10 vraw_trough=14.7179 vout=11.9592 ripple_mV=69.75 iload=1.19592 iac_rms=2.09799 pq2=3.90918
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Using SPARSE 1.3 as Direct Linear Solver
+
+Initial Transient Solution
+--------------------------
+
+Node                                   Voltage
+----                                   -------
+ac0                               -1.26788e-19
+ac2                               -1.26788e-19
+ac1                               -1.26788e-19
+ac2w                              -1.26788e-19
+vraw                                2.1552e-20
+bq1                                 2.1552e-20
+bq2                                1.32188e-18
+sense                              1.06255e-20
+vout                               1.06255e-20
+nz                                 1.06256e-20
+ra                                 6.06378e-21
+fb                                  5.5631e-21
+led                                1.06255e-20
+dcin                                         0
+dcin2                             -3.41992e-24
+stp                                1.41319e-28
+stpc                                         0
+vstep#branch                                 0
+vdc#branch                        -6.83984e-23
+vac#branch                         4.81482e-35
+
+ Reference value :  6.67637e-01
+No. of Data Rows : 1050
+vbefore             =  1.209979e+01 from=  6.000000e-01 to=  6.200001e-01
+vduring             =  1.200673e+01 from=  6.300000e-01 to=  6.600010e-01
+vdip                =  1.195518e+01 at=  6.201425e-01
+vpeak               =  1.213838e+01 at=  6.601685e-01
+RESULT step vbefore=12.0998 vduring=12.0067 dip=11.9552 overshoot=12.1384
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Using SPARSE 1.3 as Direct Linear Solver
+
+Initial Transient Solution
+--------------------------
+
+Node                                   Voltage
+----                                   -------
+ac0                               -2.77126e-18
+ac2                               -2.77126e-18
+ac1                               -2.77126e-18
+ac2w                              -2.77126e-18
+vraw                               1.89326e-19
+bq1                                1.89326e-19
+bq2                                6.18974e-19
+sense                             -1.00065e-23
+vout                              -1.00065e-23
+nz                                -1.00042e-23
+ra                                -5.69354e-24
+fb                                -5.22016e-24
+led                               -1.00065e-23
+dcin                                         0
+dcin2                             -6.30516e-27
+stp                               -1.33087e-31
+stpc                                         0
+vstep#branch                                 0
+vdc#branch                        -1.26103e-25
+vac#branch                                   0
+
+
+No. of Data Rows : 751
+vodc                =  1.033416e+00 from=  5.000000e-01 to=  6.000000e-01
+pq2                 =  2.501208e+01 from=  5.000000e-01 to=  6.000000e-01
+RESULT clamp vout=1.03342 iload=2.06683 pq2=25.0121
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Using SPARSE 1.3 as Direct Linear Solver
+
+Initial Transient Solution
+--------------------------
+
+Node                                   Voltage
+----                                   -------
+ac0                                     5.6257
+ac2                                     5.6257
+ac1                                     5.6257
+ac2w                                    5.6257
+vraw                                   11.2442
+bq1                                    11.2348
+bq2                                    11.7207
+sense                                  11.7058
+vout                                   11.7058
+nz                                     5.61833
+ra                                     6.68017
+fb                                     6.12857
+led                                    2.02492
+dcin                                        12
+dcin2                                  11.9942
+stp                                1.55687e-07
+stpc                                         0
+vstep#branch                                 0
+vdc#branch                           -0.116329
+vac#branch                                   0
+
+
+No. of Data Rows : 251
+vodc                =  1.170578e+01 from=  2.600000e-01 to=  3.000000e-01
+vraw                =  1.124422e+01 from=  2.600000e-01 to=  3.000000e-01
+veb                 =  3.652481e-01 from=  2.600000e-01 to=  3.000000e-01
+veb1                =  1.055350e-01 from=  2.600000e-01 to=  3.000000e-01
+RESULT dconly rl=120 vout=11.7058 vraw=11.2442 q2_veb_rev=0.365248 q1_veb_rev=0.105535
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Using SPARSE 1.3 as Direct Linear Solver
+
+Initial Transient Solution
+--------------------------
+
+Node                                   Voltage
+----                                   -------
+ac0                                    5.56911
+ac2                                    5.56911
+ac1                                    5.56911
+ac2w                                   5.56911
+vraw                                   11.1429
+bq1                                    11.1447
+bq2                                    11.6351
+sense                                  11.6039
+vout                                   11.6039
+nz                                     5.61757
+ra                                     6.62211
+fb                                     6.07533
+led                                    2.02343
+dcin                                        12
+dcin2                                  11.9604
+stp                                1.54332e-07
+stpc                                         0
+vstep#branch                                 0
+vdc#branch                            -0.79214
+vac#branch                         1.77636e-15
+
+
+No. of Data Rows : 251
+vodc                =  1.160390e+01 from=  2.600000e-01 to=  3.000000e-01
+vraw                =  1.114288e+01 from=  2.600000e-01 to=  3.000000e-01
+veb                 =  3.646682e-01 from=  2.600000e-01 to=  3.000000e-01
+veb1                =  9.436558e-02 from=  2.600000e-01 to=  3.000000e-01
+RESULT dconly rl=15 vout=11.6039 vraw=11.1429 q2_veb_rev=0.364668 q1_veb_rev=0.0943656
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Using SPARSE 1.3 as Direct Linear Solver
+
+Initial Transient Solution
+--------------------------
+
+Node                                   Voltage
+----                                   -------
+ac0                                    5.56911
+ac2                                    5.56911
+ac1                                    5.56911
+ac2w                                   5.56911
+vraw                                   11.1429
+bq1                                    11.1447
+bq2                                    11.6351
+sense                                  11.6039
+vout                                   11.6039
+nz                                     5.61757
+ra                                     6.62211
+fb                                     6.07533
+led                                    2.02343
+dcin                                        12
+dcin2                                  11.9604
+stp                                1.54332e-07
+stpc                                         0
+vstep#branch                                 0
+vdc#branch                            -0.79214
+vac#branch                         1.77636e-15
+
+
+No. of Data Rows : 751
+vodc                =  1.201255e+01 from=  5.000000e-01 to=  6.000000e-01
+idc                 =  1.517345e-06 from=  5.000000e-01 to=  6.000000e-01
+RESULT both rl=15 vout=12.0125 i_from_dcin=1.51734E-06
+ngspice-45.2 done

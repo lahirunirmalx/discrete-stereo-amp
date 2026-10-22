@@ -19,7 +19,14 @@
   "R4": "Rled",
   "D7": "Dled",
   "D8": "Ddc",
-  "F1": "Rfuse"
+  "F1": "Rfuse",
+  "R5": "Ra",
+  "RV1": "RV",
+  "R6": "Rb",
+  "R7": "Rdrive",
+  "Q4": "Q4",
+  "C6": "Cc",
+  "C7": "Cfb"
  },
  "pinmap": {
   "R": {
@@ -30,14 +37,19 @@
    "1": "a",
    "2": "b"
   },
-  "D": {
-   "1": "cathode",
-   "2": "anode"
+  "RV": {
+   "1": "a",
+   "2": "b",
+   "3": "b"
   },
   "Q": {
    "1": "C",
    "2": "B",
    "3": "E"
+  },
+  "D": {
+   "1": "cathode",
+   "2": "anode"
   },
   "F": {
    "1": "a",
@@ -52,6 +64,7 @@
   "TP2.1": "Dz.cathode",
   "TP3.1": "Cout.a",
   "TP4.1": "Cout.b",
+  "TP5.1": "Rb.a",
   "J1.1": "Vac.a",
   "J1.2": "D2.anode",
   "J2.1": "Ddc.anode",

@@ -1,0 +1,532 @@
+
+Note: No compatibility mode selected!
+
+
+Circuit: * candidate c (release 2 front end): pnp diff pair bc557 with npn current-mirror load, pnp current-source tail
+
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Using SPARSE 1.3 as Direct Linear Solver
+
+No. of Data Rows : 1
+RESULT op bf1=110 bfo=40 vout=6.24746 isupply=0.0324578 iqout=0.0201814 ivas=0.00948684 itail=0.00103288
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Using SPARSE 1.3 as Direct Linear Solver
+
+No. of Data Rows : 1
+RESULT op bf1=110 bfo=250 vout=6.24745 isupply=0.033769 iqout=0.0211027 ivas=0.00948522 itail=0.00103288
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Using SPARSE 1.3 as Direct Linear Solver
+
+No. of Data Rows : 1
+RESULT op bf1=450 bfo=40 vout=6.08006 isupply=0.0334896 iqout=0.0209138 ivas=0.00979702 itail=0.00103303
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Using SPARSE 1.3 as Direct Linear Solver
+
+No. of Data Rows : 1
+RESULT op bf1=450 bfo=250 vout=6.08006 isupply=0.0348602 iqout=0.0218808 ivas=0.0097942 itail=0.00103303
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Using SPARSE 1.3 as Direct Linear Solver
+
+No. of Data Rows : 1
+RESULT bias rm=680 iqout=0.00447519
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Using SPARSE 1.3 as Direct Linear Solver
+
+No. of Data Rows : 1
+RESULT bias rm=820 iqout=0.021466
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Using SPARSE 1.3 as Direct Linear Solver
+
+No. of Data Rows : 1
+RESULT bias rm=1000 iqout=0.0747703
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Using SPARSE 1.3 as Direct Linear Solver
+
+No. of Data Rows : 1
+RESULT ac rs=1 gain=22.8127 zin=46182.2
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Using SPARSE 1.3 as Direct Linear Solver
+
+No. of Data Rows : 1
+RESULT ac rs=2500 gain=21.6417 zin=46182.2
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Using SPARSE 1.3 as Direct Linear Solver
+
+No. of Data Rows : 1
+RESULT ac rs=5000 gain=20.5846 zin=46182.2
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Using SPARSE 1.3 as Direct Linear Solver
+
+No. of Data Rows : 107
+g1k                 =  2.670583e+01
+f3                  =  2.001802e+01
+fh                  =  1.193958e+05
+RESULT f3 f3=20.018 fh=119396
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Using SPARSE 1.3 as Direct Linear Solver
+
+Initial Transient Solution
+--------------------------
+
+Node                                   Voltage
+----                                   -------
+vcc                                         12
+in                                           0
+src                                          0
+b1                                      6.1726
+bias                                   6.05753
+led                                    10.1205
+tail                                   6.79461
+e9                                     10.7604
+c1                                     1.15689
+c2                                    0.671021
+b2                                     6.17441
+e8                                   0.0493325
+e7                                   0.0494349
+out                                    6.12395
+g                                      6.17441
+b5                                     5.47419
+e3                                    0.456544
+boot                                   9.38689
+vas                                    6.77377
+bm                                     6.17291
+m1                                     6.42938
+e4                                     6.13404
+e5                                     6.11386
+zz                                     6.12395
+spk                                          0
+vin#branch                                   0
+vcc#branch                          -0.0342764
+
+
+No. of Data Rows : 2001
+vrms                =  4.55095e-01 from=  1.50036e-02 to=  2.50000e-02
+RESULT tran rl=4 amp=0.03 pout=0.0517779
+Fourier analysis for v(spk):
+  No. Harmonics: 10, THD: 0.0128588 %, Gridsize: 200, Interpolation Degree: 1
+
+Harmonic Frequency   Magnitude   Phase       Norm. Mag   Norm. Phase
+-------- ---------   ---------   -----       ---------   -----------
+ 0       0           -5.9579e-06 0           0           0          
+ 1       1000        0.643437    1.8572      1           0          
+ 2       2000        4.03966e-05 -110.26     6.27826e-05 -112.12    
+ 3       3000        7.10123e-05 0.294377    0.000110364 -1.5628    
+ 4       4000        9.58111e-06 129.837     1.48905e-05 127.98     
+ 5       5000        7.38031e-06 7.53541     1.14702e-05 5.67821    
+ 6       6000        3.60298e-06 147.815     5.59959e-06 145.958    
+ 7       7000        2.82385e-06 39.964      4.38871e-06 38.1068    
+ 8       8000        1.50081e-06 164.536     2.3325e-06  162.679    
+ 9       9000        1.24488e-06 69.5137     1.93474e-06 67.6565    
+
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Using SPARSE 1.3 as Direct Linear Solver
+
+Initial Transient Solution
+--------------------------
+
+Node                                   Voltage
+----                                   -------
+vcc                                         12
+in                                           0
+src                                          0
+b1                                      6.1726
+bias                                   6.05753
+led                                    10.1205
+tail                                   6.79461
+e9                                     10.7604
+c1                                     1.15689
+c2                                    0.671021
+b2                                     6.17441
+e8                                   0.0493325
+e7                                   0.0494349
+out                                    6.12395
+g                                      6.17441
+b5                                     5.47419
+e3                                    0.456544
+boot                                   9.38689
+vas                                    6.77377
+bm                                     6.17291
+m1                                     6.42938
+e4                                     6.13404
+e5                                     6.11386
+zz                                     6.12395
+spk                                          0
+vin#branch                                   0
+vcc#branch                          -0.0342764
+
+
+No. of Data Rows : 2001
+vrms                =  1.51384e+00 from=  1.50007e-02 to=  2.50000e-02
+RESULT tran rl=4 amp=0.1 pout=0.572929
+Fourier analysis for v(spk):
+  No. Harmonics: 10, THD: 0.0720793 %, Gridsize: 200, Interpolation Degree: 1
+
+Harmonic Frequency   Magnitude   Phase       Norm. Mag   Norm. Phase
+-------- ---------   ---------   -----       ---------   -----------
+ 0       0           -3.062e-06  0           0           0          
+ 1       1000        2.14074     1.85312     1           0          
+ 2       2000        0.00077777  -94.995     0.000363318 -96.848    
+ 3       3000        0.00132749  8.61908     0.000620107 6.76596    
+ 4       4000        3.43934e-05 78.2959     1.60661e-05 76.4428    
+ 5       5000        0.000104645 -12.353     4.88826e-05 -14.206    
+ 6       6000        2.34739e-05 149.114     1.09653e-05 147.261    
+ 7       7000        2.85732e-05 -18.461     1.33473e-05 -20.314    
+ 8       8000        9.60977e-06 149.318     4.48899e-06 147.465    
+ 9       9000        1.41078e-05 -41.738     6.59015e-06 -43.591    
+
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Using SPARSE 1.3 as Direct Linear Solver
+
+Initial Transient Solution
+--------------------------
+
+Node                                   Voltage
+----                                   -------
+vcc                                         12
+in                                           0
+src                                          0
+b1                                      6.1726
+bias                                   6.05753
+led                                    10.1205
+tail                                   6.79461
+e9                                     10.7604
+c1                                     1.15689
+c2                                    0.671021
+b2                                     6.17441
+e8                                   0.0493325
+e7                                   0.0494349
+out                                    6.12395
+g                                      6.17441
+b5                                     5.47419
+e3                                    0.456544
+boot                                   9.38689
+vas                                    6.77377
+bm                                     6.17291
+m1                                     6.42938
+e4                                     6.13404
+e5                                     6.11386
+zz                                     6.12395
+spk                                          0
+vin#branch                                   0
+vcc#branch                          -0.0342764
+
+
+No. of Data Rows : 2053
+vrms                =  2.50665e+00 from=  1.50031e-02 to=  2.50000e-02
+RESULT tran rl=4 amp=0.2 pout=1.57082
+Fourier analysis for v(spk):
+  No. Harmonics: 10, THD: 15.2842 %, Gridsize: 200, Interpolation Degree: 1
+
+Harmonic Frequency   Magnitude   Phase       Norm. Mag   Norm. Phase
+-------- ---------   ---------   -----       ---------   -----------
+ 0       0           -0.0031803  0           0           0          
+ 1       1000        3.50678     1.56743     1           0          
+ 2       2000        0.351137    94.0734     0.100131    92.5059    
+ 3       3000        0.39014     3.02576     0.111253    1.45832    
+ 4       4000        0.0213732   -76.092     0.00609483  -77.66     
+ 5       5000        0.0458569   175.855     0.0130767   174.288    
+ 6       6000        0.0911102   -85.001     0.0259812   -86.568    
+ 7       7000        0.0249094   -169.59     0.00710322  -171.16    
+ 8       8000        0.0118361   86.433      0.00337522  84.8655    
+ 9       9000        0.0121777   -158.69     0.00347263  -160.25    
+
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Using SPARSE 1.3 as Direct Linear Solver
+
+Initial Transient Solution
+--------------------------
+
+Node                                   Voltage
+----                                   -------
+vcc                                         12
+in                                           0
+src                                          0
+b1                                      6.1726
+bias                                   6.05753
+led                                    10.1205
+tail                                   6.79461
+e9                                     10.7604
+c1                                     1.15689
+c2                                    0.671021
+b2                                     6.17441
+e8                                   0.0493325
+e7                                   0.0494349
+out                                    6.12395
+g                                      6.17441
+b5                                     5.47419
+e3                                    0.456544
+boot                                   9.38689
+vas                                    6.77377
+bm                                     6.17291
+m1                                     6.42938
+e4                                     6.13404
+e5                                     6.11386
+zz                                     6.12395
+spk                                          0
+vin#branch                                   0
+vcc#branch                          -0.0342764
+
+
+No. of Data Rows : 2042
+vrms                =  2.70771e+00 from=  1.50032e-02 to=  2.50000e-02
+RESULT tran rl=4 amp=0.3 pout=1.83292
+Fourier analysis for v(spk):
+  No. Harmonics: 10, THD: 25.3913 %, Gridsize: 200, Interpolation Degree: 1
+
+Harmonic Frequency   Magnitude   Phase       Norm. Mag   Norm. Phase
+-------- ---------   ---------   -----       ---------   -----------
+ 0       0           0.00027394  0           0           0          
+ 1       1000        3.71588     1.29613     1           0          
+ 2       2000        0.351119    95.3183     0.0944916   94.0221    
+ 3       3000        0.832715    1.36233     0.224097    0.0662009  
+ 4       4000        0.18499     91.9467     0.0497838   90.6506    
+ 5       5000        0.179702    3.66646     0.0483605   2.37034    
+ 6       6000        0.0191321   81.0569     0.00514874  79.7608    
+ 7       7000        0.0217445   164.689     0.00585179  163.393    
+ 8       8000        0.0674722   -85.286     0.0181578   -86.582    
+ 9       9000        0.0400503   178.863     0.0107782   177.567    
+
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Using SPARSE 1.3 as Direct Linear Solver
+
+Initial Transient Solution
+--------------------------
+
+Node                                   Voltage
+----                                   -------
+vcc                                         12
+in                                           0
+src                                          0
+b1                                      6.1726
+bias                                   6.05753
+led                                    10.1205
+tail                                   6.79461
+e9                                     10.7604
+c1                                     1.15689
+c2                                    0.671021
+b2                                     6.17441
+e8                                   0.0493325
+e7                                   0.0494349
+out                                    6.12395
+g                                      6.17441
+b5                                     5.47419
+e3                                    0.456544
+boot                                   9.38689
+vas                                    6.77377
+bm                                     6.17291
+m1                                     6.42938
+e4                                     6.13404
+e5                                     6.11386
+zz                                     6.12395
+spk                                          0
+vin#branch                                   0
+vcc#branch                          -0.0342764
+
+ Reference value :  1.50036e-02
+No. of Data Rows : 2001
+vrms                =  4.59089e-01 from=  1.50036e-02 to=  2.50000e-02
+RESULT tran rl=8 amp=0.03 pout=0.0263454
+Fourier analysis for v(spk):
+  No. Harmonics: 10, THD: 0.00421693 %, Gridsize: 200, Interpolation Degree: 1
+
+Harmonic Frequency   Magnitude   Phase       Norm. Mag   Norm. Phase
+-------- ---------   ---------   -----       ---------   -----------
+ 0       0           -0.00056953 0           0           0          
+ 1       1000        0.64909     0.768434    1           0          
+ 2       2000        2.25957e-05 -146.16     3.48113e-05 -146.92    
+ 3       3000        1.06123e-05 1.62376     1.63494e-05 0.855324   
+ 4       4000        7.81972e-06 170.391     1.20472e-05 169.623    
+ 5       5000        3.41697e-06 174.24      5.26425e-06 173.471    
+ 6       6000        4.58821e-06 -176.12     7.06868e-06 -176.88    
+ 7       7000        3.51185e-06 -176.88     5.41042e-06 -177.64    
+ 8       8000        3.34733e-06 -172.49     5.15697e-06 -173.26    
+ 9       9000        2.93467e-06 -172.58     4.52121e-06 -173.35    
+
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Using SPARSE 1.3 as Direct Linear Solver
+
+Initial Transient Solution
+--------------------------
+
+Node                                   Voltage
+----                                   -------
+vcc                                         12
+in                                           0
+src                                          0
+b1                                      6.1726
+bias                                   6.05753
+led                                    10.1205
+tail                                   6.79461
+e9                                     10.7604
+c1                                     1.15689
+c2                                    0.671021
+b2                                     6.17441
+e8                                   0.0493325
+e7                                   0.0494349
+out                                    6.12395
+g                                      6.17441
+b5                                     5.47419
+e3                                    0.456544
+boot                                   9.38689
+vas                                    6.77377
+bm                                     6.17291
+m1                                     6.42938
+e4                                     6.13404
+e5                                     6.11386
+zz                                     6.12395
+spk                                          0
+vin#branch                                   0
+vcc#branch                          -0.0342764
+
+
+No. of Data Rows : 2001
+vrms                =  1.52941e+00 from=  1.50007e-02 to=  2.50000e-02
+RESULT tran rl=8 amp=0.1 pout=0.292387
+Fourier analysis for v(spk):
+  No. Harmonics: 10, THD: 0.018775 %, Gridsize: 200, Interpolation Degree: 1
+
+Harmonic Frequency   Magnitude   Phase       Norm. Mag   Norm. Phase
+-------- ---------   ---------   -----       ---------   -----------
+ 0       0           -0.0018745  0           0           0          
+ 1       1000        2.16277     0.768511    1           0          
+ 2       2000        0.000301544 -102.16     0.000139425 -102.93    
+ 3       3000        0.000268494 0.758297    0.000124143 -0.010215  
+ 4       4000        3.28555e-05 151.332     1.51914e-05 150.564    
+ 5       5000        1.02e-05    -59.623     4.71618e-06 -60.391    
+ 6       6000        2.0415e-05  166.66      9.43929e-06 165.892    
+ 7       7000        5.20356e-06 -151.45     2.40597e-06 -152.21    
+ 8       8000        1.44669e-05 174.12      6.68906e-06 173.352    
+ 9       9000        5.61477e-06 -179.53     2.5961e-06  -180.3     
+
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Using SPARSE 1.3 as Direct Linear Solver
+
+Initial Transient Solution
+--------------------------
+
+Node                                   Voltage
+----                                   -------
+vcc                                         12
+in                                           0
+src                                          0
+b1                                      6.1726
+bias                                   6.05753
+led                                    10.1205
+tail                                   6.79461
+e9                                     10.7604
+c1                                     1.15689
+c2                                    0.671021
+b2                                     6.17441
+e8                                   0.0493325
+e7                                   0.0494349
+out                                    6.12395
+g                                      6.17441
+b5                                     5.47419
+e3                                    0.456544
+boot                                   9.38689
+vas                                    6.77377
+bm                                     6.17291
+m1                                     6.42938
+e4                                     6.13404
+e5                                     6.11386
+zz                                     6.12395
+spk                                          0
+vin#branch                                   0
+vcc#branch                          -0.0342764
+
+
+No. of Data Rows : 2001
+vrms                =  3.04480e+00 from=  1.50003e-02 to=  2.50000e-02
+RESULT tran rl=8 amp=0.2 pout=1.15885
+Fourier analysis for v(spk):
+  No. Harmonics: 10, THD: 0.836947 %, Gridsize: 200, Interpolation Degree: 1
+
+Harmonic Frequency   Magnitude   Phase       Norm. Mag   Norm. Phase
+-------- ---------   ---------   -----       ---------   -----------
+ 0       0           -0.0029216  0           0           0          
+ 1       1000        4.30588     0.767051    1           0          
+ 2       2000        0.0169123   -90.679     0.00392772  -91.446    
+ 3       3000        0.016431    0.0192576   0.00381594  -0.74779   
+ 4       4000        0.014015    89.0187     0.00325486  88.2516    
+ 5       5000        0.0128193   178.721     0.00297716  177.954    
+ 6       6000        0.0116761   -92.04      0.00271167  -92.807    
+ 7       7000        0.0103766   -2.2028     0.00240987  -2.9699    
+ 8       8000        0.00897878  87.6943     0.00208524  86.9273    
+ 9       9000        0.00757298  177.359     0.00175875  176.592    
+
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Using SPARSE 1.3 as Direct Linear Solver
+
+Initial Transient Solution
+--------------------------
+
+Node                                   Voltage
+----                                   -------
+vcc                                         12
+in                                           0
+src                                          0
+b1                                      6.1726
+bias                                   6.05753
+led                                    10.1205
+tail                                   6.79461
+e9                                     10.7604
+c1                                     1.15689
+c2                                    0.671021
+b2                                     6.17441
+e8                                   0.0493325
+e7                                   0.0494349
+out                                    6.12395
+g                                      6.17441
+b5                                     5.47419
+e3                                    0.456544
+boot                                   9.38689
+vas                                    6.77377
+bm                                     6.17291
+m1                                     6.42938
+e4                                     6.13404
+e5                                     6.11386
+zz                                     6.12395
+spk                                          0
+vin#branch                                   0
+vcc#branch                          -0.0342764
+
+
+No. of Data Rows : 2063
+vrms                =  3.83962e+00 from=  1.50043e-02 to=  2.50000e-02
+RESULT tran rl=8 amp=0.3 pout=1.84284
+Fourier analysis for v(spk):
+  No. Harmonics: 10, THD: 13.5702 %, Gridsize: 200, Interpolation Degree: 1
+
+Harmonic Frequency   Magnitude   Phase       Norm. Mag   Norm. Phase
+-------- ---------   ---------   -----       ---------   -----------
+ 0       0           0.00806656  0           0           0          
+ 1       1000        5.37826     0.731983    1           0          
+ 2       2000        0.326946    -90.703     0.0607904   -91.435    
+ 3       3000        0.628569    -0.038372   0.116872    -0.77036   
+ 4       4000        0.0171712   79.301      0.0031927   78.569     
+ 5       5000        0.126563    179.385     0.0235323   178.653    
+ 6       6000        0.0984097   88.0004     0.0182977   87.2684    
+ 7       7000        0.0612977   -179.74     0.0113973   -180.47    
+ 8       8000        0.0149741   -100.03     0.00278418  -100.76    
+ 9       9000        0.0264315   1.02845     0.00491451  0.296465   
+
+ngspice-45.2 done

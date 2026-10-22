@@ -282,7 +282,7 @@ def pack(items, x0, y0, w, h, gap=0.8, back=False, align="left"):
 
 
 def build(netfile, place, bw, bh, out_path, title, single=False, scale=(1.0, 1.0), texts=(), bx=50.0, by=50.0,
-          allow_offboard=(), track=0.4, clearance=0.19, mount_holes=True, title_at=None, back_texts=()):
+          allow_offboard=(), track=0.4, clearance=0.19, mount_holes=True, title_at=None, back_texts=(), title_rot=0):
     """place: {ref: (x, y, rot)} relative to the board origin (bx, by)."""
     sx, sy = scale if single else (1.0, 1.0)
     BW, BH = round(bw * sx, 1), round(bh * sy, 1)
@@ -362,7 +362,7 @@ def build(netfile, place, bw, bh, out_path, title, single=False, scale=(1.0, 1.0
             fp.Reference().SetVisible(False); fp.SetPosition(VECTOR2I(FromMM(hx), FromMM(hy))); board.Add(fp)
     tx, ty = title_at or (BW / 2, BH - 1.6)
     t = pcbnew.PCB_TEXT(board); t.SetText(title); t.SetPosition(VECTOR2I(FromMM(bx + tx * sx), FromMM(by + ty * sy)))
-    t.SetLayer(pcbnew.F_SilkS); t.SetTextSize(VECTOR2I(FromMM(1.5), FromMM(1.5))); t.SetTextThickness(FromMM(0.2)); board.Add(t)
+    t.SetLayer(pcbnew.F_SilkS); t.SetTextSize(VECTOR2I(FromMM(1.5), FromMM(1.5))); t.SetTextThickness(FromMM(0.2)); t.SetTextAngleDegrees(title_rot); board.Add(t)
     # courtyard overlap / edge check
     boxes = []
     for fp in board.GetFootprints():

@@ -1,0 +1,11 @@
+board,qty,refs,value,through_hole,smd_alternative,tolerance_rating,substitutes,matching_note
+hp,1,J4,3.5mm TRS,Jack_3.5mm_CUI_SJ1-3535NG_Horizontal,,"3.5 mm TRS jack, through-hole, CUI SJ1-3535NG pattern",SJ1-3535NG (fitted); SJ1-3535N; SJ1-3525N (same T/R/S pins); or any panel-mount jack wired to J5,"Only T, R and S are used; the switch pins TN / RN stay open."
+hp,1,J1,FROM AMP L-G-R,PinHeader_1x03_P2.54mm_Vertical,,2.54 mm header or 5.08 mm screw terminal,,
+hp,1,J5,PANEL JACK T-G-R,PinHeader_1x03_P2.54mm_Vertical,,2.54 mm header or 5.08 mm screw terminal,,
+hp,1,J2,SPK L,"TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal",,2.54 mm header or 5.08 mm screw terminal,,
+hp,1,J3,SPK R,"TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal",,2.54 mm header or 5.08 mm screw terminal,,
+hp,2,R1 R2,120,axial 1/4 W,1206,"120 ohm, 1 percent, 1/4 W","120R (IEC 61938, fitted); 33R to 68R for a louder low-impedance drive; 330R for sensitive in-ear phones; 0R or bridge JP1/JP2 for direct drive",Same value for both channels. 8 mW into 32 ohm at full drive with 120 R.
+hp,1,SW1,SPK / HP,SW_CK_JS202011CQN_DPDT_Straight,,"DPDT slide switch, 2 x 3 pins, 2.5 mm pitch",C&K JS202011CQN (fitted); any DPDT slide on a 2x3 2.5 mm pattern; a DPDT toggle on flying leads to the six pads,"Speakers on pins 1 / 6, headphones on pins 3 / 4, commons 2 / 5."
+hp,1,TP1,GND,TestPoint_Loop_D2.50mm_Drill1.0mm,,"5 percent / 20 percent, standard",,
+hp,1,TP2,HP L,TestPoint_Loop_D2.50mm_Drill1.0mm,,"5 percent / 20 percent, standard",,
+hp,1,TP3,HP R,TestPoint_Loop_D2.50mm_Drill1.0mm,,"5 percent / 20 percent, standard",,

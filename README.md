@@ -1,33 +1,35 @@
 ![discrete stereo amp](docs/images/banner.png)
 
-# Stereo class-AB amplifier, discrete 12 V supply and volume board
+# Stereo class-AB amplifier, discrete 12 V supply, volume and headphone boards
 
 A hobby / learning project: a two-channel 1 W class-AB amplifier built from BC547/BC557/BD139/BD140,
-its own transformer-fed discrete supply, and a volume board, all on one fab panel. It grew out of a review of
-a one-transistor "speaker in the collector" amp, which could not be fixed by changing values. Every number
-here comes from ngspice; **no board has been built or measured yet** (release 1.1 is a prototype design).
+its own transformer-fed discrete supply, a volume board and a headphone board, all on one fab panel. It grew
+out of a review of a one-transistor "speaker in the collector" amp, which could not be fixed by changing
+values. Every number here comes from ngspice; **no board has been built or measured yet** (release 1.2 is a
+prototype design). Release 2 rebuilt the amp front end for ten times less distortion, closed the supply's
+regulation loop, added a VU meter tap and the headphone board.
 
 ![Panel, 3D](docs/images/panel_3d_iso.png)
 
-| Amp | PSU | Volume |
-|---|---|---|
-| ![Amp 3D](docs/images/amp_3d_iso.png) | ![PSU 3D](docs/images/psu_3d_iso.png) | ![Volume 3D](docs/images/vol_3d_iso.png) |
+| Amp | PSU | Volume | Headphone |
+|---|---|---|---|
+| ![Amp 3D](docs/images/amp_3d_iso.png) | ![PSU 3D](docs/images/psu_3d_iso.png) | ![Volume 3D](docs/images/vol_3d_iso.png) | ![Headphone 3D](docs/images/hp_3d_iso.png) |
 
 More views in [docs/images/](docs/images/): top-down 3D renders and the single-sided layouts. Logo and banner: `logo.svg` / `logo.png` / `logo-1024.png` and `banner.svg` / `banner.png` (1280 x 640, the GitHub social-preview size).
 
 ## Schematics
 
-| Amp (both channels) | PSU | Volume |
-|---|---|---|
-| ![Amp schematic](docs/images/amp_schematic.png) | ![PSU schematic](docs/images/psu_schematic.png) | ![Volume schematic](docs/images/vol_schematic.png) |
+| Amp (both channels) | PSU | Volume | Headphone |
+|---|---|---|---|
+| ![Amp schematic](docs/images/amp_schematic.png) | ![PSU schematic](docs/images/psu_schematic.png) | ![Volume schematic](docs/images/vol_schematic.png) | ![Headphone schematic](docs/images/hp_schematic.png) |
 
-PDFs of all three are in the release zip (`schematics/`).
+PDFs of all four are in the release zip (`schematics/`).
 
 ## Boards (2-layer layouts, top view, both copper layers)
 
-| Amp, wide 134 x 71 mm | Amp, compact 100 x 85 mm | PSU 90 x 50 mm | Volume 42 x 26 mm |
-|---|---|---|---|
-| ![Amp PCB](docs/images/amp_pcb_2layer.png) | ![Compact amp PCB](docs/images/amp_compact_pcb_2layer.png) | ![PSU PCB](docs/images/psu_pcb_2layer.png) | ![Volume PCB](docs/images/vol_pcb_2layer.png) |
+| Amp, wide 134 x 85 mm | Amp, compact 100 x 98 mm | PSU 90 x 58 mm | Volume 42 x 26 mm | Headphone 42 x 30 mm |
+|---|---|---|---|---|
+| ![Amp PCB](docs/images/amp_pcb_2layer.png) | ![Compact amp PCB](docs/images/amp_compact_pcb_2layer.png) | ![PSU PCB](docs/images/psu_pcb_2layer.png) | ![Volume PCB](docs/images/vol_pcb_2layer.png) | ![Headphone PCB](docs/images/hp_pcb_2layer.png) |
 
 ![Compact amp 3D](docs/images/amp_compact_3d_iso.png)
 
@@ -37,13 +39,15 @@ PDFs of all three are in the release zip (`schematics/`).
 
 | | |
 |---|---|
-| Output | 0.95 W into 8 ohm at 0.5% THD, 1.3 W into 4 ohm at the onset of clipping, 0.8 W into 10 ohm (per channel, 12 V) |
-| Gain / input | 23 (27 dB), 43k input impedance, for a 10k log pot |
-| Idle current | output stage 21 mA per channel after setting the trimmer (7 to 10 mV across a 0.47 ohm emitter resistor); about 32 mA per channel from the supply |
-| Bandwidth | 20 Hz (8 ohm) / 34 Hz (4 ohm) to 250 kHz |
-| Supply | 12 to 15 VAC transformer (1.5 A for full power) or 12 V DC in; 11.6 V out, 2 A clamp |
-| Boards | amp 134 x 71 mm (or the compact 100 x 85 mm variant for the 100 x 100 fab tier), PSU 90 x 50 mm, volume 42 x 26 mm; 2-layer panel 144 x 144 mm; single-sided variants |
-| Parts | 107 through-hole parts with 1206 / SOD / SMA twins on the same pads; 36 solder jumpers for output pinouts |
+| Output | 1.2 W into 8 ohm and 1.5 W into 4 ohm at the onset of clipping (per channel, 12 V); 0.29 W into 8 ohm at 0.02 to 0.05% THD, 52 mW into 4 ohm at 0.013% |
+| Gain / input | 23 (27 dB), 46k input impedance, for a 10k log pot |
+| Idle current | output stage 21 mA per channel after setting the trimmer (7 to 10 mV across a 0.47 ohm emitter resistor); about 34 mA per channel from the supply |
+| Bandwidth | 20 Hz (8 ohm) / 34 Hz (4 ohm) to 120 kHz; 5.7% square-wave overshoot with 100 nF across the speaker |
+| Supply | 12 to 15 VAC transformer (1.5 A for full power) or 12 V DC in; closed-loop 12.0 V out (trimmer 11.4 to 12.7 V), 0.14 V dip on a 1 A step, 2 A clamp |
+| Headphones | DPDT switch speakers / phones, 120 ohm series (8 mW into 32 ohm), DIRECT jumpers, 3.5 mm jack or panel jack header |
+| VU meter | 1x3 header on the amp, 1k in series with each speaker node (2.8 Vrms at 1 W) |
+| Boards | amp 134 x 85 mm (or the compact 100 x 98 mm variant for the 100 x 100 fab tier), PSU 90 x 58 mm, volume 42 x 26 mm, headphone 42 x 30 mm; 2-layer panel 155 x 155 mm; single-sided variants |
+| Parts | 145 through-hole parts with 1206 / SOD / SMA / SOT-23 twins on the same pads; 38 solder jumpers (output pinouts, headphone DIRECT) |
 
 ## Design rules this project keeps
 
@@ -62,16 +66,18 @@ Every board works on its own; nothing is required by another board.
 | Amp only | any 12 V DC supply of 1 A (wall adapter, bench supply) into "12V IN"; a phone, PC or DAC into the "IN L G R" header; speakers on the terminals | a working stereo amp; the source's own volume control sets the level (a phone at full volume will clip, so turn it down) |
 | Amp + volume board | as above, plus the two 3-pin cables | a volume knob (and the front-panel LED position) |
 | Amp + PSU | a 12 to 15 VAC transformer into the PSU, or 12 V DC into its "DC IN"; PSU "DC OUT" to the amp | a regulated, clamped, fused supply with the power LED |
-| All three | the panel | the complete desk amp |
+| Amp + headphone board | three wires from the amp's speaker terminals to "FROM AMP", speakers on the headphone board's terminals | a speakers / phones switch and a jack |
+| VU meters | any meter on the amp's "VU L G R" header | level display; nothing else changes |
+| All four | the panel | the complete desk amp |
 
-Two amp layouts carry the same circuit: the wide one (134 x 71 mm, matches the PSU plus volume row on the
-panel) and the compact one (100 x 85 mm, fits JLCPCB's 100 x 100 mm tier when ordered alone). Choose by
-price; there is no electrical difference.
+Two amp layouts carry the same circuit: the wide one (134 x 85 mm, matches the PSU plus headphone-and-volume
+column on the panel) and the compact one (100 x 98 mm, fits JLCPCB's 100 x 100 mm tier when ordered alone).
+Choose by price; there is no electrical difference.
 
 ## Documents
 
 1. [docs/01-theory-of-operation.md](docs/01-theory-of-operation.md): every block explained for a first build, with the voltages to expect.
-2. [docs/02-simulation-results.md](docs/02-simulation-results.md): all the ngspice tables, including the rejected candidates.
+2. [docs/02-simulation-results.md](docs/02-simulation-results.md): all the ngspice tables, including the rejected candidates and the release 2 front end and supply (2.7 to 2.9).
 3. [docs/03-design-review.md](docs/03-design-review.md): what was checked, what was found, what is not verified.
 4. [docs/04-build-and-bringup.md](docs/04-build-and-bringup.md): assembly order, first power-up, bias setting, test points, troubleshooting.
 5. [ORDER_GUIDE.md](ORDER_GUIDE.md): ordering the panel, substitutes, matching, tolerances.
@@ -85,9 +91,9 @@ price; there is no electrical difference.
 | Dir | What |
 |---|---|
 | `sim/` | ngspice decks and results (`sim/README.md`) |
-| `kicad/gen_amp.py gen_psu.py gen_vol.py` | schematic generators (kisch.py writer, common.py helpers); `netcheck.py` proves each netlist matches its deck |
+| `kicad/gen_amp.py gen_psu.py gen_vol.py gen_hp.py` | schematic generators (kisch.py writer, common.py helpers and the STAMP); `netcheck.py` proves each netlist matches its deck |
 | `kicad/gen_pcb_*.py`, `pcbgen.py` | placement + board builder (hybrid footprints, 2-layer or `--single`) |
-| `kicad/build.sh <board> [--single]` | place, freerouting, ground pour, DRC, PNG |
+| `kicad/build.sh <board> [--single] [--compact]` | place, freerouting (second pass if needed), ground pour, DRC, PNG |
 | `kicad/panel/` | KiKit multi-design panel, BOMs (bom_all, bom_shopping, bom_mouser) |
 | `kicad/release.sh` | fab package -> `release/stereo-amp-release-<date>.zip` |
 | `docs/` | the documents above and `docs/images/` |
@@ -99,7 +105,7 @@ not the KiCad files.
 
 ## Status
 
-Release 1.1, 2026-10-21: design complete, simulated, DRC clean (2-layer boards and panel), unbuilt. The
+Release 1.2, 2026-10-22: design complete, simulated, DRC clean (2-layer boards and panel), unbuilt. The
 single-sided amp board needs hand finishing (see known issues).
 
 ## License

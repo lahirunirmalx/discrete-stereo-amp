@@ -9,7 +9,7 @@ STEM=$B; [ -n "$COMPACT" ] && STEM=${B}_compact; [ -n "$SINGLE" ] && STEM=${STEM
 /usr/bin/python3 gen_pcb_$B.py $SINGLE $COMPACT
 rm -f $B/$STEM.ses
 /usr/bin/python3 netrename.py dsn $B/$STEM.dsn
-PASSES=120; [ "$SINGLE" = "--single" ] && PASSES=120
+PASSES=${PASSES:-120}
 ~/.local/bin/freerouting -de $B/$STEM.dsn -do $B/$STEM.ses -mp $PASSES -oit 0.3 2>&1 | grep -vE "New version|Gtk|^\s*$" | tail -4
 cp $B/$STEM.netmap.json $B/$STEM.netmap.json.bak 2>/dev/null; /usr/bin/python3 netrename.py ses $B/$STEM.ses
 /usr/bin/python3 - $B/$STEM.kicad_pcb $B/$STEM.ses <<'PY'
@@ -33,5 +33,5 @@ if [ "$SINGLE" = "--single" ]; then
 else
   kicad-cli pcb drc --schematic-parity --format json -o $B/drc_$STEM.json $B/$STEM.kicad_pcb >/dev/null
 fi
-/usr/bin/python3 drc_summary.py $B/drc_$STEM.json $B/$STEM.kicad_pcb
-./render_pcb.sh $B/$STEM.kicad_pcb $B/pcb_$STEM.png
+# unrouted connections left: a second autorouter pass from the routed board usually closes them
+/usr/bin/python3 drc_summary.py $B/drc_$STEM.json $B/$STEM.kicad_pcb && ./render_pcb.sh $B/$STEM.kicad_pcb $B/pcb_$STEM.png || ./reroute.sh $B/$STEM.kicad_pcb
