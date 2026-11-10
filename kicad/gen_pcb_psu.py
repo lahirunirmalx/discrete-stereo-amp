@@ -29,7 +29,7 @@ region([("R7", R, 0), ("Q1", Q, 0), ("Q3", Q, 0), ("R3", R2W, 0),
         ("R2", R, 0), ("D5", D41, 0), ("C3", FP["CP_S"], 0), ("TP2", TP, 0), ("Q4", Q, 0), ("C6", C, 90), ("C7", C, 90),
         ("R5", R, 0), ("RV1", FP["TRIM"], 0), ("R6", R, 0), ("TP5", TP, 0)], 13.0, 25.0, 45.0, 32.0)
 region([("D8", D201, 0), ("TP3", TP, 0), ("C4", CPM, 0), ("C5", C, 90), ("R4", R, 0), ("D7", FP["LED"], 0), ("J5", FP["H2"], 90),
-        ("R1", R, 0), ("TP1", TP, 0), ("D6", D41, 0), ("TP4", TP, 0)], 58.5, 24.0, 19.0, 33.0)
+        ("R1", R, 0), ("TP1", TP, 0), ("D6", D41, 0), ("TP4", TP, 0)], 58.5, 23.0, 19.0, 34.9)
 place["J2"] = (83.5, 13.0, 90); texts.append((80.5, 18.0, "DC IN 12V", 0.9))
 place["J3"] = (83.5, 29.0, 90); texts.append((80.5, 33.5, "DC OUT", 0.9))
 place["J4"] = (83.5, 45.0, 90); texts.append((80.5, 49.5, "DC OUT", 0.9))
@@ -37,5 +37,5 @@ texts.append((36.0, 24.5, "TP1 VRAW  TP2 VZ 5.6V  TP3 VOUT 12.0V  TP5 FB 6.3V  T
 texts.append((63.0, 2.0, "discrete-stereo-amp " + STAMP, 0.8))
 stem = "psu_1layer" if single else "psu"
 bad = build(HERE / "psu/psu.net", place, BW, BH, HERE / "psu" / (stem + ".kicad_pcb"),
-            "DISCRETE 12V PSU", single=single, scale=(1.3, 1.3), texts=texts, track=0.8, title_at=(31.0, 22.8))
+            "DISCRETE 12V PSU", single=single, scale=(1.4, 1.4), texts=texts, track=0.8, title_at=(31.0, 22.8))
 sys.exit(1 if bad else 0)

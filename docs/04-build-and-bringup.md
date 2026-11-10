@@ -1,9 +1,9 @@
-# 4. Build and bring-up (release 2)
+# 4. Build and bring-up (revision 1.3)
 
 ## 4.0 Build only what you need
 
 The boards are independent. The minimum listening setup is the amp alone: 12 V DC from any 1 A adapter
-into "12V IN" (centre + to pin 1, the square pad), a phone or PC into the "IN L G R" header (tip = L, ring = R,
+into "12V IN" (+ to pin 1, the square pad; a reversed plug trips the resettable fuse F1 and does no damage), a phone or PC into the "IN L G R" header (tip = L, ring = R,
 sleeve = G of a 3.5 mm plug), speakers on the terminals. The source's volume control sets the level; a phone
 at full volume (about 1 Vrms) overdrives the amp (full power at 0.14 Vrms), so start low. Add the volume
 board when you want a knob, the PSU when you want to run from a transformer or want the clamp and the
@@ -29,7 +29,11 @@ meter hangs on it. Sections 4.3 (PSU alone) and 4.4 (amp) still apply in whateve
 3. Small signal transistors: flat face matches the silkscreen D-shape. 2N3904/2N3906 go in turned round.
    The amp has nine per channel now: Q1, Q2, Q9 are PNP (BC557), Q3, Q6, Q7, Q8 are NPN (BC547). Do not mix
    them up; the silkscreen value says which.
-4. The tail LED D10001 / D20001: RED, flat side (cathode) to the pad with the bar.
+4. The tail LED D10001 / D20001: RED, flat side (cathode) to the pad with the bar. Leave the third hole (M) empty
+   unless you fit two 1N4148 instead of the LED (one from A to M, one from M to K, both pointing towards K).
+   Output inductors L10001 / L20001: a 2.2 uH axial choke, or 12 turns of 0.6 mm enamelled wire wound on the
+   10 ohm resistor next to it (R10019 / R20019), ends soldered to that resistor's leads.
+   F1 (resettable fuse) and D1 (band towards the +12V test point) near the 12 V terminal.
 5. Trimmers, ceramic capacitors (C0G for the 220 pF and 47 pF), headers, screw terminals, the slide switch.
 6. Electrolytics: the long lead is + and goes to the pad marked +. On the amp every + faces the higher
    voltage: Cin (2.2 uF) + towards the transistor side, Cboot + towards the bootstrap resistors, output caps +
@@ -46,12 +50,12 @@ transformer and remove the DC: TP1 (VRAW) 14 to 19 V, TP2 (VZ) 5.6 V, TP5 (FB) 6
 12.7 V depending on the trimmer. Set TP3 to 12.0 V (11.5 V with a 12 VAC transformer). Load the output with a
 22 ohm 10 W resistor (0.5 A) for a minute: TP3 should move by less than 0.1 V from 15 VAC and stay above 11.5 V
 from 12 VAC. Do not short the output on purpose: the clamp limits to 2.1 A, but the secondary then draws
-about 3.7 A and the 1 A T fuse opens. The clamp's job is to keep the TIP41C alive until the fuse does. Keep a
+about 3.7 A and the 1.6 A T fuse opens within a few seconds. The clamp's job is to keep the TIP41C alive until the fuse does. Keep a
 spare fuse.
 
 ## 4.4 First power-up, amp
 
-1. Both trimmers fully anticlockwise (minimum bias).
+1. Both trimmers fully anticlockwise (minimum bias, about 2 mA). The clockwise end is 70 mA, warm but safe.
 2. No speakers, no input. Power from the PSU (or a bench supply at 12 V, current limit 300 mA).
 3. TP1 (+12V) 11.5 to 12 V. Per channel: TPx4 (LED) 10.0 to 10.3 V and the LED glowing faintly, TPx2 (OUT)
    5.8 to 6.4 V, TPx1 (B1) within 0.1 V of TPx2. If TPx4 is near 12 V the LED is backwards or missing; if OUT is
@@ -67,8 +71,10 @@ spare fuse.
 
 ## 4.5 Headphone board
 
-Wire the amp's speaker terminals to "FROM AMP" (L, G, R), the speakers to the two terminals. With the slider
-towards pins 1 / 6 the speakers play; towards pins 3 / 4 the speakers go silent and the jack is live. TP2 / TP3
+Wire the amp's speaker terminals to "FROM AMP" (L, G, R), the speakers to the two terminals. With the toggle lever
+up (towards the speaker terminals, marked "LEVER UP = SPK") the speakers play; lever down, the speakers go silent and
+the jack is live. A toggle connects its commons to the lugs opposite the lever; a slide switch wired to the same
+pads works the other way round. TP2 / TP3
 read the jack signal; with nothing plugged in they read the full speaker voltage (there is no load). If a
 substitute switch has a different numbering, find the two commons with a DMM (each common connects to one
 of its neighbours in each slider position) and wire the amp to those.
@@ -81,7 +87,7 @@ of its neighbours in each slider position) and wire the amp to those.
 | PSU TP2 VZ | 5.6 V | R2 open, zener backwards (reads 0.7 V) or shorted; 0 V with VOUT at 0 V means the loop never started: check R7 and Q1/Q2 pinouts |
 | PSU TP5 FB | 6.2 to 6.4 V | divider (R5, RV1, R6) or Q4 pinout |
 | PSU TP3 VOUT | 11.4 to 12.7 V, trimmer sets | at the raw rail: Q4 missing or backwards; low: clamp transistor Q3 fitted backwards or RV1 at an end |
-| Amp TP1 +12V | 11.5 to 12 V | wiring, reversed DC |
+| Amp TP1 +12V | 11.5 to 12 V (0.1 to 0.2 V under the terminal: F1) | 0 V and F1 warm: plug reversed or a short on the board; unplug and check |
 | Amp TPx4 LED | 10.0 to 10.3 V | LED backwards (12 V), wrong colour (9 V or lower), R5 open |
 | Amp TPx1 B1 | 6.1 V | R1/R2 divider, C2 shorted |
 | Amp TPx2 OUT | 6.1 V | output pair pinout / jumper block, Q3, mirror pair, Q6 shorted (OUT high) or open (OUT low) |
@@ -95,6 +101,8 @@ of its neighbours in each slider position) and wire the amp to those.
 - Distorted at any level: bias not set (crossover) or one output transistor not conducting.
 - One channel quiet: compare TPx2 and TPx4 of both channels, then the pot gang.
 - Gets hot at idle: bias too high; check Q6 is next to the outputs and the trimmer setting.
+- Whistle, hot Zobel resistor (R15) or a hot output pair with no signal: oscillation. Check the output inductor
+  (L1 or the coil on R19) is fitted and not replaced by a wire link, and that C4 / C8 are the right values.
 - Headphones very loud or very quiet: JP1/JP2 bridged by mistake, or 330 ohm fitted with low-impedance phones.
 - Faint hiss at full volume with no source: normal (simulated 100 dB below 1 W); if loud, check the input
   cable shield and the 47k divider.

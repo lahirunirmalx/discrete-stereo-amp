@@ -1,7 +1,7 @@
 (export (version "E")
   (design
     (source "/home/lahiru/electronics/stereo_amp/kicad/hp/hp.kicad_sch")
-    (date "2026-10-22T17:50:00+0530")
+    (date "2026-11-10T16:55:12+0530")
     (tool "Eeschema 9.0.8+dfsg-1")
     (sheet (number "1") (name "/") (tstamps "/")
       (title_block
@@ -148,9 +148,9 @@
       (tstamps "95fdc11e-8b13-5222-9e51-d1ba2db84d74"))
     (comp (ref "SW1")
       (value "SPK / HP")
-      (footprint "Button_Switch_THT:SW_CK_JS202011CQN_DPDT_Straight")
+      (footprint "Custom:SW_DPDT_MTS202")
       (fields
-        (field (name "Footprint") "Button_Switch_THT:SW_CK_JS202011CQN_DPDT_Straight")
+        (field (name "Footprint") "Custom:SW_DPDT_MTS202")
         (field (name "Datasheet"))
         (field (name "Description")))
       (libsource (lib "Switch") (part "SW_Slide_DPDT") (description "Slide Switch, dual pole double throw"))

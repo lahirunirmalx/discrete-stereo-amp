@@ -36,7 +36,7 @@ W((22, 10), (19, 10)); L(19, 10, "SPK_L", 180)
 W((26, 10), (29, 10)); L(29, 10, "SPK_R")
 W((22, 14), (19, 14)); L(19, 14, "HP_L", 180)
 W((26, 14), (29, 14)); L(29, 14, "HP_R")
-g.text(14, 18, "SW1: slider towards pins 1 / 6 = speakers, towards pins 3 / 4 = headphones (pins 2 / 5 are the commons). Any DPDT slide on a 2 x 3 pattern (2.5 mm pitch) fits.", 1.0)
+g.text(14, 18, "SW1: 6 A mini toggle (MTS-202 class). Pins 2 / 5 are the commons; pins 1 / 6 = speakers, pins 3 / 4 = headphones. A toggle lever points AWAY from the lugs it connects.", 1.0)
 # ---- series resistors with bypass jumpers, to the jack
 for ref, jp, tp, sfx, yy in (("R1", "JP1", "TP2", "L", 23), ("R2", "JP2", "TP3", "R", 29)):
     L(36, yy, "HP_" + sfx, 180); W((36, yy), (38.5, yy))

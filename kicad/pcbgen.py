@@ -36,6 +36,9 @@ HYBRIDS = {
     "Custom:D_DO201_SMA": dict(tht=("Diode_THT", "D_DO-201AD_P12.70mm_Horizontal"),
                                smd=("Diode_SMD", "D_SMA_Handsoldering"),
                                at=(6.35, 0), oval=None, mirror=False),
+    "Custom:LED_D3_1206": dict(tht=("LED_THT", "LED_D3.0mm"),
+                               smd=("LED_SMD", "LED_1206_3216Metric_Pad1.42x1.75mm_HandSolder"),
+                               at=(1.27, 0), oval=None, mirror=False, extra=[("M", 1.27, 2.54)]),
     "Custom:TO92_SOT23": dict(tht=("Package_TO_SOT_THT", "TO-92_Inline"),
                               smd=("Package_TO_SOT_SMD", "SOT-23_Handsoldering"),
                               at=(1.27, 4.0), oval=None, mirror=True, single=False),
@@ -134,6 +137,14 @@ def make_hybrid(board, name, back):
             px = -px
         q.SetPosition(VECTOR2I(FromMM(ax + px), FromMM(ay + py)))
         fp.Add(q)
+    # free through-hole pads (no net): e.g. the middle hole that lets two small diodes replace a LED (A-M, M-K)
+    for num, ex, ey in spec.get("extra", []):
+        q = pcbnew.PAD(fp)
+        q.SetAttribute(pcbnew.PAD_ATTRIB_PTH); q.SetShape(pcbnew.PAD_SHAPE_CIRCLE)
+        q.SetSize(VECTOR2I(FromMM(1.7), FromMM(1.7))); q.SetDrillSize(VECTOR2I(FromMM(0.9), FromMM(0.9)))
+        q.SetLayerSet(pcbnew.PAD.PTHMask()); q.SetNumber(num)
+        q.SetPosition(VECTOR2I(FromMM(ex), FromMM(ey)))
+        fp.Add(q)
     # courtyard: the library one plus every pad, so pack() keeps neighbours clear of the SMD twin
     xs, ys = [], []
     for item in fp.GraphicalItems():
@@ -228,9 +239,30 @@ def _flip_dir():
     return False
 
 
+def make_toggle(board):
+    """DPDT miniature toggle (MTS-202 class, 6 A): two rows of three solder lugs, 4.7 mm along the throw,
+    4.8 mm between the rows. Pads 1-2-3 in one row, 6-5-4 under them (2 and 5 are the commons), so any DPDT
+    slide, toggle or a panel switch on six wires fits."""
+    fp = pcbnew.FOOTPRINT(board)
+    fp.SetFPIDAsString("Custom:SW_DPDT_MTS202")
+    for num, x, y in (("1", -4.7, -2.4), ("2", 0, -2.4), ("3", 4.7, -2.4), ("6", -4.7, 2.4), ("5", 0, 2.4), ("4", 4.7, 2.4)):
+        q = pcbnew.PAD(fp)
+        q.SetAttribute(pcbnew.PAD_ATTRIB_PTH); q.SetShape(pcbnew.PAD_SHAPE_RECT if num == "1" else pcbnew.PAD_SHAPE_CIRCLE)
+        q.SetSize(VECTOR2I(FromMM(3.0), FromMM(3.0))); q.SetDrillSize(VECTOR2I(FromMM(2.2), FromMM(2.2)))
+        q.SetLayerSet(pcbnew.PAD.PTHMask()); q.SetNumber(num); q.SetPosition(VECTOR2I(FromMM(x), FromMM(y)))
+        fp.Add(q)
+    for layer, hx, hy, w in ((pcbnew.F_CrtYd, 6.9, 6.6, 0.05), (pcbnew.F_SilkS, 6.6, 6.35, 0.12)):
+        r = pcbnew.PCB_SHAPE(fp, pcbnew.SHAPE_T_RECT)
+        r.SetStart(VECTOR2I(FromMM(-hx), FromMM(-hy))); r.SetEnd(VECTOR2I(FromMM(hx), FromMM(hy)))
+        r.SetLayer(layer); r.SetWidth(FromMM(w)); fp.Add(r)
+    return fp
+
+
 def load_fp(board, fpname, back=False):
     if fpname in HYBRIDS:
         return make_hybrid(board, fpname, back)
+    if fpname == "Custom:SW_DPDT_MTS202":
+        return make_toggle(board)
     lib, name = fpname.split(":")
     fp = pcbnew.FootprintLoad(FPDIR + lib + ".pretty", name)
     if fp is None:

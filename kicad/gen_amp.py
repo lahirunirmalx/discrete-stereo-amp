@@ -1,6 +1,7 @@
-"""Stereo amp board schematic (release 2): two identical class-AB channels + shared power/IO.
+"""Stereo amp board schematic (release 3: bias trimmer in the B-E leg, output inductor L{b}01 + R{b}19, input
+protection F1 + D1, 25 V rail capacitor): two identical class-AB channels + shared power/IO.
 
-Per channel (b = 100 for L, 200 for R), deck names in brackets (sim/amp2_final.cir):
+Per channel (b = 100 for L, 200 for R), deck names in brackets (sim/amp3_final.cir):
   C{b}01 in cap [Cin], R{b}01/02 bias divider [Rb1/Rb2], C{b}02 [Cbias], R{b}03 base feed [R3],
   Q{b}1/Q{b}2 BC557 PNP diff pair, Q{b}9 BC557 current-source tail with R{b}04 1.2k [Rt] and the red LED
   D{b}01 [Dled] fed by R{b}05 4.7k [Rled]; Q{b}7/Q{b}8 BC547 current-mirror load with R{b}16/R{b}17 100 R [Re7/Re8];
@@ -16,7 +17,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 from common import Gen, FP
 
-g = Gen("Stereo class-AB amplifier (release 2) - mirror-loaded PNP input, NPN VAS, BD139/BD140 outputs, 12 V")
+g = Gen("Stereo class-AB amplifier (release 3) - mirror-loaded PNP input, NPN VAS, BD139/BD140 outputs, 12 V")
 part, W, J, L, TP = g.part, g.W, g.J, g.label, g.tp
 HERE = Path(__file__).parent
 
@@ -113,13 +114,14 @@ def channel(b, oy, sfx, xoff=8):
     L(89, y(9), "VAS_" + sfx, 0)
     part("BC547", "Q%d6" % b, "BC547", 84, y(14), 0, FP["TO92"], mirror="y", lbl=(79, y(12.5)))
     W((83, y(12)), (83, y(9)), (90, y(9))); J((89, y(9)))
-    part("R", "R%d09" % b, "470", 90, y(11.5), 0, FP["R"])
+    # release 3: fixed 750 collector-base, 750 + trimmer base-emitter. Open wiper = most resistance = least bias.
+    part("R", "R%d09" % b, "750", 90, y(11.5), 0, FP["R"])
     W((90, y(9)), (90, y(10)))
-    part("TRIM", "RV%d" % b, "1k", 90, y(16), 0, FP["TRIM"])
-    W((90, y(13)), (90, y(14.5))); W((91.5, y(16)), (91.5, y(17.5)), (90, y(17.5))); J((90, y(17.5)))
-    W((90, y(17.5)), (90, y(19)), (87.5, y(19)), (87.5, y(14)), (86, y(14))); J((90, y(19)))
-    part("R", "R%d10" % b, "1k", 90, y(21.5), 0, FP["R"])
-    W((90, y(19)), (90, y(20))); W((90, y(23)), (90, y(25)), (83, y(25)), (83, y(16)))
+    W((90, y(13)), (90, y(14))); W((90, y(14)), (86, y(14))); J((90, y(14)))
+    part("R", "R%d10" % b, "750", 90, y(15.5), 0, FP["R"])
+    part("TRIM", "RV%d" % b, "500", 90, y(19.5), 0, FP["TRIM"])
+    W((90, y(17)), (90, y(18))); W((91.5, y(19.5)), (91.5, y(17.5)), (90, y(17.5))); J((90, y(17.5)))
+    W((90, y(21)), (90, y(25)), (83, y(25)), (83, y(16)))
     W((83, y(25)), (81, y(25))); L(81, y(25), "B5_" + sfx, 180); J((83, y(25)))
     # bootstrapped VAS load from +12V: R11 to the boot node, R12 from boot to the VAS node, C05 boot -> OUT
     W((90, y(9)), (93, y(9)))
@@ -144,10 +146,16 @@ def channel(b, oy, sfx, xoff=8):
     W((108, y(26)), (105, y(26))); L(105, y(26), "OUT_" + sfx, 180)
     TP("TP%d2" % b, "OUT 5.9V", 106, y(24.5)); W((106, y(24.5)), (106, y(26))); J((106, y(26)))
     part("CP", "C%d06" % b, "1000u", 114, y(26), 90, FP["CP_L"], lbl="above")
-    W((115.5, y(26)), (118, y(26))); L(118, y(26), "SPK_" + sfx)
-    part("R", "R%d18" % b, "1k", 117, y(30), 0, FP["R"], lbl=(117.8, y(29.5)))
-    W((117, y(26)), (117, y(28.5))); J((117, y(26)))
-    W((117, y(31.5)), (117, y(33))); L(117, y(33), "VU_" + sfx, 270)
+    # output inductor with its damping resistor, between the output capacitor and the speaker terminal
+    W((115.5, y(26)), (119.5, y(26)))
+    part("L", "L%d01" % b, "2.2uH 1A", 121, y(26), 90, FP["R"], lbl=(119.5, y(27.5)))
+    W((122.5, y(26)), (127, y(26))); L(127, y(26), "SPK_" + sfx)
+    part("R", "R%d19" % b, "10", 121, y(23), 90, FP["R"], lbl=(119.5, y(20.5)))
+    W((119, y(26)), (119, y(23)), (119.5, y(23))); J((119, y(26)))
+    W((122.5, y(23)), (123, y(23)), (123, y(26))); J((123, y(26)))
+    part("R", "R%d18" % b, "1k", 125, y(30), 0, FP["R"], lbl=(125.8, y(29.5)))       # VU tap at the speaker terminal
+    W((125, y(26)), (125, y(28.5))); J((125, y(26)))
+    W((125, y(31.5)), (125, y(33))); L(125, y(33), "VU_" + sfx, 270)
     part("R", "R%d15" % b, "10", 111, y(29.5), 0, FP["R"])
     W((111, y(26)), (111, y(28))); J((111, y(26)))
     part("C", "C%d07" % b, "100n", 111, y(34), 0, FP["C"])
@@ -203,11 +211,11 @@ channel(200, 46, "R")
 oy = 92
 g.text(2, oy - 2, "Shared: DC in, reservoir, input header (L G R), speaker terminals, VU meter header (1k series from each speaker node). Test points TP1 +12V, TP2 GND.", 1.27)
 part("SCREW2", "J1", "DC 12V IN", 6, oy + 4, 0, FP["SCREW2"], lbl="above")
-W((4, oy + 4), (2, oy + 4), (2, oy + 1)); v12(2, oy + 1)
-W((2, oy + 2), (3, oy + 2)); g.flag(3, oy + 2); J((2, oy + 2))
+W((4, oy + 4), (3, oy + 4)); L(3, oy + 4, "VIN", 180)
+v12(2, oy + 1); W((2, oy + 1), (2, oy + 2), (3, oy + 2)); g.flag(3, oy + 2)
 W((4, oy + 5), (2, oy + 5), (2, oy + 9)); gnd(2, oy + 9)
 W((2, oy + 8), (3, oy + 8)); g.flag(3, oy + 8); J((2, oy + 8))
-part("CP", "C1", "1000u", 12, oy + 5, 0, FP["CP_L"])
+part("CP", "C1", "1000u 25V", 12, oy + 5, 0, FP["CP_L25"])
 v12(12, oy + 1); W((12, oy + 1), (12, oy + 3.5)); W((12, oy + 6.5), (12, oy + 9)); gnd(12, oy + 9)
 part("C", "C2", "100n", 16, oy + 5, 0, FP["C"])
 v12(16, oy + 1); W((16, oy + 1), (16, oy + 3.5)); W((16, oy + 6.5), (16, oy + 9)); gnd(16, oy + 9)
@@ -227,7 +235,14 @@ part("H3", "J5", "VU L-G-R", 64, oy + 5, 0, FP["H3"], mirror="y", lbl="above")
 W((66, oy + 4), (69, oy + 4)); L(69, oy + 4, "VU_L")
 W((66, oy + 5), (69, oy + 5)); L(69, oy + 5, "GND")
 W((66, oy + 6), (69, oy + 6)); L(69, oy + 6, "VU_R")
-g.text(60, oy + 10, "J5: VU meter tap, 1k in series with each speaker node (2.8 Vrms at 1 W / 8 ohm, no DC). Leave open if unused.", 1.0)
+# input protection: resettable fuse in series, reverse diode across the rail behind it
+L(80, oy + 4, "VIN", 180); W((80, oy + 4), (81.5, oy + 4))
+part("FUSE", "F1", "PTC 1.1A", 83, oy + 4, 90, FP["C"], lbl="above")
+W((84.5, oy + 4), (88, oy + 4), (88, oy + 2)); v12(88, oy + 2)
+part("D", "D1", "1N4007", 86, oy + 6.5, 270, FP["D41"], lbl="right")       # K top (+12V), A bottom (GND)
+W((86, oy + 4), (86, oy + 5)); J((86, oy + 4)); W((86, oy + 8), (86, oy + 9)); gnd(86, oy + 9)
+g.text(78, oy + 13.5, "F1: resettable fuse (RXEF110 class, 5 mm pitch) or a wire link. D1 conducts when the 12 V plug is reversed and trips F1.", 1.0)
+g.text(60, oy + 12, "J5: VU meter tap, 1k in series with each speaker node (2.8 Vrms at 1 W / 8 ohm, no DC). Leave open if unused.", 1.0)
 
 out = g.write("amp", HERE / "amp")
 print("wrote", out)

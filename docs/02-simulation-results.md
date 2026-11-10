@@ -4,7 +4,8 @@ All runs: ngspice 42, batch mode, decks in `sim/` (see `sim/README.md`). Transis
 (BC547B hFE 290, BC557B 250, BD139 120, BD140 100, swept where stated); the speaker is a resistor; no thermal coupling.
 
 Sections 2.1 to 2.6 are the release 1 record (the diff-pair-with-resistor-load channel and the open-loop supply).
-Sections 2.7 to 2.9 are release 2: the mirror-loaded front end and the closed-loop supply that the boards now carry.
+Sections 2.7 to 2.9 are release 2: the mirror-loaded front end and the closed-loop supply.
+Section 2.10 is revision 1.3: the loop-gain measurement that found a thin stability margin, and the fixes the boards now carry.
 
 ## 2.1 Choosing the front end (ampA.cir vs ampB.cir)
 
@@ -286,3 +287,43 @@ Short circuit (0.5 ohm load, 15 VAC): 2.07 A, 1.03 V out, 25 W in the pass trans
 Both sources (15 VAC and 12 V DC, 15 ohm load): V out 12.01 V, 0.00 mA of the load comes from the DC input (the regulator at 12.0 V sits just above the 11.6 V the diode path can supply).
 
 Set point (psu2_dc.cir): with the trimmer at 900 ohm the output is 12.0 V; line regulation 11.9 to 12.0 V for a raw rail of 13 to 19 V. With a 12 VAC transformer the raw rail is only 1.3 V above the output at 0.4 A, so set 11.5 V there.
+
+## 2.10 Revision 1.3: loop gain, output inductor, bias trimmer range (amp3_loop.cir, amp3_final.cir)
+
+Release 2 judged stability by square-wave overshoot only. Revision 1.3 measures the loop gain directly (a voltage source
+in series with the feedback network at the output node, T = -v(out)/v(fbk)). Without an output inductor the phase margin
+collapses when a few tens of nanofarads sit across the speaker terminals; a 2.2 uH inductor with 10 ohm across it,
+between the output capacitor and the terminal, restores it at every load.
+
+| load capacitance | phase margin, no inductor (deg) | gain margin (dB) | phase margin, 2.2 uH + 10 ohm (deg) | gain margin (dB) |
+|---|---|---|---|---|
+| 1p | 70 | 16.4 | 66 | 15.0 |
+| 22n | 29 | 4.5 | 68 | 15.7 |
+| 47n | 21 | 3.8 | 73 | 16.3 |
+| 100n | 21 | 4.6 | 76 | 16.6 |
+| 470n | 37 | 11.1 | 77 | 16.8 |
+| 2.2u | 43 | 22.2 | 86 | 16.8 |
+
+Loop gain with the inductor: 40 dB at 1 kHz, 26 dB at 20 kHz, unity at 2.2 MHz.
+
+Bias trimmer, now in the base-emitter leg of the Vbe multiplier (750 ohm collector to base, 750 ohm + 500 ohm trimmer base to emitter). An open wiper leaves the full 500 ohm in circuit, which is the minimum-bias end:
+
+| trimmer (ohm) | output Iq (mA) | P per output transistor at idle (W) |
+|---|---|---|
+| 500 | 1.7 | 0.01 |
+| 300 | 7.0 | 0.04 |
+| 165 | 20.6 | 0.12 |
+| 100 | 34.2 | 0.20 |
+| 0 | 69.5 | 0.41 |
+
+Release 2 (470 ohm + 1k trimmer in the collector-base leg) reached 282 mA and 1.65 W per transistor at the clockwise end or with an open wiper.
+
+The channel as drawn (amp3_final.cir, netlist-checked): output 6.12 V, Iq 20.6 mA (29.3 mA at 70 C with the spreader cold), supply 33.4 mA, gain 21.6 at the speaker terminal, Zin 46k, -3 dB at 108 kHz, -0.13 dB at 20 kHz.
+
+| load (ohm) | Vin pk (mV) | P out (W) | THD % (default models, BD139 hFE 120 / BD140 hFE 100) |
+|---|---|---|---|
+| 8 | 30 | 0.026 | 0.019 |
+| 8 | 100 | 0.292 | 0.045 |
+| 8 | 150 | 0.657 | 0.063 |
+
+Other checks run for this revision (one-off decks, numbers quoted in docs/03): supply rejection at the speaker 53 dB at 100 Hz and 67 dB at 1 kHz; PSU cold start reaches 10.8 V in 13 ms and peaks at 12.10 V (no overshoot).

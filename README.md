@@ -5,9 +5,11 @@
 A hobby / learning project: a two-channel 1 W class-AB amplifier built from BC547/BC557/BD139/BD140,
 its own transformer-fed discrete supply, a volume board and a headphone board, all on one fab panel. It grew
 out of a review of a one-transistor "speaker in the collector" amp, which could not be fixed by changing
-values. Every number here comes from ngspice; **no board has been built or measured yet** (release 1.2 is a
+values. Every number here comes from ngspice; **no board has been built or measured yet** (revision 1.3 is a
 prototype design). Release 2 rebuilt the amp front end for ten times less distortion, closed the supply's
-regulation loop, added a VU meter tap and the headphone board.
+regulation loop, added a VU meter tap and the headphone board. Revision 1.3 is the result of a second design
+review: an output inductor for stability into capacitive loads, a fail-safe bias trimmer, input protection on
+the amp, a correctly sized supply fuse and a headphone switch rated for speaker current.
 
 ![Panel, 3D](docs/images/panel_3d_iso.png)
 
@@ -27,7 +29,7 @@ PDFs of all four are in the release zip (`schematics/`).
 
 ## Boards (2-layer layouts, top view, both copper layers)
 
-| Amp, wide 134 x 85 mm | Amp, compact 100 x 98 mm | PSU 90 x 58 mm | Volume 42 x 26 mm | Headphone 42 x 30 mm |
+| Amp, wide 134 x 86 mm | Amp, compact 100 x 98 mm | PSU 90 x 58 mm | Volume 42 x 26 mm | Headphone 42 x 30 mm |
 |---|---|---|---|---|
 | ![Amp PCB](docs/images/amp_pcb_2layer.png) | ![Compact amp PCB](docs/images/amp_compact_pcb_2layer.png) | ![PSU PCB](docs/images/psu_pcb_2layer.png) | ![Volume PCB](docs/images/vol_pcb_2layer.png) | ![Headphone PCB](docs/images/hp_pcb_2layer.png) |
 
@@ -41,13 +43,15 @@ PDFs of all four are in the release zip (`schematics/`).
 |---|---|
 | Output | 1.2 W into 8 ohm and 1.5 W into 4 ohm at the onset of clipping (per channel, 12 V); 0.29 W into 8 ohm at 0.02 to 0.05% THD, 52 mW into 4 ohm at 0.013% |
 | Gain / input | 23 (27 dB), 46k input impedance, for a 10k log pot |
-| Idle current | output stage 21 mA per channel after setting the trimmer (7 to 10 mV across a 0.47 ohm emitter resistor); about 34 mA per channel from the supply |
-| Bandwidth | 20 Hz (8 ohm) / 34 Hz (4 ohm) to 120 kHz; 5.7% square-wave overshoot with 100 nF across the speaker |
+| Idle current | output stage 21 mA per channel after setting the trimmer (7 to 10 mV across a 0.47 ohm emitter resistor; trimmer range 2 to 70 mA); about 33 mA per channel from the supply |
+| Bandwidth | 20 Hz (8 ohm) / 34 Hz (4 ohm) to 108 kHz, -0.13 dB at 20 kHz |
+| Stability | loop phase margin 65 degrees or more for any load from open to 2.2 uF (2.2 uH + 10 ohm output inductor) |
+| Protection | amp: resettable fuse + reverse-polarity diode on the 12 V input, bias trimmer limited to 70 mA and fail-safe; PSU: 2 A clamp + 1.6 A slow fuse |
 | Supply | 12 to 15 VAC transformer (1.5 A for full power) or 12 V DC in; closed-loop 12.0 V out (trimmer 11.4 to 12.7 V), 0.14 V dip on a 1 A step, 2 A clamp |
-| Headphones | DPDT switch speakers / phones, 120 ohm series (8 mW into 32 ohm), DIRECT jumpers, 3.5 mm jack or panel jack header |
+| Headphones | DPDT toggle switch speakers / phones, 120 ohm series (8 mW into 32 ohm), DIRECT jumpers, 3.5 mm jack or panel jack header |
 | VU meter | 1x3 header on the amp, 1k in series with each speaker node (2.8 Vrms at 1 W) |
-| Boards | amp 134 x 85 mm (or the compact 100 x 98 mm variant for the 100 x 100 fab tier), PSU 90 x 58 mm, volume 42 x 26 mm, headphone 42 x 30 mm; 2-layer panel 155 x 155 mm; single-sided variants |
-| Parts | 145 through-hole parts with 1206 / SOD / SMA / SOT-23 twins on the same pads; 38 solder jumpers (output pinouts, headphone DIRECT) |
+| Boards | amp 134 x 86 mm (or the compact 100 x 98 mm variant for the 100 x 100 fab tier), PSU 90 x 58 mm, volume 42 x 26 mm, headphone 42 x 30 mm; 2-layer panel 156 x 156 mm; single-sided variants |
+| Parts | 151 through-hole parts with 1206 / SOD / SMA / SOT-23 twins on the same pads; 38 solder jumpers (output pinouts, headphone DIRECT) |
 
 ## Design rules this project keeps
 
@@ -70,14 +74,14 @@ Every board works on its own; nothing is required by another board.
 | VU meters | any meter on the amp's "VU L G R" header | level display; nothing else changes |
 | All four | the panel | the complete desk amp |
 
-Two amp layouts carry the same circuit: the wide one (134 x 85 mm, matches the PSU plus headphone-and-volume
+Two amp layouts carry the same circuit: the wide one (134 x 86 mm, matches the PSU plus headphone-and-volume
 column on the panel) and the compact one (100 x 98 mm, fits JLCPCB's 100 x 100 mm tier when ordered alone).
 Choose by price; there is no electrical difference.
 
 ## Documents
 
 1. [docs/01-theory-of-operation.md](docs/01-theory-of-operation.md): every block explained for a first build, with the voltages to expect.
-2. [docs/02-simulation-results.md](docs/02-simulation-results.md): all the ngspice tables, including the rejected candidates and the release 2 front end and supply (2.7 to 2.9).
+2. [docs/02-simulation-results.md](docs/02-simulation-results.md): all the ngspice tables, including the rejected candidates, the release 2 front end and supply (2.7 to 2.9) and the revision 1.3 loop-gain work (2.10).
 3. [docs/03-design-review.md](docs/03-design-review.md): what was checked, what was found, what is not verified.
 4. [docs/04-build-and-bringup.md](docs/04-build-and-bringup.md): assembly order, first power-up, bias setting, test points, troubleshooting.
 5. [ORDER_GUIDE.md](ORDER_GUIDE.md): ordering the panel, substitutes, matching, tolerances.
@@ -105,7 +109,7 @@ not the KiCad files.
 
 ## Status
 
-Release 1.2, 2026-10-22: design complete, simulated, DRC clean (2-layer boards and panel), unbuilt. The
+Revision 1.3, 2026-11-10: design complete, simulated, reviewed twice, DRC clean (2-layer boards and panel), unbuilt. The
 single-sided amp board needs hand finishing (see known issues).
 
 ## License

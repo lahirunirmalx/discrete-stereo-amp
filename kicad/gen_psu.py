@@ -22,7 +22,7 @@ def gnd(x, y, rot=0):
 VR, GR = 4, 42          # VRAW rail and GND rail rows
 # ---- AC input and fuse
 part("SCREW2", "J1", "AC IN 12-15V", 4, 10, 0, FP["SCREW2"], mirror="y", lbl="above")
-part("FUSE", "F1", "1A T 5x20", 10, 10, 90, FP["FUSE"], lbl="above")
+part("FUSE", "F1", "1.6A T 5x20", 10, 10, 90, FP["FUSE"], lbl="above")
 W((6, 10), (8.5, 10)); W((11.5, 10), (13, 10)); L(13, 10, "AC1")
 W((6, 11), (7, 11), (7, 13), (9, 13)); L(9, 13, "AC2")
 g.text(2, 6, "Transformer secondary 12-15 VAC, 1.5 A or more for full stereo power (12 VAC: 12 V regulated up to 0.4 A, then follows the raw rail).", 1.0)

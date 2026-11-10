@@ -1,5 +1,39 @@
 # Changelog
 
+## 2026-11-10, revision 1.3 (prototype, unbuilt)
+
+A second design review (docs/03, section 3.1) measured the amplifier's loop gain instead of relying on square-wave
+overshoot and went through the failure modes of each board. Six findings, all fixed in this revision:
+
+1. Stability: phase margin fell to 20 degrees with 47 to 100 nF across the speaker terminals. Added a 2.2 uH output
+   inductor with 10 ohm across it (L10001 / R10019, L20001 / R20019) between the output capacitor and the terminal:
+   65 degrees or more for any load up to 2.2 uF. The VU tap now takes the speaker-terminal side.
+2. Bias trimmer: moved to the base-emitter leg of the Vbe multiplier (750 ohm / 750 ohm + 500 ohm trimmer, was
+   470 ohm + 1k trimmer in the collector-base leg). Range 2 to 70 mA (was up to 280 mA); an open wiper now gives the
+   minimum, not the maximum. Clockwise is still "more".
+3. Amp 12 V input: resettable fuse F1 in series and reverse diode D1 across the rail. A reversed plug trips F1.
+4. PSU fuse 1.6 A slow-blow (was 1 A): the 1 A part was sized against the DC load, not the RMS secondary current,
+   and would have opened in loud use. Why there is no foldback limiter is in docs/01, 1.2.
+5. Amp rail capacitor C1 is a 25 V part (10 mm can), so a PSU regulator fault cannot burst it.
+6. Headphone switch: 6 A miniature toggle footprint (MTS-202 class, two rows of three lugs) instead of the 0.3 A
+   sub-miniature slide switch, which carried the full speaker current.
+
+Also in this revision:
+- Hybrid LED footprint (3 mm LED + 1206 LED twin + a free middle hole "M" for two small diodes) on the amp's two
+  tail-reference LEDs and on the PSU and volume-board power LEDs. This was the last position without a twin.
+- Boards: amp 134 x 86 mm, compact 100 x 98 mm, PSU 90 x 58 mm, volume 42 x 26 mm, headphone 42 x 30 mm, panel
+  156 x 156 mm. All 2-layer boards and the panel DRC clean.
+- New decks: amp3_final.cir (the channel as drawn, netlist-checked), amp3_loop.cir (loop gain against load
+  capacitance, with and without the inductor). Results in docs/02, section 2.10.
+
+How this honours the three standing rules:
+- Modular: the amp's own input protection means the amp-alone-from-an-adapter path is now safe for a beginner;
+  no board gained a dependency.
+- Hybrid / multi-part: the inductor takes an axial choke, a 1206 part or a coil wound on its resistor; F1 takes a
+  resettable fuse or a wire link; the switch pads take any DPDT toggle, slide or panel switch; the LEDs gained
+  their twin.
+- Test points: unchanged in number; the bring-up guide gained the reversed-plug and oscillation symptoms.
+
 ## 2026-10-22, release 1.2 (prototype, unbuilt)
 
 Circuit:

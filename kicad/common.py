@@ -13,7 +13,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 from kisch import Sch
 
-STAMP = "v1.2 2026-10"          # printed on every board, the panel rails and the release name
+STAMP = "v1.3 2026-11"          # printed on every board, the panel rails and the release name
 REPO = "github.com/lahirunirmalx/discrete-stereo-amp"
 
 FP = {
@@ -29,7 +29,7 @@ FP = {
     "D35": "Custom:D_DO35_SOD123",
     "D41": "Custom:D_DO41_SMA",
     "D201": "Custom:D_DO201_SMA",
-    "LED": "LED_THT:LED_D3.0mm",
+    "LED": "Custom:LED_D3_1206",       # 3 mm LED + 1206 LED twin + free middle pad "M" (two diodes A-M, M-K)
     "TRIM": "Potentiometer_THT:Potentiometer_Bourns_3296W_Vertical",
     "POT2": "Potentiometer_THT:Potentiometer_Alps_RK097_Dual_Horizontal",
     "SCREW2": "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal",
@@ -40,7 +40,8 @@ FP = {
     "JP_BRIDGED": "Jumper:SolderJumper-2_P1.3mm_Bridged_Pad1.0x1.5mm",
     "FUSE": "Fuse:Fuseholder_Clip-5x20mm_Littelfuse_100_Inline_P20.50x4.60mm_D1.30mm_Horizontal",
     "JACK": "Connector_Audio:Jack_3.5mm_CUI_SJ1-3535NG_Horizontal",     # T, TN, R, RN, S pads
-    "SW_DPDT": "Button_Switch_THT:SW_CK_JS202011CQN_DPDT_Straight",
+    "SW_DPDT": "Custom:SW_DPDT_MTS202",                    # 6 A mini toggle, 2 x 3 lugs, 4.7 x 4.8 mm
+    "CP_L25": "Capacitor_THT:CP_Radial_D10.0mm_P5.00mm",   # 1000u/25V
 }
 
 
@@ -57,7 +58,7 @@ class Gen:
         self.L = {
             "R": s.lib("Device", "R"), "C": s.lib("Device", "C"), "CP": s.lib("Device", "C_Polarized"),
             "D": s.lib("Device", "D"), "DZ": s.lib("Device", "D_Zener"), "DS": s.lib("Device", "D_Schottky"),
-            "LED": s.lib("Device", "LED"), "FUSE": s.lib("Device", "Fuse"),
+            "LED": s.lib("Device", "LED"), "FUSE": s.lib("Device", "Fuse"), "L": s.lib("Device", "L"),
             "TRIM": s.lib("Device", "R_Potentiometer_Trim"), "POT2": s.lib("Device", "R_Potentiometer_Dual"),
             "BC547": s.lib("Transistor_BJT", "BC547"), "BC557": s.lib("Transistor_BJT", "BC557"),
             "BD139": s.lib("Transistor_BJT", "BD139"), "BD140": s.lib("Transistor_BJT", "BD140"),

@@ -9,10 +9,12 @@ The MPNs in bom_mouser.csv were chosen from memory and are NOT stock- or price-c
 - C315C221J1G5TA: Miller cap: C0G only
 - C320C473K5R5TA: PSU loop compensation
 - C315C470J1G5TA: feedback lead cap: C0G only
-- 0218001.MXP: plus 2 clips, next line
+- 021801.6MXP: plus 2 clips
+- 78F2R2K-RC: check rated current is 1 A or more; or wind 12 turns on R19
 - PTD902-2015K-A103: check pin pattern against the RK097 footprint before buying
 - KNP300JR-73-0R33: any 0.33 R 2-3 W axial
 - KNP200JR-73-0R47: any 0.47 R 2 W axial
+- 100DP1T1B1M2QEH: MPN not verified against the 4.7 x 4.8 mm pad pattern; any MTS-202 fits
 - 5001: optional: a bent resistor lead works
 - BD139-16: or BD139 ungraded + sort by hFE
 - TIP41C: needs a TO-220 heatsink, e.g. Aavid 577202B00000G

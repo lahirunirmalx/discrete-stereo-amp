@@ -21,10 +21,12 @@ def table(head, rows):
 
 A = results(SIM / "ampA.out"); B = results(SIM / "ampB.out"); B2 = results(SIM / "ampB2.out"); B3 = results(SIM / "ampB3.out"); B4 = results(SIM / "ampB4.out"); P = results(SIM / "psu.out")
 C = results(SIM / "ampC.out"); P2 = results(SIM / "psu2.out"); F2 = results(SIM / "amp2_final.out")
+F3 = results(SIM / "amp3_final.out"); LG = results(SIM / "amp3_loop.out")
 md = ["# 2. Simulation results", "", "All runs: ngspice 42, batch mode, decks in `sim/` (see `sim/README.md`). Transistor models are generic",
       "(BC547B hFE 290, BC557B 250, BD139 120, BD140 100, swept where stated); the speaker is a resistor; no thermal coupling.", "",
       "Sections 2.1 to 2.6 are the release 1 record (the diff-pair-with-resistor-load channel and the open-loop supply).",
-      "Sections 2.7 to 2.9 are release 2: the mirror-loaded front end and the closed-loop supply that the boards now carry.", "",
+      "Sections 2.7 to 2.9 are release 2: the mirror-loaded front end and the closed-loop supply.",
+      "Section 2.10 is revision 1.3: the loop-gain measurement that found a thin stability margin, and the fixes the boards now carry.", "",
       "## 2.1 Choosing the front end (ampA.cir vs ampB.cir)", "",
       "Two candidates were run through the same three tests: does the output midpoint stay near half the rail for any transistor",
       "gain, does the gain stay put when the volume pot moves (source resistance 0 to 5k), and how much does it distort.", ""]
@@ -93,5 +95,25 @@ md.append("Short circuit (0.5 ohm load, 15 VAC): %s A, %s V out, %s W in the pas
 md.append(table(["DC-in only, load (ohm)", "V out", "raw rail", "pass transistor B-E reverse (V)", "driver B-E (V)"], [(r["rl"], f(r["vout"], 1, 2), f(r["vraw"], 1, 2), f(r["q2_veb_rev"], 1, 2), f(r["q1_veb_rev"], 1, 2)) for r in dc]))
 md.append("Both sources (15 VAC and 12 V DC, 15 ohm load): V out %s V, %s mA of the load comes from the DC input (the regulator at 12.0 V sits just above the 11.6 V the diode path can supply).\n" % (f(bo["vout"], 1, 2), "%.2f" % abs(float(bo["i_from_dcin"]) * 1e3)))
 md.append("Set point (psu2_dc.cir): with the trimmer at 900 ohm the output is 12.0 V; line regulation 11.9 to 12.0 V for a raw rail of 13 to 19 V. With a 12 VAC transformer the raw rail is only 1.3 V above the output at 0.4 A, so set 11.5 V there.\n")
+
+md += ["## 2.10 Revision 1.3: loop gain, output inductor, bias trimmer range (amp3_loop.cir, amp3_final.cir)", "",
+       "Release 2 judged stability by square-wave overshoot only. Revision 1.3 measures the loop gain directly (a voltage source",
+       "in series with the feedback network at the output node, T = -v(out)/v(fbk)). Without an output inductor the phase margin",
+       "collapses when a few tens of nanofarads sit across the speaker terminals; a 2.2 uH inductor with 10 ohm across it,",
+       "between the output capacitor and the terminal, restores it at every load.", ""]
+def lg(lo, cl):
+    return [r for r in LG if r["_k"] == "loop" and r["lo"] == lo and r["cl"] == cl][0]
+md.append(table(["load capacitance", "phase margin, no inductor (deg)", "gain margin (dB)", "phase margin, 2.2 uH + 10 ohm (deg)", "gain margin (dB)"],
+                [(cl, f(lg("1n", cl)["pm"], 1, 0), f(lg("1n", cl)["gm"], -1, 1), f(lg("2.2u", cl)["pm"], 1, 0), f(lg("2.2u", cl)["gm"], -1, 1)) for cl in ("1p", "22n", "47n", "100n", "470n", "2.2u")]))
+l0 = lg("2.2u", "1p")
+md.append("Loop gain with the inductor: %s dB at 1 kHz, %s dB at 20 kHz, unity at %s MHz.\n" % (f(l0["t1k"], 1, 0), f(l0["t20k"], 1, 0), f(l0["fc"], 1e-6, 1)))
+md.append("Bias trimmer, now in the base-emitter leg of the Vbe multiplier (750 ohm collector to base, 750 ohm + 500 ohm trimmer base to emitter). An open wiper leaves the full 500 ohm in circuit, which is the minimum-bias end:\n")
+md.append(table(["trimmer (ohm)", "output Iq (mA)", "P per output transistor at idle (W)"], [(r["rv"], f(r["iq"], 1e3, 1), f(r["p_q4"], 1, 2)) for r in F3 if r["_k"] == "trimmer"]))
+md.append("Release 2 (470 ohm + 1k trimmer in the collector-base leg) reached 282 mA and 1.65 W per transistor at the clockwise end or with an open wiper.\n")
+op3 = [r for r in F3 if r["_k"] == "op"][0]; ac3 = [r for r in F3 if r["_k"] == "ac"][0]; bw3 = [r for r in F3 if r["_k"] == "bw"][0]; tt = [r for r in F3 if r["_k"] == "temp"]
+md.append("The channel as drawn (amp3_final.cir, netlist-checked): output %s V, Iq %s mA (%s mA at 70 C with the spreader cold), supply %s mA, gain %s at the speaker terminal, Zin %sk, -3 dB at %s kHz, %s dB at 20 kHz.\n" % (
+    f(op3["vout"], 1, 2), f(op3["iqout"], 1e3, 1), f(tt[1]["iq"], 1e3, 1), f(op3["isupply"], -1e3, 1), f(ac3["gain"], 1, 1), f(ac3["zin"], 1e-3, 0), f(bw3["fh"], 1e-3, 0), f(bw3["droop20k_dB"], 1, 2)))
+md.append(table(["load (ohm)", "Vin pk (mV)", "P out (W)", "THD % (default models, BD139 hFE 120 / BD140 hFE 100)"], [(r["rl"], f(r["amp"], 1e3, 0), f(r["pout"], 1, 3), "%.3f" % r["thd"]) for r in F3 if r["_k"] == "tran"]))
+md.append("Other checks run for this revision (one-off decks, numbers quoted in docs/03): supply rejection at the speaker 53 dB at 100 Hz and 67 dB at 1 kHz; PSU cold start reaches 10.8 V in 13 ms and peaks at 12.10 V (no overshoot).\n")
 OUT.write_text("\n".join(md))
 print("wrote", OUT, len("\n".join(md)), "chars")

@@ -49,11 +49,11 @@ for b, xo, sfx in ((100, 0.0, "L"), (200, 50.0 if compact else 67.0, "R")):
                 [("R%d03" % b, R, 90), ("R%d01" % b, R, 90), ("R%d02" % b, R, 90), ("R%d05" % b, R, 90), ("R%d06" % b, R, 90),
                  ("R%d07" % b, R, 90), ("R%d16" % b, R, 90), ("R%d17" % b, R, 90), ("C%d02" % b, CPS, 0), ("C%d07" % b, C, 90)],
                 [("C%d01" % b, CPS, 0), ("TP%d1" % b, TP, 0), ("Q%d1" % b, Q, 0), ("Q%d2" % b, Q, 0), ("Q%d9" % b, Q, 0), ("D%d01" % b, LED, 0), ("TP%d4" % b, TP, 0)],
-                [("C%d03" % b, CPM, 0), ("Q%d7" % b, Q, 0), ("Q%d8" % b, Q, 0), ("Q%d3" % b, Q, 0), ("C%d04" % b, C, 90), ("C%d08" % b, C, 90), ("R%d18" % b, R, 90)])
+                [("C%d03" % b, CPM, 0), ("Q%d7" % b, Q, 0), ("Q%d8" % b, Q, 0), ("Q%d3" % b, Q, 0), ("C%d04" % b, C, 90), ("C%d08" % b, C, 90), ("L%d01" % b, R, 90), ("R%d19" % b, R, 90)])
         width = 47.4
     else:
         rows = ([("R%d10" % b, R, 90), ("R%d11" % b, R, 90), ("R%d12" % b, R, 90), ("C%d05" % b, CPM, 0), ("C%d06" % b, CPL, 0),
-                 ("TP%d3" % b, TP, 0), ("TP%d2" % b, TP, 0), ("R%d18" % b, R, 90)],
+                 ("TP%d3" % b, TP, 0), ("TP%d2" % b, TP, 0), ("L%d01" % b, R, 90), ("R%d19" % b, R, 90)],
                 [("R%d13" % b, R2W, 0), ("R%d14" % b, R2W, 0), ("R%d03" % b, R, 90), ("R%d01" % b, R, 90), ("R%d02" % b, R, 90), ("R%d05" % b, R, 90),
                  ("R%d06" % b, R, 90), ("R%d07" % b, R, 90)],
                 [("C%d01" % b, CPS, 0), ("TP%d1" % b, TP, 0), ("Q%d1" % b, Q, 0), ("Q%d2" % b, Q, 0), ("Q%d9" % b, Q, 0), ("D%d01" % b, LED, 0), ("TP%d4" % b, TP, 0),
@@ -68,19 +68,22 @@ for b, xo, sfx in ((100, 0.0, "L"), (200, 50.0 if compact else 67.0, "R")):
     yend = max(yend, y)
     texts.append((xo + 25, 19.0, "CH %s" % sfx, 1.3))
 # shared row along the bottom edge: terminals face outward (rot 180 = wire entry towards the bottom edge)
-BH = round(yend + 14.0)
+BH = round(yend + (14.0 if compact else 15.0))
 yt = BH - 6.5
 # screw terminals: rot 0 puts the wire entry towards the bottom edge (verified on the 3D render; rot 180 was backwards)
 if compact:
     place["J1"] = (11.0, yt, 0); texts.append((11.0, yt - 7.0, "12V IN", 0.9))
     place["J3"] = (23.5, yt, 0); texts.append((23.5, yt - 7.0, "SPK L", 0.9))
     place["J4"] = (87.0, yt, 0); texts.append((87.0, yt - 7.0, "SPK R", 0.9))
-    place["J2"] = (45.0, BH - 2.5, 90); texts.append((49.0, BH - 6.5, "IN L G R", 0.9))
-    place["J5"] = (57.0, BH - 2.5, 90); texts.append((61.0, BH - 6.5, "VU L G R", 0.9))
-    place["C1"] = (68.0, yt - 1.5, 0)
-    place["C2"] = (76.0, yt + 1.5, 90)
-    place["TP1"] = (80.0, yt - 3.5, 0); texts.append((80.0, yt - 5.7, "+12V", 0.9))
-    place["TP2"] = (80.0, yt + 1.5, 0); texts.append((83.5, yt + 1.8, "GND", 0.9))
+    place["J2"] = (45.0, BH - 2.5, 90); texts.append((47.5, BH - 6.2, "IN L G R", 0.8))
+    place["R10018"] = (53.55, BH - 3.2, 90)
+    place["J5"] = (57.2, BH - 2.5, 90); texts.append((60.6, BH - 6.2, "VU L G R", 0.8))
+    place["R20018"] = (65.8, BH - 3.2, 90)
+    place["C1"] = (70.4, yt - 0.5, 0)
+    place["C2"] = (80.0, yt + 1.5, 90)
+    place["D1"] = (34.5, BH - 11.0, 0); place["TP1"] = (49.5, BH - 11.0, 0)
+    place["F1"] = (57.0, BH - 11.0, 0); texts.append((60.0, BH - 8.4, "PTC", 0.8))
+    place["TP2"] = (97.4, BH - 10.0, 0); texts.append((97.0, BH - 12.5, "GND", 0.8))
     texts.append((37.5, BH - 3.0, STAMP, 0.8))
     back_texts = [(50.0, 40.0, REPO + "  " + STAMP, 1.2), (50.0, 44.0, "STEREO AMP 12V  compact 100 mm wide  CC BY-NC-SA 4.0", 1.0)]
 else:
@@ -91,7 +94,10 @@ else:
     place["J2"] = (63.0, BH - 2.5, 90); texts.append((67.0, BH - 6.5, "IN L G R", 0.9))
     place["J5"] = (76.0, BH - 2.5, 90); texts.append((80.0, BH - 6.5, "VU L G R", 0.9))
     texts.append((60.0, 1.8, STAMP, 0.8))
-    place["C1"] = (42.0, yt - 1.5, 0)
+    place["C1"] = (39.0, yt - 0.5, 0)
+    place["R10018"] = (72.05, BH - 10.82, 270); place["R20018"] = (84.6, BH - 10.82, 270)
+    place["D1"] = (89.0, BH - 11.0, 0); place["F1"] = (106.0, BH - 11.0, 0)
+    texts.append((108.5, BH - 8.6, "F1 PTC", 0.8))
     place["C2"] = (50.0, yt + 1.5, 90)
     place["TP1"] = (54.5, yt - 3.5, 0); texts.append((54.5, yt - 5.7, "+12V", 0.9))
     place["TP2"] = (54.5, yt + 1.5, 0); texts.append((58.0, yt + 1.8, "GND", 0.9))

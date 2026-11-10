@@ -16,6 +16,8 @@
 | ampC.cir | RELEASE 2 front end: PNP pair, mirror load, LED current-source tail, NPN VAS, 220p + 47p compensation. hFE corners, bias, Zin, -3 dB, power and THD vs load | ampC.out |
 | ampC_sq.cir, ampC_misc.cir, ampC_comp.cir | Release 2: square-wave overshoot vs load capacitance, response peaking, 25/70 C, NPN hFE; the 4 x 4 compensation sweep (run per combination, see the transcript in docs/02) | (stdout) |
 | amp2_final.cir | The RELEASE 2 channel exactly as drawn in KiCad (netlist-checked), with the VU tap. Operating point, gain, two 8 ohm runs | amp2_final.out |
+| amp3_final.cir | REVISION 1.3 channel exactly as drawn in KiCad (netlist-checked): trimmer in the B-E leg, output inductor, VU tap at the terminal. Operating point, trimmer range, 25/70 C, gain, bandwidth, three 8 ohm runs | amp3_final.out |
+| amp3_loop.cir | Revision 1.3: loop gain, phase and gain margin against load capacitance, with and without the 2.2 uH output inductor | amp3_loop.out |
 | psu2.cir | RELEASE 2 supply (closed loop): 12 and 15 VAC at 0.1 to 1.2 A, 1 A load step, short circuit, DC-in only, DC-in plus AC | psu2.out |
 | psu2_dc.cir, psu2_step*.cir | Release 2 supply: set point and line regulation (DC sweep); load step vs compensation capacitor, output ESR and transistor gain | (stdout) |
 | amp_line.cir, amp_sweep.cir, amp_tran.cir (in ~/electronics-notes/one-transistor-amp/) | The ORIGINAL one-transistor amp review | |

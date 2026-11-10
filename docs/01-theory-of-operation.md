@@ -1,4 +1,4 @@
-# 1. Theory of operation (release 2)
+# 1. Theory of operation (revision 1.3)
 
 Written for someone building their first discrete amplifier. Every block is explained by what it does, what
 voltage you should see on it, and what breaks if you change it. Simulated numbers are from `sim/` (see
@@ -40,7 +40,8 @@ set by two resistors (1 + 22k/1k = 23) and not by the transistors.
 sits on a red LED (1.8 V below the rail, fed by Rled 4.7k), so the tail current is (1.8 - 0.65) / 1.2k and does
 not move with supply ripple or with the signal. The LED must be RED: a green or blue one has a higher forward
 voltage and doubles the tail current. It glows faintly, which also tells you the channel is powered. Two 1N4148
-in series work instead with Rt changed to 680 ohm. Test point TPx4 sits on the LED: expect 10.1 V.
+in series work instead with Rt changed to 680 ohm: the LED footprint has a third hole (M) so one diode goes from
+A to M and the other from M to K, and it also takes a 1206 LED. Test point TPx4 sits on the LED: expect 10.1 V.
 
 **Voltage amplifier (Q3, Re3, Cm).** Q3 is a BC547 whose base hangs on the mirror output and whose collector
 runs at about 10 mA through the bootstrapped load. The 47 ohm emitter resistor makes its gain predictable; Cm
@@ -55,24 +56,43 @@ would waste the swing, so Cboot (100 uF) "lifts" their midpoint with the output 
 sees an almost constant voltage, behaves like a current source, and the output can swing to within 1 V of the
 rails. The 10 mA standing current covers the NPN output's base current at full drive into 4 ohm.
 
-**Bias spreader (Q6, Rm1, RV, Rm2).** The two output transistors need about 1.3 V between their bases so both
-conduct a little at idle (class AB, no crossover notch). Q6 with its two resistors is a "Vbe multiplier": it
-produces (1 + (Rm1 + RV)/Rm2) times its own base-emitter voltage, and because Q6 sits next to the output
-transistors its voltage drops as they warm up, which keeps the idle current from running away. The trimmer sets
-the idle current: 7 to 10 mV across one 0.47 ohm emitter resistor = 15 to 20 mA. The simulation shows 21 mA at
-25 C rising to 30 mA at 70 C with the spreader held cold; in practice Q6 tracks the outputs.
+**Bias spreader (Q6, Rm1, Rm2, RV).** The two output transistors need about 1.3 V between their bases so both
+conduct a little at idle (class AB, no crossover notch). Q6 with its resistors is a "Vbe multiplier": it produces
+(1 + Rm1 / (Rm2 + RV)) times its own base-emitter voltage, and because Q6 sits next to the output transistors its
+voltage drops as they warm up, which keeps the idle current from running away. Rm1 (750 ohm) sits between
+collector and base; Rm2 (750 ohm) and the 500 ohm trimmer sit in series between base and emitter. Turning the
+trimmer clockwise removes resistance from that leg and raises the idle current: 2 mA fully anticlockwise, 21 mA
+at the working point (7 to 10 mV across one 0.47 ohm emitter resistor), 70 mA fully clockwise. That ceiling is
+deliberate. Trimmers fail by the wiper losing contact; here that leaves the whole 500 ohm in circuit, which is
+the minimum-bias end, so a bad trimmer gives a little crossover distortion instead of hot transistors. (Release 2
+had the trimmer in the collector-base leg: the clockwise end and an open wiper both gave 280 mA.) The simulation
+shows 21 mA at 25 C rising to 29 mA at 70 C with the spreader held cold; in practice Q6 tracks the outputs.
 
 **Output stage (Q4, Q5, Re4, Re5).** A BD139 (NPN) and a BD140 (PNP) emitter follower push and pull the speaker
 current. The 0.47 ohm emitter resistors share the current between the two and stabilise the idle current. Each
 transistor dissipates about 0.85 W at full drive into 4 ohm: a clip-on heatsink is advisable for 4 ohm speakers,
 not needed for 8 ohm.
 
-**Output network (Cout, Rz, Cz, Rvu).** Cout (1000 uF) blocks the 6.1 V DC from the speaker and sets the bass
-limit: -3 dB at 34 Hz into 4 ohm, 20 Hz into 8 ohm. Rz + Cz (10 ohm + 100 nF, the Zobel network) keeps the
-amplifier loaded at high frequency even when a long speaker cable looks capacitive. Rvu (1k) taps the speaker
-node (after the capacitor, so no DC) to the shared VU header J5: 2.8 Vrms at 1 W into 8 ohm, through 1k, so a
-600 ohm moving-coil meter sees about 1 Vrms and an electronic meter with a high-impedance input sees the full
-speaker voltage. Nothing happens when the header is left open.
+**Output network (Cout, Rz, Cz, Lo, Rlo, Rvu).** Cout (1000 uF) blocks the 6.1 V DC from the speaker and sets the
+bass limit: -3 dB at 34 Hz into 4 ohm, 20 Hz into 8 ohm. Rz + Cz (10 ohm + 100 nF, the Zobel network) keeps the
+amplifier loaded at high frequency. Lo (2.2 uH) with Rlo (10 ohm) across it sits between the output capacitor and
+the speaker terminal. At audio frequencies the inductor is a short piece of wire (0.3 ohm at 20 kHz, -0.13 dB);
+above a few hundred kilohertz it rises to tens of ohms and hides whatever capacitance the cable or a crossover
+presents from the feedback loop. Without it the loop's phase margin falls from 70 degrees to 20 degrees with
+47 to 100 nF across the terminals, which is close to oscillation; with it the margin is 65 degrees or more for
+any load from nothing to 2.2 uF. The resistor stops the inductor ringing with that capacitance. No 2.2 uH part to
+hand: wind 12 turns of 0.6 mm enamelled wire on Rlo's body and solder the ends to its leads. Rvu (1k) taps the
+speaker terminal (after the capacitor, so no DC) to the shared VU header J5: 2.8 Vrms at 1 W into 8 ohm, through
+1k, so a 600 ohm moving-coil meter sees about 1 Vrms and an electronic meter with a high-impedance input sees
+the full speaker voltage. Nothing happens when the header is left open.
+
+**Input protection (F1, D1, C1).** The 12 V terminal feeds the rail through F1, a resettable fuse (1.1 A hold,
+about 0.2 ohm), and D1 (1N4007) sits across the rail behind it, cathode to +12 V. With the plug the right way
+round D1 does nothing. With the plug reversed D1 conducts, the rail is held at -0.8 V instead of -12 V, and F1
+heats and trips within a second or two; unplug, wait, plug in correctly. F1 also trips if something on the board
+shorts the rail. A wire link can replace F1 when the source is fused already, at the price of losing the
+reversal protection's current limit. The rail reservoir C1 is a 25 V part so that a fault in the PSU board's
+regulator (output at the raw rail, 19 to 21 V) cannot burst it; the amplifier itself survives that voltage.
 
 **The 3x3 pinout blocks.** Q4 and Q5 sit on TO-220 footprints whose three pads go to a 3 x 3 grid of solder
 jumpers: row = device pin 1, 2, 3; column = the net that pin should reach (E, C, B). A BD139 is E-C-B, so the
@@ -90,8 +110,8 @@ number in front (1 = left, 2 = right):
 | Q9, Rt, Dled, Rled (tail) | Q1009, R10004, D10001, R10005 | Q2009, R20004, D20001, R20005 | Q3 (VAS), Re3, Cm | Q1003, R10008, C10004 | Q2003, R20008, C20004 |
 | Rf, Rg, Cg, Cf | R10006, R10007, C10003, C10008 | R20006, R20007, C20003, C20008 | Q6, Rm1, RV, Rm2 | Q1006, R10009, RV100, R10010 | Q2006, R20009, RV200, R20010 |
 | R5a, R5b, Cboot | R10011, R10012, C10005 | R20011, R20012, C20005 | Q4, Q5, Re4, Re5 | Q1004, Q1005, R10013, R10014 | Q2004, Q2005, R20013, R20014 |
-| Cout, Rz, Cz, Rvu | C10006, R10015, C10007, R10018 | C20006, R20015, C20007, R20018 | TPx1 base, TPx2 out, TPx3 bias, TPx4 LED | TP1001-TP1004 | TP2001-TP2004 |
-| jumper block | JP10001-09 (Q4), JP10011-19 (Q5) | JP20001-09, JP20011-19 | shared | J1 12 V, J2 IN, J3/J4 SPK, J5 VU, C1/C2, TP1/TP2 | |
+| Cout, Rz, Cz, Rvu, Lo, Rlo | C10006, R10015, C10007, R10018, L10001, R10019 | C20006, R20015, C20007, R20018, L20001, R20019 | TPx1 base, TPx2 out, TPx3 bias, TPx4 LED | TP1001-TP1004 | TP2001-TP2004 |
+| jumper block | JP10001-09 (Q4), JP10011-19 (Q5) | JP20001-09, JP20011-19 | shared | J1 12 V, F1, D1, J2 IN, J3/J4 SPK, J5 VU, C1/C2, TP1/TP2 | |
 
 **Numbers to expect at the test points.** TPx1 (base of Q1) 6.1 to 6.2 V, TPx2 (output) 6.1 V, TPx4 (LED)
 10.1 V, TPx3 minus TPx2 = 7 to 10 mV after setting the trimmer. Idle supply current is about 34 mA per channel
@@ -102,7 +122,7 @@ number in front (1 = left, 2 = right):
 ## 1.2 The power supply (closed loop)
 
 **Input.** A transformer with a 12 to 15 VAC secondary (or 12 V DC, see below) comes in on a screw terminal
-through a 1 A slow fuse. Mains never touches the board.
+through a 1.6 A slow fuse. Mains never touches the board.
 
 **Rectifier and reservoir (D1 to D4, C1, C2, R1).** Four 1N5401s make a bridge; two 2200 uF capacitors smooth
 the result to a raw rail of 14 to 19 V with up to a volt of ripple at 1 A. R1 (4.7k) bleeds the capacitors down
@@ -128,9 +148,17 @@ Q4 before the divider does. Simulated: 12.10 V at 0.1 A to 11.96 V at 1.2 A from
 1 A load step dips 0.14 V and settles without ringing. Release 1's open-loop follower dropped 0.4 V over the
 same range and passed ten times the ripple. RV1 sets the output between 11.4 and 12.7 V; set 12.0 V.
 
-**Current clamp (Q3, R3).** The load current flows through R3 (0.33 ohm). When the voltage across it reaches
-0.65 V (about 2 A), Q3 turns on and steals the driver's base drive, so a short circuit draws 2.1 A instead of
-burning the transformer. Q3 and Q4 both pull on the same node (BQ1); whichever asks for less current wins.
+**Current clamp and fuse (Q3, R3, F1).** The load current flows through R3 (0.33 ohm). When the voltage across
+it reaches 0.65 V (about 2 A), Q3 turns on and steals the driver's base drive, so a short circuit draws 2.1 A
+instead of burning the transformer. Q3 and Q4 both pull on the same node (BQ1); whichever asks for less current
+wins. The clamp does not make the supply short-proof on its own: during a short the pass transistor dissipates
+25 W, which a small heatsink carries for seconds, not minutes. The fuse finishes the job, so its value matters.
+A bridge rectifier draws its current in short pulses, so the secondary's RMS current is nearly twice the DC load
+(1.5 A at 0.8 A DC). The fuse is therefore 1.6 A slow-blow: it holds the 0.65 A DC that both channels draw at
+full power into 4 ohm, and the 3.7 A of a clamped short (2.3 times its rating) opens it in a few seconds.
+Release 2 fitted 1 A, which would have opened in normal loud use. A foldback limiter was considered and
+rejected: a lower short-circuit current would no longer blow the fuse and would leave the transistor cooking
+at 15 W indefinitely.
 
 **Protection and DC-in (D6, D8).** D8 (SB540 Schottky) lets 12 V DC from the "DC IN" terminal feed the output
 directly, bypassing the regulator and the clamp. D6 (1N4007) from the output back to the raw rail stops that
@@ -171,10 +199,13 @@ the contact so it is cut off when you plug in, or put a series resistor between 
 headphones are not fed the full 3.4 V peak the amp can swing. You cannot do both: if the resistor is between the
 amp and the tip and the speaker hangs on the contact, the speaker is fed through the resistor; if the speaker
 hangs on the amp side, it is never cut off. 3.4 V peak into 32 ohm headphones is 180 mW, which is painful and
-over the rating of many phones, so the resistor is not optional. The board therefore uses a DPDT slide switch
-(SW1): slider towards pins 1 / 6 sends both channels to the speaker terminals, towards pins 3 / 4 through the
-resistors to the jack. The jack's switch pins TN / RN are left open, so a plain 3-pin jack fits too, and header
-J5 duplicates the jack's T, S and R pins for a panel-mount jack.
+over the rating of many phones, so the resistor is not optional. The board therefore uses a DPDT switch (SW1).
+The switch carries the full speaker current in the speaker position (0.9 A peak into 4 ohm), so it is a
+miniature toggle of the MTS-202 kind (rated for amps), not a sub-miniature signal slide switch (rated 0.3 A;
+release 2 had one). The six pads are two rows of three: 2 and 5 are the commons from the amp, 1 and 6 go to the
+speaker terminals, 3 and 4 through the resistors to the jack. A toggle's lever points away from the lugs it
+connects, so the silkscreen marks the lever positions: up (towards the speaker terminals) = speakers, down = phones. The jack's switch pins TN / RN are left open, so a plain 3-pin
+jack fits too, and header J5 duplicates the jack's T, S and R pins for a panel-mount jack.
 
 **Series resistors (R1, R2, JP1, JP2).** 120 ohm is the IEC 61938 headphone source impedance: 8 mW into 32 ohm
 and 4 mW into 250 ohm at full drive, loud enough for any headphone and safe for all of them. JP1 / JP2 (open

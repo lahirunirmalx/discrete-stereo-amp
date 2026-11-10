@@ -1330,3 +1330,363 @@
 2026-10-22 18:54:29.792 [Thread-22] INFO  Starting route optimization on 1 thread...
 2026-10-22 18:54:29.810 [Thread-22] INFO  Route optimization was completed in 0.02 seconds.
 2026-10-22 18:54:29.816 [Thread-22] INFO  Saving 'hp/hp_1layer.r2.ses'...
+2026-11-10 16:56:12.900 [main] INFO  Freerouting v1.9.0 (build-date: 2023-10-30)
+2026-11-10 16:56:13.966 [main] INFO  Opening 'hp/hp.dsn'...
+2026-11-10 16:56:14.810 [ForkJoinPool.commonPool-worker-1] INFO  New version available: v2.5.0
+2026-11-10 16:56:16.695 [Thread-22] INFO  Starting auto-routing...
+2026-11-10 16:56:17.733 [Thread-22] WARN  There were only 2.00 changes in the last 20 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 16:56:18.368 [Thread-22] WARN  There were only 2.00 changes in the last 40 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 16:56:18.846 [Thread-22] WARN  There were only 2.00 changes in the last 60 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 16:56:19.319 [Thread-22] WARN  There were only 2.00 changes in the last 80 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 16:56:19.741 [Thread-22] WARN  There were only 2.00 changes in the last 100 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 16:56:20.033 [Thread-22] INFO  Auto-routing was completed in 3.34 seconds.
+2026-11-10 16:56:20.134 [Thread-22] INFO  Starting route optimization on 1 thread...
+2026-11-10 16:56:20.228 [Thread-22] INFO  Route optimization was completed in 0.09 seconds.
+2026-11-10 16:56:20.235 [Thread-22] INFO  Saving 'hp/hp.ses'...
+2026-11-10 16:56:22.702 [main] INFO  Freerouting v1.9.0 (build-date: 2023-10-30)
+2026-11-10 16:56:22.735 [main] INFO  Settings were loaded from freerouting.json
+2026-11-10 16:56:23.750 [main] INFO  Opening 'hp/hp.r2.dsn'...
+2026-11-10 16:56:24.076 [ForkJoinPool.commonPool-worker-1] INFO  New version available: v2.5.0
+2026-11-10 16:56:25.519 [Thread-22] INFO  Starting auto-routing...
+2026-11-10 16:56:25.642 [Thread-22] INFO  Auto-routing was completed in 0.12 seconds.
+2026-11-10 16:56:25.743 [Thread-22] INFO  Starting route optimization on 1 thread...
+2026-11-10 16:56:25.748 [Thread-22] INFO  Route optimization was completed in 0.00 seconds.
+2026-11-10 16:56:25.755 [Thread-22] INFO  Saving 'hp/hp.r2.ses'...
+2026-11-10 16:56:31.472 [main] INFO  Freerouting v1.9.0 (build-date: 2023-10-30)
+2026-11-10 16:56:31.505 [main] INFO  Settings were loaded from freerouting.json
+2026-11-10 16:56:32.521 [main] INFO  Opening 'vol/vol.dsn'...
+2026-11-10 16:56:32.904 [ForkJoinPool.commonPool-worker-1] INFO  New version available: v2.5.0
+2026-11-10 16:56:34.551 [Thread-22] INFO  Starting auto-routing...
+2026-11-10 16:56:34.832 [Thread-22] INFO  Auto-routing was completed in 0.28 seconds.
+2026-11-10 16:56:34.933 [Thread-22] INFO  Starting route optimization on 1 thread...
+2026-11-10 16:56:35.086 [Thread-22] INFO  Route optimization was completed in 0.15 seconds.
+2026-11-10 16:56:35.092 [Thread-22] INFO  Saving 'vol/vol.ses'...
+2026-11-10 16:56:45.269 [main] INFO  Freerouting v1.9.0 (build-date: 2023-10-30)
+2026-11-10 16:56:45.303 [main] INFO  Settings were loaded from freerouting.json
+2026-11-10 16:56:46.319 [main] INFO  Opening 'psu/psu.dsn'...
+2026-11-10 16:56:46.681 [ForkJoinPool.commonPool-worker-1] INFO  New version available: v2.5.0
+2026-11-10 16:56:48.857 [Thread-22] INFO  Starting auto-routing...
+2026-11-10 16:56:50.074 [Thread-22] INFO  Auto-routing was completed in 1.22 seconds.
+2026-11-10 16:56:50.175 [Thread-22] INFO  Starting route optimization on 1 thread...
+2026-11-10 16:56:55.379 [Thread-22] INFO  Route optimization was completed in 5.20 seconds.
+2026-11-10 16:56:55.388 [Thread-22] INFO  Saving 'psu/psu.ses'...
+2026-11-10 16:57:07.504 [main] INFO  Freerouting v1.9.0 (build-date: 2023-10-30)
+2026-11-10 16:57:07.542 [main] INFO  Settings were loaded from freerouting.json
+2026-11-10 16:57:08.555 [main] INFO  Opening 'amp/amp.dsn'...
+2026-11-10 16:57:08.952 [ForkJoinPool.commonPool-worker-1] INFO  New version available: v2.5.0
+2026-11-10 16:57:12.223 [Thread-22] INFO  Starting auto-routing...
+2026-11-10 16:57:22.415 [Thread-22] WARN  There were only 15.65 changes in the last 20 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 16:57:26.282 [Thread-22] WARN  There were only 12.95 changes in the last 40 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 16:57:30.130 [Thread-22] WARN  There were only 12.13 changes in the last 60 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 16:57:33.838 [Thread-22] WARN  There were only 12.00 changes in the last 80 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 16:57:37.532 [Thread-22] WARN  There were only 12.00 changes in the last 100 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 16:57:39.898 [Thread-22] INFO  Auto-routing was completed in 27.67 seconds.
+2026-11-10 16:57:39.999 [Thread-22] INFO  Starting route optimization on 1 thread...
+2026-11-10 16:57:55.671 [Thread-22] INFO  Route optimization was completed in 15.67 seconds.
+2026-11-10 16:57:55.679 [Thread-22] INFO  Saving 'amp/amp.ses'...
+2026-11-10 16:57:58.861 [main] INFO  Freerouting v1.9.0 (build-date: 2023-10-30)
+2026-11-10 16:57:58.894 [main] INFO  Settings were loaded from freerouting.json
+2026-11-10 16:57:59.907 [main] INFO  Opening 'amp/amp.r2.dsn'...
+2026-11-10 16:58:00.624 [ForkJoinPool.commonPool-worker-1] INFO  New version available: v2.5.0
+2026-11-10 16:58:03.958 [Thread-22] INFO  Starting auto-routing...
+2026-11-10 16:58:08.054 [Thread-22] WARN  There were only 2.00 changes in the last 20 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 16:58:10.931 [Thread-22] WARN  There were only 2.00 changes in the last 40 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 16:58:13.629 [Thread-22] WARN  There were only 2.00 changes in the last 60 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 16:58:16.358 [Thread-22] WARN  There were only 2.00 changes in the last 80 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 16:58:18.989 [Thread-22] WARN  There were only 2.00 changes in the last 100 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 16:58:21.623 [Thread-22] WARN  There were only 2.00 changes in the last 120 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 16:58:24.316 [Thread-22] WARN  There were only 2.00 changes in the last 140 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 16:58:26.940 [Thread-22] WARN  There were only 2.00 changes in the last 160 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 16:58:31.607 [Thread-22] WARN  There were only 2.00 changes in the last 180 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 16:58:33.764 [Thread-22] INFO  Auto-routing was completed in 29.80 seconds.
+2026-11-10 16:58:33.865 [Thread-22] INFO  Starting route optimization on 1 thread...
+2026-11-10 16:58:34.214 [Thread-22] INFO  Route optimization was completed in 0.35 seconds.
+2026-11-10 16:58:34.227 [Thread-22] INFO  Saving 'amp/amp.r2.ses'...
+2026-11-10 16:58:45.476 [main] INFO  Freerouting v1.9.0 (build-date: 2023-10-30)
+2026-11-10 16:58:45.512 [main] INFO  Settings were loaded from freerouting.json
+2026-11-10 16:58:46.527 [main] INFO  Opening 'amp/amp_compact.dsn'...
+2026-11-10 16:58:47.242 [ForkJoinPool.commonPool-worker-1] INFO  New version available: v2.5.0
+2026-11-10 16:58:49.199 [Thread-22] INFO  Starting auto-routing...
+2026-11-10 16:58:57.143 [Thread-22] WARN  There were only 13.45 changes in the last 20 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 16:58:59.648 [Thread-22] WARN  There were only 5.12 changes in the last 40 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 16:59:02.005 [Thread-22] WARN  There were only 4.00 changes in the last 60 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 16:59:03.659 [Thread-22] WARN  There were only 4.00 changes in the last 80 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 16:59:05.375 [Thread-22] WARN  There were only 4.00 changes in the last 100 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 16:59:06.598 [Thread-22] INFO  Auto-routing was completed in 17.40 seconds.
+2026-11-10 16:59:06.699 [Thread-22] INFO  Starting route optimization on 1 thread...
+2026-11-10 16:59:22.585 [Thread-22] INFO  Route optimization was completed in 15.88 seconds.
+2026-11-10 16:59:22.593 [Thread-22] INFO  Saving 'amp/amp_compact.ses'...
+2026-11-10 16:59:25.829 [main] INFO  Freerouting v1.9.0 (build-date: 2023-10-30)
+2026-11-10 16:59:25.865 [main] INFO  Settings were loaded from freerouting.json
+2026-11-10 16:59:26.879 [main] INFO  Opening 'amp/amp_compact.r2.dsn'...
+2026-11-10 16:59:27.200 [ForkJoinPool.commonPool-worker-1] INFO  New version available: v2.5.0
+2026-11-10 16:59:30.425 [Thread-23] INFO  Starting auto-routing...
+2026-11-10 16:59:32.867 [Thread-23] WARN  There were only 2.00 changes in the last 20 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 16:59:34.458 [Thread-23] WARN  There were only 2.00 changes in the last 40 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 16:59:35.648 [Thread-23] WARN  There were only 2.00 changes in the last 60 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 16:59:36.760 [Thread-23] WARN  There were only 2.00 changes in the last 80 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 16:59:37.997 [Thread-23] WARN  There were only 2.00 changes in the last 100 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 16:59:39.182 [Thread-23] WARN  There were only 2.00 changes in the last 120 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 16:59:40.286 [Thread-23] WARN  There were only 2.00 changes in the last 140 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 16:59:41.355 [Thread-23] WARN  There were only 2.00 changes in the last 160 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 16:59:42.429 [Thread-23] WARN  There were only 2.00 changes in the last 180 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 16:59:42.987 [Thread-23] INFO  Auto-routing was completed in 12.56 seconds.
+2026-11-10 16:59:43.088 [Thread-23] INFO  Starting route optimization on 1 thread...
+2026-11-10 16:59:43.285 [Thread-23] INFO  Route optimization was completed in 0.20 seconds.
+2026-11-10 16:59:43.295 [Thread-23] INFO  Saving 'amp/amp_compact.r2.ses'...
+2026-11-10 17:01:52.921 [main] INFO  Freerouting v1.9.0 (build-date: 2023-10-30)
+2026-11-10 17:01:52.955 [main] INFO  Settings were loaded from freerouting.json
+2026-11-10 17:01:53.970 [main] INFO  Opening 'hp/hp.dsn'...
+2026-11-10 17:01:54.710 [ForkJoinPool.commonPool-worker-1] INFO  New version available: v2.5.0
+2026-11-10 17:01:56.456 [Thread-22] INFO  Starting auto-routing...
+2026-11-10 17:01:56.917 [Thread-22] INFO  Auto-routing was completed in 0.46 seconds.
+2026-11-10 17:01:57.018 [Thread-22] INFO  Starting route optimization on 1 thread...
+2026-11-10 17:01:57.139 [Thread-22] INFO  Route optimization was completed in 0.12 seconds.
+2026-11-10 17:01:57.146 [Thread-22] INFO  Saving 'hp/hp.ses'...
+2026-11-10 17:01:59.563 [main] INFO  Freerouting v1.9.0 (build-date: 2023-10-30)
+2026-11-10 17:01:59.599 [main] INFO  Settings were loaded from freerouting.json
+2026-11-10 17:02:00.613 [main] INFO  Opening 'hp/hp.r2.dsn'...
+2026-11-10 17:02:00.988 [ForkJoinPool.commonPool-worker-1] INFO  New version available: v2.5.0
+2026-11-10 17:02:03.360 [Thread-22] INFO  Starting auto-routing...
+2026-11-10 17:02:03.494 [Thread-22] INFO  Auto-routing was completed in 0.13 seconds.
+2026-11-10 17:02:03.595 [Thread-22] INFO  Starting route optimization on 1 thread...
+2026-11-10 17:02:03.599 [Thread-22] INFO  Route optimization was completed in 0.00 seconds.
+2026-11-10 17:02:03.606 [Thread-22] INFO  Saving 'hp/hp.r2.ses'...
+2026-11-10 17:02:14.247 [main] INFO  Freerouting v1.9.0 (build-date: 2023-10-30)
+2026-11-10 17:02:14.279 [main] INFO  Settings were loaded from freerouting.json
+2026-11-10 17:02:15.293 [main] INFO  Opening 'amp/amp.dsn'...
+2026-11-10 17:02:15.657 [ForkJoinPool.commonPool-worker-1] INFO  New version available: v2.5.0
+2026-11-10 17:02:18.104 [Thread-22] INFO  Starting auto-routing...
+2026-11-10 17:02:26.425 [Thread-22] WARN  There were only 14.80 changes in the last 20 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 17:02:28.011 [Thread-22] WARN  There were only 5.70 changes in the last 40 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 17:02:29.563 [Thread-22] WARN  There were only 4.45 changes in the last 60 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 17:02:31.122 [Thread-22] WARN  There were only 4.00 changes in the last 80 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 17:02:32.570 [Thread-22] WARN  There were only 4.00 changes in the last 100 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 17:02:33.585 [Thread-22] INFO  Auto-routing was completed in 15.48 seconds.
+2026-11-10 17:02:33.686 [Thread-22] INFO  Starting route optimization on 1 thread...
+2026-11-10 17:02:51.222 [Thread-22] INFO  Route optimization was completed in 17.54 seconds.
+2026-11-10 17:02:51.232 [Thread-22] INFO  Saving 'amp/amp.ses'...
+2026-11-10 17:02:54.489 [main] INFO  Freerouting v1.9.0 (build-date: 2023-10-30)
+2026-11-10 17:02:54.525 [main] INFO  Settings were loaded from freerouting.json
+2026-11-10 17:02:55.539 [main] INFO  Opening 'amp/amp.r2.dsn'...
+2026-11-10 17:02:55.906 [ForkJoinPool.commonPool-worker-1] INFO  New version available: v2.5.0
+2026-11-10 17:02:58.552 [Thread-22] INFO  Starting auto-routing...
+2026-11-10 17:03:01.713 [Thread-22] WARN  There were only 3.50 changes in the last 20 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 17:03:03.667 [Thread-22] WARN  There were only 3.50 changes in the last 40 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 17:03:04.970 [Thread-22] WARN  There were only 3.50 changes in the last 60 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 17:03:06.313 [Thread-22] WARN  There were only 3.50 changes in the last 80 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 17:03:07.575 [Thread-22] WARN  There were only 3.50 changes in the last 100 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 17:03:08.836 [Thread-22] WARN  There were only 3.50 changes in the last 120 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 17:03:10.171 [Thread-22] WARN  There were only 3.50 changes in the last 140 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 17:03:11.442 [Thread-22] WARN  There were only 3.50 changes in the last 160 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 17:03:12.710 [Thread-22] WARN  There were only 3.50 changes in the last 180 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 17:03:13.394 [Thread-22] INFO  Auto-routing was completed in 14.84 seconds.
+2026-11-10 17:03:13.495 [Thread-22] INFO  Starting route optimization on 1 thread...
+2026-11-10 17:03:13.723 [Thread-22] INFO  Route optimization was completed in 0.23 seconds.
+2026-11-10 17:03:13.734 [Thread-22] INFO  Saving 'amp/amp.r2.ses'...
+2026-11-10 17:03:24.801 [main] INFO  Freerouting v1.9.0 (build-date: 2023-10-30)
+2026-11-10 17:03:24.835 [main] INFO  Settings were loaded from freerouting.json
+2026-11-10 17:03:25.849 [main] INFO  Opening 'amp/amp_compact.dsn'...
+2026-11-10 17:03:26.180 [ForkJoinPool.commonPool-worker-1] INFO  New version available: v2.5.0
+2026-11-10 17:03:28.687 [Thread-22] INFO  Starting auto-routing...
+2026-11-10 17:03:36.442 [Thread-22] WARN  There were only 15.00 changes in the last 20 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 17:03:38.018 [Thread-22] WARN  There were only 7.12 changes in the last 40 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 17:03:39.555 [Thread-22] WARN  There were only 6.05 changes in the last 60 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 17:03:41.127 [Thread-22] WARN  There were only 6.00 changes in the last 80 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 17:03:42.763 [Thread-22] WARN  There were only 6.00 changes in the last 100 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 17:03:43.892 [Thread-22] INFO  Auto-routing was completed in 15.20 seconds.
+2026-11-10 17:03:43.993 [Thread-22] INFO  Starting route optimization on 1 thread...
+2026-11-10 17:04:03.216 [Thread-22] INFO  Route optimization was completed in 19.22 seconds.
+2026-11-10 17:04:03.226 [Thread-22] INFO  Saving 'amp/amp_compact.ses'...
+2026-11-10 17:04:27.867 [main] INFO  Freerouting v1.9.0 (build-date: 2023-10-30)
+2026-11-10 17:04:27.903 [main] INFO  Settings were loaded from freerouting.json
+2026-11-10 17:04:28.918 [main] INFO  Opening 'hp/hp.dsn'...
+2026-11-10 17:04:29.662 [ForkJoinPool.commonPool-worker-1] INFO  New version available: v2.5.0
+2026-11-10 17:04:31.400 [Thread-22] INFO  Starting auto-routing...
+2026-11-10 17:04:31.804 [Thread-22] INFO  Auto-routing was completed in 0.40 seconds.
+2026-11-10 17:04:31.905 [Thread-22] INFO  Starting route optimization on 1 thread...
+2026-11-10 17:04:32.210 [Thread-22] INFO  Route optimization was completed in 0.30 seconds and it improved the design by ~0.28%.
+2026-11-10 17:04:32.217 [Thread-22] INFO  Saving 'hp/hp.ses'...
+2026-11-10 17:04:43.592 [main] INFO  Freerouting v1.9.0 (build-date: 2023-10-30)
+2026-11-10 17:04:43.637 [main] INFO  Settings were loaded from freerouting.json
+2026-11-10 17:04:44.652 [main] INFO  Opening 'amp/amp.dsn'...
+2026-11-10 17:04:44.979 [ForkJoinPool.commonPool-worker-1] INFO  New version available: v2.5.0
+2026-11-10 17:04:47.697 [Thread-22] INFO  Starting auto-routing...
+2026-11-10 17:04:54.076 [Thread-22] INFO  Auto-routing was completed in 6.38 seconds.
+2026-11-10 17:04:54.177 [Thread-22] INFO  Starting route optimization on 1 thread...
+2026-11-10 17:06:36.507 [Thread-22] INFO  Route optimization was completed in 1 minute(s) 42.33 seconds and it improved the design by ~50.85%.
+2026-11-10 17:06:36.517 [Thread-22] INFO  Saving 'amp/amp.ses'...
+2026-11-10 17:06:59.953 [main] INFO  Freerouting v1.9.0 (build-date: 2023-10-30)
+2026-11-10 17:06:59.992 [main] INFO  Settings were loaded from freerouting.json
+2026-11-10 17:07:01.006 [main] INFO  Opening 'vol/vol_1layer.dsn'...
+2026-11-10 17:07:01.748 [ForkJoinPool.commonPool-worker-1] INFO  New version available: v2.5.0
+2026-11-10 17:07:03.876 [Thread-19] INFO  Starting auto-routing...
+2026-11-10 17:07:04.706 [Thread-19] WARN  There were only 2.00 changes in the last 20 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 17:07:05.181 [Thread-19] WARN  There were only 2.00 changes in the last 40 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 17:07:05.621 [Thread-19] WARN  There were only 2.00 changes in the last 60 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 17:07:06.142 [Thread-19] WARN  There were only 2.00 changes in the last 80 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 17:07:06.533 [Thread-19] WARN  There were only 2.00 changes in the last 100 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 17:07:06.823 [Thread-19] INFO  Auto-routing was completed in 2.95 seconds.
+2026-11-10 17:07:06.924 [Thread-19] INFO  Starting route optimization on 1 thread...
+2026-11-10 17:07:06.945 [Thread-19] INFO  Route optimization was completed in 0.02 seconds.
+2026-11-10 17:07:06.951 [Thread-19] INFO  Saving 'vol/vol_1layer.ses'...
+2026-11-10 17:07:17.852 [main] INFO  Freerouting v1.9.0 (build-date: 2023-10-30)
+2026-11-10 17:07:17.886 [main] INFO  Settings were loaded from freerouting.json
+2026-11-10 17:07:18.899 [main] INFO  Opening 'hp/hp_1layer.dsn'...
+2026-11-10 17:07:19.355 [ForkJoinPool.commonPool-worker-1] INFO  New version available: v2.5.0
+2026-11-10 17:07:21.025 [Thread-19] INFO  Starting auto-routing...
+2026-11-10 17:07:23.443 [Thread-19] WARN  There were only 15.55 changes in the last 20 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 17:07:24.664 [Thread-19] WARN  There were only 14.85 changes in the last 40 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 17:07:25.673 [Thread-19] WARN  There were only 14.13 changes in the last 60 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 17:07:26.813 [Thread-19] WARN  There were only 13.71 changes in the last 80 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 17:07:27.794 [Thread-19] WARN  There were only 13.59 changes in the last 100 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 17:07:28.424 [Thread-19] INFO  Auto-routing was completed in 7.40 seconds.
+2026-11-10 17:07:28.524 [Thread-19] INFO  Starting route optimization on 1 thread...
+2026-11-10 17:07:28.584 [Thread-19] INFO  Route optimization was completed in 0.06 seconds.
+2026-11-10 17:07:28.593 [Thread-19] INFO  Saving 'hp/hp_1layer.ses'...
+2026-11-10 17:07:34.820 [main] INFO  Freerouting v1.9.0 (build-date: 2023-10-30)
+2026-11-10 17:07:34.854 [main] INFO  Settings were loaded from freerouting.json
+2026-11-10 17:07:35.867 [main] INFO  Opening 'hp/hp_1layer.r2.dsn'...
+2026-11-10 17:07:36.224 [ForkJoinPool.commonPool-worker-1] INFO  New version available: v2.5.0
+2026-11-10 17:07:38.322 [Thread-22] INFO  Starting auto-routing...
+2026-11-10 17:07:38.459 [Thread-22] INFO  Auto-routing was completed in 0.14 seconds.
+2026-11-10 17:07:38.560 [Thread-22] INFO  Starting route optimization on 1 thread...
+2026-11-10 17:07:38.622 [Thread-22] INFO  Route optimization was completed in 0.06 seconds.
+2026-11-10 17:07:38.628 [Thread-22] INFO  Saving 'hp/hp_1layer.r2.ses'...
+2026-11-10 17:07:46.338 [main] INFO  Freerouting v1.9.0 (build-date: 2023-10-30)
+2026-11-10 17:07:46.373 [main] INFO  Settings were loaded from freerouting.json
+2026-11-10 17:07:47.389 [main] INFO  Opening 'psu/psu_1layer.dsn'...
+2026-11-10 17:07:47.762 [ForkJoinPool.commonPool-worker-1] INFO  New version available: v2.5.0
+2026-11-10 17:07:50.669 [Thread-19] INFO  Starting auto-routing...
+2026-11-10 17:08:03.614 [Thread-19] WARN  There were only 19.10 changes in the last 20 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 17:08:04.955 [Thread-19] WARN  There were only 16.43 changes in the last 40 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 17:08:06.193 [Thread-19] WARN  There were only 15.70 changes in the last 60 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 17:08:07.316 [Thread-19] WARN  There were only 14.85 changes in the last 80 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 17:08:07.723 [Thread-19] INFO  Auto-routing was completed in 17.05 seconds.
+2026-11-10 17:08:07.824 [Thread-19] INFO  Starting route optimization on 1 thread...
+2026-11-10 17:08:09.018 [Thread-19] INFO  Route optimization was completed in 1.19 seconds.
+2026-11-10 17:08:09.024 [Thread-19] INFO  Saving 'psu/psu_1layer.ses'...
+2026-11-10 17:08:16.447 [main] INFO  Freerouting v1.9.0 (build-date: 2023-10-30)
+2026-11-10 17:08:16.478 [main] INFO  Settings were loaded from freerouting.json
+2026-11-10 17:08:17.491 [main] INFO  Opening 'psu/psu_1layer.r2.dsn'...
+2026-11-10 17:08:17.869 [ForkJoinPool.commonPool-worker-1] INFO  New version available: v2.5.0
+2026-11-10 17:08:21.681 [Thread-22] INFO  Starting auto-routing...
+2026-11-10 17:08:22.036 [Thread-22] INFO  Auto-routing was completed in 0.35 seconds.
+2026-11-10 17:08:22.137 [Thread-22] INFO  Starting route optimization on 1 thread...
+2026-11-10 17:08:22.559 [Thread-22] INFO  Route optimization was completed in 0.42 seconds.
+2026-11-10 17:08:22.568 [Thread-22] INFO  Saving 'psu/psu_1layer.r2.ses'...
+2026-11-10 17:08:33.124 [main] INFO  Freerouting v1.9.0 (build-date: 2023-10-30)
+2026-11-10 17:08:33.160 [main] INFO  Settings were loaded from freerouting.json
+2026-11-10 17:08:34.176 [main] INFO  Opening 'amp/amp_1layer.dsn'...
+2026-11-10 17:08:34.597 [ForkJoinPool.commonPool-worker-1] INFO  New version available: v2.5.0
+2026-11-10 17:08:37.273 [Thread-19] INFO  Starting auto-routing...
+2026-11-10 17:15:36.018 [Thread-19] WARN  CalcFromSide: start corner was not found
+2026-11-10 17:15:36.019 [Thread-19] WARN  CalcFromSide: start corner was not found
+2026-11-10 17:15:36.446 [Thread-19] WARN  CalcFromSide: start corner was not found
+2026-11-10 17:15:36.791 [Thread-19] WARN  CalcFromSide: start corner was not found
+2026-11-10 17:15:37.027 [Thread-19] WARN  CalcFromSide: start corner was not found
+2026-11-10 17:15:37.027 [Thread-19] WARN  CalcFromSide: start corner was not found
+2026-11-10 17:15:37.373 [Thread-19] WARN  CalcFromSide: start corner was not found
+2026-11-10 17:15:37.833 [Thread-19] WARN  CalcFromSide: start corner was not found
+2026-11-10 17:15:37.981 [Thread-19] WARN  CalcFromSide: start corner was not found
+2026-11-10 17:15:38.129 [Thread-19] WARN  CalcFromSide: start corner was not found
+2026-11-10 17:15:38.733 [Thread-19] WARN  CalcFromSide: start corner was not found
+2026-11-10 17:15:39.310 [Thread-19] WARN  CalcFromSide: start corner was not found
+2026-11-10 17:15:39.311 [Thread-19] WARN  CalcFromSide: start corner was not found
+2026-11-10 17:15:39.958 [Thread-19] WARN  CalcFromSide: start corner was not found
+2026-11-10 17:15:40.276 [Thread-19] WARN  CalcFromSide: start corner was not found
+2026-11-10 17:15:40.612 [Thread-19] WARN  CalcFromSide: start corner was not found
+2026-11-10 17:15:40.839 [Thread-19] WARN  CalcFromSide: start corner was not found
+2026-11-10 17:15:40.841 [Thread-19] WARN  CalcFromSide: start corner was not found
+2026-11-10 17:15:41.455 [Thread-19] WARN  CalcFromSide: start corner was not found
+2026-11-10 17:15:41.456 [Thread-19] WARN  CalcFromSide: start corner was not found
+2026-11-10 17:15:41.938 [Thread-19] WARN  CalcFromSide: start corner was not found
+2026-11-10 17:15:41.939 [Thread-19] WARN  CalcFromSide: start corner was not found
+2026-11-10 17:15:41.939 [Thread-19] WARN  CalcFromSide: start corner was not found
+2026-11-10 17:15:42.285 [Thread-19] WARN  CalcFromSide: start corner was not found
+2026-11-10 17:15:43.054 [Thread-19] WARN  CalcFromSide: start corner was not found
+2026-11-10 17:15:43.055 [Thread-19] WARN  CalcFromSide: start corner was not found
+2026-11-10 17:15:43.055 [Thread-19] WARN  CalcFromSide: start corner was not found
+2026-11-10 17:15:43.363 [Thread-19] WARN  CalcFromSide: start corner was not found
+2026-11-10 17:15:43.364 [Thread-19] WARN  CalcFromSide: start corner was not found
+2026-11-10 17:15:43.713 [Thread-19] WARN  CalcFromSide: start corner was not found
+2026-11-10 17:17:10.415 [Thread-19] WARN  Polyline: must contain at least 2 different points
+2026-11-10 17:18:42.432 [Thread-19] INFO  Auto-routing was completed in 10 minute(s) 5.16 seconds.
+2026-11-10 17:18:42.533 [Thread-19] INFO  Starting route optimization on 1 thread...
+2026-11-10 17:18:55.231 [Thread-19] INFO  Route optimization was completed in 12.70 seconds.
+2026-11-10 17:18:55.240 [Thread-19] INFO  Saving 'amp/amp_1layer.ses'...
+2026-11-10 17:19:05.034 [main] INFO  Freerouting v1.9.0 (build-date: 2023-10-30)
+2026-11-10 17:19:05.071 [main] INFO  Settings were loaded from freerouting.json
+2026-11-10 17:19:06.085 [main] INFO  Opening 'amp/amp_1layer.r2.dsn'...
+2026-11-10 17:19:06.915 [ForkJoinPool.commonPool-worker-1] INFO  New version available: v2.5.0
+2026-11-10 17:19:27.657 [Thread-22] INFO  Starting auto-routing...
+2026-11-10 17:19:28.238 [Thread-22] WARN  FloatLine: Parameter is null
+2026-11-10 17:19:28.241 [Thread-22] WARN  FloatLine: Parameter is null
+2026-11-10 17:19:28.244 [Thread-22] WARN  FloatLine: Parameter is null
+2026-11-10 17:19:28.249 [Thread-22] WARN  FloatLine: Parameter is null
+2026-11-10 17:19:28.263 [Thread-22] WARN  FloatLine: Parameter is null
+2026-11-10 17:19:28.267 [Thread-22] WARN  FloatLine: Parameter is null
+2026-11-10 17:19:28.270 [Thread-22] WARN  FloatLine: Parameter is null
+2026-11-10 17:19:28.276 [Thread-22] WARN  FloatLine: Parameter is null
+2026-11-10 17:19:28.311 [Thread-22] WARN  FloatLine: Parameter is null
+2026-11-10 17:19:28.315 [Thread-22] WARN  FloatLine: Parameter is null
+2026-11-10 17:19:28.318 [Thread-22] WARN  FloatLine: Parameter is null
+2026-11-10 17:19:28.323 [Thread-22] WARN  FloatLine: Parameter is null
+2026-11-10 17:19:28.596 [Thread-22] WARN  FloatLine: Parameter is null
+2026-11-10 17:19:28.922 [Thread-22] WARN  FloatLine: Parameter is null
+2026-11-10 17:19:28.943 [Thread-22] WARN  FloatLine: Parameter is null
+2026-11-10 17:19:28.955 [Thread-22] WARN  FloatLine: Parameter is null
+2026-11-10 17:19:55.110 [Thread-22] WARN  There were only 2.25 changes in the last 20 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 17:20:18.287 [Thread-22] WARN  There were only 2.00 changes in the last 40 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 17:20:40.223 [Thread-22] WARN  There were only 2.00 changes in the last 60 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 17:21:02.599 [Thread-22] WARN  There were only 2.00 changes in the last 80 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 17:21:25.646 [Thread-22] WARN  There were only 2.00 changes in the last 100 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 17:21:47.861 [Thread-22] WARN  There were only 2.00 changes in the last 120 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 17:22:10.100 [Thread-22] WARN  There were only 2.00 changes in the last 140 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 17:22:32.588 [Thread-22] WARN  There were only 2.00 changes in the last 160 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 17:22:55.256 [Thread-22] WARN  There were only 2.00 changes in the last 180 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 17:23:07.399 [Thread-22] INFO  Auto-routing was completed in 3 minute(s) 39.74 seconds.
+2026-11-10 17:23:07.500 [Thread-22] INFO  Starting route optimization on 1 thread...
+2026-11-10 17:23:17.192 [Thread-22] INFO  Route optimization was completed in 9.69 seconds.
+2026-11-10 17:23:17.204 [Thread-22] INFO  Saving 'amp/amp_1layer.r2.ses'...
+2026-11-10 17:24:01.338 [main] INFO  Freerouting v1.9.0 (build-date: 2023-10-30)
+2026-11-10 17:24:01.374 [main] INFO  Settings were loaded from freerouting.json
+2026-11-10 17:24:02.389 [main] INFO  Opening 'hp/hp.dsn'...
+2026-11-10 17:24:03.109 [ForkJoinPool.commonPool-worker-1] INFO  New version available: v2.5.0
+2026-11-10 17:24:04.777 [Thread-22] INFO  Starting auto-routing...
+2026-11-10 17:24:05.224 [Thread-22] INFO  Auto-routing was completed in 0.45 seconds.
+2026-11-10 17:24:05.325 [Thread-22] INFO  Starting route optimization on 1 thread...
+2026-11-10 17:24:05.560 [Thread-22] INFO  Route optimization was completed in 0.23 seconds and it improved the design by ~0.28%.
+2026-11-10 17:24:05.565 [Thread-22] INFO  Saving 'hp/hp.ses'...
+2026-11-10 17:24:12.361 [main] INFO  Freerouting v1.9.0 (build-date: 2023-10-30)
+2026-11-10 17:24:12.392 [main] INFO  Settings were loaded from freerouting.json
+2026-11-10 17:24:13.405 [main] INFO  Opening 'hp/hp_1layer.dsn'...
+2026-11-10 17:24:13.754 [ForkJoinPool.commonPool-worker-1] INFO  New version available: v2.5.0
+2026-11-10 17:24:15.769 [Thread-19] INFO  Starting auto-routing...
+2026-11-10 17:24:16.473 [Thread-19] INFO  Auto-routing was completed in 0.70 seconds.
+2026-11-10 17:24:16.574 [Thread-19] INFO  Starting route optimization on 1 thread...
+2026-11-10 17:24:17.891 [Thread-19] INFO  Route optimization was completed in 1.32 seconds.
+2026-11-10 17:24:17.899 [Thread-19] INFO  Saving 'hp/hp_1layer.ses'...
+2026-11-10 17:24:24.564 [main] INFO  Freerouting v1.9.0 (build-date: 2023-10-30)
+2026-11-10 17:24:24.596 [main] INFO  Settings were loaded from freerouting.json
+2026-11-10 17:24:25.611 [main] INFO  Opening 'hp/hp_1layer.dsn'...
+2026-11-10 17:24:25.947 [ForkJoinPool.commonPool-worker-1] INFO  New version available: v2.5.0
+2026-11-10 17:24:28.521 [Thread-20] INFO  Starting auto-routing...
+2026-11-10 17:24:29.218 [Thread-20] INFO  Auto-routing was completed in 0.69 seconds.
+2026-11-10 17:24:29.319 [Thread-20] INFO  Starting route optimization on 1 thread...
+2026-11-10 17:24:31.102 [Thread-20] INFO  Route optimization was completed in 1.78 seconds.
+2026-11-10 17:24:31.107 [Thread-20] INFO  Saving 'hp/hp_1layer.ses'...
+2026-11-10 17:24:51.500 [main] INFO  Freerouting v1.9.0 (build-date: 2023-10-30)
+2026-11-10 17:24:51.535 [main] INFO  Settings were loaded from freerouting.json
+2026-11-10 17:24:52.550 [main] INFO  Opening 'psu/psu_1layer.dsn'...
+2026-11-10 17:24:52.878 [ForkJoinPool.commonPool-worker-1] INFO  New version available: v2.5.0
+2026-11-10 17:24:54.921 [Thread-19] INFO  Starting auto-routing...
+2026-11-10 17:24:59.279 [Thread-19] WARN  There were only 16.75 changes in the last 20 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 17:25:00.800 [Thread-19] WARN  There were only 10.18 changes in the last 40 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 17:25:02.063 [Thread-19] WARN  There were only 8.18 changes in the last 60 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 17:25:03.229 [Thread-19] WARN  There were only 7.47 changes in the last 80 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 17:25:04.466 [Thread-19] WARN  There were only 6.99 changes in the last 100 passes, so it's very likely that autorouter can't improve the result much further. It is recommended to stop it and finish the board manually.
+2026-11-10 17:25:05.350 [Thread-19] INFO  Auto-routing was completed in 10.43 seconds.
+2026-11-10 17:25:05.451 [Thread-19] INFO  Starting route optimization on 1 thread...
+2026-11-10 17:25:06.715 [Thread-19] INFO  Route optimization was completed in 1.26 seconds.
+2026-11-10 17:25:06.722 [Thread-19] INFO  Saving 'psu/psu_1layer.ses'...

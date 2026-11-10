@@ -1,7 +1,7 @@
 (export (version "E")
   (design
     (source "/home/lahiru/electronics/stereo_amp/kicad/vol/vol.kicad_sch")
-    (date "2026-10-21T13:56:24+0530")
+    (date "2026-11-10T16:55:11+0530")
     (tool "Eeschema 9.0.8+dfsg-1")
     (sheet (number "1") (name "/") (tstamps "/")
       (title_block
@@ -22,9 +22,9 @@
   (components
     (comp (ref "D1")
       (value "POWER LED")
-      (footprint "LED_THT:LED_D3.0mm")
+      (footprint "Custom:LED_D3_1206")
       (fields
-        (field (name "Footprint") "LED_THT:LED_D3.0mm")
+        (field (name "Footprint") "Custom:LED_D3_1206")
         (field (name "Datasheet"))
         (field (name "Description")))
       (libsource (lib "Device") (part "LED") (description "Light emitting diode"))

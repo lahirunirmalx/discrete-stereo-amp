@@ -1,7 +1,7 @@
 (export (version "E")
   (design
     (source "/home/lahiru/electronics/stereo_amp/kicad/psu/psu.kicad_sch")
-    (date "2026-10-22T17:52:07+0530")
+    (date "2026-11-10T16:55:10+0530")
     (tool "Eeschema 9.0.8+dfsg-1")
     (sheet (number "1") (name "/") (tstamps "/")
       (title_block
@@ -204,9 +204,9 @@
       (tstamps "91603ff2-f4e6-5002-b68d-77686823e714"))
     (comp (ref "D7")
       (value "LED")
-      (footprint "LED_THT:LED_D3.0mm")
+      (footprint "Custom:LED_D3_1206")
       (fields
-        (field (name "Footprint") "LED_THT:LED_D3.0mm")
+        (field (name "Footprint") "Custom:LED_D3_1206")
         (field (name "Datasheet"))
         (field (name "Description")))
       (libsource (lib "Device") (part "LED") (description "Light emitting diode"))
@@ -231,7 +231,7 @@
       (sheetpath (names "/") (tstamps "/"))
       (tstamps "cf61a808-fe8c-5f4e-a762-1ad51a8fafb9"))
     (comp (ref "F1")
-      (value "1A T 5x20")
+      (value "1.6A T 5x20")
       (footprint "Fuse:Fuseholder_Clip-5x20mm_Littelfuse_100_Inline_P20.50x4.60mm_D1.30mm_Horizontal")
       (fields
         (field (name "Footprint") "Fuse:Fuseholder_Clip-5x20mm_Littelfuse_100_Inline_P20.50x4.60mm_D1.30mm_Horizontal")

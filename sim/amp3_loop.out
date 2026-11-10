@@ -1,0 +1,139 @@
+
+Note: No compatibility mode selected!
+
+
+Circuit: * release 3 channel as drawn in kicad (kicad/gen_amp.py, netlist-checked): release 2 circuit with (a) the bias trimmer moved
+
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Using SPARSE 1.3 as Direct Linear Solver
+
+No. of Data Rows : 701
+t1k                 =  4.019072e+01
+t20k                =  2.615761e+01
+fc                  =  1.766890e+06
+phc                 =  -1.098383e+02
+gm                  =  -1.636231e+01
+RESULT loop lo=1n cl=1p t1k=40.1907 t20k=26.1576 fc=1.76689E+06 pm=70.1617 gm=-16.3623
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Using SPARSE 1.3 as Direct Linear Solver
+
+No. of Data Rows : 701
+t1k                 =  4.018936e+01
+t20k                =  2.613271e+01
+fc                  =  1.696291e+06
+phc                 =  -1.505813e+02
+gm                  =  -4.534125e+00
+RESULT loop lo=1n cl=22n t1k=40.1894 t20k=26.1327 fc=1.69629E+06 pm=29.4187 gm=-4.53412
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Using SPARSE 1.3 as Direct Linear Solver
+
+No. of Data Rows : 701
+t1k                 =  4.018781e+01
+t20k                =  2.610424e+01
+fc                  =  1.367837e+06
+phc                 =  -1.593303e+02
+gm                  =  -3.796890e+00
+RESULT loop lo=1n cl=47n t1k=40.1878 t20k=26.1042 fc=1.36784E+06 pm=20.6697 gm=-3.79689
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Using SPARSE 1.3 as Direct Linear Solver
+
+No. of Data Rows : 701
+t1k                 =  4.018449e+01
+t20k                =  2.604331e+01
+fc                  =  1.002470e+06
+phc                 =  -1.590500e+02
+gm                  =  -4.641226e+00
+RESULT loop lo=1n cl=100n t1k=40.1845 t20k=26.0433 fc=1.00247E+06 pm=20.95 gm=-4.64123
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Using SPARSE 1.3 as Direct Linear Solver
+
+No. of Data Rows : 701
+t1k                 =  4.016006e+01
+t20k                =  2.559936e+01
+fc                  =  4.341875e+05
+phc                 =  -1.431869e+02
+gm                  =  -1.110786e+01
+RESULT loop lo=1n cl=470n t1k=40.1601 t20k=25.5994 fc=434188 pm=36.8131 gm=-11.1079
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Using SPARSE 1.3 as Direct Linear Solver
+
+No. of Data Rows : 701
+t1k                 =  4.001814e+01
+t20k                =  2.337049e+01
+fc                  =  1.561762e+05
+phc                 =  -1.372146e+02
+gm                  =  -2.216411e+01
+RESULT loop lo=1n cl=2.2u t1k=40.0181 t20k=23.3705 fc=156176 pm=42.7854 gm=-22.1641
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Using SPARSE 1.3 as Direct Linear Solver
+
+No. of Data Rows : 701
+t1k                 =  4.019286e+01
+t20k                =  2.620030e+01
+fc                  =  2.156161e+06
+phc                 =  -1.144879e+02
+gm                  =  -1.500288e+01
+RESULT loop lo=2.2u cl=1p t1k=40.1929 t20k=26.2003 fc=2.15616E+06 pm=65.5121 gm=-15.0029
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Using SPARSE 1.3 as Direct Linear Solver
+
+No. of Data Rows : 701
+t1k                 =  4.019149e+01
+t20k                =  2.617273e+01
+fc                  =  1.910785e+06
+phc                 =  -1.122880e+02
+gm                  =  -1.573585e+01
+RESULT loop lo=2.2u cl=22n t1k=40.1915 t20k=26.1727 fc=1.91078E+06 pm=67.712 gm=-15.7358
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Using SPARSE 1.3 as Direct Linear Solver
+
+No. of Data Rows : 701
+t1k                 =  4.018992e+01
+t20k                =  2.614120e+01
+fc                  =  1.823290e+06
+phc                 =  -1.069788e+02
+gm                  =  -1.633504e+01
+RESULT loop lo=2.2u cl=47n t1k=40.1899 t20k=26.1412 fc=1.82329E+06 pm=73.0212 gm=-16.335
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Using SPARSE 1.3 as Direct Linear Solver
+
+No. of Data Rows : 701
+t1k                 =  4.018656e+01
+t20k                =  2.607372e+01
+fc                  =  1.803943e+06
+phc                 =  -1.042401e+02
+gm                  =  -1.660057e+01
+RESULT loop lo=2.2u cl=100n t1k=40.1866 t20k=26.0737 fc=1.80394E+06 pm=75.7599 gm=-16.6006
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Using SPARSE 1.3 as Direct Linear Solver
+
+No. of Data Rows : 701
+t1k                 =  4.016185e+01
+t20k                =  2.558096e+01
+fc                  =  1.807516e+06
+phc                 =  -1.028001e+02
+gm                  =  -1.677604e+01
+RESULT loop lo=2.2u cl=470n t1k=40.1619 t20k=25.581 fc=1.80752E+06 pm=77.1999 gm=-16.776
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Using SPARSE 1.3 as Direct Linear Solver
+
+No. of Data Rows : 701
+t1k                 =  4.001862e+01
+t20k                =  2.302817e+01
+fc                  =  6.660632e+04
+phc                 =  -9.408869e+01
+gm                  =  -1.681203e+01
+RESULT loop lo=2.2u cl=2.2u t1k=40.0186 t20k=23.0282 fc=66606.3 pm=85.9113 gm=-16.812
+ngspice-45.2 done

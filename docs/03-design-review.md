@@ -1,10 +1,37 @@
-# 3. Design review (release 1.2, unbuilt prototype)
+# 3. Design review (revision 1.3, unbuilt prototype)
 
 Reviewer: the design was generated and checked by machine; this is the record of every check that ran, what
 it found, and what it cannot tell you. Read it before ordering. The release 1.1 review is kept below (3.5) for
 the checks that have not been re-run.
 
-## 3.1 Checks that ran for release 1.2
+## 3.1 Second review, 2026-11-10: findings that led to revision 1.3
+
+Release 1.2 was reviewed again from scratch: new measurements instead of re-reading old results, and a pass over
+what happens when a part fails or a beginner makes the obvious mistake.
+
+| # | Finding | Evidence | Fix in 1.3 |
+|---|---|---|---|
+| 1 | Amplifier stability with a capacitive load is thin | loop gain (amp3_loop.cir): phase margin 70 deg unloaded, 29 deg at 22 nF, 21 deg at 47 to 100 nF, gain margin 3.8 dB. The square-wave test used for release 2 showed only 5.7 percent overshoot at 100 nF and hid it | 2.2 uH + 10 ohm output inductor: 65 to 86 deg, gain margin 15 dB or more, for 0 to 2.2 uF |
+| 2 | Bias trimmer could overheat the outputs | 282 mA and 1.65 W per transistor fully clockwise or with an open wiper | trimmer moved to the base-emitter leg, 500 ohm: 2 to 70 mA, open wiper = minimum |
+| 3 | Amp 12 V input had no reverse-polarity or over-current protection | schematic | resettable fuse F1 + reverse diode D1 |
+| 4 | PSU fuse sized against DC load | psu2.out: 1.51 A rms in the secondary at 0.8 A DC, 2.10 A at 1.2 A, through a 1 A fuse | 1.6 A slow-blow; reasoning in docs/01, 1.2 |
+| 5 | A regulator fault puts 19 to 21 V on 16 V capacitors | single-fault walk-through (error transistor or zener open) | amp rail capacitor 25 V |
+| 6 | Headphone slide switch carried speaker current | 0.9 A peak into 4 ohm through a sub-miniature signal switch (0.3 A class; datasheet not retrieved, rating from memory) | 6 A miniature toggle footprint |
+
+Checked and found sound: loop gain 40 dB at 1 kHz and 26 dB at 20 kHz; supply rejection 53 dB at 100 Hz, 67 dB at
+1 kHz; PSU cold start reaches 10.8 V in 13 ms and peaks at 12.10 V; the PSU set-point trimmer fails safe (open
+wiper gives 12.7 V); capacitor polarities, VAS swing and idle thermal stability by inspection.
+
+Considered and not done: foldback current limiting on the PSU (a lower short-circuit current would not blow the
+fuse and would leave the pass transistor at about 15 W indefinitely); lower closed-loop gain (23 is high for
+1 to 2 V line sources, but lowering it needs the compensation redone; left for a later revision).
+
+Checks that ran for revision 1.3: ERC 0 errors on all four schematics; netcheck OK for both amp channels against
+amp3_final.cir and for the PSU against psu2.cir; DRC with schematic parity 0 errors on amp (wide and compact),
+PSU, volume, headphone and the panel; every DRC report read for "Items shorting two nets". Single-sided status is
+in KNOWN_ISSUES.md.
+
+## 3.2a Checks that ran for release 1.2 (kept for the record)
 
 | Check | Tool | Amp (wide / compact) | PSU | Volume | Headphone | Panel |
 |---|---|---|---|---|---|---|
@@ -82,9 +109,10 @@ produced for release 1.1 and have not been re-run on the release 2 circuits. The
   improvement, not done.
 - The CircuitJS links in docs/ and the notes page draw the release 1 channel and supply.
 
-## 3.6 Improvements for release 3
+## 3.6 Improvements for a later revision
 
-- Hybrid LED footprint (3 mm + 1206 twin + middle hole for two DO-35 diodes) for the tail references and the power LEDs (KNOWN_ISSUES 11).
+- Lower the closed-loop gain to about 8 to 10 for line-level sources and redo the compensation.
+- A fuse or resettable fuse in the PSU's 12 V DC input path.
 - 1 nF from the amp input header to ground (RF filter).
 - A second heatsink bar across the four output transistors, with Q6 clamped under it.
 - Hand-route the single-sided amp, or offer a single-sided amp without the jumper blocks.

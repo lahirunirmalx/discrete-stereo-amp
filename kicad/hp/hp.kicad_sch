@@ -1219,6 +1219,168 @@
 		)
 		(embedded_fonts no)
 	)
+(symbol "Device:L"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 1.016)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "L"
+			(at -1.27 0 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "L"
+			(at 1.905 0 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Inductor"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "inductor choke coil reactor magnetic"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_fp_filters" "Choke_* *Coil* Inductor_* L_*"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(symbol "L_0_1"
+			(arc
+				(start 0 2.54)
+				(mid 0.6323 1.905)
+				(end 0 1.27)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(arc
+				(start 0 1.27)
+				(mid 0.6323 0.635)
+				(end 0 0)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(arc
+				(start 0 0)
+				(mid 0.6323 -0.635)
+				(end 0 -1.27)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(arc
+				(start 0 -1.27)
+				(mid 0.6323 -1.905)
+				(end 0 -2.54)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "L_1_1"
+			(pin passive line
+				(at 0 3.81 270)
+				(length 1.27)
+				(name "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 0 -3.81 90)
+				(length 1.27)
+				(name "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
 (symbol "Device:R_Potentiometer_Trim"
 		(pin_names
 			(offset 1.016)
@@ -4791,13 +4953,13 @@
 			)
 		)
 		(pin "1"
-			(uuid "695e92f6-db04-4d6d-bfc9-f09ef8488a49")
+			(uuid "44373cb7-a3bd-482e-bca3-4df98f6ddde8")
 		)
 		(pin "2"
-			(uuid "cedef661-e117-4611-aef0-664d15c7c844")
+			(uuid "11de3df6-dfe6-4f54-9520-0c10fc117a1c")
 		)
 		(pin "3"
-			(uuid "81c3ecdd-429e-4a14-811e-e971995ac0de")
+			(uuid "dcedc96d-4811-451b-8a08-c9ccc21c6f6d")
 		)
 		(instances
 			(project "Headphone board (release 2) - speaker / headphone switch, series resistors, 3.5 mm jack"
@@ -4816,7 +4978,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "5b285dcd-fc49-40f1-ac6f-e717c3e81c60")
+		(uuid "18b3de17-8687-4895-b8bd-38aef36766b1")
 	)
 	(label "GND"
 		(at 27.94 25.4 0)
@@ -4826,7 +4988,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "f4884b54-0959-4c29-88bf-d39467c12eee")
+		(uuid "0c5d7d93-89ae-40e6-a664-061b16b3e802")
 	)
 	(label "IN_R"
 		(at 27.94 27.94 0)
@@ -4836,7 +4998,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "03e541d1-f7df-4472-b3c7-eb7a61df6bba")
+		(uuid "da547dce-168e-48f4-b4b6-4c593f712aca")
 	)
 	(text "J1 from the amp speaker terminals (SPK L, GND, SPK R), short wires. The amp output caps already block DC."
 		(exclude_from_sim no)
@@ -4847,7 +5009,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "f630fe88-f470-405b-a030-f00c27b247f4")
+		(uuid "bcc11073-7537-4cd0-8913-65260a07e8b2")
 	)
 	(symbol
 		(lib_id "Switch:SW_Slide_DPDT")
@@ -4876,7 +5038,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Button_Switch_THT:SW_CK_JS202011CQN_DPDT_Straight"
+		(property "Footprint" "Custom:SW_DPDT_MTS202"
 			(at 60.96 30.48 0)
 			(effects
 				(font
@@ -4904,22 +5066,22 @@
 			)
 		)
 		(pin "1"
-			(uuid "03d30b41-4eae-405e-b32e-8334b7925093")
+			(uuid "682c8e48-2c68-4635-a75f-4d65fb0f431e")
 		)
 		(pin "2"
-			(uuid "cf60dc5b-4593-4cce-82e6-12f2152ddf26")
+			(uuid "64d4e981-b5ed-46fc-9bd7-6cf06b779d27")
 		)
 		(pin "3"
-			(uuid "1f3d9c9f-1118-4950-8b3a-81042e33412a")
+			(uuid "6f94ebc6-ee3b-43d7-b6b3-e8701de7d6bf")
 		)
 		(pin "6"
-			(uuid "b2effd2a-71f9-4c4a-b416-123026985294")
+			(uuid "7419d65b-47b3-4de3-af41-f77ebeae1929")
 		)
 		(pin "5"
-			(uuid "f8f64807-7c5d-4a85-a659-d41615d9ddf4")
+			(uuid "df93190e-994f-41c1-afa6-ede977031ac9")
 		)
 		(pin "4"
-			(uuid "50710cb5-f89a-48c2-8bf1-885b0529ba1d")
+			(uuid "4f879cb4-eba2-49bd-adfd-72f0fd545a26")
 		)
 		(instances
 			(project "Headphone board (release 2) - speaker / headphone switch, series resistors, 3.5 mm jack"
@@ -4938,7 +5100,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "a5d5127f-c557-4011-816f-1891410f4f63")
+		(uuid "731d6a39-bc2d-4020-8617-b39af91497f2")
 	)
 	(label "IN_R"
 		(at 73.66 30.48 0)
@@ -4948,7 +5110,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "8448b50f-ce78-42f3-93cc-5abe886888c0")
+		(uuid "62e4963d-2bc2-4854-9617-129dcc68f572")
 	)
 	(label "SPK_L"
 		(at 48.26 25.4 180)
@@ -4958,7 +5120,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "c9e300a3-99c5-4c5e-8cfa-2d6e37a18624")
+		(uuid "d548c7b1-955e-4297-baae-105f9925f7a4")
 	)
 	(label "SPK_R"
 		(at 73.66 25.4 0)
@@ -4968,7 +5130,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "620b92b8-4609-4842-9c60-4bc867a1ade5")
+		(uuid "63806dcc-3adb-487f-8628-f0edb21cf9cb")
 	)
 	(label "HP_L"
 		(at 48.26 35.56 180)
@@ -4978,7 +5140,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "8c7849ca-d33d-4048-b26d-2e2d44cf6ac6")
+		(uuid "12a3c10b-9709-4da9-a80b-d8e893a5e60c")
 	)
 	(label "HP_R"
 		(at 73.66 35.56 0)
@@ -4988,9 +5150,9 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "5d2b623f-54c4-4407-87a2-e9033621a091")
+		(uuid "608a1a3e-781f-41d9-8cdf-d99a0af27f14")
 	)
-	(text "SW1: slider towards pins 1 / 6 = speakers, towards pins 3 / 4 = headphones (pins 2 / 5 are the commons). Any DPDT slide on a 2 x 3 pattern (2.5 mm pitch) fits."
+	(text "SW1: 6 A mini toggle (MTS-202 class). Pins 2 / 5 are the commons; pins 1 / 6 = speakers, pins 3 / 4 = headphones. A toggle lever points AWAY from the lugs it connects."
 		(exclude_from_sim no)
 		(at 35.56 45.72 0)
 		(effects
@@ -4999,7 +5161,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "0d8e2c2c-660a-485d-94cf-cb7b0730b51b")
+		(uuid "66fdb874-287e-4778-b34d-2d97b52da755")
 	)
 	(label "HP_L"
 		(at 91.44 58.42 180)
@@ -5009,7 +5171,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "1c3fcde1-158f-4217-b140-c8598e7f9593")
+		(uuid "a6ef22f6-d13e-46e7-9bcd-26a30392b929")
 	)
 	(symbol
 		(lib_id "Device:R")
@@ -5066,10 +5228,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "4db3020e-0996-4078-b029-e19e6d175777")
+			(uuid "41e57a2f-a675-48f5-9979-063dc21d7e94")
 		)
 		(pin "2"
-			(uuid "119d938c-93fc-4d0b-b691-5804416a7277")
+			(uuid "f92be575-2e95-407e-863a-48b741e55145")
 		)
 		(instances
 			(project "Headphone board (release 2) - speaker / headphone switch, series resistors, 3.5 mm jack"
@@ -5135,10 +5297,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "ef71ad2c-1dd0-4b18-9e4a-bd30c4686cb1")
+			(uuid "6a61abe5-ebe5-4db8-9c5e-a260fdb0aab6")
 		)
 		(pin "2"
-			(uuid "d401bc7b-8dcd-4780-addb-dbf7b6fcb2c4")
+			(uuid "bd92ea15-6035-4f3d-bf8b-fe60a82c7794")
 		)
 		(instances
 			(project "Headphone board (release 2) - speaker / headphone switch, series resistors, 3.5 mm jack"
@@ -5153,13 +5315,13 @@
 		(at 95.25 58.42)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "0ee21928-f84c-4124-a897-7ff71d20592d")
+		(uuid "a2a5b20d-98c9-4b07-a86c-cf6ed19854a6")
 	)
 	(junction
 		(at 107.95 58.42)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "01eb6c14-a18e-42b5-b5d5-d55c14df8991")
+		(uuid "12a8cb1a-9978-4b0b-bed2-0e64d53046fb")
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
@@ -5216,7 +5378,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "e7de2857-51e0-4c3c-9dfb-a1c39a4d7e3f")
+			(uuid "0455db07-9860-4002-8ead-1442f783ec6d")
 		)
 		(instances
 			(project "Headphone board (release 2) - speaker / headphone switch, series resistors, 3.5 mm jack"
@@ -5231,7 +5393,7 @@
 		(at 111.76 58.42)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "ab2cd5c9-b5fa-4590-933f-2e5a10f2552d")
+		(uuid "c939c0e0-f3c7-460c-a179-c0ebc4c86895")
 	)
 	(label "JACK_L"
 		(at 114.3 58.42 0)
@@ -5241,7 +5403,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "712bbca3-39aa-4ae9-a318-d33d0451e99d")
+		(uuid "a9efe39f-e5c2-42b6-80c1-486ebbee7db9")
 	)
 	(label "HP_R"
 		(at 91.44 73.66 180)
@@ -5251,7 +5413,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "1939f8bb-72ea-4627-8e1c-f97bf94b0ff6")
+		(uuid "6b23add3-c58f-4203-b3c7-bc5884a01548")
 	)
 	(symbol
 		(lib_id "Device:R")
@@ -5308,10 +5470,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "a2f727e1-d5dc-4fea-a665-445a2ac386ce")
+			(uuid "75c4e74e-0d85-4a46-ae6e-e678fbd6bd2f")
 		)
 		(pin "2"
-			(uuid "89783fbc-20ae-4741-9966-d225a52c3f77")
+			(uuid "2abed8e4-6eea-47d9-84d8-c2d49d4a2514")
 		)
 		(instances
 			(project "Headphone board (release 2) - speaker / headphone switch, series resistors, 3.5 mm jack"
@@ -5377,10 +5539,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "4c6bd34e-6c41-43db-805b-8588b5147f3b")
+			(uuid "84b58960-cddf-4fb7-871b-42c4f7e93520")
 		)
 		(pin "2"
-			(uuid "abd81515-151d-43c0-badc-07d17f066286")
+			(uuid "7420459d-fd78-4928-8121-3bb6911a2d1a")
 		)
 		(instances
 			(project "Headphone board (release 2) - speaker / headphone switch, series resistors, 3.5 mm jack"
@@ -5395,13 +5557,13 @@
 		(at 95.25 73.66)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "e362f143-45b4-436d-a2d7-a4a3cc4e2ab2")
+		(uuid "a737811f-3b80-4148-997a-2fc9540b3074")
 	)
 	(junction
 		(at 107.95 73.66)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "bb62bec0-5e4a-4073-af23-ecedaca8bd4e")
+		(uuid "2874b247-1667-44bb-8a32-cde89b00e1d0")
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
@@ -5458,7 +5620,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "5d2e44e9-15da-4f6a-b4b0-2945dedc2354")
+			(uuid "db91af0b-4eae-4e0a-994f-f85156447322")
 		)
 		(instances
 			(project "Headphone board (release 2) - speaker / headphone switch, series resistors, 3.5 mm jack"
@@ -5473,7 +5635,7 @@
 		(at 111.76 73.66)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "8ce74220-3940-4eca-bbd4-698837a17986")
+		(uuid "beae7d71-7cb5-4df1-a283-20c0c3245394")
 	)
 	(label "JACK_R"
 		(at 114.3 73.66 0)
@@ -5483,7 +5645,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "c37e262c-b024-47ac-b12e-89269e60ab8f")
+		(uuid "f182bfa3-b94a-4ee9-b891-d80ccb66a625")
 	)
 	(text "R1/R2 120 R (IEC 61938): 8 mW into 32 ohm phones at full drive, 4 mW into 250 ohm. Bridge JP1/JP2 for a direct, low-impedance output (loud: turn the volume down first). 330 R for sensitive in-ear phones."
 		(exclude_from_sim no)
@@ -5494,7 +5656,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "1503105b-dc40-4598-a89a-dcc3075c79c6")
+		(uuid "b4658971-5a08-4885-8eef-4546c6622e4f")
 	)
 	(symbol
 		(lib_id "Connector_Audio:AudioJack3_SwitchTR")
@@ -5551,19 +5713,19 @@
 			)
 		)
 		(pin "S"
-			(uuid "44744a7a-8121-45d4-a726-6b31cc552141")
+			(uuid "485b0413-8dd8-44d7-881f-65a26279ebd7")
 		)
 		(pin "R"
-			(uuid "5d6647a0-a1ee-4f95-bac3-ba1d9e42156c")
+			(uuid "e56e00af-96f4-4538-a7eb-7dfc0ac53941")
 		)
 		(pin "RN"
-			(uuid "b74b4a24-dc39-441c-a46b-9e7cf193afce")
+			(uuid "43af196e-e3c5-4605-a007-5d04b0028296")
 		)
 		(pin "T"
-			(uuid "c128dc1e-12ab-4103-8fca-fbedd6defc93")
+			(uuid "3a6aa46f-ae71-4140-a8aa-d2d163497dbf")
 		)
 		(pin "TN"
-			(uuid "422a8189-2f4c-4081-9fec-3d21d6cbc557")
+			(uuid "043b47aa-c8b5-44f3-9db9-8471680c8470")
 		)
 		(instances
 			(project "Headphone board (release 2) - speaker / headphone switch, series resistors, 3.5 mm jack"
@@ -5582,7 +5744,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "cc1f6077-4388-4207-83a6-4ec4e94a468c")
+		(uuid "fa3898a2-6732-4671-a141-399aea614ba0")
 	)
 	(label "JACK_R"
 		(at 154.94 60.96 0)
@@ -5592,7 +5754,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "c6926752-0b29-4a58-8373-a683fff322e2")
+		(uuid "b28670e1-212b-414a-a201-26c1dd4c03a5")
 	)
 	(label "GND"
 		(at 154.94 58.42 0)
@@ -5602,15 +5764,15 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "a0027fd9-d43e-4164-a96f-98b424da0913")
+		(uuid "0159ec27-9149-4186-8349-7fb1183dcc3c")
 	)
 	(no_connect
 		(at 147.32 63.5)
-		(uuid "c17189bc-fc77-4712-aabe-6dfeefaaaafc")
+		(uuid "37fb6353-e862-4ffd-ad6f-f2544c5f99e5")
 	)
 	(no_connect
 		(at 147.32 68.58)
-		(uuid "d0e9f30d-97fa-4eee-9693-2731238efcb9")
+		(uuid "e620a624-a2d9-4e41-84e5-642493fa115e")
 	)
 	(symbol
 		(lib_id "Connector_Generic:Conn_01x03")
@@ -5667,13 +5829,13 @@
 			)
 		)
 		(pin "1"
-			(uuid "ee62c0e3-3e9f-4d2d-b303-b7ce042727e5")
+			(uuid "7e8d74f4-8afe-4616-a4d7-692cac4e67f5")
 		)
 		(pin "2"
-			(uuid "b62ba737-38be-4a9a-abf3-e12acfd20179")
+			(uuid "f3921c8b-ca68-41ec-a831-c3a41959dcd3")
 		)
 		(pin "3"
-			(uuid "1678e79e-69ca-4998-aaab-a425e66b932d")
+			(uuid "07a31331-4f14-49c4-a97a-984c49aaa032")
 		)
 		(instances
 			(project "Headphone board (release 2) - speaker / headphone switch, series resistors, 3.5 mm jack"
@@ -5692,7 +5854,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "fd885e77-c0a4-4af0-9d80-51c46438efa0")
+		(uuid "503f262b-99c1-46fa-b0ef-73a248bc53fb")
 	)
 	(label "GND"
 		(at 154.94 30.48 180)
@@ -5702,7 +5864,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "d8d47386-5f33-446e-a776-7fea943ab68d")
+		(uuid "a04f4307-2e09-4e39-8015-a24bc15e311c")
 	)
 	(label "JACK_R"
 		(at 154.94 33.02 180)
@@ -5712,7 +5874,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "6544f201-9920-4fc3-bedd-8f32c7280da7")
+		(uuid "3a793c9f-db1d-4cbb-809d-25b4b834850c")
 	)
 	(text "J5: wire a panel-mount jack here instead of fitting J4 (tip = L, sleeve = G, ring = R)."
 		(exclude_from_sim no)
@@ -5723,7 +5885,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "1bd75802-f31c-43b8-b74c-dc7efcf827cd")
+		(uuid "eb7341de-f0f0-4b37-81c1-cd0b736ccf4a")
 	)
 	(symbol
 		(lib_id "Connector:Screw_Terminal_01x02")
@@ -5781,10 +5943,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "d7333051-0937-433f-a858-0b11fea6246a")
+			(uuid "cc75fa31-1802-4c42-b3f8-38d603cd36fa")
 		)
 		(pin "2"
-			(uuid "85cd87ad-000d-49e2-b399-19a66cf5c877")
+			(uuid "26cffb6d-9892-4ce7-a6e3-050ad3c25df0")
 		)
 		(instances
 			(project "Headphone board (release 2) - speaker / headphone switch, series resistors, 3.5 mm jack"
@@ -5803,7 +5965,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "e1cdf71a-c150-4f9b-96db-705f62c30948")
+		(uuid "4560bde6-8c22-4de8-9434-1285fffa5297")
 	)
 	(label "GND"
 		(at 27.94 63.5 0)
@@ -5813,7 +5975,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "6f5d7d32-5fcf-40ff-a103-851a7197a320")
+		(uuid "547f6d46-c5f2-479a-a986-298b1897a4e7")
 	)
 	(symbol
 		(lib_id "Connector:Screw_Terminal_01x02")
@@ -5871,10 +6033,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "07f80e36-c9d6-43e2-9d74-b0043b149337")
+			(uuid "3ef0050b-0c1d-4c01-a2b9-45af67995029")
 		)
 		(pin "2"
-			(uuid "31a05317-e750-46a2-89aa-285289d132d7")
+			(uuid "363072f1-5cb9-44a7-859b-bbcbd26b5ae2")
 		)
 		(instances
 			(project "Headphone board (release 2) - speaker / headphone switch, series resistors, 3.5 mm jack"
@@ -5893,7 +6055,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "3bc2464c-b2dc-40a5-b435-f0266b2f0d08")
+		(uuid "9541f976-3bab-4c59-9a62-dbe99ea72ff7")
 	)
 	(label "GND"
 		(at 27.94 78.74 0)
@@ -5903,7 +6065,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "df01facd-7f2d-4a1f-9cd6-7dfd607c4320")
+		(uuid "a24483a6-aab3-4e78-9424-8dbb14539552")
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -5961,7 +6123,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "3e6c9d0b-66cf-421b-820e-dac6fce6c64c")
+			(uuid "d0b40d10-b2d8-42b6-8bc6-9a95eddcc424")
 		)
 		(instances
 			(project "Headphone board (release 2) - speaker / headphone switch, series resistors, 3.5 mm jack"
@@ -5980,7 +6142,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "f68f06f9-174a-447b-ad04-c9aa647e1cc4")
+		(uuid "ba22d343-35e2-4cdd-8209-8341a8084bdd")
 	)
 	(symbol
 		(lib_id "power:PWR_FLAG")
@@ -6038,7 +6200,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "1da76ef5-535f-4513-80d9-71cc886b5009")
+			(uuid "5acc5921-2f27-421c-97d3-f18465772d57")
 		)
 		(instances
 			(project "Headphone board (release 2) - speaker / headphone switch, series resistors, 3.5 mm jack"
@@ -6053,7 +6215,7 @@
 		(at 50.8 93.98)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "2b48ac9b-e508-4d21-8d06-7941be14dd26")
+		(uuid "e19d4a31-fd3c-4e18-8e3f-9dffb7e8ae28")
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
@@ -6110,7 +6272,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "7f60f775-0cf9-4299-b2e6-3bf64441e198")
+			(uuid "3a09f8a3-e94e-4cf4-936f-19a31b5a9f1f")
 		)
 		(instances
 			(project "Headphone board (release 2) - speaker / headphone switch, series resistors, 3.5 mm jack"
@@ -6125,7 +6287,7 @@
 		(at 55.88 93.98)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "2b7f953f-c2ac-4ab7-871e-e3556d0dfbae")
+		(uuid "160c0c0c-97e9-41ac-b441-4b8709eb4503")
 	)
 	(wire
 		(pts
@@ -6135,7 +6297,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "e0abb5ee-765d-4c43-adc9-d8e56701c7b2")
+		(uuid "093439c9-87ff-4c56-8e51-bd0f54bc09e8")
 	)
 	(wire
 		(pts
@@ -6145,7 +6307,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "60124bc2-15b6-4da2-91fc-4e41bdd24592")
+		(uuid "b094256d-a7b7-40a8-b1f1-a823d24d73b7")
 	)
 	(wire
 		(pts
@@ -6155,7 +6317,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "23f39b8f-45f0-42ce-b4ba-defffac47f8e")
+		(uuid "d1ca1c37-ac07-46e8-b58e-6e452efc0cbb")
 	)
 	(wire
 		(pts
@@ -6165,7 +6327,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "245a8c3d-4b53-4c3b-8a1b-15718f0c39eb")
+		(uuid "6032b4ae-04d8-42d8-901d-5bbf82bef09a")
 	)
 	(wire
 		(pts
@@ -6175,7 +6337,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "8e8f1013-1c6c-4481-9d0b-04b5ad76f5e7")
+		(uuid "3ab432ce-da4b-419e-b1ef-05151d61aab3")
 	)
 	(wire
 		(pts
@@ -6185,7 +6347,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "abbd6840-bb4f-4ed3-bbce-0095e6f27cc3")
+		(uuid "f3756ba2-3b1e-4a61-8366-cf84a03806a5")
 	)
 	(wire
 		(pts
@@ -6195,7 +6357,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "c6219332-83f8-46c9-b0d5-0823072535d9")
+		(uuid "903fa308-6c63-4cd7-99a7-ed66381712d6")
 	)
 	(wire
 		(pts
@@ -6205,7 +6367,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "941a415e-0df3-498b-9d82-b9f70e2fdb1d")
+		(uuid "c06a041a-25e4-4060-a707-cb0ac0f48fde")
 	)
 	(wire
 		(pts
@@ -6215,7 +6377,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "b1909c62-85db-4929-b8a2-30b1b0c038aa")
+		(uuid "da7b4b88-7a64-4f50-a4c3-fd26c6533a5c")
 	)
 	(wire
 		(pts
@@ -6225,7 +6387,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "8ed0a8a2-3e4a-4bf9-adbe-4a3fc3ee87c3")
+		(uuid "09c5db6d-d592-4193-ab8c-ef677b445e7f")
 	)
 	(wire
 		(pts
@@ -6235,7 +6397,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "ecbadf76-0408-4ce7-a133-43230c1f87a8")
+		(uuid "0bef9c89-3c98-4684-b9e8-3e8440079760")
 	)
 	(wire
 		(pts
@@ -6245,7 +6407,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "172855b6-cf90-4174-94c1-4a89e1447011")
+		(uuid "e798f870-dd8c-4a64-ac09-81c56980d283")
 	)
 	(wire
 		(pts
@@ -6255,7 +6417,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "e099cfee-00a1-474c-9357-3387dce28c2d")
+		(uuid "23c73d0b-fb14-4f73-be50-8390e53a3eb7")
 	)
 	(wire
 		(pts
@@ -6265,7 +6427,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "c101748c-8e6f-4759-8e1b-cd5b5d13b130")
+		(uuid "da8b0c9b-e4c9-41e0-8442-ae5be61fdd9d")
 	)
 	(wire
 		(pts
@@ -6275,7 +6437,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "d6c33472-2807-4134-808d-5fd215901ccc")
+		(uuid "acf23e7c-4c2b-45aa-ba9e-ca4a362c523d")
 	)
 	(wire
 		(pts
@@ -6285,7 +6447,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "7a50ddb4-514a-4e4c-b283-2059eba0b61b")
+		(uuid "74be3d02-ea0e-4ed4-952a-00e06b1d26ca")
 	)
 	(wire
 		(pts
@@ -6295,7 +6457,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "1c09c3db-3c1b-4823-b333-f3c23ccb07c1")
+		(uuid "a099043f-cbef-43c3-b878-8c6e14c8747a")
 	)
 	(wire
 		(pts
@@ -6305,7 +6467,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "fcd63568-d050-46a6-9a1b-99680f60b07d")
+		(uuid "41e350c2-5678-4384-818a-ebd3699d566b")
 	)
 	(wire
 		(pts
@@ -6315,7 +6477,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "f86fd8a6-7d39-4783-9bb6-54060dc11175")
+		(uuid "8cb686d2-bba0-41e7-bfd9-c94594872e5b")
 	)
 	(wire
 		(pts
@@ -6325,7 +6487,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "36e5e70d-a94b-42db-af90-c1f1cd038bf3")
+		(uuid "7ecc9662-a17d-4398-b004-3ba06f4f6052")
 	)
 	(wire
 		(pts
@@ -6335,7 +6497,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "9dda599a-b90a-4f1d-bf9e-71c6d0cff569")
+		(uuid "c54837d2-ed8f-4ddf-9f09-07b9dc860633")
 	)
 	(wire
 		(pts
@@ -6345,7 +6507,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "1aa0013e-7fc3-4d77-9a89-cdc3fe66c499")
+		(uuid "0d95ea51-d031-4f6a-9af0-3a6b35e7c395")
 	)
 	(wire
 		(pts
@@ -6355,7 +6517,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "7c864461-45a4-49c5-8b85-132724479e58")
+		(uuid "3152dd3f-ff69-4d47-8151-800c3ccde692")
 	)
 	(wire
 		(pts
@@ -6365,7 +6527,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "e50c9833-7919-4e44-b18a-3d75848d2041")
+		(uuid "b0b7f478-2385-4873-b069-7e16dc0b8c39")
 	)
 	(wire
 		(pts
@@ -6375,7 +6537,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "8955cd86-0278-42d6-b605-1ab316558920")
+		(uuid "7f2e71f7-5218-4547-8cfa-55d23eca1177")
 	)
 	(wire
 		(pts
@@ -6385,7 +6547,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "49de2233-2ce6-402f-ab0f-ca18cd14dee1")
+		(uuid "bc8173c9-3ebb-4c18-bb3b-1127668356bd")
 	)
 	(wire
 		(pts
@@ -6395,7 +6557,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "03f97959-c193-4dbf-83c9-a0e23a7b8026")
+		(uuid "988acae4-eb4b-4603-a320-8fd14389eee4")
 	)
 	(wire
 		(pts
@@ -6405,7 +6567,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "acd12b5b-2b38-45f1-893e-4ae4d0875081")
+		(uuid "96f760fb-0ced-468b-b3bf-a463c29d72f3")
 	)
 	(wire
 		(pts
@@ -6415,7 +6577,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "33ad7bf2-2f4f-4316-adb5-ce9b752eb988")
+		(uuid "009a7251-a815-414c-b3bf-62a84031a33a")
 	)
 	(wire
 		(pts
@@ -6425,7 +6587,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "eab9e0bb-85d4-48e4-a014-878d2d5f8b6d")
+		(uuid "586903cc-f6fa-48b8-9f05-57ba9ff4d1ba")
 	)
 	(wire
 		(pts
@@ -6435,7 +6597,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "f32f92ed-9e21-49da-a87e-9720c3fca018")
+		(uuid "f787a19c-cfde-4605-91ea-fc180ac6604b")
 	)
 	(wire
 		(pts
@@ -6445,7 +6607,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "6d1cbcd8-0ec6-490d-8c7c-8549b2cc21cb")
+		(uuid "e12d8f06-6d52-46b3-b3eb-7aea2be8b76c")
 	)
 	(wire
 		(pts
@@ -6455,7 +6617,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "334a8c8c-ca61-48ca-888e-c314b3af8f61")
+		(uuid "ca48d356-3667-47f3-a190-302d12b014a3")
 	)
 	(wire
 		(pts
@@ -6465,7 +6627,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "8f78d0c8-ae25-4415-ac11-37f06ff6ee3e")
+		(uuid "35089ab2-fdf1-4ca7-8d99-c996e5b157af")
 	)
 	(wire
 		(pts
@@ -6475,7 +6637,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "8af16f4a-3d23-4d3a-970c-5e1908800805")
+		(uuid "e2a321f1-70d6-4781-9e30-9ad59e938425")
 	)
 	(wire
 		(pts
@@ -6485,7 +6647,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "058645a6-8f78-4532-a15e-c7945da7f5a7")
+		(uuid "957008e2-59a7-46f3-aff8-d4ba52079205")
 	)
 	(wire
 		(pts
@@ -6495,7 +6657,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "db00a8ae-8a57-4a1c-93fc-b87e2b46c480")
+		(uuid "20e20d90-f50f-4f1e-8103-0b8df2114dd5")
 	)
 	(wire
 		(pts
@@ -6505,7 +6667,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "dcde9524-1394-4883-ad65-4c7bc139a274")
+		(uuid "cd3273ee-a0bc-4c9b-b610-780487877d45")
 	)
 	(wire
 		(pts
@@ -6515,7 +6677,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "e877cdde-ebf2-4388-b3d3-eddcf10aff5f")
+		(uuid "83838c9d-3c2f-4737-a27d-4f46f1c7fbe2")
 	)
 	(wire
 		(pts
@@ -6525,7 +6687,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "cab7503d-cb5d-4f12-a8a0-009d8557c681")
+		(uuid "fd1ac3ac-5bd6-4b62-8849-5aa49a38aac5")
 	)
 	(wire
 		(pts
@@ -6535,7 +6697,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "b410fe3f-e2de-413a-9bf9-3a125e9a9000")
+		(uuid "778e2f58-0a85-426d-ac08-4a2430dbfa3b")
 	)
 	(wire
 		(pts
@@ -6545,7 +6707,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "1b2f4574-60ee-4c8b-b0a9-bd5414b9a86e")
+		(uuid "7bd806c2-d40d-4397-8aab-bd83addda74d")
 	)
 	(wire
 		(pts
@@ -6555,7 +6717,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "18942057-8d6a-4185-b0e5-b8c10e83a02e")
+		(uuid "80bdac13-cceb-4aaa-b9cd-d7770871867f")
 	)
 	(wire
 		(pts
@@ -6565,7 +6727,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "e8824b43-75a2-4d25-b1a2-4ba8a4e465f8")
+		(uuid "d5840897-2ed4-415e-bcf9-48a92e60f885")
 	)
 	(wire
 		(pts
@@ -6575,7 +6737,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "12ab7174-4850-4969-b7aa-5888bc56e411")
+		(uuid "923c510e-97b7-4f47-b1a5-5ab5e67086d9")
 	)
 	(sheet_instances
 		(path "/"

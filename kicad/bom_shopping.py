@@ -3,7 +3,7 @@ import csv
 from collections import OrderedDict
 from pathlib import Path
 HERE = Path(__file__).parent
-KIND = {"R": "resistor", "C": "capacitor", "D": "diode / LED", "Q": "transistor", "RV": "potentiometer / trimmer",
+KIND = {"L": "inductor", "R": "resistor", "C": "capacitor", "D": "diode / LED", "Q": "transistor", "RV": "potentiometer / trimmer",
         "J": "connector", "F": "fuse", "TP": "test point", "SW": "switch"}
 agg = OrderedDict()
 for r in csv.DictReader(open(HERE / "panel" / "bom_all.csv")):

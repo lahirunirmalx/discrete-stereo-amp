@@ -1219,6 +1219,168 @@
 		)
 		(embedded_fonts no)
 	)
+(symbol "Device:L"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 1.016)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "L"
+			(at -1.27 0 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "L"
+			(at 1.905 0 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Inductor"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "inductor choke coil reactor magnetic"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_fp_filters" "Choke_* *Coil* Inductor_* L_*"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(symbol "L_0_1"
+			(arc
+				(start 0 2.54)
+				(mid 0.6323 1.905)
+				(end 0 1.27)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(arc
+				(start 0 1.27)
+				(mid 0.6323 0.635)
+				(end 0 0)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(arc
+				(start 0 0)
+				(mid 0.6323 -0.635)
+				(end 0 -1.27)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(arc
+				(start 0 -1.27)
+				(mid 0.6323 -1.905)
+				(end 0 -2.54)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "L_1_1"
+			(pin passive line
+				(at 0 3.81 270)
+				(length 1.27)
+				(name "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 0 -3.81 90)
+				(length 1.27)
+				(name "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
 (symbol "Device:R_Potentiometer_Trim"
 		(pin_names
 			(offset 1.016)
@@ -4791,10 +4953,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "e37e7ca1-8d62-4c10-814a-c55dc79bb6e9")
+			(uuid "81a151c8-fcc4-4fcd-98c4-6a4895c239c5")
 		)
 		(pin "2"
-			(uuid "d0caf1f4-8e1d-4b3d-9722-c600181370ed")
+			(uuid "783e0755-1350-45f3-8d5f-29238ed19336")
 		)
 		(instances
 			(project "Discrete 12 V power supply (release 2) - bridge, closed-loop TIP41C regulator, DC-in bypass"
@@ -4823,7 +4985,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1A T 5x20"
+		(property "Value" "1.6A T 5x20"
 			(at 22.9 22.0 270)
 			(effects
 				(font
@@ -4860,10 +5022,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "28f4c361-4991-4346-b1eb-aaf078963644")
+			(uuid "743b34cc-93dc-4c85-bbc3-2e638d735167")
 		)
 		(pin "2"
-			(uuid "e19a728f-5337-47f9-b273-80fc11796bd4")
+			(uuid "eac72a4c-86c1-4e04-bd83-539923e40114")
 		)
 		(instances
 			(project "Discrete 12 V power supply (release 2) - bridge, closed-loop TIP41C regulator, DC-in bypass"
@@ -4882,7 +5044,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "ce704974-5571-4af4-9f10-56fe3e6d2bdb")
+		(uuid "d402c159-5465-4002-8c4d-d26a858b08f5")
 	)
 	(label "AC2"
 		(at 22.86 33.02 0)
@@ -4892,7 +5054,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "82ad3a9d-1d67-4465-a374-c66b23d0a43f")
+		(uuid "c8f032d3-b7b0-4739-b009-c6876bcd2a4b")
 	)
 	(text "Transformer secondary 12-15 VAC, 1.5 A or more for full stereo power (12 VAC: 12 V regulated up to 0.4 A, then follows the raw rail)."
 		(exclude_from_sim no)
@@ -4903,7 +5065,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "cf262792-8686-4396-92f4-551c27d8102b")
+		(uuid "c1926a50-786f-4f07-b02b-3d4f592a2e0c")
 	)
 	(symbol
 		(lib_id "Device:D")
@@ -4960,10 +5122,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "453d21ad-0e85-4d16-9d81-e115f8f570a7")
+			(uuid "ce313267-45fa-4cc1-ad21-112500243a0c")
 		)
 		(pin "2"
-			(uuid "02d496e2-8f39-49c6-97a4-792cbea44e8d")
+			(uuid "3c8802ee-951e-484f-a0c7-9fa45a1f1621")
 		)
 		(instances
 			(project "Discrete 12 V power supply (release 2) - bridge, closed-loop TIP41C regulator, DC-in bypass"
@@ -5029,10 +5191,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "61301b3a-d844-41fa-adf2-4fdc5907a0a9")
+			(uuid "4d6fbe07-3381-4343-8215-d526183ead77")
 		)
 		(pin "2"
-			(uuid "5ff4fe85-19af-44e4-8172-639bc0667ff0")
+			(uuid "e98f8b0a-d315-4c51-b6ee-0022347b5813")
 		)
 		(instances
 			(project "Discrete 12 V power supply (release 2) - bridge, closed-loop TIP41C regulator, DC-in bypass"
@@ -5051,13 +5213,13 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "97eee34e-aeec-4184-bd28-bdf8e3ae381e")
+		(uuid "bb1f0693-552d-4933-9bee-d2b0c554b0a9")
 	)
 	(junction
 		(at 40.64 25.4)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "bd07c6b8-2b15-4e02-a247-dbfaa299d833")
+		(uuid "e803483b-76fa-45e5-9ca7-538d4bed1d9c")
 	)
 	(symbol
 		(lib_id "Device:D")
@@ -5114,10 +5276,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "d9c49083-fe35-4209-9326-c2e67bc38282")
+			(uuid "9e28c1af-0fd1-40f0-9db4-36459f5b7823")
 		)
 		(pin "2"
-			(uuid "53231e7f-1e09-452a-a00d-783da063e7df")
+			(uuid "42b0adc8-8dc8-4cbb-a265-924486187fa8")
 		)
 		(instances
 			(project "Discrete 12 V power supply (release 2) - bridge, closed-loop TIP41C regulator, DC-in bypass"
@@ -5183,10 +5345,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "39a2631c-4021-40c9-b631-708805432841")
+			(uuid "5f69e13f-c853-4088-9ceb-80fecf4f0f6d")
 		)
 		(pin "2"
-			(uuid "5775adc1-151c-41d6-9fa9-2fe659b0f40f")
+			(uuid "43542a16-8ce9-4557-8a30-3e9c3fa293a4")
 		)
 		(instances
 			(project "Discrete 12 V power supply (release 2) - bridge, closed-loop TIP41C regulator, DC-in bypass"
@@ -5205,13 +5367,13 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "467bea73-8962-4439-9d64-8c0c35a589ad")
+		(uuid "c950adca-d338-40f0-88c8-a127db60a09c")
 	)
 	(junction
 		(at 55.88 25.4)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "9f119e74-408c-427c-a718-81536f9851ca")
+		(uuid "9e08a122-eaf7-4838-b11e-5e6ac2a22a0a")
 	)
 	(symbol
 		(lib_id "Device:C_Polarized")
@@ -5268,10 +5430,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "b18cc220-9b09-4a3c-a97a-bb17451f99c8")
+			(uuid "72341bd7-5905-4bf1-bcb7-adb2666d5e63")
 		)
 		(pin "2"
-			(uuid "eddec194-7497-4e59-8ca1-19a07384beda")
+			(uuid "c1645e32-7fbc-4320-b6f6-08fdf72faf5b")
 		)
 		(instances
 			(project "Discrete 12 V power supply (release 2) - bridge, closed-loop TIP41C regulator, DC-in bypass"
@@ -5286,13 +5448,13 @@
 		(at 71.12 10.16)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "76277d15-3d77-483e-962d-04fe66dac16c")
+		(uuid "333992a0-b37a-43b5-91a7-d05a02524af3")
 	)
 	(junction
 		(at 71.12 106.68)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "bfc61559-3528-4325-9bc0-99798d9b6698")
+		(uuid "8a8ab887-868a-4818-b720-a2a7afb16f34")
 	)
 	(symbol
 		(lib_id "Device:C_Polarized")
@@ -5349,10 +5511,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "06b1510f-8d38-4b45-aa01-3865b7139559")
+			(uuid "74c9abf1-82bc-4987-8ab9-751943ce8a0a")
 		)
 		(pin "2"
-			(uuid "16e47301-5de1-49d4-b90d-5e1c81008011")
+			(uuid "f3acce56-3d92-40e2-b0b4-a42af400b3e2")
 		)
 		(instances
 			(project "Discrete 12 V power supply (release 2) - bridge, closed-loop TIP41C regulator, DC-in bypass"
@@ -5367,13 +5529,13 @@
 		(at 83.82 10.16)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "f7edb3c5-56ed-489c-8d29-e2557cac880d")
+		(uuid "4a875a7f-11f6-44aa-bc7c-e005346a3d7e")
 	)
 	(junction
 		(at 83.82 106.68)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "5918d69c-ac64-45ad-9b54-65cc253f1454")
+		(uuid "e43bdb5d-00ff-49ab-9174-977b981b7915")
 	)
 	(symbol
 		(lib_id "Device:R")
@@ -5430,10 +5592,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "7c751519-fdb7-4929-87c4-d9f5d4aa9a6d")
+			(uuid "f54b4076-962c-4466-9fd3-f8e7b89cb565")
 		)
 		(pin "2"
-			(uuid "0a47cb58-6c15-447b-90ab-07e0bed012b2")
+			(uuid "a108a246-f686-45f4-a849-6c26ee0aac55")
 		)
 		(instances
 			(project "Discrete 12 V power supply (release 2) - bridge, closed-loop TIP41C regulator, DC-in bypass"
@@ -5448,13 +5610,13 @@
 		(at 93.98 10.16)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "d1e110ef-963e-492f-b7d8-d2e3cc6b99ea")
+		(uuid "521d3eac-363d-44e9-9195-e61eabca8ee2")
 	)
 	(junction
 		(at 93.98 106.68)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "4e46327f-7aff-4d94-a02c-e095c77301fc")
+		(uuid "2b137b4b-f95a-4e0e-b600-baab17e34d85")
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
@@ -5511,7 +5673,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "7abeb828-9404-47f0-9265-bce323aa843f")
+			(uuid "51a3d8c8-837b-431c-918c-6c1d8df89236")
 		)
 		(instances
 			(project "Discrete 12 V power supply (release 2) - bridge, closed-loop TIP41C regulator, DC-in bypass"
@@ -5526,7 +5688,7 @@
 		(at 101.6 10.16)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "445b80f0-af6c-4c27-9633-40f00e88b8f7")
+		(uuid "18354a81-1559-4dd1-b885-09601f486f93")
 	)
 	(symbol
 		(lib_id "power:PWR_FLAG")
@@ -5584,7 +5746,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "80cd8569-b5ba-45bb-aab7-506da0c80994")
+			(uuid "4905e9a4-feef-4c9c-bcd4-44fd9ed001e9")
 		)
 		(instances
 			(project "Discrete 12 V power supply (release 2) - bridge, closed-loop TIP41C regulator, DC-in bypass"
@@ -5599,7 +5761,7 @@
 		(at 109.22 10.16)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "955bfd2e-9346-4903-8198-46b9878eeb3e")
+		(uuid "121b410f-f83b-4762-942c-738dd9624770")
 	)
 	(symbol
 		(lib_id "Device:R")
@@ -5656,10 +5818,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "8ad6c5c6-8fcc-4a7d-874f-c6d94a6f7295")
+			(uuid "0782e909-6ab5-46f7-a6c4-52d696db6d21")
 		)
 		(pin "2"
-			(uuid "7730f53a-9ce7-40ba-85aa-04ad6b5ce253")
+			(uuid "1317426b-04f9-4afb-a046-75be185e77d0")
 		)
 		(instances
 			(project "Discrete 12 V power supply (release 2) - bridge, closed-loop TIP41C regulator, DC-in bypass"
@@ -5674,7 +5836,7 @@
 		(at 116.84 10.16)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "1807939b-cbac-4b5e-804d-e5dde53ccc24")
+		(uuid "7d30a890-f783-40e4-b044-69c22e049988")
 	)
 	(label "BQ1"
 		(at 111.76 30.48 180)
@@ -5684,13 +5846,13 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "4764d75e-99ab-4a86-ada2-199ecd266284")
+		(uuid "9d716b4d-8732-4937-9742-c5135884e87a")
 	)
 	(junction
 		(at 116.84 30.48)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "cbd138e8-bb9f-4f5e-ac9b-950022817bde")
+		(uuid "cb9890eb-f57f-44a3-9830-d93a940d9f25")
 	)
 	(symbol
 		(lib_id "Transistor_BJT:BC547")
@@ -5747,13 +5909,13 @@
 			)
 		)
 		(pin "2"
-			(uuid "c4f84f73-3530-4908-b217-5913f826b7d5")
+			(uuid "7610f8e6-b7c0-4439-9c3e-c32dc64d3c83")
 		)
 		(pin "1"
-			(uuid "ee87509d-91a8-4730-96b5-01e2d0fb5a65")
+			(uuid "bc5f94a6-2ea5-4660-b816-b275e038c74b")
 		)
 		(pin "3"
-			(uuid "3d895473-a2bc-4482-ad70-9ecdc4b466ba")
+			(uuid "d2f468e5-080c-4fcd-9991-dd9634d2d398")
 		)
 		(instances
 			(project "Discrete 12 V power supply (release 2) - bridge, closed-loop TIP41C regulator, DC-in bypass"
@@ -5768,7 +5930,7 @@
 		(at 134.62 10.16)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "0f7eb9e2-731e-4403-a438-dd452354e595")
+		(uuid "71e28732-f51d-48f1-9bfa-29b884e7114b")
 	)
 	(symbol
 		(lib_id "Transistor_BJT:TIP41C")
@@ -5825,13 +5987,13 @@
 			)
 		)
 		(pin "1"
-			(uuid "5263cfdd-e3f9-41df-af71-e9ebbb6b9f47")
+			(uuid "6c12cf6c-8bdc-4c0f-8a75-a665fc502861")
 		)
 		(pin "2"
-			(uuid "c2123583-2dde-4e6f-9537-731ad5aedb7e")
+			(uuid "f3b3035a-e2a7-4d77-9814-363ac7508751")
 		)
 		(pin "3"
-			(uuid "78047bac-c1a2-4ac7-916d-8f88046d3321")
+			(uuid "4e6b2d93-d6d4-4e4e-96c6-a3b1879e73e9")
 		)
 		(instances
 			(project "Discrete 12 V power supply (release 2) - bridge, closed-loop TIP41C regulator, DC-in bypass"
@@ -5846,7 +6008,7 @@
 		(at 149.86 10.16)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "afa38994-addb-4b2b-89d1-6ca9c439318a")
+		(uuid "be3f12e5-e430-4ef7-a4c8-5a5026e853c8")
 	)
 	(symbol
 		(lib_id "Device:R")
@@ -5903,10 +6065,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "941e1068-3c86-4cfb-9ee2-a30fc289fd3c")
+			(uuid "f40884b2-c2cd-4331-b434-36ac09e738bd")
 		)
 		(pin "2"
-			(uuid "557af991-ba6b-4264-9af7-6136d6d9b2f2")
+			(uuid "706e8b91-1af8-4a85-9d1a-8a541ff3bce6")
 		)
 		(instances
 			(project "Discrete 12 V power supply (release 2) - bridge, closed-loop TIP41C regulator, DC-in bypass"
@@ -5972,13 +6134,13 @@
 			)
 		)
 		(pin "2"
-			(uuid "9c7b8f40-98d7-49a7-a460-e956699251e4")
+			(uuid "b7bdf5a0-46d2-40d9-a85b-64d5c7d3e153")
 		)
 		(pin "1"
-			(uuid "84b6b80e-5bff-45d9-b4fb-df4f4b0a4eca")
+			(uuid "860bbc1b-5a6f-4eaf-9568-6cad8a74792c")
 		)
 		(pin "3"
-			(uuid "2661ff6c-804a-4b4c-b66e-79e2db5966f4")
+			(uuid "b5f44626-896a-4f1e-a88e-ee4c5c8070c5")
 		)
 		(instances
 			(project "Discrete 12 V power supply (release 2) - bridge, closed-loop TIP41C regulator, DC-in bypass"
@@ -5993,13 +6155,13 @@
 		(at 149.86 49.53)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "8f6e90ac-87cb-4c40-9229-ce59fe0d99ea")
+		(uuid "59efa09b-de79-4d7f-80fe-50c596f6cac1")
 	)
 	(junction
 		(at 149.86 60.96)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "a8b37695-da74-4c9c-af6f-7f03aae4eaf1")
+		(uuid "9fb09cd0-adf8-4fee-bc3b-087ec8ba277a")
 	)
 	(label "BQ1"
 		(at 165.1 44.45 90)
@@ -6009,7 +6171,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "6382f939-cb30-4891-9f33-2973cfdecd3e")
+		(uuid "cefb4022-22d7-42e2-a581-baa7cbb281f2")
 	)
 	(symbol
 		(lib_id "Device:D")
@@ -6066,10 +6228,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "88b2d520-3c26-44d4-8b75-08bde98ec9dc")
+			(uuid "e79da536-6e6e-48db-b4ba-3ca23384e140")
 		)
 		(pin "2"
-			(uuid "95c93310-9321-4a1d-ae8d-9d19de4cafe8")
+			(uuid "e23be079-85ad-4651-a6c8-de71f6f60408")
 		)
 		(instances
 			(project "Discrete 12 V power supply (release 2) - bridge, closed-loop TIP41C regulator, DC-in bypass"
@@ -6084,7 +6246,7 @@
 		(at 177.8 60.96)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "2a235ac9-e7db-4238-821a-fab87d8d28f3")
+		(uuid "79a63427-78bf-417b-a871-8cc25e2b3ab6")
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
@@ -6141,7 +6303,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "8a9a3a7a-7c97-4fa5-853c-263562929ab3")
+			(uuid "c20fd1ae-9e6d-40a4-8792-8c5577160237")
 		)
 		(instances
 			(project "Discrete 12 V power supply (release 2) - bridge, closed-loop TIP41C regulator, DC-in bypass"
@@ -6156,7 +6318,7 @@
 		(at 185.42 60.96)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "2fcabcc4-c630-4fb9-ac28-76f84dcfe3e8")
+		(uuid "80bbd355-fb88-4956-a633-e19606db1b53")
 	)
 	(symbol
 		(lib_id "Device:R")
@@ -6213,10 +6375,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "196b5f02-a819-464e-9ad4-27b8557092c5")
+			(uuid "7e1525c8-52ed-4b04-ae6a-49b3e7cef511")
 		)
 		(pin "2"
-			(uuid "81e9dcd1-6c27-4934-a275-08b96c3c7994")
+			(uuid "b27c2b2f-baab-498f-9132-85d2276d4494")
 		)
 		(instances
 			(project "Discrete 12 V power supply (release 2) - bridge, closed-loop TIP41C regulator, DC-in bypass"
@@ -6282,10 +6444,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "f016548f-7cf0-42c7-90eb-cb83d026d3a8")
+			(uuid "c7ce79c2-27c7-43c6-8dbc-39cf57d27832")
 		)
 		(pin "2"
-			(uuid "8093abd6-2655-4276-89a7-3e84052201e5")
+			(uuid "d7490620-332a-4252-b719-fff534960da0")
 		)
 		(instances
 			(project "Discrete 12 V power supply (release 2) - bridge, closed-loop TIP41C regulator, DC-in bypass"
@@ -6300,7 +6462,7 @@
 		(at 106.68 106.68)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "d12e645e-4dce-45f6-a719-89a08e59d705")
+		(uuid "3a62e3b8-d32d-49e1-a611-2e5f4d44afa6")
 	)
 	(symbol
 		(lib_id "Device:C_Polarized")
@@ -6357,10 +6519,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "96f64082-e937-4656-8842-74f8e2e9dc5d")
+			(uuid "bef9b294-657c-497d-9a47-538094d39249")
 		)
 		(pin "2"
-			(uuid "21554f6c-3c55-4040-9acf-f61fa30028eb")
+			(uuid "895966ff-a2c2-4bc0-898d-b7f202597041")
 		)
 		(instances
 			(project "Discrete 12 V power supply (release 2) - bridge, closed-loop TIP41C regulator, DC-in bypass"
@@ -6375,19 +6537,19 @@
 		(at 106.68 73.66)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "5e8df0db-337d-4e8f-97cf-6237d4410a41")
+		(uuid "9fc45e15-1f81-4681-bca6-3c679e24ffed")
 	)
 	(junction
 		(at 116.84 73.66)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "9f11c9c1-6e6c-4e16-b5b8-6db46d2217ec")
+		(uuid "fc338b06-ced2-44f4-8215-9fa7e1b7557c")
 	)
 	(junction
 		(at 116.84 106.68)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "ee2ebe7c-fbcf-40f1-9727-b33c45b26dfa")
+		(uuid "0a9f3e78-c674-4d9e-90ab-6ad266f3ca3c")
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
@@ -6444,7 +6606,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "2eb20fd9-2243-4a00-b662-7db6c01d90d2")
+			(uuid "fe2f891f-eba5-454b-8d32-87bf337fc788")
 		)
 		(instances
 			(project "Discrete 12 V power supply (release 2) - bridge, closed-loop TIP41C regulator, DC-in bypass"
@@ -6511,13 +6673,13 @@
 			)
 		)
 		(pin "2"
-			(uuid "11cc31bc-82e2-40f3-ad95-209c9c0385f9")
+			(uuid "90794e94-90e2-4ef3-a60a-ae1137453a17")
 		)
 		(pin "1"
-			(uuid "5e067f4a-f49f-47ba-8d9c-b8b0f6797c60")
+			(uuid "7c6a2842-0a00-4414-ad97-f099bd24a904")
 		)
 		(pin "3"
-			(uuid "4e4cb6d3-006e-45c3-83bd-27dbae206ced")
+			(uuid "3c015a2d-1eaa-4061-ba1a-0413276de7c9")
 		)
 		(instances
 			(project "Discrete 12 V power supply (release 2) - bridge, closed-loop TIP41C regulator, DC-in bypass"
@@ -6536,13 +6698,13 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "69a81788-81a5-4d08-8abd-cf86fee24dfe")
+		(uuid "57deba14-4fe3-41d8-99f4-45728c77a914")
 	)
 	(junction
 		(at 123.19 66.04)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "b305d508-79fc-48f4-aa7e-0b5fa9429949")
+		(uuid "d3974f05-9662-4e95-9bea-2fc19228b087")
 	)
 	(symbol
 		(lib_id "Device:C")
@@ -6599,10 +6761,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "3d6ca09e-fd48-4a6d-a0a6-8124012168d0")
+			(uuid "09648cbc-8d63-419f-9624-eb9ed80bebca")
 		)
 		(pin "2"
-			(uuid "89ba26a3-aa75-4756-ba75-b7d9f2d78974")
+			(uuid "7793fa6d-d94e-490d-bb5e-c045e04d5598")
 		)
 		(instances
 			(project "Discrete 12 V power supply (release 2) - bridge, closed-loop TIP41C regulator, DC-in bypass"
@@ -6617,7 +6779,7 @@
 		(at 137.16 73.66)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "501e405e-84d0-492e-9709-b4895c60e66d")
+		(uuid "c9ef8863-4c63-4b82-a1f0-1eee2bb1014b")
 	)
 	(symbol
 		(lib_id "Device:R")
@@ -6674,10 +6836,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "a0f83197-2412-4d42-8af5-79badfb0d629")
+			(uuid "7b82ee6b-eb65-4822-b3c8-2f46182d1ad7")
 		)
 		(pin "2"
-			(uuid "7944677a-e105-493e-8fe0-cd4811e5311b")
+			(uuid "483cf79f-ac46-4fa6-ac7e-21dbdea9cbf2")
 		)
 		(instances
 			(project "Discrete 12 V power supply (release 2) - bridge, closed-loop TIP41C regulator, DC-in bypass"
@@ -6692,7 +6854,7 @@
 		(at 142.24 60.96)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "2d191190-d3b9-4072-837c-674861efef4b")
+		(uuid "65ca8127-cde9-4de3-b50d-d88bd063bb9a")
 	)
 	(symbol
 		(lib_id "Device:R_Potentiometer_Trim")
@@ -6749,13 +6911,13 @@
 			)
 		)
 		(pin "1"
-			(uuid "0b9fc4b1-5d2f-447e-a1bb-2a9da20c5685")
+			(uuid "a572de7d-38c2-4433-8e65-76ad1e960f25")
 		)
 		(pin "3"
-			(uuid "1323a457-e3d4-4544-92ad-992d7cc993e7")
+			(uuid "2b89d0d8-1a7a-4ddc-b9c7-6c97fed40ed9")
 		)
 		(pin "2"
-			(uuid "ce4a77b4-a8d5-4f29-a672-bef005d340ba")
+			(uuid "b20f4d82-1bab-47b5-a3a4-1b2a5fdca740")
 		)
 		(instances
 			(project "Discrete 12 V power supply (release 2) - bridge, closed-loop TIP41C regulator, DC-in bypass"
@@ -6770,7 +6932,7 @@
 		(at 142.24 83.82)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "09f5c835-2d44-452b-a968-2909749ecb6b")
+		(uuid "e436b870-5227-4469-8872-c49d11f93614")
 	)
 	(symbol
 		(lib_id "Device:R")
@@ -6827,10 +6989,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "4fe736a5-3fa7-49a7-a19c-5d08ad568572")
+			(uuid "18337629-feca-4ae8-a51f-76e587073b40")
 		)
 		(pin "2"
-			(uuid "a71347fe-57fd-4b0a-8216-f8194c223020")
+			(uuid "526bc95f-9602-4156-a185-c6728354877d")
 		)
 		(instances
 			(project "Discrete 12 V power supply (release 2) - bridge, closed-loop TIP41C regulator, DC-in bypass"
@@ -6845,7 +7007,7 @@
 		(at 142.24 106.68)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "469efb2d-a33a-4c2f-91b0-2a792386e60c")
+		(uuid "a8e23a19-738a-4a18-b2d2-94cf4d2bc530")
 	)
 	(symbol
 		(lib_id "Device:C")
@@ -6902,10 +7064,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "eaab5e71-f569-47b6-9dfd-c932c5ac7841")
+			(uuid "09e85780-515e-4436-8319-e89375d30d46")
 		)
 		(pin "2"
-			(uuid "a7e8b14b-f441-41ff-beae-ebf782737a3f")
+			(uuid "d094d0b1-c71d-44e3-8357-eb535816ce41")
 		)
 		(instances
 			(project "Discrete 12 V power supply (release 2) - bridge, closed-loop TIP41C regulator, DC-in bypass"
@@ -6920,7 +7082,7 @@
 		(at 146.05 83.82)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "4046fcc7-5fc4-4ae1-a442-6d6a9ad90722")
+		(uuid "169e6001-1128-4eda-b5ab-811d116980dc")
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
@@ -6977,7 +7139,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "72423858-478a-43ff-9bf8-951deef0b1cf")
+			(uuid "7137f7b8-1308-47b6-9d7d-8cffdbf9a3ca")
 		)
 		(instances
 			(project "Discrete 12 V power supply (release 2) - bridge, closed-loop TIP41C regulator, DC-in bypass"
@@ -6992,7 +7154,7 @@
 		(at 152.4 83.82)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "c55f9b5f-f03e-4c14-a274-77d4ea776023")
+		(uuid "7aefc54d-0953-45f1-87e7-b9e8d9e36631")
 	)
 	(text "Regulator: Q4 compares FB (R5 + RV1 / R6 divider of VOUT) with the 5.6 V zener and pulls the driver base down through BQ1. RV1 sets VOUT, 11.4 to 12.7 V."
 		(exclude_from_sim no)
@@ -7003,7 +7165,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "42cde8c4-a9f7-4ac0-be83-bbbc1c63dd25")
+		(uuid "2afe6cb7-627c-4fbb-9c09-1bc9cda5ad59")
 	)
 	(symbol
 		(lib_id "Device:C_Polarized")
@@ -7060,10 +7222,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "31b52648-b820-460a-a811-fcf93ccf483b")
+			(uuid "22535852-df72-48cb-989f-1eca972b03c9")
 		)
 		(pin "2"
-			(uuid "be1e02ac-727a-4428-bb9c-d549b660b9eb")
+			(uuid "b7f6a320-52c1-47b5-984f-aa773d0e5fc6")
 		)
 		(instances
 			(project "Discrete 12 V power supply (release 2) - bridge, closed-loop TIP41C regulator, DC-in bypass"
@@ -7078,13 +7240,13 @@
 		(at 195.58 60.96)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "a1b7734e-8e9a-41d7-9436-932dfb3b8aac")
+		(uuid "46f87c94-d689-4cb4-b775-e01c451e6e17")
 	)
 	(junction
 		(at 195.58 106.68)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "6634c223-f0c1-4361-ae2a-23bd00521c98")
+		(uuid "6bfa84b5-7985-4830-ad99-dd64a74c1a1d")
 	)
 	(symbol
 		(lib_id "Device:C")
@@ -7141,10 +7303,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "ca9d85ec-a987-42d0-ba6d-a7c867221f27")
+			(uuid "08ae5172-8ae9-4af9-85dd-0cc8ff7c2a53")
 		)
 		(pin "2"
-			(uuid "d5e5e3fc-dbc7-4eed-9c6f-c3b0738adf74")
+			(uuid "463c0dcb-55af-4a2b-ac3a-9218f593f69d")
 		)
 		(instances
 			(project "Discrete 12 V power supply (release 2) - bridge, closed-loop TIP41C regulator, DC-in bypass"
@@ -7159,13 +7321,13 @@
 		(at 205.74 60.96)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "c1856460-2abe-4aec-a3bc-0033a66f7d63")
+		(uuid "e64349e3-af31-4424-a979-bcd7e64b3c1f")
 	)
 	(junction
 		(at 205.74 106.68)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "47c8d65c-d869-4302-81b5-fb8e98f976b9")
+		(uuid "9ead88af-ea5d-4572-b023-04f8266217d0")
 	)
 	(symbol
 		(lib_id "Device:R")
@@ -7222,10 +7384,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "91fd3dcf-be1d-4668-8f04-0b3f57591904")
+			(uuid "679fa5c4-4b51-4609-9931-3d10b12700ff")
 		)
 		(pin "2"
-			(uuid "b8c39413-45b8-47ee-9131-f17792c48483")
+			(uuid "ebd70701-e503-4f5f-aa47-43b1b6a5bf28")
 		)
 		(instances
 			(project "Discrete 12 V power supply (release 2) - bridge, closed-loop TIP41C regulator, DC-in bypass"
@@ -7240,7 +7402,7 @@
 		(at 215.9 60.96)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "605b4f8b-c2cf-4da5-8f22-38b70825a9df")
+		(uuid "6635a655-1596-4480-b5c2-7941e20ba600")
 	)
 	(symbol
 		(lib_id "Device:LED")
@@ -7269,7 +7431,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "LED_THT:LED_D3.0mm"
+		(property "Footprint" "Custom:LED_D3_1206"
 			(at 215.9 78.74 0)
 			(effects
 				(font
@@ -7297,10 +7459,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "d36be789-a931-4934-9a60-c0a0515ba69c")
+			(uuid "7e7eb081-c8e6-4896-93cf-0b5ca788811d")
 		)
 		(pin "2"
-			(uuid "b9012127-28c6-41ef-8267-8decff1599ff")
+			(uuid "b4b47b0e-51b4-4d87-9ac6-749e4ba8a703")
 		)
 		(instances
 			(project "Discrete 12 V power supply (release 2) - bridge, closed-loop TIP41C regulator, DC-in bypass"
@@ -7315,7 +7477,7 @@
 		(at 215.9 106.68)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "cd85716f-cf01-421e-b192-886dc6181a40")
+		(uuid "675ef1cc-c264-4270-8248-54a129398056")
 	)
 	(symbol
 		(lib_id "Connector_Generic:Conn_01x02")
@@ -7372,10 +7534,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "a851f6e5-44cf-4925-a474-2b63d3a596c6")
+			(uuid "d18cb3d9-ef46-46f3-9e63-1be8512414d0")
 		)
 		(pin "2"
-			(uuid "25021582-4acd-4082-8cc7-afb19d1901dd")
+			(uuid "5bff1827-aa5b-458c-ade0-b79a2e05f910")
 		)
 		(instances
 			(project "Discrete 12 V power supply (release 2) - bridge, closed-loop TIP41C regulator, DC-in bypass"
@@ -7390,13 +7552,13 @@
 		(at 215.9 74.93)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "65faa1ea-bbba-4c68-ba72-370f62838e96")
+		(uuid "3ea63e90-57a2-4416-8132-4a5d55c212a0")
 	)
 	(junction
 		(at 215.9 82.55)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "3995535d-ea35-4821-aeb5-b19479684ab2")
+		(uuid "f27d428b-d837-4911-99fc-af3a39620984")
 	)
 	(text "J5: LED on the volume board via 2 wires (pin 1 = anode/+). Fit D7 or J5, not both."
 		(exclude_from_sim no)
@@ -7407,7 +7569,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "fa8731f2-7ece-4875-82e6-560e58bd3ff3")
+		(uuid "afa57a9a-3a33-4979-82cb-0fd11f149cb9")
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
@@ -7464,7 +7626,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "5f31faac-7d05-41e7-a9a8-fbdd119dabc3")
+			(uuid "cbace288-4b2d-4ad9-89f0-908d5cf5e8f9")
 		)
 		(instances
 			(project "Discrete 12 V power supply (release 2) - bridge, closed-loop TIP41C regulator, DC-in bypass"
@@ -7479,7 +7641,7 @@
 		(at 86.36 106.68)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "aa688ea3-22f3-4367-97fa-47202f669a91")
+		(uuid "c4402bf6-f708-4d54-a5c4-1df99f57a929")
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -7537,7 +7699,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "f65e1120-2824-4e29-8fb1-64ab87190ce5")
+			(uuid "4880ef7f-991b-40c8-b2e1-33ebf3b24a80")
 		)
 		(instances
 			(project "Discrete 12 V power supply (release 2) - bridge, closed-loop TIP41C regulator, DC-in bypass"
@@ -7604,7 +7766,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "9bdd58a5-bfd9-463e-bf32-6816fa4c72d5")
+			(uuid "5071c3f5-6a29-4d5c-8666-d166282b475a")
 		)
 		(instances
 			(project "Discrete 12 V power supply (release 2) - bridge, closed-loop TIP41C regulator, DC-in bypass"
@@ -7619,7 +7781,7 @@
 		(at 254.0 106.68)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "13929971-f7eb-4bf9-af7d-0401a819fff4")
+		(uuid "d13d9d8a-70f6-4378-aaae-f47192eb721c")
 	)
 	(symbol
 		(lib_id "Connector:Screw_Terminal_01x02")
@@ -7677,10 +7839,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "3124766f-1395-44ad-acb6-0c727ccbdf3b")
+			(uuid "a2397631-3e7e-4651-b855-c478ed4bd96b")
 		)
 		(pin "2"
-			(uuid "55b66fd9-d702-49d1-bf9f-5c864e3ec499")
+			(uuid "41e7d15d-4735-454b-aea1-4c60a6a90d17")
 		)
 		(instances
 			(project "Discrete 12 V power supply (release 2) - bridge, closed-loop TIP41C regulator, DC-in bypass"
@@ -7695,7 +7857,7 @@
 		(at 241.3 60.96)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "e940c0aa-0bdd-434d-b2d9-5b10aaac84db")
+		(uuid "7f4a9f63-4a2a-4cb1-bd51-c922b1c146a8")
 	)
 	(label "GND"
 		(at 233.68 40.64 270)
@@ -7705,7 +7867,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "afb6cb49-a438-4614-8295-284d7f90bc6b")
+		(uuid "6f96ed7a-0ea3-4b94-980f-136b74849970")
 	)
 	(symbol
 		(lib_id "Connector:Screw_Terminal_01x02")
@@ -7763,10 +7925,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "5ccefd38-8342-4afb-aa70-5cfddd0fe815")
+			(uuid "f18a0ce4-29f0-40e3-8d37-5990ec919dc7")
 		)
 		(pin "2"
-			(uuid "3cfba06c-baa6-4d27-be98-f4170ce65e58")
+			(uuid "c15e17c1-787c-4c5e-800d-1400fbb2dc78")
 		)
 		(instances
 			(project "Discrete 12 V power supply (release 2) - bridge, closed-loop TIP41C regulator, DC-in bypass"
@@ -7781,7 +7943,7 @@
 		(at 241.3 48.26)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "598c8631-a02e-4ea7-8dbe-6e3cc63d6ede")
+		(uuid "8dea6cf0-9de3-4907-b898-68df2c18dee7")
 	)
 	(label "GND"
 		(at 233.68 53.34 270)
@@ -7791,7 +7953,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "52c6115c-612e-4c14-8d20-fbfc4855b40d")
+		(uuid "2e28660e-ae6d-4b81-89ee-60d9074cd4f5")
 	)
 	(symbol
 		(lib_id "Device:D_Schottky")
@@ -7848,10 +8010,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "9fa219d3-df67-4cbb-9fb8-b46bbffdb3d7")
+			(uuid "c1222f78-118e-4770-8adf-681d9ed49d51")
 		)
 		(pin "2"
-			(uuid "5fe7e715-97d6-4818-8367-f0c51ebe96eb")
+			(uuid "e00dfab3-643f-4af4-b57c-064332117311")
 		)
 		(instances
 			(project "Discrete 12 V power supply (release 2) - bridge, closed-loop TIP41C regulator, DC-in bypass"
@@ -7917,10 +8079,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "0e0f7771-c571-467f-8b91-d5d4e33c42c2")
+			(uuid "420c70f7-532f-4dc5-8422-263dadd87247")
 		)
 		(pin "2"
-			(uuid "7305bd9d-884e-457f-a160-28d5b7303965")
+			(uuid "14d6056d-ea9c-4599-808c-de1ad6322cca")
 		)
 		(instances
 			(project "Discrete 12 V power supply (release 2) - bridge, closed-loop TIP41C regulator, DC-in bypass"
@@ -7939,7 +8101,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "674d60a8-9076-43cf-bc55-6a6bc92ffbfb")
+		(uuid "4b9db2c3-4c4a-44a8-be7e-151e07e0e9f5")
 	)
 	(text "J2: 12 V DC straight to VOUT through D8 (0.4 V drop). Bypasses the regulator and the current clamp."
 		(exclude_from_sim no)
@@ -7950,7 +8112,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "9a71e6ad-2fa3-4aa2-b7da-055646b74d1b")
+		(uuid "fea558eb-6cef-4dbc-b6ce-82f3ec7251ab")
 	)
 	(text "Pass transistor Q2 needs a heatsink: 3.5 W at 15 VAC / 0.8 A, 3.9 W at 1.2 A (psu2.cir)."
 		(exclude_from_sim no)
@@ -7961,7 +8123,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "231cd53b-d6d6-4b34-b757-889ab55eda07")
+		(uuid "2d5ad382-1ec3-42ea-bc64-2f03c1b7655f")
 	)
 	(wire
 		(pts
@@ -7971,7 +8133,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "f61e773a-3c08-4495-a42c-e486efa2dc0f")
+		(uuid "2e421222-1ba3-48ed-9461-0a4e59261f82")
 	)
 	(wire
 		(pts
@@ -7981,7 +8143,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "d1a4cc10-8131-403a-8276-a8ee0051a114")
+		(uuid "46b5d181-df6c-4033-abb7-1d0d589d3920")
 	)
 	(wire
 		(pts
@@ -7991,7 +8153,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "f34eb5dc-e718-4c2e-92fc-9a834cb5149b")
+		(uuid "079d32f5-157b-4847-b0d0-9c55574a0b3b")
 	)
 	(wire
 		(pts
@@ -8001,7 +8163,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "bee1612b-8aee-4784-ad51-c99181db1711")
+		(uuid "7c10c2ec-1578-4ddb-8044-48c7c85c89cb")
 	)
 	(wire
 		(pts
@@ -8011,7 +8173,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "4d8b4690-cacc-4e58-9770-b68fbb6886c5")
+		(uuid "430bd456-3728-4e82-9638-8e35b41f6042")
 	)
 	(wire
 		(pts
@@ -8021,7 +8183,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "bee64658-bc53-4a55-a3cd-5c3653abaa28")
+		(uuid "056443f4-39b3-429d-bfc2-2421d82eabfa")
 	)
 	(wire
 		(pts
@@ -8031,7 +8193,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "6c6ef3c1-c4d7-4ff5-a713-caa27aa53c3f")
+		(uuid "f67c9287-e982-45bc-8ef2-57b7c2362e43")
 	)
 	(wire
 		(pts
@@ -8041,7 +8203,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "d30d5224-9a8b-43b0-9cb6-ccf3481875a2")
+		(uuid "d194a510-a4c5-4226-93c9-917858384d22")
 	)
 	(wire
 		(pts
@@ -8051,7 +8213,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "54725d3c-c818-449b-9b58-3de2b47f7591")
+		(uuid "bb918028-4a09-4429-aa07-c361b932b79f")
 	)
 	(wire
 		(pts
@@ -8061,7 +8223,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "74e3e9db-da21-423e-a25d-3cc14bf3e127")
+		(uuid "e152d377-5194-4e34-847f-7b02608ff098")
 	)
 	(wire
 		(pts
@@ -8071,7 +8233,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "c1503ca6-a70c-4de4-accd-4d4b4292a96b")
+		(uuid "e8f61b42-905a-4059-88d5-c88605e26c35")
 	)
 	(wire
 		(pts
@@ -8081,7 +8243,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "61330278-b707-4c58-bf2b-7eb3c2c20ab3")
+		(uuid "55361e8f-db0b-42c5-a67e-b6d6fe3af61d")
 	)
 	(wire
 		(pts
@@ -8091,7 +8253,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "ae51a786-59d9-4d43-b5e9-a14a3d117682")
+		(uuid "41020002-388a-42ad-b110-7c9d06a1d173")
 	)
 	(wire
 		(pts
@@ -8101,7 +8263,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "a2ceee35-52f0-4347-b02e-cb944a974f71")
+		(uuid "939f9e9b-eb67-46e1-9d02-371966c109e9")
 	)
 	(wire
 		(pts
@@ -8111,7 +8273,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "2b62a283-2110-4daf-b15a-3c95cfe67b9f")
+		(uuid "e78c8b0b-4b51-4f23-9679-ccf3cfe767d8")
 	)
 	(wire
 		(pts
@@ -8121,7 +8283,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "8edf842b-e522-4f5b-bdab-ea90e6b0c0af")
+		(uuid "96eebb08-3f3b-426f-82e4-9b296cbe4721")
 	)
 	(wire
 		(pts
@@ -8131,7 +8293,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "b517c2ad-6910-4b87-bdaa-f577668e4941")
+		(uuid "bab8e521-d7ac-475e-9837-80a92edecf00")
 	)
 	(wire
 		(pts
@@ -8141,7 +8303,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "83e8c048-be3e-42a7-ab3d-4e34926a0711")
+		(uuid "a780a972-b34c-4e09-a377-1440c9c978dd")
 	)
 	(wire
 		(pts
@@ -8151,7 +8313,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "28db252f-1622-4af3-945b-41d4e418942c")
+		(uuid "4b333265-d77c-4180-bb6b-b7c84b3aa06f")
 	)
 	(wire
 		(pts
@@ -8161,7 +8323,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "09e83612-1cd6-4a61-9c3f-5fd17e4b1cf5")
+		(uuid "592f6450-37c6-4608-8df3-ef3270ddb9e8")
 	)
 	(wire
 		(pts
@@ -8171,7 +8333,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "d44961b3-eb53-4ffc-ba20-ce0135bd5350")
+		(uuid "46df2b4f-8590-48cb-8bb7-076c8b9ba6e8")
 	)
 	(wire
 		(pts
@@ -8181,7 +8343,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "ea492b3b-f98a-4660-8420-9967f6f99204")
+		(uuid "fe23e4c4-deee-468b-a5b8-01fcff42d7f8")
 	)
 	(wire
 		(pts
@@ -8191,7 +8353,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "c6f04d39-be30-4559-870f-e6300bba7fda")
+		(uuid "22a913fa-a466-427a-bc35-b542890da3eb")
 	)
 	(wire
 		(pts
@@ -8201,7 +8363,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "0ef74ff3-8678-4769-bc67-9b8d57a72070")
+		(uuid "e62402b5-c8f9-4eb9-9c3b-97bdb16d44cd")
 	)
 	(wire
 		(pts
@@ -8211,7 +8373,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "1c9a0fca-d0c3-4acf-a447-7e56a50ec390")
+		(uuid "44c899a2-3d70-40b8-9142-bd37d30cac4f")
 	)
 	(wire
 		(pts
@@ -8221,7 +8383,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "895912a5-0e61-4839-91d8-7ac0a9e78c58")
+		(uuid "ba38acee-2fc5-4299-a68b-3315384c6ee1")
 	)
 	(wire
 		(pts
@@ -8231,7 +8393,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "a3ed753d-2ccb-4916-aa43-a78d38038f4d")
+		(uuid "93a0e17d-9610-4189-b8b4-97a722fdb05b")
 	)
 	(wire
 		(pts
@@ -8241,7 +8403,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "ad315f9b-206c-4d92-95c2-88df1470086a")
+		(uuid "b63fdc97-e2b0-457e-9c71-ad4e25cd7dfe")
 	)
 	(wire
 		(pts
@@ -8251,7 +8413,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "630e69b1-3b7b-4154-a341-5c7bfaf17657")
+		(uuid "4b911d8b-14cf-4c9b-a927-867b699739c2")
 	)
 	(wire
 		(pts
@@ -8261,7 +8423,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "c66bf9ae-39f6-4784-8f2f-7e762d05bf2b")
+		(uuid "2c023510-bff7-4157-9f8a-2d048d262cfa")
 	)
 	(wire
 		(pts
@@ -8271,7 +8433,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "1dc56a3b-8e7b-49d5-9680-8162e6a8afd4")
+		(uuid "4c04d815-6c76-45ab-9d7c-9ec05c70e193")
 	)
 	(wire
 		(pts
@@ -8281,7 +8443,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "5d7cdca1-49a9-406d-aa7f-7b6d6f24fc6e")
+		(uuid "46edb3d7-d36c-47f3-90c3-fc460cfb353a")
 	)
 	(wire
 		(pts
@@ -8291,7 +8453,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "c2ec1321-aa58-4b30-9696-bdb844e4b3e8")
+		(uuid "05a16aab-bde1-4b01-b0e4-98191a61eeaa")
 	)
 	(wire
 		(pts
@@ -8301,7 +8463,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "fb67aefd-5f6a-4cf2-8af2-89d54f8fef9d")
+		(uuid "bdb4adb2-fd2d-4b79-97e7-fc5420e9a678")
 	)
 	(wire
 		(pts
@@ -8311,7 +8473,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "0a07ff56-ae5c-4689-9634-4858ba11ef82")
+		(uuid "f2e21b3c-ec65-47fa-9383-44da25407a5f")
 	)
 	(wire
 		(pts
@@ -8321,7 +8483,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "b99788d4-60f9-444f-9b85-9ec50ccc855e")
+		(uuid "ee3450ff-fe67-4f78-a682-f8223977c38b")
 	)
 	(wire
 		(pts
@@ -8331,7 +8493,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "cd6cfdf0-bb3e-4239-875f-7bf895a2f79a")
+		(uuid "4be9499a-7103-4441-ba9c-fbddec6c3470")
 	)
 	(wire
 		(pts
@@ -8341,7 +8503,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "24ba54a3-1815-4022-8949-a4472ffe59ef")
+		(uuid "a7f1d41f-a6c5-4881-bd31-389ca0aa7d84")
 	)
 	(wire
 		(pts
@@ -8351,7 +8513,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "72a8c233-75cb-4e57-99d6-61583371d073")
+		(uuid "3a61e4be-0d84-4ad9-9e74-9213c3069cf7")
 	)
 	(wire
 		(pts
@@ -8361,7 +8523,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "e93cda24-80d0-42da-83fa-3a43cf949ba3")
+		(uuid "e371f317-356a-462e-a963-2e7a315145fc")
 	)
 	(wire
 		(pts
@@ -8371,7 +8533,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "b9e9adb7-3aad-4f7a-8d2e-f75548c8504f")
+		(uuid "ceebaad3-7191-477e-ac1f-bedb8e674548")
 	)
 	(wire
 		(pts
@@ -8381,7 +8543,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "5b0d736e-ca32-4293-bb07-e76f8aac8b0e")
+		(uuid "0e00244c-927f-4998-ac2b-8eaf942c2705")
 	)
 	(wire
 		(pts
@@ -8391,7 +8553,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "0bc7714c-af35-425d-8eb7-89f39c6e90c3")
+		(uuid "dd554d81-bbe0-43fa-aff0-8fc78192ea1c")
 	)
 	(wire
 		(pts
@@ -8401,7 +8563,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "087d2177-55be-485a-b6be-cee3d9bd6b97")
+		(uuid "7f7f2ddc-2615-4cb9-8167-0bebfc26d395")
 	)
 	(wire
 		(pts
@@ -8411,7 +8573,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "f6d686d7-b1d9-4903-91d6-09381cfe0eb3")
+		(uuid "1dbc55c1-9bb4-493d-ab59-e5f4703979f6")
 	)
 	(wire
 		(pts
@@ -8421,7 +8583,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "439ff35c-8249-4681-83a8-23aadd60268b")
+		(uuid "b8fcfbcd-52c8-4108-ae9d-6454b34c6970")
 	)
 	(wire
 		(pts
@@ -8431,7 +8593,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "36130847-9ba2-4691-8ca6-056e0831775b")
+		(uuid "12dbefee-38d0-4833-b25a-09d268a789b0")
 	)
 	(wire
 		(pts
@@ -8441,7 +8603,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "5cefc1cf-0612-4d47-9ad1-be50bfd40ae2")
+		(uuid "7c718f93-5725-4333-9adc-2455a086aeff")
 	)
 	(wire
 		(pts
@@ -8451,7 +8613,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "f7bb4420-ce6f-4c25-b13c-d73ee3fa3675")
+		(uuid "93b9d0e2-5bf6-4a2e-b6e1-63ea73f4ad12")
 	)
 	(wire
 		(pts
@@ -8461,7 +8623,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "797ab090-5805-44cc-b06a-7967f187b6b4")
+		(uuid "ee49203a-593d-445b-b238-fb3274644494")
 	)
 	(wire
 		(pts
@@ -8471,7 +8633,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "3cb337d7-476d-4806-9b57-850eb499954d")
+		(uuid "55a12d6b-82f2-4d17-9a14-fdc3b03681d6")
 	)
 	(wire
 		(pts
@@ -8481,7 +8643,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "191e9760-81d6-4d47-920b-b8a3198c6e68")
+		(uuid "2241f0a6-c368-4383-8a77-b8fb1cb51160")
 	)
 	(wire
 		(pts
@@ -8491,7 +8653,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "ae48f8d8-4946-4557-961b-afe1abdf4cbb")
+		(uuid "30831c23-8f95-4e33-8ea1-2b707c33024a")
 	)
 	(wire
 		(pts
@@ -8501,7 +8663,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "55597da4-edb3-496f-a1e9-3f8e753a8ee1")
+		(uuid "dc0f2800-ffd1-49a3-8b9f-2d92ad36834c")
 	)
 	(wire
 		(pts
@@ -8511,7 +8673,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "30289e5f-4a2c-4940-8ab1-b53e4c523cdd")
+		(uuid "aa124978-1035-4d56-aa27-b3dc2ba8f9c5")
 	)
 	(wire
 		(pts
@@ -8521,7 +8683,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "4a6068d0-ae7c-44a1-a0b3-6e51d57bbe98")
+		(uuid "39c3df5b-1d2a-4a2b-bc9d-206d5c15a3bc")
 	)
 	(wire
 		(pts
@@ -8531,7 +8693,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "6dbab382-72c9-4639-b2ce-4a58ac1e738b")
+		(uuid "33f05da3-849b-4909-a406-8a5f6c19f266")
 	)
 	(wire
 		(pts
@@ -8541,7 +8703,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "0831ed7a-c9a6-4682-ba0e-b7ff6d4621b6")
+		(uuid "6515e66d-c6c3-4f3f-b601-c57075273b35")
 	)
 	(wire
 		(pts
@@ -8551,7 +8713,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "2bed9053-bac0-45f3-8c1a-0350cb170d97")
+		(uuid "16c308c2-2559-4f34-a009-598ecba11075")
 	)
 	(wire
 		(pts
@@ -8561,7 +8723,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "e7eb4291-0c44-4021-90a5-3b2bf28aaa2f")
+		(uuid "72546704-0378-459d-a329-8b499a574a6b")
 	)
 	(wire
 		(pts
@@ -8571,7 +8733,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "43ea21c3-9669-4259-882a-ba7cd5ca5095")
+		(uuid "b7288467-b83f-4127-a4eb-96cab51931c4")
 	)
 	(wire
 		(pts
@@ -8581,7 +8743,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "f6382fd6-fbe3-4937-ae47-82c27ab16f1e")
+		(uuid "2242106a-d715-4171-8089-b3899e35c7ea")
 	)
 	(wire
 		(pts
@@ -8591,7 +8753,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "926d8ac6-01bc-4a14-8dbb-47c8c5c20dd9")
+		(uuid "2a992373-641d-48ce-9875-422e9c7d56cc")
 	)
 	(wire
 		(pts
@@ -8601,7 +8763,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "213bf2da-6fff-473f-ad3b-62eb4230a92b")
+		(uuid "5275eef3-5de8-413e-a974-e8d9bda031c2")
 	)
 	(wire
 		(pts
@@ -8611,7 +8773,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "cf3517ec-0426-47d9-a7de-959def8e5ec3")
+		(uuid "f8d9d1f8-ce2a-4209-9a13-1d4c537b7b92")
 	)
 	(wire
 		(pts
@@ -8621,7 +8783,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "68cdc0e4-cab2-4044-a8a3-15d99ee30505")
+		(uuid "13f2285b-9292-4352-9e9c-48f7535dfc14")
 	)
 	(wire
 		(pts
@@ -8631,7 +8793,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "1cbd518a-071e-406e-898a-323d14e894f0")
+		(uuid "2b5332b9-fb55-4e46-8f2a-551ef86a1e3b")
 	)
 	(wire
 		(pts
@@ -8641,7 +8803,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "f7ca5989-7f83-4ae8-a0c0-a7959dd6f25a")
+		(uuid "c12893bf-78c4-4a9a-8667-08c25f092d53")
 	)
 	(wire
 		(pts
@@ -8651,7 +8813,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "ed7b6460-f610-4480-ab5c-afccc62c5aee")
+		(uuid "4a4c165f-437c-4fc5-9461-f80a1aadd8d0")
 	)
 	(wire
 		(pts
@@ -8661,7 +8823,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "fd1ce3ef-cb6d-43af-9436-fe259500ddd9")
+		(uuid "2f30a405-073a-48c1-bb37-83d1dcffde7f")
 	)
 	(wire
 		(pts
@@ -8671,7 +8833,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "5489fcc6-2bc6-4047-8c7a-cc4a2d1f0bbb")
+		(uuid "2393d417-0683-4782-b9ed-6cc0edf761a7")
 	)
 	(wire
 		(pts
@@ -8681,7 +8843,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "a449cab1-0304-4504-be82-320adeb3f68c")
+		(uuid "e454c61d-23d6-440f-b893-edfddee2ea0a")
 	)
 	(wire
 		(pts
@@ -8691,7 +8853,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "4ec1f8b5-c4eb-4fe8-89ba-926f16cac6e9")
+		(uuid "2529f592-c9fe-4d6d-b129-db9ffb0bfc85")
 	)
 	(wire
 		(pts
@@ -8701,7 +8863,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "f523c69a-7694-4289-b426-1798ff8b178e")
+		(uuid "286e5f98-44df-44c5-ae56-f0576ec75962")
 	)
 	(wire
 		(pts
@@ -8711,7 +8873,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "d23afecb-fc6e-48de-8659-971ebf03650f")
+		(uuid "2fc45bcd-f504-4e4c-818a-512158bd299f")
 	)
 	(wire
 		(pts
@@ -8721,7 +8883,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "a80785a8-0f7a-4fe7-b9b7-89095d9fe51b")
+		(uuid "8d8ca7a5-7b1d-49c3-981d-ca5696ff2fa2")
 	)
 	(wire
 		(pts
@@ -8731,7 +8893,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "1fb099e6-20db-4e64-914b-9fcc5041fb07")
+		(uuid "23211ff5-441a-428c-84a5-9166553cfb69")
 	)
 	(wire
 		(pts
@@ -8741,7 +8903,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "e739314b-dc7e-4102-83d0-e59b36e8a673")
+		(uuid "74a9b418-2155-4f3b-ac76-97dd5d0f4af8")
 	)
 	(wire
 		(pts
@@ -8751,7 +8913,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "d1fe1387-ca0a-4dd7-947d-41a9bf55b5df")
+		(uuid "573a7adf-949d-43bb-81bc-ea6681fbda9f")
 	)
 	(wire
 		(pts
@@ -8761,7 +8923,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "e62a8724-70d9-4d62-95b9-7f9029e50355")
+		(uuid "636096a0-d95d-4c76-9b5c-38b495b9e495")
 	)
 	(wire
 		(pts
@@ -8771,7 +8933,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "4629c7e0-ccf5-4311-8a4d-304f891597cf")
+		(uuid "b5f2d330-a22a-443c-b31b-2e402dd99c06")
 	)
 	(wire
 		(pts
@@ -8781,7 +8943,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "82e3a29e-4ed2-4d12-a05b-621b2814f921")
+		(uuid "444361c5-bc1d-447c-828a-b9e47da28a6c")
 	)
 	(wire
 		(pts
@@ -8791,7 +8953,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "c09d0dc1-a17b-4bf1-b51a-559375045241")
+		(uuid "b7b8d085-13b1-461b-ad23-90303222d9cb")
 	)
 	(wire
 		(pts
@@ -8801,7 +8963,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "a7b748e6-9d7a-43fe-9589-5578cc13ea73")
+		(uuid "5fb8284d-0da5-4f9e-9cb5-2603960ffa86")
 	)
 	(wire
 		(pts
@@ -8811,7 +8973,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "a144b39d-df30-4a84-b453-f3bc3d5e94ea")
+		(uuid "ee073e65-dd7e-4dff-b4d8-c99a011e5977")
 	)
 	(wire
 		(pts
@@ -8821,7 +8983,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "a5fcc129-01b6-48f0-91d2-8784bd3f53c6")
+		(uuid "f750cd9b-ee23-42e8-b423-bbd188688f11")
 	)
 	(wire
 		(pts
@@ -8831,7 +8993,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "a926f3de-b622-4664-81bc-6cfd7eb5a2f3")
+		(uuid "d9b173e7-b889-486e-8534-08708e70e350")
 	)
 	(wire
 		(pts
@@ -8841,7 +9003,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "d8ac91aa-5ba1-4a67-a532-361279b4a16e")
+		(uuid "4b12d77f-224b-4f58-ad06-e287ce9f8a79")
 	)
 	(wire
 		(pts
@@ -8851,7 +9013,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "f0d4f589-3153-4b6e-ab3a-f09355511eb8")
+		(uuid "c8e604e0-52c2-4b11-b3ea-1a3787c69b97")
 	)
 	(wire
 		(pts
@@ -8861,7 +9023,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "5eea289e-afb4-4eb9-ae9e-dee01d2a13c7")
+		(uuid "55df9387-bd00-4a3a-af49-134a0ff95998")
 	)
 	(wire
 		(pts
@@ -8871,7 +9033,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "866711a1-a86f-4d7c-ab83-28683f1a6c8c")
+		(uuid "373f6c89-9dd4-4c07-8313-90a9e10f9f55")
 	)
 	(wire
 		(pts
@@ -8881,7 +9043,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "792c0150-0f81-4837-a7da-199fdf931e6f")
+		(uuid "24b2844a-ee61-4bc5-a4c9-cd51b1d71208")
 	)
 	(wire
 		(pts
@@ -8891,7 +9053,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "b90c75c7-43eb-4e3a-951c-642949c6dea7")
+		(uuid "d19258a2-303c-4599-b6fd-6f52c8e63049")
 	)
 	(wire
 		(pts
@@ -8901,7 +9063,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "3c96f1b6-ed79-403c-8d1d-779a0e04f775")
+		(uuid "2003b2bb-2ad1-47d5-9d2a-b21694f8176e")
 	)
 	(wire
 		(pts
@@ -8911,7 +9073,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "402f8c9e-1458-48c6-8017-a8c701d429c0")
+		(uuid "43997937-9cec-448a-9e07-ebc73346be03")
 	)
 	(wire
 		(pts
@@ -8921,7 +9083,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "b34eee70-5705-4398-9b9b-ded6d8598f20")
+		(uuid "4ccfa861-9769-4f15-a16c-277810df674b")
 	)
 	(wire
 		(pts
@@ -8931,7 +9093,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "e80009ee-8f52-407f-a923-32cd32504497")
+		(uuid "98775c26-ef23-49a5-a6f9-3685467fa1d9")
 	)
 	(wire
 		(pts
@@ -8941,7 +9103,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "9d188644-9c07-4423-b26c-93cdc9740895")
+		(uuid "2f78bae9-476a-478a-a8b5-9a4c0d8036cb")
 	)
 	(wire
 		(pts
@@ -8951,7 +9113,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "12ffcf14-af17-42d0-946f-42b99ebfcde6")
+		(uuid "4c401853-6cf2-494c-9a71-ff4c801991d0")
 	)
 	(wire
 		(pts
@@ -8961,7 +9123,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "d4f273f7-6c06-4667-aa92-deee2e1237ff")
+		(uuid "21ac3276-fb9f-4d78-8404-0fcc8495e381")
 	)
 	(wire
 		(pts
@@ -8971,7 +9133,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "2fd8e1e3-d477-449f-997c-c135726184dd")
+		(uuid "39da804e-a1ee-402b-965a-7aed8f6105ab")
 	)
 	(wire
 		(pts
@@ -8981,7 +9143,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "76cc60fd-a804-4182-9fe5-f2e44c756f2e")
+		(uuid "697bb088-6395-4616-93a7-be136ba935e4")
 	)
 	(wire
 		(pts
@@ -8991,7 +9153,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "cd91245b-9e0c-49d8-91a7-8b7533af610a")
+		(uuid "b887f4c7-5300-458a-8e66-8788b7d7455e")
 	)
 	(wire
 		(pts
@@ -9001,7 +9163,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "25248e5a-fe86-45c6-aa3f-ed5067ae49a0")
+		(uuid "d6c9a126-3d9a-4e49-bc64-b7f7a0c4d25c")
 	)
 	(wire
 		(pts
@@ -9011,7 +9173,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "cd860429-c9dc-401c-a70f-26e01adcc9be")
+		(uuid "5643b239-16a2-4e0c-aaac-3ce0a5bbf5f2")
 	)
 	(wire
 		(pts
@@ -9021,7 +9183,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "e937fa23-6841-44d3-aba5-b6108ab374fd")
+		(uuid "e27388d8-1972-48f9-b845-a8779d1f8c22")
 	)
 	(wire
 		(pts
@@ -9031,7 +9193,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "62f1e106-b0c9-4d32-aed3-f24886045ae2")
+		(uuid "fa8bfdf8-7757-4a3c-b327-3c238f9ea81b")
 	)
 	(wire
 		(pts
@@ -9041,7 +9203,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "c3bc040e-6ccc-4ab7-942e-0e9f1dfe03c0")
+		(uuid "0badd105-ab75-4e50-b0e7-9cdc42893ee3")
 	)
 	(wire
 		(pts
@@ -9051,7 +9213,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "7594ec18-484f-4cd5-ba7f-5915c1bd26d0")
+		(uuid "619c4853-9901-4650-8762-41e2604e6f23")
 	)
 	(wire
 		(pts
@@ -9061,7 +9223,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "296c1cc4-18d6-40bc-8a9f-8fe4236b019b")
+		(uuid "37e080cb-15fc-4d35-8f4d-84ec418c6581")
 	)
 	(wire
 		(pts
@@ -9071,7 +9233,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "fdba4a9c-37b8-4fac-9a2d-05129e3f7bc4")
+		(uuid "5dc6ee70-eac4-411c-897c-b89ffbc38e40")
 	)
 	(wire
 		(pts
@@ -9081,7 +9243,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "4095cd78-b76e-4c3c-afd6-1a70f4aa57b6")
+		(uuid "015b789a-f58b-416a-aa4d-a7445cc2c978")
 	)
 	(wire
 		(pts
@@ -9091,7 +9253,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "1ede1c6b-6b13-44f6-8fe1-39db1357f03e")
+		(uuid "c90e7e40-3f2f-413c-92d4-d1d65338d1b4")
 	)
 	(wire
 		(pts
@@ -9101,7 +9263,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "2f2b087a-cf7e-44e0-8515-88a5fe395abc")
+		(uuid "147df6d8-4bcd-45cf-b554-a6cda67d9f25")
 	)
 	(wire
 		(pts
@@ -9111,7 +9273,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "e81baf5a-cd16-4cc9-9f93-af8a6aceedb5")
+		(uuid "b018a4d9-1f0c-4c07-8263-428f94d2963f")
 	)
 	(wire
 		(pts
@@ -9121,7 +9283,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "55c5a864-41ad-43c4-b1d6-e16dc5069fa0")
+		(uuid "214e02cc-0cc1-45da-b6c4-f1bf07ca3035")
 	)
 	(wire
 		(pts
@@ -9131,7 +9293,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "c01f2335-4bdf-425a-8b52-67e5934d3fcb")
+		(uuid "94c19614-872c-4ede-b592-da3a0e1b049f")
 	)
 	(wire
 		(pts
@@ -9141,7 +9303,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "dfc401a9-2d1b-48c3-bc3d-f15f03810003")
+		(uuid "98728806-5607-4491-a815-bc64d5571e27")
 	)
 	(wire
 		(pts
@@ -9151,7 +9313,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "87a77892-3b4d-4eef-a478-b4762c4aa987")
+		(uuid "f26f0043-dce8-48ea-bc5f-495a00d01f48")
 	)
 	(wire
 		(pts
@@ -9161,7 +9323,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "f23bbe69-3504-493d-81e8-a7f1fd436672")
+		(uuid "42b9907c-034f-417f-86a8-73583b623662")
 	)
 	(wire
 		(pts
@@ -9171,7 +9333,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "d8dd0484-0fad-4d21-b016-f71fe9784d90")
+		(uuid "2dbc67d6-1fc4-4e64-a05d-047f3d199f7c")
 	)
 	(wire
 		(pts
@@ -9181,7 +9343,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "a316c2f2-aee0-4b15-9bcf-b068cc10ba92")
+		(uuid "bb2c1b60-3892-4ce5-8394-c52e3a38e5d0")
 	)
 	(wire
 		(pts
@@ -9191,7 +9353,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "e0489a4c-37d1-4fca-9493-151f33f66082")
+		(uuid "ca9ba00a-d2c5-4cfd-adf8-12b630b934b3")
 	)
 	(wire
 		(pts
@@ -9201,7 +9363,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "befbe9b7-8ab0-4293-816c-b96e982bd5cb")
+		(uuid "ed516360-9233-43e7-9fbf-acdaad06d35a")
 	)
 	(wire
 		(pts
@@ -9211,7 +9373,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "406ab5ba-9acf-4867-a00c-65f3d9d91907")
+		(uuid "65753f38-7ce2-4142-b002-dfd7d3137747")
 	)
 	(wire
 		(pts
@@ -9221,7 +9383,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "f9014233-bd78-449c-8f2d-4d592f4c8010")
+		(uuid "aec10377-7a96-4779-b633-4cdbeec9d6bd")
 	)
 	(wire
 		(pts
@@ -9231,7 +9393,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "60963f0a-b0eb-45de-b62e-5fb46e16d61a")
+		(uuid "9a3f464b-ae1e-46d4-90d3-c904ce92445e")
 	)
 	(wire
 		(pts
@@ -9241,7 +9403,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "827845cb-9a57-401f-9699-1614f537421b")
+		(uuid "8d774c47-0b8e-461c-a109-7cf1bd1214f4")
 	)
 	(sheet_instances
 		(path "/"
